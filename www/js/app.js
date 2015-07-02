@@ -25,7 +25,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   
-
+   .state('app.schedule', {
+      url: "/schedule",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/schedule.html",
+          controller: 'ScheduleCtrl'
+        }
+      }
+    })
+   
   .state('app', {
     url: "/app",
     abstract: true,
@@ -80,7 +89,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
      
     })
 	
-
+  
 	
 	
 	.state('app.playlists', {
