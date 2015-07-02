@@ -4,30 +4,39 @@ angular.module('starter.services')
 
 	var success = ""
 	return {
-		checkIfFavorite: function(id) {
+		checkIfFavoriteMap: function(id) {
 			
-			var fav = localStorage.getItem('companyFavorites')
+			var fav = localStorage.getItem('mapsFavorites')
 			favdata = JSON.parse(fav)
-	
+
 			if(favdata != null){
-				for (d = 0; d < favdata.length; d++) {
-					if(favdata[d].ID == id && favdata[d].type == 'company') {
-						success = true
-						return success
-					}
-					else {
-						success = false
-						return success
-					}
-				}
+				return favdata
 			}
+			else {
+				success = 'all'
+				return success
+			}
+		},
+		saveFavoriteMap: function(details){
+			var favorite = '{"ID": \"' + details.RecID + '\", "Image": \"' + details.Image + '\", "MapName": \"' + details.Name + '\", "MapDesc": \"' +details.Description + '\", "type": \"maps\"}'
+			
+			var newFav = ''
+		    var temp = localStorage.getItem('mapsFavorites')
+		    if (temp == null) {
+		        localStorage.setItem('mapsFavorites', '[' + favorite + ']')
+		    }
+		    else {
+		        temp = temp.substring(1, temp.length - 1)
+		        newFav = "[" + temp + "," + favorite + "]"
+		        localStorage.setItem("mapsFavorites", newFav)
+		    }
+			success = true	
+			return success;
 		},
 		deleteFavorite: function(location, table) {
 				var x;
 				var json = JSON.parse(localStorage[table + "Favorites"]);
 				for (i=0;i<json.length;i++){
-				//alert(json[i].ID)
-				//alert(json[i].type)
 				if (json[i].ID == location && json[i].type == table) {
 					if (table == 'schedule') {
 						x = json[i].Speaker
@@ -35,6 +44,8 @@ angular.module('starter.services')
 					json.splice(i, 1);
 				}
 			}
+							console.log(json)
+
 			if(JSON.stringify(json) == "[]"){
 				localStorage.removeItem(table + "Favorites");	
 			} 
@@ -68,8 +79,25 @@ angular.module('starter.services')
 			/* REFRESHES THE LIST */
 			return success
 		},
+		checkIfFavoriteCompany: function(id) {
+			
+			var fav = localStorage.getItem('companyFavorites')
+			favdata = JSON.parse(fav)
+	
+			if(favdata != null){
+				for (d = 0; d < favdata.length; d++) {
+					if(favdata[d].ID == id && favdata[d].type == 'company') {
+						success = true
+						return success
+					}
+					else {
+						success = false
+						return success
+					}
+				}
+			}
+		},
 		saveFavoriteCompany: function(details){
-			console.log(details)	
 			
 			//alertify.set({ delay: 1500 });
 			//alertify.success("Saved to Favorites");
