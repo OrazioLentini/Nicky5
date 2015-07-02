@@ -71,17 +71,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	
 	.state('app.details', {
       url: "/directory/:RecID",
-	  views: {
-      'menuContent': {
-      templateUrl: "templates/detail.html",
-      controller: 'DetailCtrl'
+  	  views: {
+        'menuContent': {
+        templateUrl: "templates/detail.html",
+        controller: 'DetailCtrl'
+  	  }
 	  }
-	  }
-     
-    })
+  })
 	
 
-	
+	 .state('app.maps', {
+      url: "/maps",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/maps.html",
+          controller: 'MapsCtrl'
+        }
+      }
+    })
 	
 	.state('app.playlists', {
       url: "/playlists",

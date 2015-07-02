@@ -1,0 +1,16 @@
+
+<ion-view title="Maps">
+	<ion-content>
+	    <div class="content">
+	        <ul ng-repeat="map in maps" class="table-view" id="map">
+	           <li class="table-view-cell ' + style + '" style="margin-bottom: 25px; padding:10px;"><div style="height: 250px;">
+	           <div style="width:100%; text-align:center; background:#FFF;"><a class="image-link" href="{{map.Image}}"><img style="max-width: 100%; max-height: 200px; border:0px;" src="{{map.Image}}"/></a></div>
+	           <p style="padding:10px 3px;" class="pull-left"><b>{{map.Name}}</b><br>{{map.Desciption}}</p>
+	            <a ng-show="{{map.NoFav}}" ng-click="saveFavoriteMap('{{map.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:42px; float: right"></i></a>
+           		<a ng-show="{{map.Fav}}" ng-click="deleteFavorite('{{map.RecID}}')"><i class="icon ion-ios-star" style="font-size:42px; float: right"></i></a>
+	           </div></li>
+	        </ul>
+	    </div>
+            
+	</ion-content>
+</ion-view>+
