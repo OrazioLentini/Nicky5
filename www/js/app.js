@@ -88,6 +88,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	  }
   })
 	
+  .state('app.triva', {
+      url: "/trivia",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/trivia.html",
+          controller: 'TriviaCtrl'
+        }
+      }
+    })
   
 	 .state('app.maps', {
       url: "/maps",
