@@ -12,12 +12,17 @@ angular.module('starter.controllers')
 			AdjustedTimeStamp = ClientTimer + parseFloat(sDiff);
 			var c = String(d.getHours()) + "!" + String(d.getSeconds()); 
 			
-			var temp = localStorage.getItem('login')
-		    data = JSON.parse(temp)
+			//var temp = localStorage.getItem('login')
+		    //data = JSON.parse(temp)
 			
-			var user = data[0].BadgeID
-			
-			$.ajax( {
+			//var user = data[0].BadgeID
+			user = '123'
+
+			$http.jsonp("http://patty5.com/AppApis/apiTrivia.asp?user=" + user + "&answer=" + answer + "&c="+c+"&timestamp="+AdjustedTimeStamp+"&callback=JSON_CALLBACK")
+			.success(function(data){
+				console.log(data)
+			})
+			/*$.ajax( {
 				url : "http://patty5.com/AppApis/apiTrivia.asp?user=" + user + "&answer=" + answer + "&c="+c+"&timestamp="+AdjustedTimeStamp,
 				type: "POST",
 				crossDomain: true,
@@ -25,10 +30,10 @@ angular.module('starter.controllers')
 				jsonp: true, 
 				success:function(data){},
 				error: function(jqXHR, textStatus, errorThrown) {}
-			})
+			})*/
 		}
 
-		function getAnswerResult(data) {
+		$scope.getAnswerResult = function (data) {
 			console.log(data)
 			
 			//score = "Score: " + aAnswer[0];

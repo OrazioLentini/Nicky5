@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('MapsCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService) {
+    .controller('MapsCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading) {
 
 		$scope.checkFav = function () {
 			$scope.maps = MapsService.getMaps()
@@ -34,6 +34,7 @@ angular.module('starter.controllers')
 		
 			//$scope.maps = MapsService.getMaps()
 			$scope.checkFav()
+			$ionicLoading.show({template: 'Added to Favorites', noBackdrop: true, duration: 1500});			
 
 		}
 
@@ -46,6 +47,8 @@ angular.module('starter.controllers')
 			 if(res) {
 				$scope.deleted = FavoritesService.deleteFavorite(id, 'maps');
 					$scope.checkFav()
+					$ionicLoading.show({template: 'Favorite Deleted', noBackdrop: true, duration: 1500});
+
 			 }
 		   });
 		}
