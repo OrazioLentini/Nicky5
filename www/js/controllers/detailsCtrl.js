@@ -5,7 +5,7 @@ angular.module('starter.controllers')
 		$scope.filled = false
 		$scope.unfilled = false
 		
-		$scope.checkFavorite = FavoritesService.checkIfFavorite($stateParams.RecID);
+		$scope.checkFavorite = FavoritesService.checkIfFavoriteCompany($stateParams.RecID);
 		if ($scope.checkFavorite == true) {
 			$scope.filled = true;
 		}
