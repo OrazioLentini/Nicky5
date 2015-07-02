@@ -1,8 +1,52 @@
-<ion-view view-title="Nicky5">
-    <div class="content has-header" >
+<style>
+.inner-content {
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 83%, rgba(0,0,0,1) 84%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(83%,rgba(0,0,0,0.99)), color-stop(84%,rgba(0,0,0,1)));
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
 
-        <div style="width:100%; left:0; padding:0px;" id="featured">
-            <!--<div style="background-size:cover; position:relative; background:#FFF;" >
+  padding-top:25px;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  letter-spacing: 0px;
+}
+.inner-content h1, h2, p {
+   padding:0px 10px;
+}
+.inner-content p {
+ color:#31AAD8;
+ font-size:12pt
+}
+/**
+ * CSS image crop. Forces image to 4:3 aspect ratio cropping at the middle.
+ * http://dabblet.com/gist/4711695
+ */
+.thumb
+     {
+     height:150px; 
+     display:block; 
+     position:relative;
+     overflow:hidden;
+     }
+.thumb img 
+    {
+     position:absolute;
+     top:0%;
+     left:0; 
+     width:100%;
+     }
+
+
+</style>
+<ion-view view-title="Nicky5" overflow-scroll="true" >
+    <ion-content class="has-header" overflow-scroll="true">
+
+        <div id="featured">
+          <!-- <div style="background-size:cover; position:relative; background:#FFF;" >
                <a class="push-right tap" href="directory.html#directory" data-transition="slide-in">
                    <img src="http://lorempixel.com/350/150/" style="width:100%;">
                    <div class="inner-content" style="position:absolute; text-align:left; padding:10px 20px; color:#000; bottom:0; width:100%">
@@ -13,7 +57,7 @@
             </div>-->
         </div>
         <div style="clear:both; height:4px;"></div>
-        <div style="width:33.334%;  float:left; position:realtive;">
+        <div style="width:33.334%;  float:left; position:relative;">
             <div style="background:none; margin:2px;">
                 <a class="push-right tap" ui-sref="app.directory" data-transition="slide-in">
                     <img src="images/directory.jpg" style="width:100%;">
@@ -24,7 +68,7 @@
                 </a>
             </div>
         </div>
-        <div style="width:33.334%;  float:left; position:realtive;">
+        <div style="width:33.334%;  float:left; position:relative;">
             <div style="background:none; margin:2px;">
                 <a class="push-right tap" ui-sref="app.schedule" data-transition="slide-in">
                     <img src="images/schedule.jpg" style="width:100%;">
@@ -35,7 +79,7 @@
                 </a>
             </div>
         </div>
-        <div style="width:33.333%; float:left; position:realtive;">
+        <div style="width:33.333%; float:left; position:relative;">
             <div style="background:none; margin:2px;">
                 <a ui-sref="app.maps" data-transition="slide-in">
                     <img src="images/maps.jpg" style="width:100%; padding:0px; margin:0px;">
@@ -48,9 +92,13 @@
         </div>
 
         <div style="clear:both; height:5px;"></div>
-        <div class="card" style="background-color:#FFF;">
+        <div class="card" style="background-color:#FFF; margin:0px 10px;">
 
-            <ul class="table-view">
+            <ul class="list" >
+            <div class="item item-divider">
+                Popular Items
+              </div>
+
                 <!--<li class="table-view-cell">
                   <a class="push-right tap" href="directory.html#directory" data-transition="slide-in">
                     <strong>Directory</strong>
@@ -66,29 +114,29 @@
                     <strong>Trivia</strong>
                   </a>
                 </li>-->
-                <li class="table-view-cell">
+                <li class="item">
                     <a class="push-right" id="presentation-link" ui-sref="app.polling" data-transition="slide-in">
                         <strong>Attend Presentation</strong>
                         <div id="presentation-live" style="position:absolute; right:5px; top:5px; "><img style="width:100px; border:0px;" src="images/live.jpg"></div>
                     </a>
                 </li>
-                <li class="table-view-cell">
+                <li class="item">
                     <a class="push-right" ui-sref="app.trivia" data-transition="slide-in">
                         <strong>Play Trivia</strong>
                         <div id="trivia-live" style="position:absolute; right:5px; top:5px; "><img style="width:100px; border:0px;" src="images/live.jpg"></div>
                     </a>
                 </li>
-                <li class="table-view-cell">
+                <li class="item">
                     <a class="push-right" ui-sref="app.favorites" data-transition="slide-in">
                         <strong>Favorites</strong>
                     </a>
                 </li>
-                <li class="table-view-cell">
+                <li class="item">
                     <a class="push-right" ui-sref="app.feedback" data-transition="slide-in">
                         <strong>Feedback</strong>
                     </a>
                 </li>
-                <li class="table-view-cell">
+                <li class="item">
                     <a class="push-right" ui-sref="app.social" data-transition="slide-in">
                         <strong>Social</strong>
                     </a>
@@ -98,5 +146,5 @@
     </div>
 
 
-
+   </ion-content>
 </ion-view>
