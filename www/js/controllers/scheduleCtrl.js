@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup) {
+    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading) {
 
     	$scope.checkFav = function () {
 			$scope.schedule = ScheduleService.getSchedule();
@@ -36,6 +36,8 @@ angular.module('starter.controllers')
 			$scope.fav = FavoritesService.saveFavoriteSchedule($scope.info[0])
 			//$scope.maps = MapsService.getMaps()
 			$scope.checkFav()
+			$ionicLoading.show({template: 'Added to Favorites', noBackdrop: true, duration: 1500});
+
 
 		}
 
@@ -48,9 +50,22 @@ angular.module('starter.controllers')
 			 if(res) {
 				$scope.deleted = FavoritesService.deleteFavorite(id, 'schedule');
 				$scope.checkFav()
+				$ionicLoading.show({template: 'Favorite Deleted', noBackdrop: true, duration: 1500});
+
 			 }
 		   });
 		}
+
+
+
+
+
+
+
+
+
+
+
 
 		$scope.getScheduleList = function() {
 		    var temp = localStorage.getItem('tSchedule')

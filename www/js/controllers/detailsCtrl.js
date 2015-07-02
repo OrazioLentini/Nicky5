@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService) {
+    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading) {
 		
 		$scope.filled = false
 		$scope.unfilled = false
@@ -33,10 +33,14 @@ angular.module('starter.controllers')
 			$scope.fav = FavoritesService.saveFavoriteCompany($scope.details)
 			$scope.filled = true
 			$scope.unfilled = false
+			$ionicLoading.show({template: 'Added to Favorites', noBackdrop: true, duration: 1500});
 		}
 		
 		$scope.changeStar = function () {
 			$scope.unfilled = true
 			$scope.filled = false
+
+			$ionicLoading.show({template: 'Favorite Removed', noBackdrop: true, duration: 1500});
+
 		}
 }]);
