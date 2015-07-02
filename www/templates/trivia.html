@@ -14,18 +14,18 @@
     </style>
   <ion-content>
  
-      <div id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute; display: none"></div>
+      <div id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
     
-      <div id="signIn"  style="text-align: center; z-index: 2; position: relative; display: none">
+      <div id="signIn"  style="text-align: center; z-index: 2; position: relative;">
             <div style="height: 15px;"></div>
             <a class="navigate-right" href="#loginModal">
-                <span class="media-object icon icon-person"></span>
+                <span class="media-object icon ion-person"></span>
                 <div class="media-body">
                     <strong>Sign In to Participate</strong>
                 </div>
                         <div style="height: 15px;"></div>
     
-                <button class="btn btn-primary" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;">Sign In</button>
+                <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;">Sign In</button>
     
             </a>
             <div style="height: 15px;"></div>
@@ -37,24 +37,24 @@
                 <div class="opt-row">
                     <div class="opt">
                        <div style="padding:5px;">
-                          <a data-toggle="modal" ><img style="width:100%" ng-click="saveTriviaAnswer('A')" src="images/A.png"></a>
+                          <a data-toggle="modal"><img style="width:100%" onclick="saveTriviaAnswer('A')" src="images/A.png"></a>
                         </div>
                     </div>
                     <div class="opt">
                         <div style="padding:5px;">
-                            <a data-toggle="modal" ><img style="width:100%" ng-click="saveTriviaAnswer('B')"  src="images/B.png"></a>
+                            <a data-toggle="modal"><img style="width:100%" onclick="saveTriviaAnswer('B')"  src="images/B.png"></a>
                         </div>
                     </div>
                 </div>
                 <div class="opt-row">
                     <div class="opt">
                         <div style="padding:5px;">
-                          <a data-toggle="modal" ><img style="width:100%" ng-click="saveTriviaAnswer('C')"  src="images/C.png"></a>
+                          <a data-toggle="modal"><img style="width:100%" onclick="saveTriviaAnswer('C')"  src="images/C.png"></a>
                         </div>
                     </div>
                     <div class="opt">
                         <div style="padding:5px;">
-                            <a data-toggle="modal"><img style="width:100%" ng-click="saveTriviaAnswer('D')"  src="images/D.png"></a>
+                            <a data-toggle="modal"><img style="width:100%" onclick="saveTriviaAnswer('D')"  src="images/D.png"></a>
                         </div>
                     </div>
                 </div>
