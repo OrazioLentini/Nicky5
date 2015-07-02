@@ -1,28 +1,14 @@
+<style>
+.item-complex .item-content, .item-radio .item-content{
+	padding:10px;
+}
+</style>
 <ion-view view-title="Schedule">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="schedule in schedule" href="#/app/schedule/{{schedule.RecID}}">
-       <div style="width:100%">
-	       <div style="display:inline-block; padding:0px; margin:0px; max-width:20%; min-width:100px; margin-right:5%; ">
-	       <img style="min-width:100px; max-width:100%; " src="{{schedule.Image}}"/>
-	       </div>
-
-	       <div style="display:inline-block; padding:0px; margin:0px; vertical-align:top; width:55%;" >
-	          <p ng-if="schedule.EventType === 'presentation'" style="font-size:14px; font-weight: bold">Speaker: {{schedule.Speaker}}</p>
-	          <p ng-if="schedule.EventType === 'presentation'" style="font-size:12px;">{{schedule.Title}}</p>
-	          <p ng-if="schedule.EventType === 'trivia'" style="font-size:16px;">{{schedule.Title}}</p>
-	          <p ng-if="schedule.StartTime" style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{requests.StartTime}}</strong></pschedule	       </div>
-
-
-	      <div style="display:inline-block; width:15%; vertical-align:top; text-align:right; margin-right:5%;">
-	     	 <!--<a  ng-click="saveFavoriteCompany('')"><i class="icon ion-ios-star-outline" style="font-size:42px;"></i></a>-->
-	     	 <a  ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:34px;"></i></a>
-
-	      </div>
-	   </div>
-      </ion-item>
-    </ion-list>
+    <div id="schedulecontent-list"></div>
+   
   </ion-content>
 </ion-view>
+
 
 
