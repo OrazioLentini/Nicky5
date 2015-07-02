@@ -5,10 +5,28 @@
 </style>
 <ion-view view-title="Schedule">
   <ion-content>
-    <div id="schedulecontent-list"></div>
-   
+
+
+		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
+		   <li class="item item-divider" style="background:#293F54; color:#F2F2F2">{{ScheduledDate}}</li>
+
+ 			<li class="item item-thumbnail-left item-icon-right" ng-repeat="x in sch">
+ 				<img src="{{x.Image}}"/>
+
+
+ 				<p ng-if="x.Speaker" style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
+ 				<p ng-if="x.Speaker" style="font-size:12px;">{{x.Title}}</p>
+
+
+ 				<p ng-if="x.Speaker == ''" style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
+
+ 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.StartTime}}</strong></p>
+ 				<i class="icon ion-ios-star' + icon + '" ' + onClick + '></i>
+ 				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:42px; float: right"></i></a>
+       			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="font-size:42px; float: right"></i></a>
+           </li>
+	    </ul>   
+
+
   </ion-content>
 </ion-view>
-
-
-
