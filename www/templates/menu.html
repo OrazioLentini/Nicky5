@@ -1,3 +1,4 @@
+<body ng-controller="MenuCtrl">
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
@@ -32,11 +33,11 @@
         </ion-item>
       </ion-list>-->
           <ion-list>
-      <ion-item ng-repeat="menu in menu">
-       <a style="text-decoration:none;" menu-close href="#/app/{{menu.url}}"<i class="icon ion-{{menu.icon}}"></i> {{menu.title}}</a>
+      <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.url}}">
+       <a style="text-decoration:none;" ng-click="toggleLeftSideMenu()" ><i class="icon ion-{{menu.icon}}" ></i> {{menu.title}}</a>
       </ion-item>
     </ion-list>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
-
+</body>
