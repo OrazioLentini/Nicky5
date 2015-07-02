@@ -32,8 +32,8 @@
         </ion-item>
       </ion-list>-->
           <ion-list>
-      <ion-item ng-repeat="menu in menu" href="#/app/{{menu.url}}">
-       <i class="icon ion-{{menu.icon}}"></i> {{menu.title}}
+      <ion-item ng-repeat="menu in menu">
+       <a style="text-decoration:none;" menu-close href="#/app/{{menu.url}}"<i class="icon ion-{{menu.icon}}"></i> {{menu.title}}</a>
       </ion-item>
     </ion-list>
     </ion-content>
