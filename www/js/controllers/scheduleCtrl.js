@@ -1,10 +1,58 @@
 angular.module('starter.controllers')
 
-    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', function ($scope, $http, $state, ScheduleService) {
+    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup) {
 
-		$scope.schedule = ScheduleService.getSchedule();
-		//console.log($scope.schedule)
-		function getScheduleList() {
+    	$scope.checkFav = function () {
+			$scope.schedule = ScheduleService.getSchedule();
+			$scope.tempSch = $scope.schedule
+			$scope.fav = FavoritesService.checkIfFavoriteSchedule()
+
+			for (i = 0; i < $scope.schedule.length; i++){
+				if ($scope.schedule[i].fav == null) {
+					$scope.schedule[i].Fav = false
+					$scope.schedule[i].NoFav = true
+				}
+			}
+			if ($scope.fav != 'all') {
+				for (j = 0; j < $scope.fav.length; j++){
+					var x = $scope.fav[j].ID
+
+					for (i = 0; i < $scope.schedule.length; i++){
+						if ($scope.schedule[i].RecID == x) {
+							$scope.schedule[i].Fav = true
+							$scope.schedule[i].NoFav = false
+						}
+					}
+				}
+			}
+			$scope.schedule = _.groupBy($scope.schedule, 'ScheduledDate') 
+		}
+		$scope.checkFav()
+
+
+		$scope.saveFavoriteSchedule = function(id) {
+
+			$scope.info = $filter('filter')($scope.tempSch, {RecID: id })
+			$scope.fav = FavoritesService.saveFavoriteSchedule($scope.info[0])
+			//$scope.maps = MapsService.getMaps()
+			$scope.checkFav()
+
+		}
+
+		$scope.deleteFavorite = function(id) {
+			var confirmPopup = $ionicPopup.confirm({
+			 title: 'Delete Favorite',
+			 template: 'Are you sure you would like to delete this favorite?'
+		   });
+		   confirmPopup.then(function(res) {
+			 if(res) {
+				$scope.deleted = FavoritesService.deleteFavorite(id, 'schedule');
+				$scope.checkFav()
+			 }
+		   });
+		}
+
+		$scope.getScheduleList = function() {
 		    var temp = localStorage.getItem('tSchedule')
 		    var fav = localStorage.getItem('scheduleFavorites')
 			data = JSON.parse(temp)
@@ -51,10 +99,8 @@ angular.module('starter.controllers')
 		    }
 		     scheduleOutput += '</ul>'
 		    $('#schedulecontent-list').html(scheduleOutput)
-		   // $('#directorycontent').append(scheduleOutput)
 
-		  //  $('#directorycontent').append('<li class="table-view-cell media"><a class="navigate-right" href="details.html?id=' + recID + '#details" data-transition="slide-in"><img style="width:42px;" class="media-object pull-left" src="' + logo + '"/><div class="media-body">' + company + '<br><span style="font-size:11px">' + location + '</span><p>' + description + '</p></div></a> </li>')
 
 		}
-		getScheduleList()
+		//$scope.getScheduleList()
     }]);
