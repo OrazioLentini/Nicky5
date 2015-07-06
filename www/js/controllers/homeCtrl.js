@@ -92,7 +92,7 @@ angular.module('starter.controllers')
 				}
 			    else {
 			        // ELSE GRAB THE NEXT ONE MARK AS FEATURED
-			        if (data[i].featured == 1 && first == "no" && scheduledDate >= today) {
+			        if (data[i].featured == 1 && first == "no") {
 
 						var first = "yes"
 						//featuredOutput += '<div style="position:absolute; left:50%; top:50%;">test</div>'
