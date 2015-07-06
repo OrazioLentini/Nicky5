@@ -18,7 +18,6 @@ angular.module('starter.services')
 			}
 		},
 		saveFavoriteSchedule: function(details){
-			console.log(details)
 			var favorite = '{"ID": \"' + details.RecID + '\","Speaker": \"' + details.Speaker + '\", "SpeakerID": \"' + details.SpeakerID + '\", "Title": \"' + details.Title + '\", "Image": \"' + details.Image + '\", "StartTime": \"' + details.StartTime + '\", "ScheduledDate": \"' + details.ScheduledDate + '\", "type": \"schedule\"}'
 
 			var newFav = ''
@@ -113,7 +112,6 @@ angular.module('starter.services')
 					json.splice(i, 1);
 				}
 			}
-							console.log(json)
 
 			if(JSON.stringify(json) == "[]"){
 				localStorage.removeItem(table + "Favorites");	
