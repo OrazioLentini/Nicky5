@@ -14,18 +14,18 @@
     </style>
   <ion-content>
  
-      <div id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
+      <div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
     
-      <div id="signIn"  style="text-align: center; z-index: 2; position: relative;">
+      <div ng-show="show" id="signIn"  style="text-align: center; z-index: 2; position: relative;">
             <div style="height: 15px;"></div>
-            <a class="navigate-right" href="#loginModal">
+            <a class="navigate-right" href="">
                 <span class="media-object icon ion-person"></span>
                 <div class="media-body">
                     <strong>Sign In to Participate</strong>
                 </div>
                         <div style="height: 15px;"></div>
     
-                <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;">Sign In</button>
+                <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
     
             </a>
             <div style="height: 15px;"></div>
