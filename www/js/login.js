@@ -79,66 +79,6 @@ function getLogin(result,data) {
 	} 
 }
 
-function logout() {
-	alertify.confirm("Are you sure you want to Sign Out?", function(e){
-		if (e) {
-			localStorage.removeItem("login");
-			localStorage.removeItem("infoRequest");
-			$("#logoutBut").css("display", "none")
-			$("#loginBut").css("display", "block")
-			$("#profileBut").css("display", "none")
-			$("#logoutBut2").css("display", "none")
-			$("#loginBut2").css("display", "block")
-			$("#profileBut2").css("display", "none")
-			$("#signInOverlay").css("display", "block")
-			$("#signIn").css("display", "block")
-			
-			$("#Username").val('')
-			$("#BadgeID").val('')
-			//window.location.reload();
-		}
-	})
-}
-
-function checkLogin () {
-	var isLoggedIn = localStorage.getItem("login")
-	if(isLoggedIn == null) {
-			$("#loginBut").css("display", "block")
-			$("#loginBut2").css("display", "block")
-			$("#signInOverlay").css("display", "block")
-			$("#signIn").css("display", "block")	
-			$("#logoutBut").css("display", "none")
-			$("#logoutBut2").css("display", "none")
-			$("#profileBut").css("display", "none")
-			$("#profileBut2").css("display", "none")
-	}
-	else {
-		 data = JSON.parse(isLoggedIn)
-		 
-		$("#logoutBut").css("display", "block")
-		$("#loginBut").css("display", "none")	
-		$("#logoutBut2").css("display", "block")
-		$("#loginBut2").css("display", "none")	
-			$("#signInOverlay").css("display", "none")
-			$("#signIn").css("display", "none")
-			$("#profileBut").css("display", "block")
-			$("#profileBut2").css("display", "block")
-			
-			//Profile Form
-			$("#unProfile").val(data[0].Username)
-			$("#idProfile").val(data[0].BadgeID)
-			if(data[0].FirstName != null) {
-				$("#fnProfile").val(data[0].FirstName)
-			}
-			if(data[0].LastName != null) {
-				$("#lnProfile").val(data[0].LastName)
-			}
-			if(data[0].Email != null) {
-				$("#emProfile").val(data[0].Email)
-			}
-			
-	}
-}
 
 function saveUpdatedProfile (result, data) {	
 	localStorage.setItem("login", JSON.stringify(data))

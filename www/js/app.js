@@ -88,7 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	  }
   })
 	
-  .state('app.triva', {
+  .state('app.trivia', {
       url: "/trivia",
       views: {
         'menuContent': {
@@ -98,12 +98,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('app.social', {
-      url: "/social",
+   
+  .state('app.favorites', {
+      url: "/favorites",
       views: {
         'menuContent': {
-          templateUrl: "templates/social.html",
-          controller: 'SocialCtrl'
+          templateUrl: "templates/favorites.html",
+          controller: 'FavoritesCtrl'
+        }
+      }
+    })
+
+
+  .state('app.polling', {
+      url: "/polling/:speakerID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/presentation.html",
+          controller: 'PollingCtrl'
         }
       }
     })
@@ -125,6 +137,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           templateUrl: "templates/playlists.html",
           controller: 'PlaylistsCtrl'
         }
+      }
+    })
+
+   .state('app.social', {
+      url: "/social",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/social.html",
+          controller: 'SocialCtrl'
+          }
       }
     })
 

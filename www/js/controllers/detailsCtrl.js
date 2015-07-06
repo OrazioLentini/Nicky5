@@ -1,7 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading) {
-		
+    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', '$ionicModal', '$timeout', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading, $ionicModal, $timeout) {
 		$scope.filled = false
 		$scope.unfilled = false
 		
@@ -41,6 +40,84 @@ angular.module('starter.controllers')
 			$scope.filled = false
 
 			$ionicLoading.show({template: 'Favorite Removed', noBackdrop: true, duration: 1500});
-
 		}
+		
+
+	  $scope.showInfo = DirectoryService.showButton($stateParams.RecID)
+
+	  $ionicModal.fromTemplateUrl('templates/login.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.modal = modal;
+		});
+
+		$scope.closeLogin = function() {
+			$scope.modal.hide();
+		};
+		$scope.doLogin = function() {
+			loginSubmit();
+
+			$timeout(function() {
+				loggedIn = localStorage.getItem("login")
+
+				if (loggedIn != null) {
+					$scope.logoutButton = true
+					$scope.profileButton = true
+					$scope.loginButton = false
+					$scope.closeLogin();
+				}
+			}, 100);
+		};
+
+
+			$ionicModal.fromTemplateUrl('templates/profile.html', {
+				scope: $scope
+			}).then(function(modal) {
+				$scope.modalProfile = modal;
+			});
+
+			$scope.profile = function() {
+				$scope.modalProfile.show();
+			};
+			$scope.closeProfile = function() {
+			    $scope.modalProfile.hide();
+			};
+
+		$scope.requestInfo = function() {
+			var temp = localStorage.getItem('login')
+			if (temp == null){ 
+				var confirmPopup = $ionicPopup.confirm({
+				 title: 'Additional Information',
+				 template: 'You must login to request additional info. Do you want to login?'
+			   });
+			   confirmPopup.then(function(res) {
+				 if(res) {
+					$scope.modal.show();
+				 }
+			   });
+			}
+			else { 
+				data = JSON.parse(temp)
+		
+				var userID = data[0].UserID
+				var userEmail = data[0].Email
+
+				if (userEmail == '') {
+					var confirmPopup = $ionicPopup.confirm({
+						 title: 'Email Required',
+				 		template: 'You must update your email in order to request more info.'
+			   		});
+			   		confirmPopup.then(function(res) {
+				 	if(res) {
+						$scope.modalProfile.show();
+				 	}
+			   		});
+				}
+				else {
+					requestMoreInfo($stateParams.RecID, 'company', userID, 1)
+					$scope.showInfo = false
+				}
+			}
+		}
+
 }]);

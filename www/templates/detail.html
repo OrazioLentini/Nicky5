@@ -7,7 +7,7 @@
            <p>{{details.Description}}</p>
            <a ng-show="unfilled" ng-click="saveFavoriteCompany('')"><i class="icon ion-ios-star-outline" style="font-size:42px;"></i></a>
            <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:42px;"></i></a>
-
+           <button ng-show="showInfo" class="button button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
         </div>
             
 	</ion-content>

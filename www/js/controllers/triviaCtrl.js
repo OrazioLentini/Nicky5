@@ -41,7 +41,10 @@ angular.module('starter.controllers')
 				loggedIn = localStorage.getItem("login")
 
 				if (loggedIn != null) {
-					 $scope.closeLogin();
+					$scope.logoutButton = true
+					$scope.profileButton = true
+					$scope.loginButton = false
+					$scope.closeLogin();
 				}
 			}, 100);
 		};
