@@ -31,13 +31,5 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
-  
-  	  $scope.menu = [
-		{ title: 'Directory', id: 1, icon: 'briefcase', url:'directory' },
-		{ title: 'Schedule', id: 2, icon: 'calendar' },
-		{ title: 'Maps', id: 3, icon:'map' },
-		{ title: 'Trivia', id: 4, icon:'ribbon-a' },
-		{ title: 'Presentation', id: 5, icon:'speakerphone' },
-		{ title: 'Home', id: 6, icon:'home' }
-	  ];
+
 }])
