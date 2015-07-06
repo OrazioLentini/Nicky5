@@ -97,6 +97,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
+    .state('app.social', {
+      url: "/social",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/social.html",
+          controller: 'SocialCtrl'
+        }
+      }
+    })
   
 	 .state('app.maps', {
       url: "/maps",
