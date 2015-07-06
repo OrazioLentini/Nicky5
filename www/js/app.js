@@ -88,7 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	  }
   })
 	
-  .state('app.triva', {
+  .state('app.trivia', {
       url: "/trivia",
       views: {
         'menuContent': {
