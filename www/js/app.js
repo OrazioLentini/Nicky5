@@ -98,6 +98,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+  .state('app.favorites', {
+      url: "/favorites",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/favorites.html",
+          controller: 'FavoritesCtrl'
+        }
+      }
+    })
 
   .state('app.polling', {
       url: "/polling/:speakerID",

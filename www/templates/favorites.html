@@ -1,0 +1,54 @@
+<ion-view view-title="Favorites"> 
+  <ion-content>
+
+	<div class="button-bar">
+		<a class="button" ng-click="toggle('schedule')">Schedule</a>
+		<a class="button" ng-click="toggle('directory')">Directory</a>
+		<a class="button" ng-click="toggle('maps')">Maps</a>
+	</div>
+
+	<div ng-show="showSch">
+		{{noSchedule}}
+		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
+		   <li class="item item-divider" style="background:#293F54; color:#F2F2F2">{{ScheduledDate}}</li>
+
+ 			<li class="item item-thumbnail-left item-icon-right" ng-repeat="x in sch">
+ 				<img src="{{x.Image}}"/>
+
+
+ 				<p ng-if="x.Speaker" style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
+ 				<p ng-if="x.Speaker" style="font-size:12px;">{{x.Title}}</p>
+
+
+ 				<p ng-if="x.Speaker == ''" style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
+
+ 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.StartTime}}</strong></p>
+ 				<i class="icon ion-ios-star' + icon + '" ' + onClick + '></i>
+       			<a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="font-size:42px; float: right"></i></a>
+           </li>
+	    </ul>   
+	</div>
+
+	<div ng-show="showDir">
+		{{noDirectory}}
+		<ion-list>
+			<ion-item ng-repeat="requests in directoryFav">
+				{{requests.Company}}
+				<a ng-show="true" ng-click="deleteFavorite('{{requests.ID}}','company')"><i class="icon ion-ios-star" style="font-size:42px; float: right"></i></a>
+			</ion-item>
+		</ion-list>
+	</div>
+
+	<div ng-show="showMaps">
+		{{noMaps}}
+		<ul ng-repeat="map in mapsFav" class="table-view" id="map">
+           <li class="table-view-cell ' + style + '" style="margin-bottom: 25px; padding:10px;"><div style="height: 250px;">
+	           <div style="width:100%; text-align:center; background:#FFF;"><a class="image-link" href="{{map.Image}}"><img style="max-width: 100%; max-height: 200px; border:0px;" src="{{map.Image}}"/></a></div>
+	           <p style="padding:10px 3px;" class="pull-left"><b>{{map.Name}}</b><br>{{map.Desciption}}</p>
+	       		<a ng-show="true" ng-click="deleteFavorite('{{map.ID}}', 'maps')"><i class="icon ion-ios-star" style="font-size:42px; float: right"></i></a>
+	           </div>
+           </li>
+        </ul>
+	</div>
+  </ion-content>
+</ion-view>
