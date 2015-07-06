@@ -97,6 +97,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
+
+  .state('app.polling', {
+      url: "/polling/:speakerID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/presentation.html",
+          controller: 'PollingCtrl'
+        }
+      }
+    })
   
 	 .state('app.maps', {
       url: "/maps",
