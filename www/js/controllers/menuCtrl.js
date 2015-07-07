@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup) {
+.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading) {
   		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
 			$scope.loginButton = true
@@ -86,4 +86,8 @@ angular.module('starter.controllers')
 	    $scope.modalProfile.hide();
 	};
 
+	$scope.runSync = function () {
+		sync()
+		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+	}
 })
