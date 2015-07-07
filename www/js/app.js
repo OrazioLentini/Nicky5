@@ -150,6 +150,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+   .state('app.feedback', {
+      url: "/feedback",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/feedback.html",
+          controller: 'FeedbackCtrl'
+          }
+      }
+    })
   .state('app.single', {
     url: "/playlists/:playlistId",
     views: {
