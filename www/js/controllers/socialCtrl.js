@@ -29,19 +29,19 @@ function showAll() {
 	data = JSON.parse(temp)
 	var allOutput = ''
     // TWITTER
-    allOutput += '<li class="item item-divider bar bar-calm" style="border-top:2px #293F54 solid;">'
-     allOutput += '<button style="float:right; max-height:168px; margin-top:-5px;" class="button button-assertive" onclick="showSocial(\'#twitter\')">View All</button>Twitter Feed</li>'
+    allOutput += '<li class="item item-divider bar bar-calm" style="border-top:1px #293F54 solid; font-size:12px;">'
+     allOutput += '<button style="float:right; margin-top:-5px;" class="button button-assertive" onclick="showSocial(\'#twitter\')">View All</button>Twitter Feed</li>'
     
     // INSTAGRAM
     allOutput += '<div style="height:10px">&nbsp;</div>'
-     allOutput += '<li class="item item-divider bar bar-calm" style="border-top:2px #293F54 solid;">'
-     allOutput += '<button style="float:right; max-height:168px; margin-top:-5px;" class="button button-assertive" onclick="showSocial(\'#instagram\')">View All</button>Instagram #APMA2015</li>'
+     allOutput += '<li class="item item-divider bar bar-calm" style="border-top:1px #293F54 solid; font-size:12px;">'
+     allOutput += '<button style="float:right;  margin-top:-5px;" class="button button-assertive" onclick="showSocial(\'#instagram\')">View All</button>Instagram #APMA2015</li>'
     
 	//videoOutput += '<iframe id="0" type="text/html" width="100%" height="250" src="http://www.youtube.com/embed/' + data.items[0].snippet.resourceId.videoId + '?autoplay=1" frameborder="0"></iframe>'
 	// YOUTUBE
     allOutput += '<div style="height:10px">&nbsp;</div>'
-    allOutput += '<li class="item item-divider bar bar-calm" style="border-top:2px #293F54 solid;">'
-    allOutput += '<button style="float:right; max-height:168px; margin-top:-5px;" class="button button-assertive" onclick="showSocial(\'#youtube\')">View All</button>Latest Videos</li>'
+    allOutput += '<li class="item item-divider bar bar-calm" style="border-top:1px #293F54 solid; font-size:12px;">'
+    allOutput += '<button style="float:right; margin-top:-5px;" class="button button-assertive" onclick="showSocial(\'#youtube\')">View All</button>Latest Videos</li>'
     //allOutput += '<p style="color: #b31217; padding:5px 15px 0px 15px;">Latest videos:<br></p>'
 	for (i = 0; i < 4; i++) {	
 		navigate = data.items[i].snippet

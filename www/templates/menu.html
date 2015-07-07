@@ -33,20 +33,19 @@
         </ion-item>
       </ion-list>-->
           <ion-list>
-      <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.url}}">
-       <a style="text-decoration:none;" ng-click="toggleLeftSideMenu()" ><i class="icon ion-{{menu.icon}}" ></i> {{menu.title}}</a>
-      </ion-item>
-      <ion-item></ion-item>
-      <ion-item  ng-click="login()" ng-show="loginButton">
-          <i class="icon ion-log-in" ></i> Login
-      </ion-item>
-      <ion-item  ng-click="profile()" ng-show="profileButton">
-          <i class="icon ion-person" ></i> Profile
-      </ion-item>
-      <ion-item  ng-click="logout()" ng-show="logoutButton">
-          <i class="icon ion-log-out" ></i> Logout
-      </ion-item>
-    </ion-list>
+              <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.url}}" ng-click="toggleLeftSideMenu()">
+               <a style="text-decoration:none;"><i class="icon ion-{{menu.icon}}" ></i> {{menu.title}}</a>
+              </ion-item>
+              <ion-item  ng-click="login()" ng-show="loginButton">
+                  <i class="icon ion-log-in" ></i> Login
+              </ion-item>
+              <ion-item  ng-click="profile()" ng-show="profileButton">
+                  <i class="icon ion-person" ></i> Profile
+              </ion-item>
+              <ion-item  ng-click="logout()" ng-show="logoutButton">
+                  <i class="icon ion-log-out" ></i> Logout
+              </ion-item>
+         </ion-list>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
