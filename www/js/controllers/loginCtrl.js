@@ -16,7 +16,7 @@ angular.module('starter.controllers')
 
       $timeout(function() {
         loggedIn = localStorage.getItem("login")
-        sync()
+
         if (loggedIn != null) {
           $scope.logoutButton = true
           $scope.profileButton = true

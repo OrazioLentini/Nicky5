@@ -24,47 +24,6 @@ function syncCallback(table, data) {
     }
 }
 
-
-function syncDate() {
-     $.ajax({
-        url : "http://patty5.com/AppApis/apiSyncDate.asp",
-        type: "POST",
-        crossDomain: true,
-        dataType: "jsonp",
-        jsonp: false,
-        success:function(data)
-        {
-            console.log(data)
-        },
-        error: function(jqXHR, textStatus, errorThrown) {}                 
-    })
-}
-
-function getSyncDate(data) {
-    var lastSync = localStorage.getItem("lastSync") 
-    if (lastSync == null) {
-        localStorage.setItem("lastSync", data.LastSync)
-        sync()
-    }
-    else {
-        if (lastSync == data.LastSync) {
-            alertify.set({ delay: 1000 });
-            alertify.log("Everything is up to date");
-        }
-        else {
-            localStorage.setItem("lastSync", data.LastSync)
-            sync()
-        }
-    }
-}
-
-function checkSync () {
-    syncDate()
-    //sync()
-}
-
-
-
 function getDirectory() {
     $.ajax({
         url: "http://patty5.com/AppApis/apiDirectory.asp",
@@ -358,5 +317,3 @@ function saveSocialLocally() {
 };
 
 sync()
-
-var checkSyncTime = setInterval(checkSync, 900000)
