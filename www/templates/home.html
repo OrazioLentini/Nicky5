@@ -39,6 +39,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
      left:0; 
      width:100%;
      }
+#home-menu a {
+  text-decoration:none;
+  color:#666;
+}
 
 
 </style>
@@ -61,40 +65,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
             <div style="background:none; margin:2px;">
                 <a class="push-right tap" ui-sref="app.directory" data-transition="slide-in">
                     <img src="images/directory.jpg" style="width:100%;">
-                    <div style="position:absolute; background:none; text-align:left; color:#000; width:100%; bottom:20px; left:20px;">
-                        <h5 style="margin:0px; color:#000;">Directory</h5>
-
-                    </div>
+                    
                 </a>
             </div>
+             <div style="background:none; text-align:center; color:#000; width:100%;">
+                        <h4 style="margin:0px; color:#000; text-shadow:2px 2px 2px #FFF;">Directory</h4>
+           </div>
         </div>
         <div style="width:33.334%;  float:left; position:relative;">
             <div style="background:none; margin:2px;">
                 <a class="push-right tap" ui-sref="app.schedule" data-transition="slide-in">
                     <img src="images/schedule.jpg" style="width:100%;">
-                    <div style="position:absolute; background:none; text-align:left; color:#000; width:100%; bottom:20px; left:20px;">
-                        <h5 style="margin:0px; color:#000; text-shadow:2px 2px 2px #FFF;">Schedule</h5>
-
-                    </div>
+                    
                 </a>
             </div>
+            <div style="background:none; text-align:center; color:#000; width:100%;">
+                        <h4 style="margin:0px; color:#000; text-shadow:2px 2px 2px #FFF;">Schedule</h4>
+           </div>
         </div>
         <div style="width:33.333%; float:left; position:relative;">
             <div style="background:none; margin:2px;">
                 <a ui-sref="app.maps" data-transition="slide-in">
                     <img src="images/maps.jpg" style="width:100%; padding:0px; margin:0px;">
-                    <div style="position:absolute; background:none; text-align:left; color:#000; width:100%; bottom:20px; left:20px;">
-                        <h5 style="margin:0px; color:#000;">Maps</h5>
-
-                    </div>
+                   
                 </a>
             </div>
+             <div style="background:none; text-align:center; color:#000; width:100%;">
+                        <h4 style="margin:0px; color:#000; text-shadow:2px 2px 2px #FFF;">Maps</h4>
+           </div>
         </div>
 
-        <div style="clear:both; height:5px;"></div>
+        <div style="clear:both; height:12px;"></div>
         <div class="card" style="background-color:#FFF; margin:0px 10px;">
 
-            <ul class="list" >
+            <ul class="list" id="home-menu" >
             <div class="item item-divider">
                 Popular Items
               </div>
@@ -114,31 +118,43 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                     <strong>Trivia</strong>
                   </a>
                 </li>-->
-                <li class="item">
+                <li class="item item-icon-right">
                     <a class="push-right" id="presentation-link" ui-sref="app.polling" data-transition="slide-in">
+                        
                         <strong>Attend Presentation</strong>
+
                         <div id="presentation-live" style="position:absolute; right:5px; top:5px; "><img style="width:100px; border:0px;" src="images/live.jpg"></div>
+
+                        <i class="icon ion-arrow-right-b"></i>
                     </a>
                 </li>
-                <li class="item">
+                <li class="item item-icon-right">
                     <a class="push-right" ui-sref="app.trivia" data-transition="slide-in">
                         <strong>Play Trivia</strong>
                         <div id="trivia-live" style="position:absolute; right:5px; top:5px; "><img style="width:100px; border:0px;" src="images/live.jpg"></div>
+
+                        <i class="icon ion-arrow-right-b"></i>
                     </a>
                 </li>
-                <li class="item">
+                <li class="item item-icon-right">
                     <a class="push-right" ui-sref="app.favorites" data-transition="slide-in">
                         <strong>Favorites</strong>
+
+                        <i class="icon ion-arrow-right-b"></i>
                     </a>
                 </li>
-                <li class="item">
+                <li class="item item-icon-right">
                     <a class="push-right" ui-sref="app.feedback" data-transition="slide-in">
                         <strong>Feedback</strong>
+
+                        <i class="icon ion-arrow-right-b"></i>
                     </a>
                 </li>
-                <li class="item">
+                <li class="item item-icon-right">
                     <a class="push-right" ui-sref="app.social" data-transition="slide-in">
                         <strong>Social</strong>
+
+                        <i class="icon ion-arrow-right-b"></i>
                     </a>
                 </li>
             </ul>
