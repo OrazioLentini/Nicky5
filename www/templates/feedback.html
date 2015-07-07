@@ -1,0 +1,35 @@
+<ion-view view-title="Feedback">
+    <div style="height: 40px;"></div>
+
+	<div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
+	    
+	<div ng-show="show" id="signIn"  style="text-align: center; z-index: 2; position: relative;">
+	    <div style="height: 15px;"></div>
+	    <a class="navigate-right" href="">
+	        <span class="media-object icon ion-person"></span>
+	        <div class="media-body">
+	            <strong>Sign In to Participate</strong>
+	        </div>
+	                <div style="height: 15px;"></div>
+
+	        <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
+
+	    </a>
+	    <div style="height: 15px;"></div>
+	</div>
+  <ion-content>  
+
+    <div data-role="content" id="pollingFeedback" style="width: 90%; text-align: center; margin-left: 5%;">
+        <form id="userFeedback"ng-submit="submit()">
+            Provide Feedback  
+            <div style="height: 10px"></div>
+              <label class="item item-input">
+			    <textarea id="Feedback" name="Feedback" style="height: 100px" placeholder="What is on your mind?"></textarea> 
+			  </label>
+			  <div style="height: 15px"></div>
+            <button class="button button-energized" value="Submit Question" type="submit" name="submit">Submit</button>
+        </form>
+    </div>
+
+  </ion-content>
+</ion-view>
