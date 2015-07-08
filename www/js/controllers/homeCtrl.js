@@ -1,10 +1,32 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
+    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', function ($scope, $http, $state, SyncService) {
 
 		//$scope.home = ScheduleService.getFeaturedScheduledItem();
 		//console.log($scope.schedule)
 		
+		SyncService.getDirectory().	success(function (data){
+			SyncService.saveLocally('tCompany',data)
+		})
+		SyncService.getMaps().success(function (data){
+			SyncService.saveLocally('tMaps',data)
+		})
+		SyncService.getSchedule().success(function (data){
+			SyncService.saveLocally('tSchedule',data)
+			getFeaturedScheduleList()
+		})
+		SyncService.getSpeaker().success(function (data){
+			SyncService.saveLocally('tSpeaker',data)
+		})
+		SyncService.getSocialMediaInfo().success(function (data){
+			SyncService.saveLocally('tSocial',data)
+		})
+		//SyncService.syncInfoRequest().success(function (data){
+		//	SyncService.saveLocally('tSocial',data)
+		//})
+
+
+
 	function getFeaturedScheduleList() {
 	    var temp = localStorage.getItem('tSchedule')
 	    data = JSON.parse(temp)
@@ -123,5 +145,5 @@ angular.module('starter.controllers')
 
 	}
 
-		getFeaturedScheduleList()
+		//;getFeaturedScheduleList()
     }]);
