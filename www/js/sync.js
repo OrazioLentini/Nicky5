@@ -1,12 +1,12 @@
 //SYNC -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 function sync() {
-   // alertify.log("Syncing...");
-    getDirectory() 
-    getMaps()
-    getSchedule()
-    getSpeaker()
-    getSocialMediaInfo()
-    syncInfoRequested()
+    alertify.log("Syncing...");
+   getDirectory() 
+   getMaps()
+   getSchedule()
+   getSpeaker()
+   getSocialMediaInfo()
+   syncInfoRequested()
     
 
 }
@@ -132,7 +132,7 @@ function syncInfoRequested() {
     var temp = localStorage.getItem('login')
     if (temp != null) {
         dataUser = JSON.parse(temp)
-
+0
         var userID = dataUser[0].UserID
 
         $.ajax({
@@ -160,6 +160,23 @@ function getSpeaker() {
         error: function (jqXHR, textStatus, errorThrown) { }
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function retrieveInfo () {
