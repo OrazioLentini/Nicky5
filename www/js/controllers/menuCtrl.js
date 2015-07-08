@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService) {
+.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService) {
   		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
 			$scope.loginButton = true
@@ -43,18 +43,23 @@ angular.module('starter.controllers')
 
 	// Perform the login action when the user submits the login form
 	$scope.doLogin = function() {
-		loginSubmit();
+    	var LoginUsername = $("#Username").val();
+    	var LoginBadgeID = $("#BadgeID").val();
 
-		$timeout(function() {
-			loggedIn = localStorage.getItem("login")
-
-			if (loggedIn != null) {
-				$scope.logoutButton = true
-				$scope.profileButton = true
-				$scope.loginButton = false
-				 $scope.closeLogin();
-			}
-		}, 100);
+    	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
+		if(data != 'failed') {
+			localStorage.setItem("login", JSON.stringify(data))
+			$scope.logoutButton = true
+			$scope.profileButton = true
+			$scope.loginButton = false
+			$scope.runSync()
+			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+			$scope.closeLogin();
+		}
+		else {
+			$ionicLoading.show({template: 'BadgeID does not match the Username on Record. Please Try Again.', noBackdrop: false, duration:2000});
+		}
+    	})
 	};
 
 	$scope.logout = function() {
@@ -66,6 +71,8 @@ angular.module('starter.controllers')
 			if(res) {
 				localStorage.removeItem("login");
 				localStorage.removeItem("infoRequest");
+				$("#Username").val("");
+				$("#BadgeID").val("");
 				$scope.logoutButton = false
 				$scope.profileButton = false
 				$scope.loginButton = true
@@ -87,22 +94,7 @@ angular.module('starter.controllers')
 	};
 
 	$scope.runSync = function () {
-		SyncService.getDirectory().	success(function (data){
-			SyncService.saveLocally('tCompany',data)
-		})
-		SyncService.getMaps().success(function (data){
-			SyncService.saveLocally('tMaps',data)
-		})
-		SyncService.getSchedule().success(function (data){
-			SyncService.saveLocally('tSchedule',data)
-			getFeaturedScheduleList()
-		})
-		SyncService.getSpeaker().success(function (data){
-			SyncService.saveLocally('tSpeaker',data)
-		})
-		SyncService.getSocialMediaInfo().success(function (data){
-			SyncService.saveLocally('tSocial',data)
-		})
+		SyncService.sync()
 		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 	}
 })

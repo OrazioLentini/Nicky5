@@ -1,29 +1,11 @@
 angular.module('starter.controllers')
 
     .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', function ($scope, $http, $state, SyncService) {
-
-		SyncService.sync()
-		//console.log($scope.schedule)
-		
-		/*SyncService.getDirectory().	success(function (data){
-			SyncService.saveLocally('tCompany',data)
-		})
-		SyncService.getMaps().success(function (data){
-			SyncService.saveLocally('tMaps',data)
-		})
-		SyncService.getSchedule().success(function (data){
-			SyncService.saveLocally('tSchedule',data)
+		//$scope.s = SyncService.sync()
+		setTimeout(function () {
 			getFeaturedScheduleList()
-		})
-		SyncService.getSpeaker().success(function (data){
-			SyncService.saveLocally('tSpeaker',data)
-		})
-		SyncService.getSocialMediaInfo().success(function (data){
-			SyncService.saveLocally('tSocial',data)
-		})*/
-		//SyncService.syncInfoRequest().success(function (data){
-		//	SyncService.saveLocally('tSocial',data)
-		//})
+		},100)		
+
 
 
 
@@ -83,7 +65,7 @@ angular.module('starter.controllers')
 					 if(data[i].EventType == "trivia"){
 						featuredOutput += '<a href="#/app/trivia.html/' + data[i].RecID + '" style="z-index:10" >'
 					   var tLive = "yes"
-					   $('#trivia-live').css("display","block")
+					   //$('#trivia-live').css("display","block")
 					}
 					if(data[i].EventType == "presentation"){
 						//console.log(data[i])
@@ -144,6 +126,4 @@ angular.module('starter.controllers')
 	  //  $('#directorycontent').append('<li class="table-view-cell media"><a class="navigate-right" href="details.html?id=' + recID + '#details" data-transition="slide-in"><img style="width:42px;" class="media-object pull-left" src="' + logo + '"/><div class="media-body">' + company + '<br><span style="font-size:11px">' + location + '</span><p>' + description + '</p></div></a> </li>')
 
 	}
-
-		getFeaturedScheduleList()
-    }]);
+}]);

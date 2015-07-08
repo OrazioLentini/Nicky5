@@ -372,5 +372,5 @@ function saveSocialLocally() {
     retrieveInfo()
 };
 
-sync()
+//sync()
 var checkSyncTime = setInterval(checkSync, 900000)

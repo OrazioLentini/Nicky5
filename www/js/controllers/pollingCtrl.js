@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService) {
+    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading) {
 		//$scope.requests = DirectoryService.getDirectory();
 
 		if($stateParams.speakerID == ""){
@@ -68,15 +68,29 @@ angular.module('starter.controllers')
 
 		// Perform the login action when the user submits the login form
 		$scope.doLogin = function() {
-			loginSubmit();
+	    	var LoginUsername = $("#Username").val();
+	    	var LoginBadgeID = $("#BadgeID").val();
 
-			$timeout(function() {
-				loggedIn = localStorage.getItem("login")
-
-				if (loggedIn != null) {
-					 $scope.closeLogin();
-				}
-			}, 100);
+	    	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
+			if(data != 'failed') {
+				localStorage.setItem("login", JSON.stringify(data))
+				$("#signInOverlay").css("display", "none")
+				$("#signIn").css("display", "none")
+				$scope.logoutButton = true
+				$scope.profileButton = true
+				$scope.loginButton = false
+				//$scope.runSync()
+				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+				$scope.closeLogin();
+			}
+			else {
+				$ionicLoading.show({template: 'BadgeID does not match the Username on Record. Please Try Again.', noBackdrop: false, duration:2000});
+			}
+	    	})
 		};
+		$scope.runSync = function () {
+			SyncService.sync()
+			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+		}
 
     }]);

@@ -34,6 +34,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+  .state('app.sync', {
+    url: "/sync",
+    abstract: true,
+    templateUrl: "templates/menu.html",
+    controller: 'AppCtrl'
+  })
    
   .state('app', {
     url: "/app",

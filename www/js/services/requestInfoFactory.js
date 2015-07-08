@@ -1,24 +1,39 @@
-angular.module('starter.services', [])
+angular.module('starter.services')
 
-    .factory('RequestInfoService', function () {
+    .service('RequestInfoService', function ($http) {
 
 	var requests = ""
-	return {
-		getDirectory: function(){ 
-				var temp = localStorage.getItem('tCompany')
-				requests = JSON.parse(temp)
-				//console.log(requests)
+
+		this.requestMoreInfo = function(ID, Type, userID, FID){ 
+			var url = "http://patty5.com/AppApis/apiRequestInfo.asp?TypeID=" + ID + "&Type=" + Type + "&UserID="+userID + "&Function=" + FID;
+            $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json',
+                }
+            }). 
+            success (function(data){
+            	console.log(data)
+           		if(data.Result == "Success") {
+					var infoReq = '{"Type": \"' + data.Type + '\", "TypeID": \"' + data.TypeID + '\"}'
 				
-				return requests;
-		},
-		getDetails: function(id){
-			for(i=0;i<requests.length;i++){
-				//console.log("test")
-				if(requests[i].RecID == id){
-					//console.log(requests[i])
-					return requests[i];
+					var newInfoReq = ''
+					var temp = localStorage.getItem('infoRequest')
+					if (temp == null) {
+						localStorage.setItem('infoRequest', '[' + infoReq + ']')
+					}
+					else {
+						temp = temp.substring(1, temp.length - 1)
+						newInfoReq = "[" + temp + "," + infoReq + "]"
+						localStorage.setItem("infoRequest", newInfoReq)
+					}
+					success = "success"
+					return success
 				}
-			}
-		}  
-	}
+				else {
+					success = "fail"
+					return "fail"
+				}
+            })
+		}
 });

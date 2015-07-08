@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', '$ionicModal', '$timeout', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading, $ionicModal, $timeout) {
+    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', '$ionicModal', '$timeout', 'LoginService', 'SyncService', 'RequestInfoService', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService) {
 		$scope.filled = false
 		$scope.unfilled = false
 		
@@ -55,19 +55,28 @@ angular.module('starter.controllers')
 			$scope.modal.hide();
 		};
 		$scope.doLogin = function() {
-			loginSubmit();
+	    	var LoginUsername = $("#Username").val();
+	    	var LoginBadgeID = $("#BadgeID").val();
 
-			$timeout(function() {
-				loggedIn = localStorage.getItem("login")
-
-				if (loggedIn != null) {
-					$scope.logoutButton = true
-					$scope.profileButton = true
-					$scope.loginButton = false
-					$scope.closeLogin();
-				}
-			}, 100);
+	    	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
+			if(data != 'failed') {
+				localStorage.setItem("login", JSON.stringify(data))
+				$scope.logoutButton = true
+				$scope.profileButton = true
+				$scope.loginButton = false
+				$scope.runSync()
+				$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+				$scope.closeLogin();
+			}
+			else {
+				$ionicLoading.show({template: 'BadgeID does not match the Username on Record. Please Try Again.', noBackdrop: false, duration:2000});
+			}
+	    	})
 		};
+		$scope.runSync = function () {
+			SyncService.sync()
+			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+		}
 
 
 			$ionicModal.fromTemplateUrl('templates/profile.html', {
@@ -114,8 +123,11 @@ angular.module('starter.controllers')
 			   		});
 				}
 				else {
-					requestMoreInfo($stateParams.RecID, 'company', userID, 1)
-					$scope.showInfo = false
+					//requestMoreInfo($stateParams.RecID, 'company', userID, 1)
+					$scope.result = RequestInfoService.requestMoreInfo($stateParams.RecID, 'company', userID, 1)
+						$ionicLoading.show({template: 'Additional Information Requested', noBackdrop: false, duration: 1500});
+						$scope.showInfo = false
+
 				}
 			}
 		}

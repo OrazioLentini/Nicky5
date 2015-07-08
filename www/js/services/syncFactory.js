@@ -72,10 +72,15 @@ angular.module('starter.services')
         },     
         this.syncInfoRequest = function () {
 	        var data = localStorage.getItem('infoRequest')
-	    	x = JSON.parse(data)
-	   		 if (x != null) {
-	        	length = x.length
-	    	}
+            if(data == null) {
+                data = ""
+            }
+            else {
+    	    	x = JSON.parse(data)
+    	   		 if (x != null) {
+    	        	length = x.length
+    	    	}
+            }
 	    	var temp = localStorage.getItem('login')
 	    	if (temp != null) {
 	        	dataUser = JSON.parse(temp)
@@ -91,26 +96,28 @@ angular.module('starter.services')
 	                }
 	            }).            
                 success (function(data){
-                    data = JSON.stringify(data)
-                    localStorage.setItem('infoRequest', data)
-                //this.saveLocally()
+                    if (data != "none") {
+                         data = JSON.stringify(data)
+                         localStorage.setItem('infoRequest', data)
+                    }
             })
 	        }
         },  
-        this.saveLocally = function (table, data) {
-
+        this.saveSocialLocally = function (table, data) {
         		saveSocialLocally()
 
            // return success
         },
         this.sync = function(){
+            this.getSchedule()
             this.getDirectory()
             this.getMaps()
-            this.getSchedule()
             this.getSpeaker()
             this.getSocialMediaInfo()
             this.syncInfoRequest()
-            this.saveLocally()
+            setTimeout(function () {
+                this.saveSocialLocally()
+            }, 210)
 
             sucess = 'complete'
             return sucess
