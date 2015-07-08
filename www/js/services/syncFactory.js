@@ -1,55 +1,76 @@
 angular.module('starter.services')
 
-    .factory('SyncService', function ($http) {
+    .service('SyncService', function ($http) {
 
 	var success = ""
-	return {
-        getDirectory: function () {
+
+        this.getDirectory =  function () {
             var url = 'http://patty5.com/AppApis/apiDirectory.asp';
-            return $http.jsonp(url, {
+            $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
                     format:'json'
                 }
-            });
+            }). 
+            success (function(data){
+                data = JSON.stringify(data)
+                localStorage.setItem('tCompany', data)
+            })
         },
-        getMaps: function () {
+        this.getMaps = function () {
             var url = 'http://patty5.com/AppApis/apiMaps.asp';
-            return $http.jsonp(url, {
+            $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
                     format:'json'
                 }
-            });
+            }). 
+            success (function(data){
+                data = JSON.stringify(data)
+                localStorage.setItem('tMaps', data)
+            })
         },
-        getSchedule: function () {
+        this.getSchedule = function () {
             var url = 'http://patty5.com/AppApis/apiSchedule.asp';
-            return $http.jsonp(url, {
+            $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
                     format:'json'
                 }
-            });
+            }). 
+            success (function(data){
+                data = JSON.stringify(data)
+                localStorage.setItem('tSchedule', data)
+            })
         },
-        getSpeaker: function () {
+        this.getSpeaker = function () {
             var url = 'http://patty5.com/AppApis/apiSpeaker.asp';
-            return $http.jsonp(url, {
+            $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
                     format:'json'
                 }
-            });
+            }). 
+            success (function(data){
+                data = JSON.stringify(data)
+                localStorage.setItem('tSpeaker', data)
+            })
         },     
-        getSocialMediaInfo: function () {
+        this.getSocialMediaInfo = function () {
             var url = 'http://patty5.com/AppApis/apiSocial.asp';
-            return $http.jsonp(url, {
+            $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
                     format:'json'
                 }
-            });
+            }). 
+            success (function(data){
+                data = JSON.stringify(data)
+                localStorage.setItem('tSocial', data)
+                //this.saveLocally()
+            })
         },     
-        syncInfoRequest: function () {
+        this.syncInfoRequest = function () {
 	        var data = localStorage.getItem('infoRequest')
 	    	x = JSON.parse(data)
 	   		 if (x != null) {
@@ -63,26 +84,39 @@ angular.module('starter.services')
 
 
 	            var url = "http://patty5.com/AppApis/apiRequestInfo.asp?data=" + data + "&UserID=" + userID + "&Function=2&Length=" + length;
-	            return $http.jsonp(url, {
+	            $http.jsonp(url, {
 	                params: {
 	                    callback: 'JSON_CALLBACK',
 	                    format:'json'
 	                }
-	            });
+	            }).            
+                success (function(data){
+                    data = JSON.stringify(data)
+                    localStorage.setItem('infoRequest', data)
+                //this.saveLocally()
+            })
 	        }
         },  
-        saveLocally: function (table, data) {
-        	//console.log(JSON.stringify(data))
-        	data = JSON.stringify(data)
-        	localStorage.setItem(table, data)
+        this.saveLocally = function (table, data) {
 
-        	if(table = 'tSocial') {
         		saveSocialLocally()
-        	}
 
-            return success
+           // return success
+        },
+        this.sync = function(){
+            this.getDirectory()
+            this.getMaps()
+            this.getSchedule()
+            this.getSpeaker()
+            this.getSocialMediaInfo()
+            this.syncInfoRequest()
+            this.saveLocally()
+
+            sucess = 'complete'
+            return sucess
+
         }
-    }
+    
 });
 
 
