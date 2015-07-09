@@ -1,30 +1,20 @@
 angular.module('starter.controllers')
 
-.controller('LoginCtrl' , ['$scope', '$ionicModal', '$timeout' , function($scope, $ionicModal, $timeout) {
+.controller('LoginCtrl' , ['$scope', '$ionicModal', '$timeout' 'LoginService', function($scope, $ionicModal, $timeout, LoginService) {
 
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+  $scope.doLogin = function() {
+      var LoginUsername = $("#Username").val();
+      var LoginBadgeID = $("#BadgeID").val();
 
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-      $scope.doLogin = function() {
-      loginSubmit();
-
-      $timeout(function() {
-        loggedIn = localStorage.getItem("login")
-
-        if (loggedIn != null) {
-          sync()
+      LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
+        console.log(data)
+        if(data == 'success') {
+          loggedIn = localStorage.getItem("login")
           $scope.logoutButton = true
-          $scope.profileButton = true
-          $scope.loginButton = false
-          $scope.closeLogin();
+        $scope.profileButton = true
+        $scope.loginButton = false
+         $scope.closeLogin();
         }
-      }, 100);
-    };
-
+      })
+  };
 }])

@@ -2,6 +2,7 @@ function loginSubmit () {
     //event.preventDefault();//STOP default action
     var Username = $("#Username").val();
     var BadgeID = $("#BadgeID").val();
+    console.log(Username)
     $.ajax({
         url: "http://patty5.com/AppApis/apiLogin.asp",
         type: "POST",

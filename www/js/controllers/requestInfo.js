@@ -1,4 +1,4 @@
-function requestMoreInfo(ID, Type) {
+/*function requestMoreInfo(ID, Type) {
 	
 	var temp = localStorage.getItem('login')
 	if (temp == null){ 
@@ -37,6 +37,7 @@ function requestMoreInfo(ID, Type) {
 }
 
 function infoRequested(data) {
+	console.log(data)
     alertify.set({ delay: 2000 });
 	alertify.success("Additional Information Requested");
 	if(data.Result == "Success") {
@@ -53,9 +54,9 @@ function infoRequested(data) {
 			localStorage.setItem("infoRequest", newInfoReq)
 		}
 		
-		getCompanyInfo(data.TypeID)
+		//getCompanyInfo(data.TypeID)
 	}
-}
+}*/
 
 
 
