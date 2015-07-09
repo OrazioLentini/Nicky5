@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('FeedbackCtrl', ['$scope', '$http', '$state',  '$ionicModal', '$timeout' , 'SyncService', 'LoginService', '$ionicLoading', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading) {
+    .controller('FeedbackCtrl', ['$scope', '$http', '$state',  '$ionicModal', '$timeout' , 'SyncService', 'LoginService', '$ionicLoading', 'FeedbackService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, FeedbackService) {
 
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
@@ -56,6 +56,11 @@ angular.module('starter.controllers')
 
 
 		$scope.submit = function () {
-			submitFeedback()
+			//submitFeedback()
+			var feedback = $("#Feedback").val();
+			FeedbackService.provideFeedback(feedback). success(function(data){
+				    $ionicLoading.show({template: 'Thank you for your feedback', noBackdrop: false, duration: 1500});
+					$("#Feedback").val("");
+			})
 		}
     }]);

@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('TriviaCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading) {
+    .controller('TriviaCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', 'TriviaService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, TriviaService) {
 		//$scope.requests = DirectoryService.getDirectory();
 
 		$scope.isLoggedIn = localStorage.getItem("login")
@@ -11,10 +11,40 @@ angular.module('starter.controllers')
 			$scope.show = false
 		}
 
+		TriviaService.serverTimeDifference(). success(function(data){
+			var d = new Date()
+			ClientMilliseconds = d.getTime() - d.setHours(0,0,0,0);
+			ClientTimer = ClientMilliseconds / 1000;
+			iDiff = parseFloat(data.timer) - ClientTimer;
+			localStorage.setItem("ServerClientTimeDiff", iDiff);
+		})
 
-		serverTimeDifference () 
+		$scope.saveTriviaAnswer = function(answer) {
+			TriviaService.saveAnswer(answer). success(function(data){
+			   returnmessage = data.Result
 
-
+			   $scope.score = data.TotalScore
+			   //$("#score").html(data.TotalScore)
+			   if (returnmessage == 'correct') {
+			   		$ionicLoading.show({template: 'Correct', noBackdrop: false, duration: 1500});
+			   }
+			   if (returnmessage == 'wrong') {
+			   		$ionicLoading.show({template: 'Incorrect', noBackdrop: false, duration: 1500});
+			   }
+			   if (returnmessage == 'off') {
+					var message = "No Game in Progress";
+					$ionicLoading.show({template: message, noBackdrop: false, duration: 1500});
+			   }
+			   if (returnmessage == 'warmup') {
+					var message = "The game will begin shortly";
+					$ionicLoading.show({template: message, noBackdrop: false, duration: 1500});
+			   }
+			   if (returnmessage == 'answer') {
+					var message = "Please wait for the next question.";
+					$ionicLoading.show({template: message, noBackdrop: false, duration: 1500});
+			   }  
+			})
+		}
 
 		// Create the login modal that we will use later
 		$ionicModal.fromTemplateUrl('templates/login.html', {

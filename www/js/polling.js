@@ -17,6 +17,15 @@ function askQuestion (){
 		})
 }
 
+//ASK QUESTION----------------------------------------------------------------------------------------------------------------------------------------------------------
+function getPollingQuestion() {
+    alertify.set({ delay: 2000 });
+	alertify.success("Thank you for submitting a question");
+	//alert("Thank you for submitting a question!")
+	$("#userQuestion").val("");
+}
+
+//ANSWER----------------------------------------------------------------------------------------------------------------------------------------------------------
 function savePollingAnswer (answer) {
 	var d = new Date()
 	var c = String(d.getHours()) + "!" + String(d.getSeconds()); 
@@ -54,10 +63,3 @@ function getPollingResult(data) {
 	}
 }
 
-//ASK QUESTION----------------------------------------------------------------------------------------------------------------------------------------------------------
-function getPollingQuestion() {
-    alertify.set({ delay: 2000 });
-	alertify.success("Thank you for submitting a question");
-	//alert("Thank you for submitting a question!")
-	$("#userQuestion").val("");
-}

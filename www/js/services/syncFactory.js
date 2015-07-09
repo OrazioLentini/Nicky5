@@ -2,7 +2,7 @@ angular.module('starter.services')
 
     .service('SyncService', function ($http) {
 
-	var success = ""
+    var success = ""
 
         this.getDirectory =  function () {
             var url = 'http://patty5.com/AppApis/apiDirectory.asp';
@@ -71,42 +71,63 @@ angular.module('starter.services')
             })
         },     
         this.syncInfoRequest = function () {
-	        var data = localStorage.getItem('infoRequest')
+            var data = localStorage.getItem('infoRequest')
             if(data == null) {
                 data = ""
             }
             else {
-    	    	x = JSON.parse(data)
-    	   		 if (x != null) {
-    	        	length = x.length
-    	    	}
+                x = JSON.parse(data)
+                 if (x != null) {
+                    length = x.length
+                }
             }
-	    	var temp = localStorage.getItem('login')
-	    	if (temp != null) {
-	        	dataUser = JSON.parse(temp)
+            var temp = localStorage.getItem('login')
+            if (temp != null) {
+                dataUser = JSON.parse(temp)
 
-	        	var userID = dataUser[0].UserID
+                var userID = dataUser[0].UserID
 
 
-	            var url = "http://patty5.com/AppApis/apiRequestInfo.asp?data=" + data + "&UserID=" + userID + "&Function=2&Length=" + length;
-	            $http.jsonp(url, {
-	                params: {
-	                    callback: 'JSON_CALLBACK',
-	                    format:'json'
-	                }
-	            }).            
+                var url = "http://patty5.com/AppApis/apiRequestInfo.asp?data=" + data + "&UserID=" + userID + "&Function=2&Length=" + length;
+                $http.jsonp(url, {
+                    params: {
+                        callback: 'JSON_CALLBACK',
+                        format:'json'
+                    }
+                }).            
                 success (function(data){
                     if (data != "none") {
                          data = JSON.stringify(data)
                          localStorage.setItem('infoRequest', data)
                     }
-            })
-	        }
+                })
+            }
         },  
-        this.saveSocialLocally = function (table, data) {
-        		saveSocialLocally()
-
-           // return success
+        this.syncDate = function() {
+            var url = 'http://patty5.com/AppApis/apiSyncDate.asp';
+            $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            }). 
+            success (function(data){
+                var lastSync = localStorage.getItem("lastSync") 
+                    if (lastSync == null) {
+                        localStorage.setItem("lastSync", data.LastSync)
+                        //sync()
+                    }
+                    else {
+                        if (lastSync == data.LastSync) {
+                           // alertify.set({ delay: 1000 });
+                           // alertify.log("Everything is up to date");
+                        }
+                        else {
+                            localStorage.setItem("lastSync", data.LastSync)
+                            //sync()
+                        }
+                    }               
+            })            
         },
         this.sync = function(){
             this.getSchedule()
@@ -116,8 +137,8 @@ angular.module('starter.services')
             this.getSocialMediaInfo()
             this.syncInfoRequest()
             setTimeout(function () {
-                this.saveSocialLocally()
-            }, 210)
+                saveSocialLocally()
+            },210)  
 
             sucess = 'complete'
             return sucess
@@ -125,7 +146,3 @@ angular.module('starter.services')
         }
     
 });
-
-
-//http://api.worldweatheronline.com/free/v1/weather.ashx?q=London&format=json&num_of_days=5&key=atf6ya6bbz3v5u5q8um82pev'
-

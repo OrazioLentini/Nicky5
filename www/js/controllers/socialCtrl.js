@@ -43,7 +43,7 @@ function showAll() {
     allOutput += '<li class="item item-divider bar bar-calm" style="border-top:1px #293F54 solid; font-size:12px;">'
     allOutput += '<button style="float:right; margin-top:-5px;" class="button button-assertive" onclick="showSocial(\'#youtube\')">View All</button>Latest Videos</li>'
     //allOutput += '<p style="color: #b31217; padding:5px 15px 0px 15px;">Latest videos:<br></p>'
-	for (i = 0; i < 4; i++) {	
+	for (i = 0; i < data.items.length; i++) {	
 		navigate = data.items[i].snippet
 		videoID = navigate.resourceId.videoId
 		allOutput += '<div class="video-outer" style="margin-bottom:10px"><div class="video-inner"><div onClick="openYoutube(\''+videoID+'\')">'

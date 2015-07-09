@@ -13,7 +13,7 @@ angular.module('starter.services')
                 }
             }). 
             success (function(data){
-            	console.log(data)
+            	//console.log(data)
            		if(data.Result == "Success") {
 					var infoReq = '{"Type": \"' + data.Type + '\", "TypeID": \"' + data.TypeID + '\"}'
 				
