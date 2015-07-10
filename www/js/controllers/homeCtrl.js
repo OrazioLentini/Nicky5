@@ -4,7 +4,7 @@ angular.module('starter.controllers')
 		//$scope.s = SyncService.sync()
 		setTimeout(function () {
 			getFeaturedScheduleList()
-		},100)		
+		},250)		
 
 
 
