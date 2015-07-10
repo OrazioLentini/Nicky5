@@ -29,15 +29,16 @@
         </a>
         <div style="height: 15px;"></div>
       </div>  
+      <div class="bar bar-subheader bar-light">
+	    <div class="button-bar">
+			<a class="button button-stable speaker" ng-click="toggle('speaker')">About Speaker</a>
+			<a class="button button-stable question" ng-click="toggle('question')">Ask Question</a>
+			<a class="button button-stable polling"  ng-click="toggle('polling')">Answer Polling</a>
+	    </div>
+	  </div>
   <ion-content>
 
-	<div class="button-bar">
-		<a class="button" ng-click="toggle('speaker')">About Speaker</a>
-		<a class="button" ng-click="toggle('question')">Ask Question</a>
-		<a class="button" ng-click="toggle('polling')">Answer Polling</a>
-	</div>
-
-	<div style="font-size: 14px; text-align: center; margin-top: 15px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>
+	<div style="font-size: 14px; text-align: center; margin-top: 45px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>
 	<div style="height: 20px;"></div>
 
 	<div data-role="content" id="pollingAnswers" ng-show="answer">
@@ -85,7 +86,7 @@
     </div>
 
 	<div data-role="content" id="pollingSpeaker" ng-show="speaker">
-		{{noSpeaker}}
+		<div style="text-align: center">{{noSpeaker}}</div>
 	</div>
 
   </ion-content>

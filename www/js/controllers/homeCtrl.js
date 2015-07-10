@@ -4,7 +4,7 @@ angular.module('starter.controllers')
 		//$scope.s = SyncService.sync()
 		setTimeout(function () {
 			getFeaturedScheduleList()
-		},250)		
+		},100)		
 
 
 
@@ -101,7 +101,7 @@ angular.module('starter.controllers')
 						var first = "yes"
 						//featuredOutput += '<div style="position:absolute; left:50%; top:50%;">test</div>'
 					
-						featuredOutput += '<a href="#/app/directory" style="z-index:999">'
+						featuredOutput += '<a href="#/app/polling/' + data[i].SpeakerID + '" style="z-index:999">'
 						featuredOutput += '<div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >'
 						
 						featuredOutput += '<img src="' + data[i].Image + '">'

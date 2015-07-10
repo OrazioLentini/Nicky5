@@ -1,5 +1,5 @@
 
-<ion-view title="Detail List">
+<ion-view title="{{details.Company}}">
   <ion-nav-buttons side="right">
     <a ng-show="unfilled" ng-click="saveFavoriteCompany('')"><i class="icon ion-ios-star-outline" style="font-size:32px;"></i></a>
     <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px;"></i></a>
@@ -7,10 +7,37 @@
 	<ion-content>
 		<div style="margin:0px auto; width:100%; text-align:center;"><img src="{{details.Logo}}" style="padding:10px 25px; max-height:10%; max-width:100%; "></div>
         <div style="padding:0px 20px">
-           <h3 style="margin:0px; padding:0px;">{{details.Location}}</h3>
-           <p>{{details.Description}}</p>
+           <div style="margin:0px; padding:0px; font-size: 18px"><span style="font-weight: 500">{{details.Company}}</span>
+             <span style="float: right; font-size: 16px; font-weight: 500">Booth: {{details.BoothNum}}</span>
+          </div>
+           {{details.Location}}
+           <p style="margin-top: 5px; margin-bottom: 10px">{{details.Description}}</p>
            
-           <button ng-show="showInfo" class="button button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
+           <button ng-show="showInfo" class="button button-full button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
+           <div class="row" style="height: 60px">
+            <div class="col">
+              <button class="button icon-left ion-social-facebook-outline button-full" style="background: #3B5998;  color: white">
+                Like
+              </button>
+            </div>
+            <div class="col">
+                <button class="button icon-left ion-social-twitter-outline button-full button-calm">
+                  Tweet
+                </button> 
+            </div>
+          </div>
+          <div class="row" style="margin-top: 0">
+            <div class="col">
+              <button class="button icon-left ion-social-googleplus-outline button-full button-assertive">
+                Share
+              </button>
+            </div>
+            <div class="col">
+                <button class="button icon-left ion-social-pinterest-outline button-full" style="background: #BD1D23; color: white">
+                  Pin
+                </button> 
+            </div>
+          </div>
         </div>
             
 	</ion-content>

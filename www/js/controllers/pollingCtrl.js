@@ -21,16 +21,22 @@ angular.module('starter.controllers')
 				$scope.question = true
 				$scope.answer = false 
 				$scope.speaker = false
+			    $('.button').removeClass('button-dark').addClass('button-stable');
+        		$('.question').addClass('button-dark');
 			}
 			if (type == 'polling') {
 				$scope.question = false
 				$scope.answer = true 
 				$scope.speaker = false
+				$('.button').removeClass('button-dark').addClass('button-stable');
+        		$('.polling').addClass('button-dark');
 			}
 			if (type == 'speaker') {
 				$scope.question = false
 				$scope.answer = false 
 				$scope.speaker = true
+				$('.button').removeClass('button-dark').addClass('button-stable');
+        		$('.speaker').addClass('button-dark');
 			}
 		}
 

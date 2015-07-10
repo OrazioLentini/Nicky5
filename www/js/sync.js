@@ -172,7 +172,7 @@ function playVideo(ID, videoID) {
 
 
 function showSocial(x) {
-    alert("test")
+    //alert("test")
     if (x == "#youtube") {
         $("#twitter").css("display", "none")
         $("#all").css("display", "none")

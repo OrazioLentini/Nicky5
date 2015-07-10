@@ -1,0 +1,55 @@
+<!--<div class="modal" ng-controller="ProfileCtrl">-->
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Multiple Choice</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeMC()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="padding:0px 20px">
+    
+    <div style=" margin-top: 25px;"></div>
+    <div ng-repeat="question in learningMC | filter: id = questionNum" ng-hide="notFinished">
+        <span style="text-align: center; font-size: 16px; font-weight: 500;">{{question.question}}</span>
+        
+      <form ng-submit="checkAnswer()" id="loginForm">
+         <li class="item item-checkbox" style="white-space: normal; margin-top: 25px;">
+           <label class="checkbox">
+             <input type="radio" value="A" name='test'>
+           </label>
+           {{question.A}}
+        </li>
+        <li class="item item-checkbox" style="margin-top: 10px; white-space: normal">
+           <label class="checkbox">
+             <input type="radio" value="B" name='test'>
+           </label>
+           {{question.B}}
+        </li>
+        <li class="item item-checkbox" style="margin-top: 10px; white-space: normal">
+           <label class="checkbox">
+             <input type="radio" value="C" name='test'>
+           </label>
+           {{question.C}}
+        </li>
+        <li class="item item-checkbox" style="margin-top: 10px; white-space: normal">
+           <label class="checkbox">
+             <input type="radio" value="D" name='test'>
+           </label>
+           {{question.D}}
+        </li>
+      <div style=" margin-top: 25px; text-align: center">
+        <button ng-show="submit" class="button button-energized">Check Answer</button>
+      </div>
+    </form>
+    <div style="text-align: center">
+          <button ng-show="nextQuestionCorrect" class="button icon-right ion-checkmark button-balanced" ng-click="nextButton()">Click to Proceed</button>
+          <button ng-show="nextQuestionIncorrect" class="button icon-right ion-close button-assertive" ng-click="nextButton()">Click to Proceed</button>
+    </div>
+  </div>
+  <div ng-show="notFinished" style="font-size: 18px; text-align: center">
+    <span >Results {{totalCorrect}} / {{questionNum}}</span><br>
+    <button class="button icon-right ion-arrow-right-c button-positive" ng-click="closeMC()">Close</button>
+  </div>
+  </ion-content>
+</ion-modal-view>
+<!--</div>-->
