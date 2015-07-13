@@ -1,6 +1,10 @@
 angular.module('starter.controllers')
 
     .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading) {
+    	var total = localStorage.getItem('numOfFav')
+		if (total == null) {
+			localStorage.setItem("numOfFav", 1)
+		}
 
     	$scope.checkFav = function () {
 			$scope.schedule = ScheduleService.getSchedule();
@@ -32,11 +36,40 @@ angular.module('starter.controllers')
 
 		$scope.saveFavoriteSchedule = function(id) {
 
+			total = parseInt(localStorage.getItem('numOfFav'))
+			total += 1
+			localStorage.setItem("numOfFav", total)
+
 			$scope.info = $filter('filter')($scope.tempSch, {RecID: id })
 			$scope.fav = FavoritesService.saveFavoriteSchedule($scope.info[0])
 			//$scope.maps = MapsService.getMaps()
 			$scope.checkFav()
-			$ionicLoading.show({template: 'Added to Favorites', noBackdrop: true, duration: 1500});
+			$ionicLoading.show({template: 'Added to Favorites', noBackdrop: true, duration: 1000});
+			console.log($scope.info[0])
+
+			dateData = $scope.info[0].ScheduledDate
+			var newDate = dateData.split("/")
+
+				year = parseInt(newDate[2])
+				month = parseInt(newDate[0]) - 1
+				day = parseInt(newDate[1])
+
+			timeData = $scope.info[0].StartTime
+			var newTime = timeData.split(" ")
+
+				AMorPM = newTime[1]
+
+			var time = newTime[0].split(":")
+
+				hour = parseInt(time[0])
+				min = parseInt(time[1])
+
+			if(AMorPM == 'PM' & hour != 12) {
+				hour = parseInt(hour) + 12
+			}
+
+			var d = new Date(year, month, day, hour, min, 00, 0);
+			notify($scope.info[0].Title, d, $scope.info[0].RecID)
 
 
 		}
@@ -50,8 +83,8 @@ angular.module('starter.controllers')
 			 if(res) {
 				$scope.deleted = FavoritesService.deleteFavorite(id, 'schedule');
 				$scope.checkFav()
-				$ionicLoading.show({template: 'Favorite Deleted', noBackdrop: true, duration: 1500});
-
+				$ionicLoading.show({template: 'Favorite Deleted', noBackdrop: true, duration: 1000});
+				//cancelNotify(id)
 			 }
 		   });
 		}

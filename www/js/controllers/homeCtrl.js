@@ -1,13 +1,21 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', function ($scope, $http, $state, SyncService) {
+    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', function ($scope, $http, $state, SyncService, $ionicLoading) {
 		//$scope.s = SyncService.sync()
 		setTimeout(function () {
 			getFeaturedScheduleList()
 		},100)		
 
 
-
+	$scope.scan = function() {
+		$scope.isLoggedIn = localStorage.getItem("login")
+		if ($scope.isLoggedIn == null) {
+			$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+		}
+		else {
+			scan2()
+		}
+	}
 
 	function getFeaturedScheduleList() {
 	    var temp = localStorage.getItem('tSchedule')
