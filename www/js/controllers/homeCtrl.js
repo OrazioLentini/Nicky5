@@ -117,7 +117,7 @@ angular.module('starter.controllers')
 						featuredOutput += '<div class="inner-content">'
 						featuredOutput += '<h2 style="margin:0px; color:#F1F1F1">' + data[i].Title + '</h2>'
 						if(data[i].ShortDesc != "" && data[i].ShortDesc != null){
-						  featuredOutput += '<p>' + data[i].ShortDesc + '</p>'
+						  //featuredOutput += '<p>' + data[i].ShortDesc + '</p>'
 						} else  {
 							featuredOutput += '<p style="font-size:.6em; color:#FFF;"><strong>Start Time: ' + data[i].StartTime + '</strong></p>'
 						}

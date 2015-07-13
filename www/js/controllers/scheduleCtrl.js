@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading) {
+    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading' , 'PollingService', '$ionicModal', 'SpeakerService', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading, PollingService, $ionicModal, SpeakerService) {
     	var total = localStorage.getItem('numOfFav')
 		if (total == null) {
 			localStorage.setItem("numOfFav", 1)
@@ -92,8 +92,40 @@ angular.module('starter.controllers')
 
 
 
+		$scope.viewSlides = function(id) {
+			PollingService.getPresentationSlides(id). success( function (data) {
+				$scope.slides = data
+				$scope.open()
+			})
+		
+		}
+		$ionicModal.fromTemplateUrl('templates/presentationSlides.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.modal = modal;
+		});
 
+		// Triggered in the login modal to close it
+		$scope.closeVideo = function() {
+			$scope.modal.hide();
+		};
 
+		// Open the login modal
+		$scope.open = function(id, speakerID) {
+			PollingService.getPresentationSlides(id). success( function (data) {
+				$scope.slides = data
+				$scope.modal.show();
+			})
+			$scope.desc =ScheduleService.getDetails(id);
+			$scope.speakerInfo = SpeakerService.getSpeaker(speakerID)
+		};
+
+		// Perform the login action when the user submits the login form
+		$scope.playVideo = function(x, id) {
+			$('.li').removeClass('dark')
+	        $('.' + id).addClass('dark');
+			$("#video").html('<iframe id="ytplayer"  width="100%" height="390"  src="' + x + '"  frameborder="0"/>')
+		};
 
 
 

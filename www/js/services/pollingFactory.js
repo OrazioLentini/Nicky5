@@ -35,5 +35,15 @@ angular.module('starter.services')
                     format:'json'
                 }
             })			
-		}
+		},
+        this.getPresentationSlides = function(id) {   
+            
+            var url = "http://patty5.com/AppApis/apiPresentationSlides.asp?ID=" + id;
+            return $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            })          
+        }
 });

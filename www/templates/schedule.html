@@ -12,6 +12,7 @@
 
  				<p ng-if="x.Speaker" style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
  				<p ng-if="x.Speaker" style="font-size:12px;">{{x.Title}}</p>
+ 				<a ng-if="x.Speaker" style="font-size:12px;" ng-click="open('{{x.RecID}}', '{{x.SpeakerID}}')">View Slides</a>
 
 
  				<p ng-if="x.Speaker == ''" style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
