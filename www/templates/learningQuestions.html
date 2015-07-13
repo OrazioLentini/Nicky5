@@ -10,11 +10,15 @@
 
     <div class="card" ng-repeat="question in learningquestions">
 
-      <a class="item item-icon-right item-text-wrap question" ng-click="toggleAnswer('{{question.id}}')">
-        <i class="icon ion-chevron-down {{question.id}}"></i>
+      <a class="item item-icon-right item-text-wrap question dark" style="color: white;" ng-click="toggleAnswer('{{question.id}}')">
+        <i class="icon ion-chevron-down question{{question.id}}" style="display: block;margin-top: 20px;"></i>
+        <i class="icon ion-chevron-up question{{question.id}}" style="display: none; margin-top: 20px;"></i>
         {{question.question}}
       </a>
-      <div class="{{question.id}}" style="display: none">{{question.answer}}</div>
+      <div class="question{{question.id}}" style="display: none; padding: 10px 10px;">
+        {{question.answer}}
+        <img ng-if="question.image != ''" src="{{question.image}}" style="width: 100%; margin-top: 10px;">
+      </div>
     </div>
 
   </ion-content>

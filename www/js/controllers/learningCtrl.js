@@ -113,7 +113,7 @@ angular.module('starter.controllers')
 	};
 
 	$scope.toggleAnswer = function (x){
-		$( "." + x ).toggle( "fast", function() {
+		$( ".question" + x ).toggle( "fast", function() {
 		//$('.' + x).removeClass('ion-chevron-down').addClass('ion-chevron-up');
 		});
 	}
