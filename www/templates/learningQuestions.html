@@ -1,0 +1,26 @@
+<!--<div class="modal" ng-controller="ProfileCtrl">-->
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Practice Questions</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeQuestions()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="padding:0px 20px">
+
+    <div class="card" ng-repeat="question in learningquestions">
+
+      <a class="item item-icon-right item-text-wrap question dark" style="color: white;" ng-click="toggleAnswer('{{question.id}}')">
+        <i class="icon ion-chevron-down question{{question.id}}" style="display: block;margin-top: 20px;"></i>
+        <i class="icon ion-chevron-up question{{question.id}}" style="display: none; margin-top: 20px;"></i>
+        {{question.question}}
+      </a>
+      <div class="question{{question.id}}" style="display: none; padding: 10px 10px;">
+        {{question.answer}}
+        <img ng-if="question.image != ''" src="{{question.image}}" style="width: 100%; margin-top: 10px;">
+      </div>
+    </div>
+
+  </ion-content>
+</ion-modal-view>
+<!--</div>-->

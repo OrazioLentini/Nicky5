@@ -73,7 +73,9 @@ function displayYouTube() {
     //videoOutput += '<div onClick="window.open(\'vnd.youtube:\/\/' + data.items[0].snippet.resourceId.videoId + ' \',\'_system\')">'
     //videoOutput += '<img src="http://img.youtube.com/vi/' + data.items[0].snippet.resourceId.videoId + '/1.jpg" style="width:100%">'
     //videoOutput += '</div>'
-        videoOutput += '<li class="item item-divider bar bar-calm" style="border-top:2px #293F54 solid;">All Videos</li>'
+        //videoOutput += '<li class="item item-divider bar bar-calm" style="border-top:2px #293F54 solid;">All Videos</li>'
+        videoOutput += '<li class="item item-divider bar bar-youtube" style="border-top:2px #b31217 solid;">All Videos</li>'
+
 
     //videoOutput += '<div style="height: 20px;"></div>'
     for (i = 0; i < length; i++) {  

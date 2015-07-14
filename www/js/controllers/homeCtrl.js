@@ -1,13 +1,21 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', function ($scope, $http, $state, SyncService) {
+    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', function ($scope, $http, $state, SyncService, $ionicLoading) {
 		//$scope.s = SyncService.sync()
 		setTimeout(function () {
 			getFeaturedScheduleList()
-		},250)		
+		},100)		
 
 
-
+	$scope.scan = function() {
+		$scope.isLoggedIn = localStorage.getItem("login")
+		if ($scope.isLoggedIn == null) {
+			$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+		}
+		else {
+			scan2()
+		}
+	}
 
 	function getFeaturedScheduleList() {
 	    var temp = localStorage.getItem('tSchedule')
@@ -101,7 +109,7 @@ angular.module('starter.controllers')
 						var first = "yes"
 						//featuredOutput += '<div style="position:absolute; left:50%; top:50%;">test</div>'
 					
-						featuredOutput += '<a href="#/app/directory" style="z-index:999">'
+						featuredOutput += '<a href="#/app/polling/' + data[i].SpeakerID + '" style="z-index:999">'
 						featuredOutput += '<div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >'
 						
 						featuredOutput += '<img src="' + data[i].Image + '">'
@@ -109,7 +117,7 @@ angular.module('starter.controllers')
 						featuredOutput += '<div class="inner-content">'
 						featuredOutput += '<h2 style="margin:0px; color:#F1F1F1">' + data[i].Title + '</h2>'
 						if(data[i].ShortDesc != "" && data[i].ShortDesc != null){
-						  featuredOutput += '<p>' + data[i].ShortDesc + '</p>'
+						  //featuredOutput += '<p>' + data[i].ShortDesc + '</p>'
 						} else  {
 							featuredOutput += '<p style="font-size:.6em; color:#FFF;"><strong>Start Time: ' + data[i].StartTime + '</strong></p>'
 						}

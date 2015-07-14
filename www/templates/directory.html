@@ -1,9 +1,11 @@
 <ion-view view-title="Directory">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="requests in requests" class="item-icon-right" href="#/app/directory/{{requests.RecID}}">
-       {{requests.Company}}
-       <i class="icon ion-chevron-right" style="font-size:14px"></i>
+      <ion-item ng-repeat="requests in requests" class="item item-avatar item-icon-right" href="#/app/directory/{{requests.RecID}}">
+	      	<img src="{{requests.ThumbLogo}}"/>
+	       <h2>{{requests.Company}}</h2>
+	       <p>Booth: {{requests.BoothNum}}<p/>
+	       <i class="icon ion-chevron-right" style="font-size:14px"></i>
       </ion-item>
     </ion-list>
   </ion-content>

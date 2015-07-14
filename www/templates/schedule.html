@@ -7,11 +7,12 @@
 		   <li class="item item-divider" style="background:#293F54; color:#F2F2F2">{{ScheduledDate}}</li>
 
  			<li class="item item-thumbnail-left item-icon-right" ng-repeat="x in sch">
- 				<img src="{{x.Image}}"/>
+ 				<img style="height: 80px" src="{{x.ThumbImage}}"/>
 
 
  				<p ng-if="x.Speaker" style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
  				<p ng-if="x.Speaker" style="font-size:12px;">{{x.Title}}</p>
+ 				<a ng-if="x.Speaker" style="font-size:12px;" ng-click="open('{{x.RecID}}', '{{x.SpeakerID}}')">View Slides</a>
 
 
  				<p ng-if="x.Speaker == ''" style="font-size:14px; font-weight:bold;">{{x.Title}}</p>

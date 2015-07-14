@@ -22,6 +22,7 @@ angular.module('starter.controllers')
 		{ title: 'Maps', id: 3, icon:'map', url:'maps' },
 		{ title: 'Trivia', id: 4, icon:'ribbon-a', url:'trivia' },
 		{ title: 'Presentation', id: 5, icon:'speakerphone', url:'polling' },
+		{ title: 'Learning', id: 5, icon:'lightbulb', url:'learning' },
 		{ title: 'Home', id: 6, icon:'home' , url:'/app/'}
   ];
 

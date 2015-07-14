@@ -1,0 +1,31 @@
+<!--<div class="modal" ng-controller="ProfileCtrl">-->
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Video Lesson</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeVideo()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="padding:0px 20px">
+  <div id="video" style="height: 410px; width: 100%; background: white">
+    <iframe width="100%" height="390" src="https://www.youtube.com/embed/dHVZ6jEf8To?autoplay=true" frameborder="0"/>
+  </div>
+  <div style="height: 30%; overflow: auto; max-height: 200px; overflow-x: hidden;">
+
+    <ul class="list" ng-repeat="video in learningvideos">
+      <a ng-click="playVideo('{{video.url}}', '{{video.id}}')">
+      <li ng-if="video.id == 1" class="item item-icon-right li dark {{video.id}}"> 
+              {{video.title}}   
+        <i class="icon ion-play" style="font-size:14px"></i>
+      </li>
+      <li ng-if="video.id != 1" class="item item-icon-right li {{video.id}}"> 
+        {{video.title}}   
+        <i class="icon ion-play" style="font-size:14px"></i>
+      </li>
+      </a>
+    </ul>
+
+  </div>
+  </ion-content>
+</ion-modal-view>
+<!--</div>-->

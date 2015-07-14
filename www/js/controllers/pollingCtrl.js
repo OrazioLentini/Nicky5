@@ -2,7 +2,10 @@ angular.module('starter.controllers')
 
     .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService) {
 		//$scope.requests = DirectoryService.getDirectory();
-
+		$scope.question = false
+		$scope.answer = false
+		$scope.speaker = false
+		
 		if($stateParams.speakerID == ""){
 			$scope.noSpeaker = "There is no speaker information available at this time."
 		}
@@ -13,24 +16,27 @@ angular.module('starter.controllers')
 		}
 
 
-		$scope.question = false
-		$scope.answer = false
-		$scope.speaker = false
 		$scope.toggle = function (type) {
 			if (type == 'question') {
 				$scope.question = true
 				$scope.answer = false 
 				$scope.speaker = false
+			    $('.button').removeClass('button-dark').addClass('button-stable');
+        		$('.question').addClass('button-dark');
 			}
 			if (type == 'polling') {
 				$scope.question = false
 				$scope.answer = true 
 				$scope.speaker = false
+				$('.button').removeClass('button-dark').addClass('button-stable');
+        		$('.polling').addClass('button-dark');
 			}
 			if (type == 'speaker') {
 				$scope.question = false
 				$scope.answer = false 
 				$scope.speaker = true
+				$('.button').removeClass('button-dark').addClass('button-stable');
+        		$('.speaker').addClass('button-dark');
 			}
 		}
 

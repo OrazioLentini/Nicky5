@@ -104,7 +104,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-   
+     .state('app.learning', {
+      url: "/learning",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/learning.html",
+          controller: 'LearningCtrl'
+        }
+      }
+    })
   .state('app.favorites', {
       url: "/favorites",
       views: {

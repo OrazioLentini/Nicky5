@@ -3,27 +3,36 @@
 <body ng-controller="SocialCtrl">
 <ion-view view-title="Social" >
 
-  <div class="bar bar-subheader bar-light">
+  <!--<div class="bar bar-subheader bar-light">
     <div class="button-bar">
       <a class="button button-stable icon-left ion-social-twitter-outline twitter" onclick="showSocial('#twitter')">Twitter</a>
       <a class="button button-stable icon-left ion-social-instagram-outline instagram" onclick="showSocial('#instagram')">Instagram</a>
       <a class="button button-stable icon-left ion-social-youtube-outline youtube" onclick="showSocial('#youtube')">YouTube</a>
     </div>
-  </div>
-
+  </div>-->
+<div class="row bar bar-subheader bar-light">
+  <div class="col">      <a class="button button-stable icon-left ion-social-twitter-outline button-calm twitter" onclick="showSocial('#twitter')"></a></div>
+  <div class="col">      <a class="button button-stable icon-left ion-social-instagram-outline button-instagram instagram" onclick="showSocial('#instagram')"></a></div>
+  <div class="col">      <a class="button button-stable icon-left ion-social-youtube-outline button-youtube youtube" onclick="showSocial('#youtube')"></a></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
  
   <ion-nav-buttons side="right">
     <button class="button button-clear button-calm bold" onclick="showSocial('#all')" ng-click="scrollTop()">View All</button>
   </ion-nav-buttons>
   <ion-content class="has-subheader" class="ng-view" autoscroll="true" style="padding:5pt">
                 
-         <div id="all" style="background:#FFF; margin-top:5px;">
+         <div id="all" style="background:#FFF; display: none; margin-top:5px; ">
         </div>
         
         <div id="youtube" style="display: none; background:#FFF; margin-top:5px;">
         </div>
                 
-         <div id="twitter" style="display: none; background:#FFF; margin-top:5px;">
+         <div id="twitter" style="display: block; background:#FFF; margin-top:5px;">
          twitter
         </div>
          <div id="instagram" style="display: none; background:#FFF; margin-top:5px;">
