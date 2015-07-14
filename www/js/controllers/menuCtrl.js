@@ -12,7 +12,7 @@ angular.module('starter.controllers')
 
   $scope.toggleLeftSideMenu = function() {
   	$timeout(function() {
-       $ionicSideMenuDelegate.toggleLeft();
+       $ionicSideMenuDelegate.toggleRight();
     }, 100);
   };
   

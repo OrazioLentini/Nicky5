@@ -6,13 +6,14 @@ angular.module('starter.controllers')
 		$scope.answer = false
 		$scope.speaker = false
 		
-		if($stateParams.speakerID == ""){
+		if($stateParams.SpeakerID == ""){
 			$scope.noSpeaker = "There is no speaker information available at this time."
 		}
 		else {
-			$scope.speaker = SpeakerService.getSpeaker($stateParams.speakerID)
-			$('#pollingSpeaker').html('<div class="media" style="width: 90%; text-align: center; margin-left: 5%;" ><img style="width:50%;" class="media-object" src="' + $scope.speaker.Image + '"/><div class="media-body" style="font-size:120%; margin-top:12px;">' + $scope.speaker.Name + '<br><span style="font-size:12px">' + $scope.speaker.Title + '</span><div style="height: 1px; background: black; width: 100%"></div></div><p style="margin-top: 10px">' + $scope.speaker.About + '</p></div>')
-
+			$scope.speaker = SpeakerService.getSpeaker($stateParams.SpeakerID)
+			setTimeout(function () {
+				$('#pollingSpeaker').html('<div class="media" style="width: 90%; text-align: center; margin-left: 5%;" ><img style="width:50%;" class="media-object" src="' + $scope.speaker.Image + '"/><div class="media-body" style="font-size:120%; margin-top:12px;">' + $scope.speaker.Name + '<br><span style="font-size:12px">' + $scope.speaker.Title + '</span><div style="height: 1px; background: black; width: 100%"></div></div><p style="margin-top: 10px">' + $scope.speaker.About + '</p></div>')
+			}, 50)
 		}
 
 

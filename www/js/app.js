@@ -56,15 +56,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-
-  .state('app.browse', {
-    url: "/browse",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/browse.html"
-      }
-    }
-  })
     .state('app.menu', {
       url: "/",
       views: {
@@ -125,7 +116,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('app.polling', {
-      url: "/polling/:speakerID",
+      url: "/polling/:SpeakerID",
       views: {
         'menuContent': {
           templateUrl: "templates/presentation.html",
@@ -173,15 +164,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
       }
     })
-  .state('app.single', {
-    url: "/playlists/:playlistId",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('app/');
 });

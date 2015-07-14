@@ -16,7 +16,7 @@
 
  				<p ng-if="x.Speaker == ''" style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
 
- 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.StartTime}}</strong></p>
+ 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
  				<a class=" icon-left ion-eye" style="font-size: 14px !important" ng-if="x.Speaker" style="font-size:12px;" ng-click="open('{{x.RecID}}', '{{x.SpeakerID}}')"> View Slides</a>
 
  				<i class="icon ion-ios-star' + icon + '" ' + onClick + '></i>

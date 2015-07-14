@@ -19,6 +19,7 @@ angular.module('starter.services')
 					return requests[i];
 				}
 			}
-		}  
+		},
+		
 	}
 });
