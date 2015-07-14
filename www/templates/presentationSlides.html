@@ -1,7 +1,7 @@
 <!--<div class="modal" ng-controller="ProfileCtrl">-->
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Presentation Preview</h1>
+    <h1 class="title">{{desc.Title}}</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeVideo()">Close</button>
     </div>
@@ -13,12 +13,13 @@
       <img src="{{x.Link}}" style="width: 100%">
       </ion-slide>
   </ion-slide-box>
+  <div style="font-size: 10px; text-align: center">Swipe left and right to navigate</div>
 
 <div class="list" style="margin-top: 5px">
 
     <a class="item item-thumbnail-left" >
       <img src="{{speakerInfo.Image}}">
-      <h2>{{speakerInfo.Name}}</h2>
+      <h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
       <p>{{speakerInfo.Title}}</p>
     </a>
 
