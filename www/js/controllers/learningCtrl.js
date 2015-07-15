@@ -1,6 +1,9 @@
 angular.module('starter.controllers')
 
-.controller('LearningCtrl' , function($scope, $ionicModal, $timeout, $ionicPopup, $ionicLoading, LearningService) {
+.controller('LearningCtrl' , function($scope, $ionicModal, $timeout, $ionicPopup, $ionicLoading, LearningService, $stateParams, MenuLinksService) {
+   
+	$scope.title = MenuLinksService.getHeader($stateParams.ID)
+
    $scope.mc = false
    $scope.show = function(x){
    		if (x == 'mc'){

@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-    .controller('FeedbackCtrl', ['$scope', '$http', '$state',  '$ionicModal', '$timeout' , 'SyncService', 'LoginService', '$ionicLoading', 'FeedbackService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, FeedbackService) {
+    .controller('FeedbackCtrl', ['$scope', '$http', '$state',  '$ionicModal', '$timeout' , 'SyncService', 'LoginService', '$ionicLoading', 'FeedbackService', '$stateParams','MenuLinksService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, FeedbackService, $stateParams, MenuLinksService) {
+		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {

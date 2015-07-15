@@ -1,6 +1,8 @@
 angular.module('starter.controllers')
 
-    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading' , 'PollingService', '$ionicModal', 'SpeakerService', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading, PollingService, $ionicModal, SpeakerService) {
+    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading' , 'PollingService', '$ionicModal', 'SpeakerService' ,'$stateParams','MenuLinksService', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading, PollingService, $ionicModal, SpeakerService,  $stateParams, MenuLinksService) {
+    			$scope.title = MenuLinksService.getHeader($stateParams.ID)
+
     	var total = localStorage.getItem('numOfFav')
 		if (total == null) {
 			localStorage.setItem("numOfFav", 1)

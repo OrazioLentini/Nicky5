@@ -1,6 +1,9 @@
 angular.module('starter.controllers')
 
-    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService) {
+    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService' ,'MenuLinksService',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService, MenuLinksService) {
+		$scope.title = MenuLinksService.getHeader($stateParams.ID)
+
+
 		//$scope.requests = DirectoryService.getDirectory();
 		$scope.question = false
 		$scope.answer = false

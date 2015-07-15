@@ -4,7 +4,7 @@
     <h1 class="title">{{desc.Title}}</h1>
     <div class="buttons">
     </div>
-    <button class="button button-icon button-clear" ng-click="closePreview()">Close</button>
+    <button class="button button-icon ion-ios-arrow-back button-clear" style="font-size: 16px; color: #444" ng-click="closePreview()"> {{title}}</button>
 
   </ion-header-bar>
   <ion-content style="padding:0px 20px">
@@ -23,8 +23,8 @@
       <h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
       {{speakerInfo.Title}}
 
-              <a ng-show="true" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:32px; float: right"></i></a>
-            <a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+              <a ng-show="true" ng-click="saveFavoriteSchedule('{{desc.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:32px; float: right"></i></a>
+            <a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{desc.RecID}}')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
     </div>
 
 </div>

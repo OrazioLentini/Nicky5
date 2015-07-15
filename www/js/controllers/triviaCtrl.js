@@ -1,7 +1,8 @@
 angular.module('starter.controllers')
 
-    .controller('TriviaCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', 'TriviaService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, TriviaService) {
+    .controller('TriviaCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', 'TriviaService', '$stateParams','MenuLinksService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, TriviaService,  $stateParams, MenuLinksService) {
 		//$scope.requests = DirectoryService.getDirectory();
+		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {

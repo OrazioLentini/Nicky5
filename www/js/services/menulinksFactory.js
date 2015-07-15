@@ -12,5 +12,11 @@ angular.module('starter.services')
                     format:'json'
                 }
             })
+        },
+        this.getHeader = function(id){ 
+            var temp = localStorage.getItem('menu')
+            menu = JSON.parse(temp)
+
+            return menu[id-1].Name
         }
 });
