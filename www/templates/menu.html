@@ -2,13 +2,18 @@
 <ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button></ion-nav-back-button>
-
+      <ion-nav-back-button style="font-size: 16px;"></ion-nav-back-button>
+    
       <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-location" ng-click="scan()"></button>
+         <button class="button button-icon button-clear" ></button>
         <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
       </ion-nav-buttons>
+
     </ion-nav-bar>
+
     <ion-nav-view name="menuContent"></ion-nav-view>
+
   </ion-side-menu-content>
 
   <ion-side-menu side="right">
@@ -16,37 +21,23 @@
       <h1 class="title" style="color:#FFF">Navigation</h1>
     </ion-header-bar>
     <ion-content class="dark">
-      <!--<ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
-      </ion-list>-->
-          <ion-list>
-              <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.url}}" ng-click="toggleLeftSideMenu()">
-               <a style="text-decoration:none;"><i class="icon ion-{{menu.icon}}" ></i> {{menu.title}}</a>
-              </ion-item>
-              <ion-item  ng-click="login()" ng-show="loginButton">
-                  <i class="icon ion-log-in" ></i> Login
-              </ion-item>
-              <ion-item  ng-click="profile()" ng-show="profileButton">
-                  <i class="icon ion-person" ></i> Profile
-              </ion-item>
-              <ion-item  ng-click="logout()" ng-show="logoutButton">
-                  <i class="icon ion-log-out" ></i> Logout
-              </ion-item>
-              <ion-item  ng-click="runSync()">
-          <i class="icon ion-refresh" ></i> Sync
+      <ion-list>
+          <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.Page}}" ng-click="toggleLeftSideMenu()">
+           <a style="text-decoration:none;"><i class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}</a>
+          </ion-item>
+          <ion-item  ng-click="login()" ng-show="loginButton">
+              <i class="icon ion-log-in" ></i> Login
+          </ion-item>
+          <ion-item  ng-click="profile()" ng-show="profileButton">
+              <i class="icon ion-person" ></i> Profile
+          </ion-item>
+          <ion-item  ng-click="logout()" ng-show="logoutButton">
+              <i class="icon ion-log-out" ></i> Logout
+          </ion-item>
+          <ion-item  ng-click="runSync()">
+      <i class="icon ion-refresh" ></i> Sync
       </ion-item>
-         </ion-list>
+   </ion-list>
 
     </ion-content>
   </ion-side-menu>

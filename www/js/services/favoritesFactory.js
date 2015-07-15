@@ -85,7 +85,7 @@ angular.module('starter.services')
 			//alertify.set({ delay: 1500 });
 			//alertify.success("Saved to Favorites");
 
-			var favorite = '{"ID": \"' + details.RecID + '\", "Image": \"' + details.Logo + '\", "Company": \"' + details.Company + '\", "Location": \"' + details.Location + '\", "Description": \"' + details.Description + '\", "Video": \"' + details.Video + '\", "type": \"company\" }'
+			var favorite = '{"ID": \"' + details.RecID + '\", "Image": \"' + details.Image + '\", "Logo": \"' + details.ThumbLogo + '\" ,  "Company": \"' + details.Company + '\", "Location": \"' + details.Location + '\", "Description": \"' + details.Description + '\", "PreviewDescription": \"' + details.PreviewDesc + '\", "Video": \"' + details.Video + '\", "type": \"company\" }'
 			
 			var newFav = ''
 			var temp = localStorage.getItem('companyFavorites')

@@ -1,9 +1,11 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', function ($scope, $http, $state, SyncService, $ionicLoading) {
+    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory) {
 		//$scope.s = SyncService.sync()
+		$ionicHistory.clearHistory()
 		setTimeout(function () {
 				$scope.feature = SyncService.getFeaturedScheduleList()
+				localStorage.setItem("menu", data)
 				//console.log($scope.feature)
 		},50)		
 

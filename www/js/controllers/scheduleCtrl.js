@@ -50,14 +50,14 @@ angular.module('starter.controllers')
 			$scope.checkFav()
 			$ionicLoading.show({template: 'Added to Favorites', noBackdrop: true, duration: 1000});
 
-			/*dateData = $scope.info[0].ScheduledDate
+			dateData = $scope.info[0].ScheduledDate
 			var newDate = dateData.split("/")
 
 				year = parseInt(newDate[2])
 				month = parseInt(newDate[0]) - 1
 				day = parseInt(newDate[1])
 
-			timeData = $scope.info[0].StartTime
+			/*timeData = $scope.info[0].StartTime
 			var newTime = timeData.split(" ")
 
 				AMorPM = newTime[1]
@@ -116,16 +116,21 @@ angular.module('starter.controllers')
 
 		// Triggered in the login modal to close it
 		$scope.closePreview = function() {
+			$scope.slides = ""
+			$scope.desc = ""
+			$scope.speakerInfo = ""
 			$scope.modal.hide();
 		};
 
 		// Open the login modal
 		$scope.open = function(id, speakerID) {
+			console.log(id + " " + speakerID)
 			PollingService.getPresentationSlides(id). success( function (data) {
 				$scope.slides = data
 				$scope.modal.show();
 			})
 			$scope.desc =ScheduleService.getDetails(id);
+			console.log($scope.desc)
 			$scope.speakerInfo = SpeakerService.getSpeaker(speakerID)
 		};
 
