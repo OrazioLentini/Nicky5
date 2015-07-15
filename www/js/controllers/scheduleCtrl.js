@@ -1,6 +1,9 @@
 angular.module('starter.controllers')
 
-    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading' , 'PollingService', '$ionicModal', 'SpeakerService', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading, PollingService, $ionicModal, SpeakerService) {
+    .controller('ScheduleCtrl', ['$scope', '$http', '$state', 'ScheduleService', 'FavoritesService', '$filter', '$ionicPopup', '$ionicLoading' , 'PollingService', '$ionicModal', 'SpeakerService' ,'$stateParams','MenuLinksService', function ($scope, $http, $state, ScheduleService, FavoritesService, $filter, $ionicPopup, $ionicLoading, PollingService, $ionicModal, SpeakerService,  $stateParams, MenuLinksService) {
+    	
+    	$scope.title = MenuLinksService.getHeader($stateParams.ID)
+
     	var total = localStorage.getItem('numOfFav')
 		if (total == null) {
 			localStorage.setItem("numOfFav", 1)
@@ -100,7 +103,7 @@ angular.module('starter.controllers')
 
 
 
-
+		// PREVIEW PRESENTATION SLIDES 
 		$scope.viewSlides = function(id) {
 			PollingService.getPresentationSlides(id). success( function (data) {
 				$scope.slides = data
@@ -114,7 +117,6 @@ angular.module('starter.controllers')
 			$scope.modal = modal;
 		});
 
-		// Triggered in the login modal to close it
 		$scope.closePreview = function() {
 			$scope.slides = ""
 			$scope.desc = ""
@@ -122,19 +124,19 @@ angular.module('starter.controllers')
 			$scope.modal.hide();
 		};
 
-		// Open the login modal
+		// Open the Preview Slides modal
 		$scope.open = function(id, speakerID) {
-			console.log(id + " " + speakerID)
+			//console.log(id + " " + speakerID)
 			PollingService.getPresentationSlides(id). success( function (data) {
 				$scope.slides = data
 				$scope.modal.show();
 			})
 			$scope.desc =ScheduleService.getDetails(id);
-			console.log($scope.desc)
+			//console.log($scope.desc)
 			$scope.speakerInfo = SpeakerService.getSpeaker(speakerID)
 		};
 
-		// Perform the login action when the user submits the login form
+
 		$scope.playVideo = function(x, id) {
 			$('.li').removeClass('dark')
 	        $('.' + id).addClass('dark');

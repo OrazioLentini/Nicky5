@@ -26,7 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
   
    .state('app.schedule', {
-      url: "/schedule",
+      url: "/schedule/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/schedule.html",
@@ -66,7 +66,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 	  .state('app.directory', {
-      url: "/directory",
+      url: "/directory/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/directory.html",
@@ -86,7 +86,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 	
   .state('app.trivia', {
-      url: "/trivia",
+      url: "/trivia/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/trivia.html",
@@ -96,7 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
      .state('app.learning', {
-      url: "/learning",
+      url: "/learning/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/learning.html",
@@ -105,7 +105,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
   .state('app.favorites', {
-      url: "/favorites",
+      url: "/favorites/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/favorites.html",
@@ -116,7 +116,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('app.polling', {
-      url: "/polling/:SpeakerID",
+      url: "/polling/:SpeakerID/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/presentation.html",
@@ -126,7 +126,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
   
 	 .state('app.maps', {
-      url: "/maps",
+      url: "/maps/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/maps.html",
@@ -136,7 +136,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 	
    .state('app.social', {
-      url: "/social",
+      url: "/social/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/social.html",
@@ -146,7 +146,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
    .state('app.feedback', {
-      url: "/feedback",
+      url: "/feedback/:ID",
       views: {
         'menuContent': {
           templateUrl: "templates/feedback.html",

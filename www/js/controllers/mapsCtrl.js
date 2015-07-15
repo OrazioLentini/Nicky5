@@ -1,7 +1,8 @@
 angular.module('starter.controllers')
 
-    .controller('MapsCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading', '$ionicModal', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading, $ionicModal) {
-    
+    .controller('MapsCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading', '$ionicModal','$stateParams','MenuLinksService', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading, $ionicModal, $stateParams, MenuLinksService) {
+
+		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
     $ionicModal.fromTemplateUrl('image-modal.html', {
       scope: $scope,

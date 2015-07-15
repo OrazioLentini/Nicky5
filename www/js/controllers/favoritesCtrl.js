@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-    .controller('FavoritesCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading) {
+    .controller('FavoritesCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading','MenuLinksService','$stateParams', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading,MenuLinksService, $stateParams) {
+		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
     	$scope.favorites = function () {
 	   	    var directory = localStorage.getItem('companyFavorites')

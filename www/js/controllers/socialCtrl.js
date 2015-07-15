@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-    .controller('SocialCtrl', ['$scope', '$state', '$ionicScrollDelegate',  function ($scope, $state, $ionicScrollDelegate) {
+    .controller('SocialCtrl', ['$scope', '$state', '$ionicScrollDelegate', '$stateParams', 'MenuLinksService',  function ($scope, $state, $ionicScrollDelegate, $stateParams, MenuLinksService) {
+        $scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		//$scope.home = ScheduleService.getFeaturedScheduledItem();
 		//console.log($scope.schedule)

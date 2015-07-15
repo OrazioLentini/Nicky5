@@ -5,7 +5,7 @@
       <ion-nav-back-button style="font-size: 16px;"></ion-nav-back-button>
     
       <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-location" ng-click="scan()"></button>
+        <button class="button button-icon button-clear" ng-click="openCheckIn()"><img src="img/qrcode.png" style="height: 25px; margin-top: 3px;"></button>
          <button class="button button-icon button-clear" ></button>
         <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
       </ion-nav-buttons>
@@ -22,9 +22,11 @@
     </ion-header-bar>
     <ion-content class="dark">
       <ion-list>
-          <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.Page}}" ng-click="toggleLeftSideMenu()">
+
+          <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.Page}}({ID: {{menu.ID}}})" ng-click="toggleLeftSideMenu()">
            <a style="text-decoration:none;"><i class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}</a>
           </ion-item>
+
           <ion-item  ng-click="login()" ng-show="loginButton">
               <i class="icon ion-log-in" ></i> Login
           </ion-item>

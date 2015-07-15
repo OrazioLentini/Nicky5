@@ -1,7 +1,7 @@
-<ion-view view-title="Directory">
+<ion-view view-title="{{title}}">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="requests in requests" class="item  item-icon-right item-text-wrap" href="#/app/directory/{{requests.RecID}}">
+      <ion-item ng-repeat="requests in requests" class="item  item-icon-right item-text-wrap" ui-sref="app.details({RecID: {{requests.RecID}}})">
 	      	<img style="width: 80px; float: right" src="{{requests.ThumbLogo}}"/>
 	       <h2>{{requests.Company}}</h2>
 	       <p>Booth: {{requests.BoothNum}}<p/>
