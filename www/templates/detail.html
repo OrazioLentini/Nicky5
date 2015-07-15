@@ -1,17 +1,20 @@
 
 <ion-view title="{{details.Company}}">
-  <ion-nav-buttons side="right">
+ <!--<ion-nav-buttons side="right">
     <a ng-show="unfilled" ng-click="saveFavoriteCompany('')"><i class="icon ion-ios-star-outline" style="font-size:32px;"></i></a>
     <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px;"></i></a>
-  </ion-nav-buttons>
+  </ion-nav-buttons>-->
 	<ion-content>
-		<div style="margin:0px auto; width:100%; text-align:center;"><img src="{{details.Logo}}" style="padding:10px 25px; max-height:10%; max-width:100%; "></div>
+		<div style="margin:0px auto; width:100%; text-align:center;"><img src="{{details.Image}}" style="padding:10px 25px; width:100%; "></div>
         <div style="padding:0px 20px">
            <div style="margin:0px; padding:0px; font-size: 18px"><span style="font-weight: 500">{{details.Company}}</span>
-             <span style="float: right; font-size: 16px; font-weight: 500">Booth: {{details.BoothNum}}</span>
-          </div>
-           {{details.Location}}
-           <p style="margin-top: 5px; margin-bottom: 10px">{{details.Description}}</p>
+                <a ng-show="unfilled" ng-click="saveFavoriteCompany('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
+                <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px; float:right"></i></a>
+           </div>
+           {{details.Location}}<br>
+           <span style=" font-weight: 500">Booth: {{details.BoothNum}}</span>
+
+           <div style="margin-top: 5px; margin-bottom: 20px">{{details.Description}}</div>
            
            <button ng-show="showInfo" class="button button-full button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
            <div class="row" style="height: 60px">

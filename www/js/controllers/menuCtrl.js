@@ -1,6 +1,13 @@
 angular.module('starter.controllers')
 
-.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService) {
+.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService) {
+  	
+  	MenuLinksService.getMenuLinks(). success(function (data){
+  		$scope.menu = data
+  		data = JSON.stringify(data)
+        localStorage.setItem('menu', data)
+  	})		
+
   		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
 			$scope.loginButton = true
@@ -12,19 +19,30 @@ angular.module('starter.controllers')
 
   $scope.toggleLeftSideMenu = function() {
   	$timeout(function() {
-       $ionicSideMenuDelegate.toggleLeft();
+       $ionicSideMenuDelegate.toggleRight();
     }, 100);
   };
+
+  	$scope.scan = function() {
+		$scope.isLoggedIn = localStorage.getItem("login")
+		if ($scope.isLoggedIn == null) {
+			$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+		}
+		else {
+			scan2()
+		}
+	}
   
-  $scope.menu = [
+  /*$scope.menu = [
 		{ title: 'Directory', id: 1, icon: 'briefcase', url:'directory' },
 		{ title: 'Schedule', id: 2, icon: 'calendar', url:'schedule' },
 		{ title: 'Maps', id: 3, icon:'map', url:'maps' },
 		{ title: 'Trivia', id: 4, icon:'ribbon-a', url:'trivia' },
 		{ title: 'Presentation', id: 5, icon:'speakerphone', url:'polling' },
 		{ title: 'Learning', id: 5, icon:'lightbulb', url:'learning' },
-		{ title: 'Home', id: 6, icon:'home' , url:'/app/'}
-  ];
+		{ title: 'Social', id: 5, icon:'radio-waves', url:'social' },
+		{ title: 'Home', id: 6, icon:'home' , url:'menu'}
+  ];*/
 
   $ionicModal.fromTemplateUrl('templates/login.html', {
 		scope: $scope

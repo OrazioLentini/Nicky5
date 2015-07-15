@@ -1,57 +1,22 @@
 <ion-view view-title="Learning">
-  <ion-content style="padding:0px 20px">
-    <button class="button button-block button-positive" ng-click="questions()">
-	  Practice Questions
-	</button>
-	<button class="button button-block button-positive" ng-click="video()">
-	  	View Lesson
-	</button>
-
-	<button class="button button-block button-positive" ng-click="multipleChoice()">
-		Multiple Choice
-	</button>
-	<div style=" margin-top: 25px;" ng-show="mc">
-	    <div ng-repeat="question in learningMC | filter: id = questionNum" ng-hide="notFinished">
-	        <span style="text-align: center; font-size: 16px; font-weight: 500;">{{question.question}}</span>
-	        
-	      <form ng-submit="checkAnswer()" id="loginForm">
-	         <li class="item item-checkbox" style="white-space: normal; margin-top: 25px;">
-	           <label class="checkbox">
-	             <input type="radio" value="A" name='test'>
-	           </label>
-	           {{question.A}}
-	        </li>
-	        <li class="item item-checkbox" style="margin-top: 10px; white-space: normal">
-	           <label class="checkbox">
-	             <input type="radio" value="B" name='test'>
-	           </label>
-	           {{question.B}}
-	        </li>
-	        <li class="item item-checkbox" style="margin-top: 10px; white-space: normal">
-	           <label class="checkbox">
-	             <input type="radio" value="C" name='test'>
-	           </label>
-	           {{question.C}}
-	        </li>
-	        <li class="item item-checkbox" style="margin-top: 10px; white-space: normal">
-	           <label class="checkbox">
-	             <input type="radio" value="D" name='test'>
-	           </label>
-	           {{question.D}}
-	        </li>
-	      <div style=" margin-top: 25px; text-align: center">
-	        <button ng-show="submit" class="button button-energized">Check Answer</button>
-	      </div>
-	    </form>
-	    <div style="text-align: center">
-	          <button ng-show="nextQuestionCorrect" class="button icon-right ion-checkmark button-balanced" ng-click="nextButton()">Click to Proceed</button>
-	          <button ng-show="nextQuestionIncorrect" class="button icon-right ion-close button-assertive" ng-click="nextButton()">Click to Proceed</button>
-	    </div>
-	  </div>
-	  <div ng-show="notFinished" style="font-size: 18px; text-align: center">
-	    <span >Results {{totalCorrect}} / {{questionNum}}</span><br>
-	    <button class="button icon-right ion-arrow-right-c button-positive" ng-click="closeMC()">Close</button>
-	  </div>
-	  </div>
+  <ion-content style="padding:10px 20px">
+	<ion-list>
+		<ion-item class="item  item-icon-right" ng-click="questions()">
+			Solar Energy Q&A
+			<i class="icon ion-chevron-right" style="font-size:14px"></i>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<ion-item class="item  item-icon-right" ng-click="video()">
+			Solar Energy Video Lesson
+			<i class="icon ion-chevron-right" style="font-size:14px"></i>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<ion-item class="item  item-icon-right" ng-click="multipleChoice()">
+			Solar Energy Quiz
+			<i class="icon ion-chevron-right" style="font-size:14px"></i>
+		</ion-item>
+	</ion-list>
   </ion-content>
 </ion-view>

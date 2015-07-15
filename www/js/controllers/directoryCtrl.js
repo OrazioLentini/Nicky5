@@ -3,5 +3,5 @@ angular.module('starter.controllers')
     .controller('DirectoryCtrl', ['$scope', '$http', '$state', 'DirectoryService', function ($scope, $http, $state, DirectoryService) {
 
 		$scope.requests = DirectoryService.getDirectory();
-		console.log($scope.requests)
+		//console.log($scope.requests)
     }]);
