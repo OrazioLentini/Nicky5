@@ -143,4 +143,19 @@ angular.module('starter.controllers')
 			$("#video").html('<iframe id="ytplayer"  width="100%" height="390"  src="' + x + '"  frameborder="0"/>')
 		};
 
+
+		//PROFILE
+	$ionicModal.fromTemplateUrl('templates/registration.html', {
+		scope: $scope
+	}).then(function(modal) {
+		$scope.modalRegistration = modal;
+	});
+
+	$scope.register = function() {
+		$scope.modalRegistration.show();
+	};
+	$scope.closeRegistration = function() {
+	    $scope.modalRegistration.hide();
+	};
+
     }]);
