@@ -176,3 +176,13 @@ function notify(e, t, id)
 function cancelNotify(id) {
     cordova.plugins.notification.local.clear(id);
 }
+
+function qrCode(fn, ln, bid)
+{
+    $('#qrcodeTable').qrcode({
+        render    : "image",
+        text  : "Name: " + fn + " " + ln + " BadgeID: " + bid,
+        size : 150
+    }); 
+    
+}

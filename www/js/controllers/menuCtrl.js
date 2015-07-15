@@ -44,6 +44,7 @@ angular.module('starter.controllers')
 		{ title: 'Home', id: 6, icon:'home' , url:'menu'}
   ];*/
 
+  //LOGIN
   $ionicModal.fromTemplateUrl('templates/login.html', {
 		scope: $scope
 	}).then(function(modal) {
@@ -99,6 +100,7 @@ angular.module('starter.controllers')
 		});
 	}
 
+	//PROFILE
 	$ionicModal.fromTemplateUrl('templates/profile.html', {
 		scope: $scope
 	}).then(function(modal) {
@@ -116,4 +118,32 @@ angular.module('starter.controllers')
 		SyncService.sync()
 		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 	}
+
+	//SCANNER
+	$ionicModal.fromTemplateUrl('templates/checkIn.html', {
+		scope: $scope
+	}).then(function(modal) {
+		$scope.modalCheckIn = modal;
+	});
+
+	// Triggered in the login modal to close it
+	$scope.closeCheckIn = function() {
+		$scope.modalCheckIn.hide();
+	};
+
+	// Open the login modal
+	$scope.openCheckIn = function() {
+		$scope.isLoggedIn = localStorage.getItem("login")
+		if ($scope.isLoggedIn == null) {
+			$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+		}
+		else {
+		    $scope.loginCred = JSON.parse($scope.isLoggedIn)
+
+			$scope.modalCheckIn.show();
+			$("#qrcodeTable").html("")
+			qrCode($scope.loginCred[0].FirstName, $scope.loginCred[0].LastName, $scope.loginCred[0].BadgeID)
+		}
+	};
+
 })
