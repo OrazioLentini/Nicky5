@@ -23,7 +23,8 @@ angular.module('starter.controllers')
 		{ title: 'Trivia', id: 4, icon:'ribbon-a', url:'trivia' },
 		{ title: 'Presentation', id: 5, icon:'speakerphone', url:'polling' },
 		{ title: 'Learning', id: 5, icon:'lightbulb', url:'learning' },
-		{ title: 'Home', id: 6, icon:'home' , url:'/app/'}
+		{ title: 'Social', id: 5, icon:'radio-waves', url:'social' },
+		{ title: 'Home', id: 6, icon:'home' , url:'menu'}
   ];
 
   $ionicModal.fromTemplateUrl('templates/login.html', {

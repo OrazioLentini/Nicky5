@@ -95,7 +95,7 @@ angular.module('starter.controllers')
 	}
 
    $scope.learningquestions = LearningService.getQuestions()
-   console.log($scope.learningquestions)
+   //console.log($scope.learningquestions)
    $ionicModal.fromTemplateUrl('templates/learningQuestions.html', {
 		scope: $scope
 	}).then(function(modal) {

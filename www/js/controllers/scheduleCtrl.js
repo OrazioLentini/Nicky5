@@ -115,7 +115,7 @@ angular.module('starter.controllers')
 		});
 
 		// Triggered in the login modal to close it
-		$scope.closeVideo = function() {
+		$scope.closePreview = function() {
 			$scope.modal.hide();
 		};
 
