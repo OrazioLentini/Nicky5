@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory) {
+    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', 'MenuLinksService', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, MenuLinksService) {
 		//$scope.s = SyncService.sync()
 		$ionicHistory.clearHistory()
 		setTimeout(function () {
@@ -9,7 +9,11 @@ angular.module('starter.controllers')
 				//console.log($scope.feature)
 		},50)		
 
-
+    MenuLinksService.getMenuLinks(). success(function (data){
+  		$scope.menu = data
+  		data = JSON.stringify(data)
+        localStorage.setItem('menu', data)
+  	})	
 	//$scope.feature = SyncService.getFeaturedScheduleList()
 	//console.log($scope.feature)
 
