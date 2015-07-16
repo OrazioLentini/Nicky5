@@ -26,5 +26,17 @@ angular.module('starter.controllers')
 			scan2()
 		}
 	}
+	$(document).ready(function(){
+	    setTimeout(function () {
+		    $('.slider2').slick({
+			  infinite: true,
+			  autoplay: true,
+			  autoplaySpeed: 5000,
+			  arrows:false,
+			  dots:false
 
+			});
+		},250);	
+	});
+				
 }]);
