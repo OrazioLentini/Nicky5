@@ -1,18 +1,23 @@
+
 <style>
+body{font-family: 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;}
 .inner-content {
-  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 83%, rgba(0,0,0,1) 84%);
+  /*background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 83%, rgba(0,0,0,1) 84%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(83%,rgba(0,0,0,0.99)), color-stop(84%,rgba(0,0,0,1)));
 background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
 background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
 background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
 background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
-
-  padding-top:25px;
+*/
+  background:#000;
+  background:rgba(0,0,0,0.8);
   position:absolute;
   bottom:0;
+  padding:5px 0px;
   width:100%;
   letter-spacing: 0px;
+  font-family: 'Futura', Arial;
 }
 .inner-content h1, h2, p {
    padding:0px 10px;
@@ -21,20 +26,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
  color:#31AAD8;
  font-size:12pt
 }
-.gradient-box {
-   background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 83%, rgba(0,0,0,1) 84%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(83%,rgba(0,0,0,0.99)), color-stop(84%,rgba(0,0,0,1)));
-background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
-background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
-background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
-background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
-}
+
 .gradient-purp {
    background:url("images/purplegrad.png") repeat-x;
    background-size:cover;
 }
-.pg-image {position:relative; display:block; margin:2px ; }
+.pg-image {position:relative; display:block; margin:1px 1px 0px 1px ; }
 .pg-image img {width:100%; vertical-align: top;}
 .pg-image:after{ 
   width: 100%;
@@ -94,57 +91,102 @@ background:url("images/grad-dark2.png");
   bottom:0px; position:absolute; z-index:200
 }
 
-
+.full {
+  background:#cdcdcd;
+}
 </style>
-<ion-view view-title="Nicky5" overflow-scroll="true" >
-    <ion-content class="has-header" overflow-scroll="true">
-   
+<ion-view view-title="Nicky5" >
+    <ion-content class="has-header">
+      
         <div id="featured">
-          <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="true" does-continue="true" set-interval="10000">
+          <!--<ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="true" does-continue="true" set-interval="10000">
             <ion-slide>
                <div class="box">
                   <a href="{{feature.live.link}}">
                     <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
                       <img src="{{feature.Image}}">
-                      <div class="inner-content">
-                        <h2 style="margin:0px; letter-spacing: -.5px; color:#F1F1F1">{{feature.Title}}</h2>
-                        <p>{{feature.ScheduledDate}} {{feature.StartTime}}</p>
+                      <div class="inner-content" style="text-align:center;">
+                        <span style="margin:0px; color:#FFF; font-size:14px; font-weight:600">{{feature.Title}}</span>
+                        <br>
+                        <span ng-if="feature.StartTime" style="font-size:12px; color:#FFF;">Start Time: {{feature.StartTime}}</span>
                       </div>
                     </div>
                   </a>
               </div>
              </ion-slide>
-               <ion-slide>
+
+          </ion-slide-box>-->
+            <div class="slider2">
+                  <div class="box">
+                      <a href="{{feature.live.link}}">
+                        <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
+                          <img src="{{feature.Image}}">
+                          <div class="inner-content" style="text-align:center;">
+                            <span style="margin:0px; color:#FFF; font-size:14px; font-weight:600">{{feature.Title}}</span>
+                            <br>
+                            <span ng-if="feature.StartTime" style="font-size:12px; color:#FFF;">Start Time: {{feature.StartTime}}</span>
+                          </div>
+                        </div>
+                      </a>
+                </div>
                <div class="box">
-                  <a href="{{feature.live.link}}">
-                    <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
-                      <img src="{{feature.Image}}">
-                      <div class="inner-content">
-                        <h2 style="margin:0px; letter-spacing: -.5px; color:#F1F1F1">This is a test</h2>
-                        <p>Scroller</p>
-                      </div>
+                      <a href="{{feature.live.link}}">
+                        <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
+                          <img src="images/favorites.jpg">
+                          <div class="inner-content" style="text-align:center;">
+                            <span style="margin:0px; color:#FFF; font-size:14px; font-weight:600">Check your Favorites</span>
+                            <br>
+                            <span ng-if="feature.StartTime" style="font-size:12px; color:#FFF;">Right here, Right now.</span>
+                          </div>
+                        </div>
+                      </a>
+                </div>
+            </div>
+      </div>
+     <div class="full">
+      <div ng-repeat="x in menu|filter:{TileOrder: '!null'}|orderBy : 'TileOrder'">
+       <div style="width:50%; float:left; position:relative;" ng-if="x.TileOrder != 5 && x.TileOrder != 10 && x.TileOrder != 15 " ui-sref="app.{{x.Page}}({ID: {{x.ID}}})">
+                  <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-{{x.Icon}}" style="color:#F87D3F; font-size:1.4em"></i>
                     </div>
-                  </a>
-              </div>
-             </ion-slide>
-             <ion-slide>
-               <div class="box">
-                  <a href="{{feature.live.link}}">
-                    <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
-                      <img src="{{feature.Image}}">
-                      <div class="inner-content">
-                        <h2 style="margin:0px; letter-spacing: -.5px; color:#F1F1F1">This is a test</h2>
-                        <p>Scroller</p>
-                      </div>
-                    </div>
-                  </a>
-              </div>
-             </ion-slide>
-          </ion-slide-box>
+                  </div>
+                  <div class="pg-image">
+                    <img src="{{x.Image}}">
+                  </div>
+
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">{{x.Name}}</span>
+                        <p style="padding:0px; font-size:.8em">{{x.Description}}</p>
+                        </div>
+                   </div>
         </div>
 
+        <div class="featured-box" style="float:left; position:relative;" ng-if="x.TileOrder == '5'|| x.TileOrder == '10'|| x.TileOrder == '15'" ui-sref="app.{{x.Page}}({ID: {{x.ID}}})">
+                  <a style="text-decoration:none">
+                  <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-{{x.Icon}}" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="{{x.Image}}">
+                  </div>
 
-        <div style="width:50%; float:left; position:relative;">
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">{{x.Name}}</span>
+                        <p style="padding:0px; font-size:.8em">{{x.Description}}</p>
+                        </div>
+                   </div>
+                   </a>
+        </div>
+      </div>
+
+
+
+      <!--  <div style="width:50%; float:left; position:relative;" >
                   <div style="position:relative; width:100%; z-index:999;">
                     <div style="position:absolute; top:10px; right:10px;">
                        <i class="icon ion-briefcase" style="color:#F87D3F; font-size:1.4em"></i>
@@ -161,15 +203,7 @@ background:url("images/grad-dark2.png");
                         </div>
                    </div>
         </div>
-           <!--  <div class="gradient-purp" style="position:absolute; left:0; height:100%; bottom:0px; color:#000; width:100%;">
-                   <div style="bottom:15px; position:absolute;">
-                        <div style="padding:10px; width:100%; color:#FFF">
-                        <span style="font-size:14px; font-weight:800;">Directory</span>
-                        <p style="padding:0px;">Navigate full list of attendees</p>
-                        </div>
-                   </div>
-             </div>
-        </div>-->
+         
          <div style="width:50%; float:left; position:relative;">
                   <div style="position:relative; width:100%; z-index:999;">
                     <div style="position:absolute; top:10px; right:10px;">
@@ -188,6 +222,11 @@ background:url("images/grad-dark2.png");
                    </div>
         </div>
        <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-map" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
                   <div class="pg-image">
                     <img src="images/maps-new.jpg" style="width:100%;">
                   </div>
@@ -199,6 +238,11 @@ background:url("images/grad-dark2.png");
                    </div>
         </div>
        <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-speakerphone" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
                   <div class="pg-image">
                     <img src="images/presentations-new.jpg" style="width:100%;">
                   </div>
@@ -211,6 +255,11 @@ background:url("images/grad-dark2.png");
         </div>
 
          <div class="featured-box" style="float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-radio-waves" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
                   <div class="pg-image">
                     <img src="images/social-new.jpg">
                   </div>
@@ -223,6 +272,11 @@ background:url("images/grad-dark2.png");
         </div>
 
         <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-lightbulb" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
                   <div class="pg-image">
                     <img src="images/e-learning.jpg">
                   </div>
@@ -235,6 +289,11 @@ background:url("images/grad-dark2.png");
         </div>
 
         <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-star" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
                   <div class="pg-image">
                     <img src="images/favorites.jpg">
                   </div>
@@ -244,10 +303,10 @@ background:url("images/grad-dark2.png");
                         <p style="padding:0px; font-size:.8em">Navigate full list of attendees</p>
                         </div>
                    </div>
-        </div>
-
+        </div>-->
+    
         <div style="clear:both; height:2px;"></div>
-       
+    </div>   
    
 
    </ion-content>
