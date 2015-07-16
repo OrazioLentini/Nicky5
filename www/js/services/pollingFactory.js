@@ -44,6 +44,6 @@ angular.module('starter.services')
                     callback: 'JSON_CALLBACK',
                     format:'json'
                 }
-            })          
+            })      
         }
 });

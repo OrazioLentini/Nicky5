@@ -4,31 +4,42 @@
 
 
 		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
-		   <li class="item item-divider" style="background:#293F54; color:#F2F2F2">{{ScheduledDate}}</li>
+		   <li class="item item-divider" style="background:#bfbfbf; color:#F2F2F2">{{ScheduledDate}}</li>
 
-		   <div ng-repeat="x in sch" style="margin-bottom: 5px;">
- 			<li class="item item-thumbnail-left item-icon-right">
+		   <div ng-repeat="x in sch">
+ 			<li ng-if="x.Speaker" class="item item-thumbnail-left item-icon-right" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})">
  				<img style="height: 80px" src="{{x.ThumbImage}}"/>
 
 
- 				<p ng-if="x.Speaker" style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
- 				<p ng-if="x.Speaker" style="font-size:12px;">{{x.Title}}</p>
-
-
- 				<p ng-if="x.Speaker == ''" style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
+ 				<p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
+ 				<p style="font-size:12px;">{{x.Title}}</p>
 
  				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
- 				<a class=" icon-left ion-eye" style="font-size: 14px !important" ng-if="x.Speaker" style="font-size:12px;" ng-click="open('{{x.RecID}}', '{{x.SpeakerID}}')"> View Slides</a>
 
  				<i class="icon ion-ios-star' + icon + '" ' + onClick + '></i>
  				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:32px; float: right"></i></a>
        			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
            </li>
-			<div ng-if="x.Speaker" class="button-bar">
-				<a class="button button-stable" ng-click="open('{{x.RecID}}', '{{x.SpeakerID}}')" style="font-size: 14px;">View Details</a>
+
+           <li ng-if="x.Speaker == ''" class="item item-thumbnail-left item-icon-right">
+ 				<img style="height: 80px" src="{{x.ThumbImage}}"/>
+
+ 				<p style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
+
+ 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
+
+ 				<i class="icon ion-ios-star' + icon + '" ' + onClick + '></i>
+ 				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:32px; float: right"></i></a>
+       			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+           </li>
+
+			<!--<div ng-if="x.Speaker" class="button-bar">
+				<a ng-if="x.Slides == '0'" class="button button-stable" ng-click="open('{{x.RecID}}', '{{x.SpeakerID}}')" style="font-size: 14px;">View Details</a>
+				<a ng-if="x.Slides == '1'" class="button button-stable" ng-click="open('{{x.RecID}}', '{{x.SpeakerID}}')" style="font-size: 14px;">View Details/Slides</a>
 				<a class="button button-stable" style="font-size: 14px;" ng-click="register()">Register</a>
-				<a class="button button-stable" style="font-size: 14px;">Attend</a>
-			</div>
+				<a ng-show="{{x.NotAttending}}" class="button button-stable" style="font-size: 14px;" ng-click="attendPresentation('{{x.RecID}}')">Attend</a>
+				<a ng-show="{{x.Attending}}" class="button button-balanced" style="font-size: 14px;" ng-click="notAttendingPresentation('{{x.RecID}}')">I'm Attending</a>
+			</div>-->
            </div>
 	    </ul>   
 

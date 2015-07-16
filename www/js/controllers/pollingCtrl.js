@@ -1,15 +1,42 @@
 angular.module('starter.controllers')
 
-    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService' ,'MenuLinksService',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService, MenuLinksService) {
+    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService' ,'MenuLinksService', 'ScheduleService', '$ionicPopup', '$ionicSlideBoxDelegate',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService, MenuLinksService, ScheduleService, $ionicPopup, $ionicSlideBoxDelegate) {
+		  $scope.$on('$ionicView.enter', function(){
+
+		$timeout(function () {
+			$ionicSlideBoxDelegate.update();
+
+		}, 1);
+  		})	
+		  		PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
+			$scope.slides = data
+		})
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
+		$scope.desc =ScheduleService.getDetails($stateParams.PresentationID);
 
-		//$scope.requests = DirectoryService.getDirectory();
+		$scope.speakerInfo = SpeakerService.getSpeaker($stateParams.SpeakerID)
+
 		$scope.question = false
 		$scope.answer = false
-		$scope.speaker = false
+		$scope.speaker = true
 		
-		if($stateParams.SpeakerID == ""){
+
+		$ionicModal.fromTemplateUrl('templates/presentationSlides.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.modalInfo = modal;
+		});
+
+		$scope.closePreview = function() {
+			$scope.modalInfo.hide();
+		};
+
+		// Open the Preview Slides modal
+		$scope.openSpeaker = function(id, speakerID) {
+			$scope.modalInfo.show()
+		};
+		/*if($stateParams.SpeakerID == ""){
 			$scope.noSpeaker = "There is no speaker information available at this time."
 		}
 		else {
@@ -17,7 +44,7 @@ angular.module('starter.controllers')
 			setTimeout(function () {
 				$('#pollingSpeaker').html('<div class="media" style="width: 90%; text-align: center; margin-left: 5%;" ><img style="width:50%;" class="media-object" src="' + $scope.speaker.Image + '"/><div class="media-body" style="font-size:120%; margin-top:12px;">' + $scope.speaker.Name + '<br><span style="font-size:12px">' + $scope.speaker.Title + '</span><div style="height: 1px; background: black; width: 100%"></div></div><p style="margin-top: 10px">' + $scope.speaker.About + '</p></div>')
 			}, 50)
-		}
+		}*/
 
 
 		$scope.toggle = function (type) {
@@ -25,22 +52,22 @@ angular.module('starter.controllers')
 				$scope.question = true
 				$scope.answer = false 
 				$scope.speaker = false
-			    $('.button').removeClass('button-dark').addClass('button-stable');
-        		$('.question').addClass('button-dark');
+			    $('.presentation .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+        		$('.question').addClass('buttonPickerActive');
 			}
 			if (type == 'polling') {
 				$scope.question = false
 				$scope.answer = true 
 				$scope.speaker = false
-				$('.button').removeClass('button-dark').addClass('button-stable');
-        		$('.polling').addClass('button-dark');
+				$('.presentation .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+        		$('.polling').addClass('buttonPickerActive');
 			}
 			if (type == 'speaker') {
 				$scope.question = false
 				$scope.answer = false 
 				$scope.speaker = true
-				$('.button').removeClass('button-dark').addClass('button-stable');
-        		$('.speaker').addClass('button-dark');
+				$('.presentation .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+        		$('.speaker').addClass('buttonPickerActive');
 			}
 		}
 
@@ -121,5 +148,18 @@ angular.module('starter.controllers')
 			SyncService.sync()
 			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 		}
+
+
+		$scope.register = function() {
+			var confirmPopup = $ionicPopup.confirm({
+				title: 'Confirmation',
+				template: 'Do you want to register for this event?'
+			});
+			confirmPopup.then(function(res) {
+				if(res) {
+					$ionicLoading.show({template: 'Registration Complete', noBackdrop: true, duration: 1000});
+				}
+			});
+		};
 
     }]);

@@ -11,6 +11,7 @@ angular.module('starter.controllers')
 
     	$scope.checkFav = function () {
 			$scope.schedule = ScheduleService.getSchedule();
+			$scope.att = ScheduleService.getAttending()
 			$scope.tempSch = $scope.schedule
 			$scope.fav = FavoritesService.checkIfFavoriteSchedule()
 
@@ -18,11 +19,14 @@ angular.module('starter.controllers')
 				tempTime = $scope.schedule[i].StartTime
 				$scope.schedule[i].displayTime = Date.parse(tempTime)
 
-				if ($scope.schedule[i].fav == null) {
-					$scope.schedule[i].Fav = false
-					$scope.schedule[i].NoFav = true
-				}
+				$scope.schedule[i].Fav = false
+				$scope.schedule[i].NoFav = true
+				
+				$scope.schedule[i].Attending = false
+				$scope.schedule[i].NotAttending = true
+				
 			}
+
 			if ($scope.fav != 'all') {
 				for (j = 0; j < $scope.fav.length; j++){
 					var x = $scope.fav[j].ID
@@ -36,6 +40,21 @@ angular.module('starter.controllers')
 					}
 				}
 			}
+
+			if ($scope.att != 'all') {
+				for (j = 0; j < $scope.att.length; j++){
+					var x = $scope.att[j].ID
+
+					for (i = 0; i < $scope.schedule.length; i++){
+
+						if ($scope.schedule[i].RecID == x) {
+							$scope.schedule[i].Attending = true
+							$scope.schedule[i].NotAttending = false
+						}
+					}
+				}
+			}
+
 			$scope.schedule = _.groupBy($scope.schedule, 'ScheduledDate') 
 		}
 		$scope.checkFav()
@@ -157,5 +176,33 @@ angular.module('starter.controllers')
 	$scope.closeRegistration = function() {
 	    $scope.modalRegistration.hide();
 	};
+
+	$scope.attendPresentation = function (id) {
+		var confirmPopup = $ionicPopup.confirm({
+				title: 'Confirmation',
+				template: 'Would you reserve a spot for this presentation?'
+			});
+			confirmPopup.then(function(res) {
+				if(res) {
+					ScheduleService.saveAttending(id)
+					$scope.checkFav()
+				}
+			});
+	}
+
+	$scope.notAttendingPresentation = function(id) {
+		var confirmPopup = $ionicPopup.confirm({
+			title: 'Confirmation',
+			template: 'Are you sure you want to give up your reservation?'
+		});
+		confirmPopup.then(function(res) {
+		if(res) {
+			ScheduleService.deleteAttending(id);
+			$scope.checkFav()
+			$ionicLoading.show({template: 'Reservation Removed', noBackdrop: true, duration: 1000});
+		//cancelNotify(id)
+		}
+		});
+	}
 
     }]);

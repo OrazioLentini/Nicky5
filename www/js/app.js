@@ -116,7 +116,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('app.polling', {
-      url: "/polling/:SpeakerID/:ID",
+      url: "/polling/:SpeakerID/:ID/:PresentationID",
       views: {
         'menuContent': {
           templateUrl: "templates/presentation.html",
