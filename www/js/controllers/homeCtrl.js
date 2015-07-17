@@ -36,10 +36,14 @@ angular.module('starter.controllers')
 
 			});*/
 	        var mySwiper = new Swiper('.swiper-container', {
-			    autoplay: 5000,
+			    autoplay: 8000,
 			    effect: 'slide',
-			    speed: 500
+			    speed: 800
 			});   
+			
 		},250);	
+		setTimeout(function () {
+			// navigator.splashscreen.hide();
+		},1000);	 
 				
 }]);
