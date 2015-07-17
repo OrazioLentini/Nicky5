@@ -76,7 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 	
 	.state('app.details', {
-      url: "/directory/:RecID",
+      url: "/details/:RecID",
   	  views: {
         'menuContent': {
         templateUrl: "templates/detail.html",
@@ -110,6 +110,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'menuContent': {
           templateUrl: "templates/favorites.html",
           controller: 'FavoritesCtrl'
+        }
+      }
+    })
+
+  .state('app.presentations', {
+      url: "/presentations/:ID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/presentationLists.html",
+          controller: 'PresentationsListsCtrl'
         }
       }
     })

@@ -8,12 +8,12 @@ angular.module('starter.controllers')
 
 		}, 1);
   		})	
-		  		PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
+		PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
 			$scope.slides = data
 		})
-		$scope.title = MenuLinksService.getHeader($stateParams.ID)
+		//$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
-		$scope.desc =ScheduleService.getDetails($stateParams.PresentationID);
+		$scope.desc = PollingService.getDetails($stateParams.PresentationID);
 
 		$scope.speakerInfo = SpeakerService.getSpeaker($stateParams.SpeakerID)
 
@@ -22,7 +22,7 @@ angular.module('starter.controllers')
 		$scope.speaker = true
 		
 
-		$ionicModal.fromTemplateUrl('templates/presentationSlides.html', {
+		$ionicModal.fromTemplateUrl('templates/presentationSpeaker.html', {
 			scope: $scope
 		}).then(function(modal) {
 			$scope.modalInfo = modal;
@@ -135,6 +135,7 @@ angular.module('starter.controllers')
 				$scope.logoutButton = true
 				$scope.profileButton = true
 				$scope.loginButton = false
+				$scope.show = false
 				//$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();
@@ -161,5 +162,12 @@ angular.module('starter.controllers')
 				}
 			});
 		};
+	    setTimeout(function () {
+	        var mySwiper = new Swiper('.swiper-container', {
+			    autoplay: false,
+			    effect: 'slide',
+			    speed: 500
+			});   
+		},250);	
 
     }]);

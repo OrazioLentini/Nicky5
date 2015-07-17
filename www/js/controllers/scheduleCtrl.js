@@ -15,7 +15,7 @@ angular.module('starter.controllers')
 			$scope.tempSch = $scope.schedule
 			$scope.fav = FavoritesService.checkIfFavoriteSchedule()
 
-			for (i = 0; i < $scope.schedule.length; i++){
+			/*for (i = 0; i < $scope.schedule.length; i++){
 				tempTime = $scope.schedule[i].StartTime
 				$scope.schedule[i].displayTime = Date.parse(tempTime)
 
@@ -25,7 +25,7 @@ angular.module('starter.controllers')
 				$scope.schedule[i].Attending = false
 				$scope.schedule[i].NotAttending = true
 				
-			}
+			}*/
 
 			if ($scope.fav != 'all') {
 				for (j = 0; j < $scope.fav.length; j++){
