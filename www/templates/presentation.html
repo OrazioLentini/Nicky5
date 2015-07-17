@@ -1,4 +1,4 @@
-<ion-view view-title="{{title}}">
+<ion-view view-title="{{desc.Title}}">
     <style type="text/css">
         .score {
           font-size:24px;
@@ -13,7 +13,7 @@
         }
     </style>
     <div style="height: 40px;"></div>
-    <div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
+    <!--<div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
     
       <div ng-show="show" id="signIn"  style="text-align: center; z-index: 2; position: relative;">
         <div style="height: 15px;"></div>
@@ -28,20 +28,43 @@
 
         </a>
         <div style="height: 15px;"></div>
-      </div>  
+      </div> --> 
       <div class="bar bar-subheader bar-light">
-	    <div class="button-bar">
-			<a class="button button-stable speaker" ng-click="toggle('speaker')">About Speaker</a>
-			<a class="button button-stable question" ng-click="toggle('question')">Ask Question</a>
-			<a class="button button-stable polling"  ng-click="toggle('polling')">Answer Polling</a>
+	    <div class="button-bar presentation">
+			<a class="button buttonPickerActive speaker " ng-click="toggle('speaker')">Presentation</a>
+			<a class="button buttonPicker  question" ng-click="toggle('question')">Ask Question</a>
+			<a class="button buttonPicker  polling"  ng-click="toggle('polling')">Answer Polling</a>
 	    </div>
 	  </div>
   <ion-content>
 
-	<div style="font-size: 14px; text-align: center; margin-top: 45px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>
+	<!--<div style="font-size: 14px; text-align: center; margin-top: 45px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>-->
 	<div style="height: 20px;"></div>
+	<div id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px">
+		<ion-slide-box on-slide-changed="slideHasChanged($index)">
+		  <ion-slide ng-repeat="x in slides">
+		    <img src="{{x.Link}}" style="width: 100%">
+		  </ion-slide>
+		</ion-slide-box>
+		<div style="font-size: 10px; text-align: center">Swipe left or right to navigate</div>
 
-	<div data-role="content" id="pollingAnswers" ng-show="answer">
+		<div class="list" style="margin-top: 5px" ng-click="openSpeaker()">
+			<div class="item item-thumbnail-left">
+				<img src="{{speakerInfo.ThumbImage}}">
+				<h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
+				<!--<i class="icon ion-information-circled" style="font-size:32px; float: right"></i>-->
+				{{speakerInfo.Title}}
+				<div style="font-size: 10px;">Click to learn more about the speaker</div>
+			</div>
+		</div>
+		<div>
+			<span style="font-weight: 800"> Summary</span>
+			<p>{{desc.ShortDesc}}</p>
+		</div>
+		<div style="height: 70px"></div>
+	</div>
+
+	<div id="pollingAnswers" ng-show="answer">
 	    <div style="width:100%;">
 	        <div style="text-align:center; max-width:960px; margin:0px auto;">
 	            Polling Key
@@ -73,7 +96,7 @@
 	    </div>
     </div>
 
-    <div data-role="content" id="pollingFeedback" style="width: 90%; text-align: center; margin-left: 5%;" ng-show="question">
+    <div id="pollingFeedback" style="width: 90%; text-align: center; margin-left: 5%;" ng-show="question">
         <form id="formQuestionPolling"ng-submit="submit()">
             Ask a Question  
             <div style="height: 10px"></div>
@@ -85,9 +108,8 @@
         </form>
     </div>
 
-	<div data-role="content" id="pollingSpeaker" ng-show="speaker">
-		<div style="text-align: center">{{noSpeaker}}</div>
-	</div>
-
   </ion-content>
+	<div class="bar bar-footer button-stable buttonPicker title" style="border-bottom: none !important;" ng-show="speaker">
+		<div class="button button-stable button-clear title" ng-click="register()" style="color: white">Register</div>
+	</div>
 </ion-view>

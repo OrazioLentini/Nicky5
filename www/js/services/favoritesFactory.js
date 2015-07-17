@@ -4,12 +4,12 @@ angular.module('starter.services')
 
 	var success = ""
 	return {
-		checkIfFavoriteSchedule: function(id) {
+		checkIfFavoriteSchedule: function() {
 			
 			var fav = localStorage.getItem('scheduleFavorites')
-			favdata = JSON.parse(fav)
 
-			if(favdata != null){
+			if(fav != null){
+				favdata = JSON.parse(fav)
 				return favdata
 			}
 			else {
