@@ -7,7 +7,17 @@ angular.module('starter.services')
 		getSchedule: function(){ 
 				var temp = localStorage.getItem('tSchedule')
 				requests = JSON.parse(temp)
-				//console.log(requests)
+
+				for (i = 0; i < requests.length; i++){
+					tempTime = requests[i].StartTime
+					requests[i].displayTime = Date.parse(tempTime)
+
+					requests[i].Fav = false
+					requests[i].NoFav = true	
+					
+					requests[i].Attending = false
+					requests[i].NotAttending = true			
+				}
 				
 				return requests;
 		},

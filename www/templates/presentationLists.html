@@ -1,0 +1,28 @@
+<ion-view view-title="{{title}}">
+      <div class="bar bar-subheader bar-light">
+	    <div class="button-bar presentationList">
+			<a class="button buttonPickerActive all" style="font-size: 12px" ng-click="toggle('all')">All</a>
+			<a class="button buttonPicker live" style="font-size: 12px" ng-click="toggle('live')">Live</a>
+			<a class="button buttonPicker upcoming" style="font-size: 12px" ng-click="toggle('upcoming')">Upcoming</a>
+			<a class="button buttonPicker ended" style="font-size: 12px" ng-click="toggle('ended')">Finished</a>
+	    </div>
+	  </div>
+  <ion-content style="margin-top: 45px" >
+	<ul class="table-view" id="schedule">
+	<div ng-repeat="x in list">
+		<li class="item item-thumbnail-left item-icon-right" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})">
+			<img style="height: 80px" src="{{x.ThumbImage}}"/>
+
+
+			<p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
+			<p style="font-size:12px;">{{x.Title}}</p>
+			<i class="icon ion-chevron-right" style="font-size:14px"></i>
+
+			<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.ScheduledDate}} {{x.displayTime | date: 'shortTime'}} </strong></p>
+		</li>
+	</div>
+</ul>
+  </ion-content>
+</ion-view>
+
+
