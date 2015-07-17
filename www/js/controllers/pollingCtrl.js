@@ -22,7 +22,7 @@ angular.module('starter.controllers')
 		$scope.speaker = true
 		
 
-		$ionicModal.fromTemplateUrl('templates/presentationSlides.html', {
+		$ionicModal.fromTemplateUrl('templates/presentationSpeaker.html', {
 			scope: $scope
 		}).then(function(modal) {
 			$scope.modalInfo = modal;
@@ -162,18 +162,12 @@ angular.module('starter.controllers')
 				}
 			});
 		};
-
-	$(document).ready(function(){
 	    setTimeout(function () {
-		    $('.sliderSlides').slick({
-			  infinite: false,
-			  autoplay: false,
-			  autoplaySpeed: 5000,
-			  arrows:true,
-			  dots:true
-
-			});
-	},250);	
-	});
+	        var mySwiper = new Swiper('.swiper-container', {
+			    autoplay: false,
+			    effect: 'slide',
+			    speed: 500
+			});   
+		},250);	
 
     }]);

@@ -36,7 +36,7 @@ angular.module('starter.controllers')
 
 			});*/
 	        var mySwiper = new Swiper('.swiper-container', {
-			    autoplay: 5000,
+			    autoplay: false,
 			    effect: 'slide',
 			    speed: 500
 			});   

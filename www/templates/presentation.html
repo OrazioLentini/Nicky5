@@ -18,22 +18,6 @@
         }
     </style>
     <div style="height: 40px;"></div>
-    <!--<div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
-    
-      <div ng-show="show" id="signIn"  style="text-align: center; z-index: 2; position: relative;">
-        <div style="height: 15px;"></div>
-        <a class="navigate-right" href="">
-            <span class="media-object icon ion-person"></span>
-            <div class="media-body">
-                <strong>Sign In to Participate</strong>
-            </div>
-            <div style="height: 15px;"></div>
-
-            <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
-
-        </a>
-        <div style="height: 15px;"></div>
-      </div> --> 
       <div class="bar bar-subheader bar-light">
 	    <div class="button-bar presentation">
 			<a class="button buttonPickerActive speaker " ng-click="toggle('speaker')">Presentation</a>
@@ -46,13 +30,19 @@
 	<!--<div style="font-size: 14px; text-align: center; margin-top: 45px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>-->
 	<div style="height: 20px;"></div>
 	<div id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px">
-		<div >
-			<ion-slide-box on-slide-changed="slideHasChanged($index)">
-			  <ion-slide ng-repeat="x in slides">
-			    <img src="{{x.Link}}" style="width: 100%">
-			  </ion-slide>
-			</ion-slide-box>
-		</div>
+
+        <div style="background:#000;" class="swiper-container">
+          <div class="swiper-wrapper" >
+              <div class="box swiper-slide" ng-repeat="x in slides">
+                    <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
+                      <img src="{{x.Link}}" style="width:100%">
+                    </div>
+                </div>
+            </div>
+      </div>
+
+
+
 		<div class="list" style="margin-top: 10px" ng-click="openSpeaker()">
 			<div class="item item-thumbnail-left">
 				<img src="{{speakerInfo.ThumbImage}}">
@@ -147,3 +137,4 @@
 		<div class="button button-stable button-clear title" ng-click="register()" style="color: white">Register</div>
 	</div>
 </ion-view>
+
