@@ -70,6 +70,20 @@ angular.module('starter.services')
                 //this.saveLocally()
             })
         },     
+        this.getPresentationList = function () {
+            var url = 'http://patty5.com/AppApis/apiPresentationList.asp';
+            $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            }). 
+            success (function(data){
+                data = JSON.stringify(data)
+                localStorage.setItem('presentationList', data)
+                //this.saveLocally()
+            })
+        },   
         this.syncInfoRequest = function () {
             var data = localStorage.getItem('infoRequest')
             if(data == null) {
@@ -217,6 +231,7 @@ angular.module('starter.services')
             this.getSpeaker()
             this.getSocialMediaInfo()
             this.syncInfoRequest()
+            this.getPresentationList()
             setTimeout(function () {
                 saveSocialLocally()
             },210)  

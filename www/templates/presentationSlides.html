@@ -4,7 +4,7 @@
     <h1 class="title">{{speakerInfo.Name}}</h1>
     <div class="buttons">
     </div>
-    <button class="button button-icon ion-ios-arrow-back button-clear" style="font-size: 16px; color: #444" ng-click="closePreview()"> {{desc.Title}}</button>
+    <button class="button button-icon ion-ios-arrow-back button-clear" style="font-size: 16px; color: #444" ng-click="closePreview()"> Back</button>
 
   </ion-header-bar>
   <ion-content style="padding:0px 20px; margin-top: 20px">
@@ -32,7 +32,7 @@
     <p>{{desc.ShortDesc}}</p>
   </div>-->
 <div class="media" style="width: 100%; " >
-<img style="width:100%;" class="media-object" src="{{desc.Image}}"/>
+<img style="width:100%;" class="media-object" src="{{speakerInfo.Image}}"/>
 <div class="media-body" style="font-size:120%; margin-top:12px;">{{speakerInfo.Name}}<br>
 <span style="font-size:12px">{{speakerInfo.Title}}</span>
 <div style="height: 1px; background: black; width: 100%"></div>

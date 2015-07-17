@@ -89,6 +89,7 @@ angular.module('starter.controllers')
 		});
 		confirmPopup.then(function(res) {
 			if(res) {
+				console.log($scope)
 				localStorage.removeItem("login");
 				localStorage.removeItem("infoRequest");
 				$("#Username").val("");
@@ -96,6 +97,7 @@ angular.module('starter.controllers')
 				$scope.logoutButton = false
 				$scope.profileButton = false
 				$scope.loginButton = true
+				$scope.show = true
 			}
 		});
 	}

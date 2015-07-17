@@ -8,12 +8,12 @@ angular.module('starter.controllers')
 
 		}, 1);
   		})	
-		  		PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
+		PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
 			$scope.slides = data
 		})
-		$scope.title = MenuLinksService.getHeader($stateParams.ID)
+		//$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
-		$scope.desc =ScheduleService.getDetails($stateParams.PresentationID);
+		$scope.desc = PollingService.getDetails($stateParams.PresentationID);
 
 		$scope.speakerInfo = SpeakerService.getSpeaker($stateParams.SpeakerID)
 
@@ -135,6 +135,7 @@ angular.module('starter.controllers')
 				$scope.logoutButton = true
 				$scope.profileButton = true
 				$scope.loginButton = false
+				$scope.show = false
 				//$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();
@@ -161,5 +162,18 @@ angular.module('starter.controllers')
 				}
 			});
 		};
+
+	$(document).ready(function(){
+	    setTimeout(function () {
+		    $('.sliderSlides').slick({
+			  infinite: false,
+			  autoplay: false,
+			  autoplaySpeed: 5000,
+			  arrows:true,
+			  dots:true
+
+			});
+	},250);	
+	});
 
     }]);
