@@ -11,26 +11,28 @@
           max-width:450px;
           width:100%;
         }
+        .scroll {
+
+          height:100%;
+        }
     </style>
-  <ion-content>
- 
-      <div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
-    
-      <div ng-show="show" id="signIn"  style="text-align: center; z-index: 2; position: relative;">
-            <div style="height: 15px;"></div>
-            <a class="navigate-right" href="">
-                <span class="media-object icon ion-person"></span>
-                <div class="media-body">
-                    <strong>Sign In to Participate</strong>
-                </div>
-                        <div style="height: 15px;"></div>
-    
-                <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
-    
-            </a>
-            <div style="height: 15px;"></div>
-        </div>  
+        <div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; top:50px; bottom:0; left:0; right:0; position: absolute;">
+        <div id="signIn"  style="text-align: center; z-index: 2;">
+          <div style="height: 15px;"></div>
+          <a class="navigate-right" href="">
+              <span class="media-object icon ion-person"></span>
+              <div class="media-body">
+                  <strong>Sign In to Participate</strong>
+              </div>
+              <div style="height: 15px;"></div>
+
+              <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
+
+          </a>
+        </div> 
+      </div>
         
+  <ion-content>
         <div style="width:100%; margin-top: 20px;">
             <div style="text-align:center; max-width:960px; margin:0px auto;">
                 <h1><span id="title">Trivia Answer Key</span></h1>

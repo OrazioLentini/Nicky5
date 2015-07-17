@@ -18,7 +18,7 @@ angular.module('starter.services')
 			}
 		},
 		saveFavoriteSchedule: function(details){
-			var favorite = '{"ID": \"' + details.RecID + '\","Speaker": \"' + details.Speaker + '\", "SpeakerID": \"' + details.SpeakerID + '\", "Title": \"' + details.Title + '\", "Image": \"' + details.Image + '\", "StartTime": \"' + details.StartTime + '\", "ScheduledDate": \"' + details.ScheduledDate + '\", "type": \"schedule\"}'
+			var favorite = '{"ID": \"' + details.RecID + '\","Speaker": \"' + details.Speaker + '\", "SpeakerID": \"' + details.SpeakerID + '\", "Title": \"' + details.Title + '\", "Image": \"' + details.Image + '\","ThumbImage": \"' + details.ThumbImage + '\", "StartTime": \"' + details.StartTime + '\", "ScheduledDate": \"' + details.ScheduledDate + '\","displayTime": \"' + details.displayTime + '\" , "type": \"schedule\"}'
 
 			var newFav = ''
 		    var temp = localStorage.getItem('scheduleFavorites')
@@ -81,11 +81,10 @@ angular.module('starter.services')
 			}
 		},
 		saveFavoriteCompany: function(details){
-			
 			//alertify.set({ delay: 1500 });
 			//alertify.success("Saved to Favorites");
 
-			var favorite = '{"ID": \"' + details.RecID + '\", "Image": \"' + details.Image + '\", "Logo": \"' + details.ThumbLogo + '\" ,  "Company": \"' + details.Company + '\", "Location": \"' + details.Location + '\", "Description": \"' + details.Description + '\", "PreviewDescription": \"' + details.PreviewDesc + '\", "Video": \"' + details.Video + '\", "type": \"company\" }'
+			var favorite = '{"ID": \"' + details.RecID + '\" , "BoothNum": \"' + details.BoothNum + '\" , "Image": \"' + details.Image + '\", "Logo": \"' + details.ThumbLogo + '\" ,  "Company": \"' + details.Company + '\", "Location": \"' + details.Location + '\", "Description": \"' + details.Description + '\", "PreviewDesc": \"' + details.PreviewDesc + '\", "Video": \"' + details.Video + '\", "type": \"company\" }'
 			
 			var newFav = ''
 			var temp = localStorage.getItem('companyFavorites')

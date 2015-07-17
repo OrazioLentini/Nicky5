@@ -76,7 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 	
 	.state('app.details', {
-      url: "/directory/:RecID",
+      url: "/details/:RecID",
   	  views: {
         'menuContent': {
         templateUrl: "templates/detail.html",

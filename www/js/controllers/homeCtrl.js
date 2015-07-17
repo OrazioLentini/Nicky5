@@ -5,9 +5,8 @@ angular.module('starter.controllers')
 		$ionicHistory.clearHistory()
 		setTimeout(function () {
 				$scope.feature = SyncService.getFeaturedScheduleList()
-				localStorage.setItem("menu", data)
 				//console.log($scope.feature)
-		},50)		
+		},100)		
 
     MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
@@ -36,7 +35,7 @@ angular.module('starter.controllers')
 
 			});*/
 	        var mySwiper = new Swiper('.swiper-container', {
-			    autoplay: false,
+			    autoplay: 5000,
 			    effect: 'slide',
 			    speed: 500
 			});   
