@@ -1,22 +1,18 @@
 <ion-view view-title="{{title}}">
     <div style="height: 40px;"></div>
 
-	<div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; position: absolute;"></div>
-	    
-	<div ng-show="show" id="signIn"  style="text-align: center; z-index: 2; position: relative;">
-	    <div style="height: 15px;"></div>
-	    <a class="navigate-right" href="">
-	        <span class="media-object icon ion-person"></span>
-	        <div class="media-body">
-	            <strong>Sign In to Participate</strong>
+  <div class="signInOverlay" style="display: none">
+	      <div class="signIn"  style="text-align: center; z-index: 2;">
+	        <div style="height: 15px;"></div>
+	        <div class="navigate-right">
+	            <span class="media-object icon ion-person"></span>
+	            <div class="media-body">
+	                <strong>Sign In to Participate</strong>
+	            </div>
+	            <button class="button button-calm signInButton" ng-click="login()" >Sign In</button>
 	        </div>
-	                <div style="height: 15px;"></div>
-
-	        <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
-
-	    </a>
-	    <div style="height: 15px;"></div>
-	</div>
+	      </div> 
+      </div>
   <ion-content>  
 
     <div data-role="content" id="pollingFeedback" style="width: 90%; text-align: center; margin-left: 5%;">

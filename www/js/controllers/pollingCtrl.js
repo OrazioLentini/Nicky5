@@ -48,7 +48,16 @@ angular.module('starter.controllers')
 
 
 		$scope.toggle = function (type) {
+			$scope.isLoggedIn = localStorage.getItem("login")		
 			if (type == 'question') {
+				if ($scope.isLoggedIn == null) {
+					$(".signInOverlay").css("display", "block")
+					$(".signIn").css("display", "block")
+				}
+				else {
+					$(".signInOverlay").css("display", "none")
+					$(".signIn").css("display", "none")
+				}
 				$scope.question = true
 				$scope.answer = false 
 				$scope.speaker = false
@@ -56,6 +65,14 @@ angular.module('starter.controllers')
         		$('.question').addClass('buttonPickerActive');
 			}
 			if (type == 'polling') {
+				if ($scope.isLoggedIn == null) {
+					$(".signInOverlay").css("display", "block")
+					$(".signIn").css("display", "block")
+				}
+				else {
+					$(".signInOverlay").css("display", "none")
+					$(".signIn").css("display", "none")
+				}
 				$scope.question = false
 				$scope.answer = true 
 				$scope.speaker = false
@@ -71,13 +88,16 @@ angular.module('starter.controllers')
 			}
 		}
 
-		$scope.isLoggedIn = localStorage.getItem("login")
+		/*$scope.isLoggedIn = localStorage.getItem("login")
+		alert($scope.isLoggedIn)
 		if ($scope.isLoggedIn == null) {
-			$scope.show = true
+			$(".signInOverlay").css("display", "block")
+			$(".signIn").css("display", "block")
 		}
 		else {
-			$scope.show = false
-		}
+			$(".signInOverlay").css("display", "none")
+			$(".signIn").css("display", "none")
+		}*/
 
 
 		$scope.submit = function () {
@@ -130,8 +150,8 @@ angular.module('starter.controllers')
 	    	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
 			if(data != 'failed') {
 				localStorage.setItem("login", JSON.stringify(data))
-				$("#signInOverlay").css("display", "none")
-				$("#signIn").css("display", "none")
+				$(".signInOverlay").css("display", "none")
+				$(".signIn").css("display", "none")
 				$scope.logoutButton = true
 				$scope.profileButton = true
 				$scope.loginButton = false
@@ -164,9 +184,11 @@ angular.module('starter.controllers')
 		};
 	    setTimeout(function () {
 	        var mySwiper = new Swiper('.swiper-container', {
-			    autoplay: false,
-			    effect: 'slide',
-			    speed: 500
+				pagination: '.swiper-pagination',
+				paginationClickable: true,
+				nextButton: '.right',
+				prevButton: '.left',
+
 			});   
 		},250);	
 

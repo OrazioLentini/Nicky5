@@ -16,20 +16,18 @@
           height:100%;
         }
     </style>
-        <div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; top:50px; bottom:0; left:0; right:0; position: absolute;">
-        <div id="signIn"  style="text-align: center; z-index: 2;">
-          <div style="height: 15px;"></div>
-          <a class="navigate-right" href="">
-              <span class="media-object icon ion-person"></span>
-              <div class="media-body">
-                  <strong>Sign In to Participate</strong>
-              </div>
-              <div style="height: 15px;"></div>
-
-              <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
-
-          </a>
-        </div> 
+    
+        <div class="signInOverlay" style="display: none">
+	      <div class="signIn"  style="text-align: center; z-index: 2;">
+	        <div style="height: 15px;"></div>
+	        <div class="navigate-right">
+	            <span class="media-object icon ion-person"></span>
+	            <div class="media-body">
+	                <strong>Sign In to Participate</strong>
+	            </div>
+	            <button class="button button-calm signInButton" ng-click="login()" >Sign In</button>
+	        </div>
+	      </div> 
       </div>
         
   <ion-content>
