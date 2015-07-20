@@ -2,6 +2,16 @@ angular.module('starter.controllers')
 
 .controller('LearningCtrl' , function($scope, $ionicModal, $timeout, $ionicPopup, $ionicLoading, LearningService, $stateParams, MenuLinksService) {
    
+    /*var isIOS = ionic.Platform.isIOS();
+	var isAndroid = ionic.Platform.isAndroid();
+	
+	if(isIOS) {
+		$('.backButton').addClass('ion-ios-arrow-back');
+	}
+	else {
+		$('.backButton').addClass('ion-android-arrow-back')
+	}*/
+
 	$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
    $scope.mc = false
