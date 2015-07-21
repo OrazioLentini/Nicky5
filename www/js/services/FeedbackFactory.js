@@ -2,9 +2,7 @@ angular.module('starter.services')
 
     .service('FeedbackService', function ($http) {
 
-	var requests = ""
 		this.provideFeedback = function(feedback){ 
-            
             var temp = localStorage.getItem('login')
             data = JSON.parse(temp)
 

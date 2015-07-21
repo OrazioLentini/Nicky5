@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('FeedbackCtrl', ['$scope', '$http', '$state',  '$ionicModal', '$timeout' , 'SyncService', 'LoginService', '$ionicLoading', 'FeedbackService', '$stateParams','MenuLinksService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, FeedbackService, $stateParams, MenuLinksService) {
+    .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService, FeedbackService) {
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.isLoggedIn = localStorage.getItem("login")
@@ -38,8 +38,8 @@ angular.module('starter.controllers')
 	    	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
 			if(data != 'failed') {
 				localStorage.setItem("login", JSON.stringify(data))
-				$("#signInOverlay").css("display", "none")
-				$("#signIn").css("display", "none")
+				$(".signInOverlay").css("display", "none")
+				$(".signIn").css("display", "none")
 				$scope.logoutButton = true
 				$scope.profileButton = true
 				$scope.loginButton = false
@@ -51,12 +51,7 @@ angular.module('starter.controllers')
 				$ionicLoading.show({template: 'BadgeID does not match the Username on Record. Please Try Again.', noBackdrop: false, duration:2000});
 			}
 	    	})
-		};
-		$scope.runSync = function () {
-			SyncService.sync()
-			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
-		}
-
+		}; 
 
 		$scope.submit = function () {
 			//submitFeedback()
@@ -66,4 +61,4 @@ angular.module('starter.controllers')
 					$("#Feedback").val("");
 			})
 		}
-    }]);
+    });
