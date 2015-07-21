@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
     .controller('FavoritesCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading','MenuLinksService','$stateParams', '$ionicModal', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading,MenuLinksService, $stateParams, $ionicModal) {
+
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
     	$scope.favorites = function () {

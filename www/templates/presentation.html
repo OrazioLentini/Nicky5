@@ -1,4 +1,4 @@
-<ion-view view-title="{{desc.Title}}">
+<ion-view view-title="{{desc.Title}}" ng-cloak>
     <style type="text/css">
         .score {
           font-size:24px;
@@ -31,19 +31,27 @@
 	<div style="height: 20px;"></div>
 	<div id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px; z-index: 99">
 
-        <div style="background:#000;" class="swiper-container">
-          <div class="swiper-wrapper" >
-              <div class="box swiper-slide" ng-repeat="x in slides">
-                    <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
-                      <img src="{{x.Link}}" style="width:100%">
-                    </div>
+    <div style="" class="swiper-container">
+      <div class="swiper-wrapper" >
+          <div class="box swiper-slide" ng-repeat="x in slides">
+                <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
+                  <img src="{{x.Link}}" style="width:100%">
                 </div>
             </div>
-      </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div style="height: 20px; text-align: center; ">
+            <div class="button button-clear left" style="float: left; display: inline">
+                <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
+            </div>
+            <div style="display: inline">Click or swipe to view slides</div>
+            <div class="button button-clear right"style="float: right; display: inline" >
+                <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
+            </div>
+        </div>
+    </div>
 
-
-
-		<div class="list" style="margin-top: 10px" ng-click="openSpeaker()">
+		<div class="list" style="margin-top: 0px" ng-click="openSpeaker()">
 			<div class="item item-thumbnail-left">
 				<img src="{{speakerInfo.ThumbImage}}">
 				<h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
@@ -61,19 +69,16 @@
 
 	<div id="pollingAnswers" ng-show="answer" style="height: 100%">
 
-	  <div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1; top:50px; bottom:0; left:0; right:0; position: absolute;">
-	      <div id="signIn"  style="text-align: center; z-index: 2;">
+        <div class="signInOverlay" style="display: none">
+	      <div class="signIn"  style="text-align: center;">
 	        <div style="height: 15px;"></div>
-	        <a class="navigate-right" href="">
+	        <div class="navigate-right">
 	            <span class="media-object icon ion-person"></span>
 	            <div class="media-body">
 	                <strong>Sign In to Participate</strong>
 	            </div>
-	            <div style="height: 15px;"></div>
-
-	            <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
-
-	        </a>
+	            <button class="button button-calm signInButton" ng-click="login()" >Sign In</button>
+	        </div>
 	      </div> 
       </div>
 
@@ -108,21 +113,20 @@
     </div>
 
     <div id="pollingFeedback" style="width: 90%; text-align: center; margin-left: 5%;" ng-show="question">
-    	<div ng-show="show" id="signInOverlay" style="height: 100%; width: 100%; background: rgba(0, 0, 0, 0.9); z-index: 100; top:50px; bottom:0; left:0; right:0; position: absolute;">
-	      <div id="signIn"  style="text-align: center; z-index: 2;">
+    	
+        <div class="signInOverlay" style="display: none">
+	      <div class="signIn"  style="text-align: center;">
 	        <div style="height: 15px;"></div>
-	        <a class="navigate-right" href="">
+	        <div class="navigate-right">
 	            <span class="media-object icon ion-person"></span>
 	            <div class="media-body">
 	                <strong>Sign In to Participate</strong>
 	            </div>
-	            <div style="height: 15px;"></div>
-
-	            <button class="button button-calm" style="font-size: 25px; padding-top: 15px; padding-right: 25px; padding-bottom: 15px; padding-left: 25px;" ng-click="login()" >Sign In</button>
-
-	        </a>
+	            <button class="button button-calm signInButton" ng-click="login()" >Sign In</button>
+	        </div>
 	      </div> 
       </div>
+      
         <form id="formQuestionPolling"ng-submit="submit()">
             <div style="height: 30px"></div>
               <label class="item item-input">
@@ -133,8 +137,8 @@
         </form>
     </div>
   </ion-content>
-	<div class="bar bar-footer button-stable buttonPicker title" style="border-bottom: none !important;" ng-show="speaker">
-		<div class="button button-stable button-clear title" ng-click="register()" style="color: white">Register</div>
-	</div>
+    <div class="bar bar-footer bar-balanced" ng-show="speaker" >
+        <div class="title" ng-click="register()" style="color: white">Register</div>
+    </div>
 </ion-view>
 
