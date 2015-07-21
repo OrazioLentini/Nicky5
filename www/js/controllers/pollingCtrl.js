@@ -1,16 +1,20 @@
 angular.module('starter.controllers')
 
     .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService' ,'MenuLinksService', 'ScheduleService', '$ionicPopup', '$ionicSlideBoxDelegate',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService, MenuLinksService, ScheduleService, $ionicPopup, $ionicSlideBoxDelegate) {
-		  $scope.$on('$ionicView.enter', function(){
-
-		$timeout(function () {
-			$ionicSlideBoxDelegate.update();
-
-		}, 1);
+		$scope.$on('$ionicView.enter', function(){
+			PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
+				$scope.slides = data
+			})
+		    setTimeout(function () {
+		        var mySwiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					nextButton: '.right',
+					prevButton: '.left',
+	
+				});   
+			},200);	
   		})	
-		PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
-			$scope.slides = data
-		})
 		//$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.desc = PollingService.getDetails($stateParams.PresentationID);
@@ -182,14 +186,5 @@ angular.module('starter.controllers')
 				}
 			});
 		};
-	    setTimeout(function () {
-	        var mySwiper = new Swiper('.swiper-container', {
-				pagination: '.swiper-pagination',
-				paginationClickable: true,
-				nextButton: '.right',
-				prevButton: '.left',
-
-			});   
-		},250);	
 
     }]);
