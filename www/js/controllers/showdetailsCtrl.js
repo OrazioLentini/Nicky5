@@ -13,6 +13,22 @@ angular.module('starter.controllers')
 			$scope.unfilled = true
 		}
 		
+		$scope.$on('$ionicView.enter', function(){
+			ShowcaseService.getShowcaseImages($stateParams.RecID). success( function (data) {
+				$scope.images = data
+				console.log($scope.images)
+			})
+		    setTimeout(function () {
+		        var mySwiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					nextButton: '.right',
+					prevButton: '.left',
+	
+				});   
+			},200);	
+  		})	
+		
 		$scope.deleteFavorite = function() {
 			var confirmPopup = $ionicPopup.confirm({
 			 title: 'Delete Favorite',

@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-    .factory('ShowcaseService', function () {
+    .factory('ShowcaseService', function ($http) {
 
     var products = ""
     return {
@@ -9,6 +9,15 @@ angular.module('starter.services')
             products = JSON.parse(temp)
             return products
         },  
+        getShowcaseImages: function(id) {   
+            var url = "http://patty5.com/AppApis/apiShowcaseImages.asp?ID=" + id;
+            return $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            })      
+        },
        getDetails: function(id){
             var temp = localStorage.getItem('tProductList')
             products = JSON.parse(temp)

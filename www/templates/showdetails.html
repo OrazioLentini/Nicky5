@@ -5,7 +5,27 @@
     <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px;"></i></a>
   </ion-nav-buttons>-->
 	<ion-content>
-		<div style="margin:0px auto; width:100%; text-align:center;"><img src="{{details.Image}}" style="padding:10px 25px; width:100%; "></div>
+    
+        <div style="" class="swiper-container">
+      <div class="swiper-wrapper" >
+          <div class="box swiper-slide" ng-repeat="x in images">
+                <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
+                  <img src="{{x.Link}}" style="width:100%">
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div style="height: 20px; text-align: center; ">
+            <div class="button button-clear left" style="float: left; display: inline">
+                <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
+            </div>
+            <div style="display: inline">Click or swipe to view images</div>
+            <div class="button button-clear right"style="float: right; display: inline" >
+                <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
+            </div>
+        </div>
+    </div>
+    
         <div style="padding:0px 20px">
            <div style="margin:0px; padding:0px; font-size: 18px"><span style="font-weight: 500">{{details.Company}}</span>
                 <a ng-show="unfilled" ng-click="saveFavoriteShowcase('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
