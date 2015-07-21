@@ -1,18 +1,42 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', 'MenuLinksService', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, MenuLinksService) {
+    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout) {
 		//$scope.s = SyncService.sync()
-		$ionicHistory.clearHistory()
-		setTimeout(function () {
-				$scope.feature = SyncService.getFeaturedScheduleList()
-				//console.log($scope.feature)
-		},100)		
+				
+	  $ionicPlatform.ready( function() {
+           //alert("ready");
+       $timeout(function() {
+          // alert("grab featured")
+		   $scope.feature = SyncService.getFeaturedScheduleList() 
+           $timeout(function() {
+             //alert("start slides")
+          // $scope.feature = SyncService.getFeaturedScheduleList()
+	        var mySwiper = new Swiper('.swiper-container', {
+			    autoplay: 8000,
+			    effect: 'slide',
+			    speed: 500
+			});   
+		    //$ionicHistory.clearHistory()
+			},150);	
+
+	        if(ionic.Platform.isIOS == true){
+           $timeout(function() {
+	         navigator.splashscreen.hide();
+	         //alert('done')
+			},600);
+            }
+	    //SyncService.sync()
+	      },200);
+	
+		
+	  });
 
     MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
   		data = JSON.stringify(data)
         localStorage.setItem('menu', data)
-  	})	
+  	});
+  	
 	//$scope.feature = SyncService.getFeaturedScheduleList()
 	//console.log($scope.feature)
 
@@ -25,24 +49,7 @@ angular.module('starter.controllers')
 			scan2()
 		}
 	}
-	    setTimeout(function () {
-		    /*$('.slider2').slick({
-			  infinite: true,
-			  autoplay: true,
-			  autoplaySpeed: 5000,
-			  arrows:false,
-			  dots:false
-
-			});*/
-	        var mySwiper = new Swiper('.swiper-container', {
-			    autoplay: 8000,
-			    effect: 'slide',
-			    speed: 800
-			});   
-			
-		},250);	
-		setTimeout(function () {
-			// navigator.splashscreen.hide();
-		},1000);	 
+	    
+ 
 				
 }]);

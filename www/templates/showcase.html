@@ -1,0 +1,61 @@
+<style>
+body{font-family: 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;}
+
+.pg-image {position:relative; display:block; margin:2px 0px; background:#FFF; margin:2px 2px 2px 2px; }
+.odd {
+  margin-left:4px;
+  margin-right:2px;
+}
+.even {
+  margin-left:2px;
+  margin-right:4px;
+}
+.pg-image img {width:100%; vertical-align: top;}
+.pg-image:after{ 
+  width: 100%;
+  height:100%;
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: 0px;
+  z-index:100;
+  display: block;
+  transition:all .3s ease;
+background:url("images/grad-dark2.png");
+   background-size:100%;
+   background-position: bottom;
+   overflow: hidden;
+   vertical-align: top;
+   line-height:0;
+
+}
+.inner-small {
+  bottom:0px; position:absolute; z-index:200; color:#FFF; line-height:1em;
+}
+
+.full {
+  background:#FFF;
+  margin:2px;
+}
+</style>
+<ion-view view-title="{{title}}">
+  <ion-content>
+
+	<div class="full">
+       <div ng-repeat="x in products"  style="width:50%; float:left; position:relative;" ui-sref="app.showdetails({RecID: {{x.RecID}}})">
+            
+                  <div class="pg-image">
+                    <img src="{{x.Image}}" style="width:10)%">
+                  </div>
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%;">
+                        <span style="font-size:1em; font-weight:800;">{{x.Company}}</span>
+                        <p style="padding-top:2px; height:20px; font-size:.8em">{{x.Title}}</p>
+                        </div>
+                   </div>
+        </div>
+   </div>
+
+
+  </ion-content>
+</ion-view>

@@ -84,6 +84,20 @@ angular.module('starter.services')
                 //this.saveLocally()
             })
         },   
+         this.getProducts = function () {
+            var url = 'http://patty5.com/AppApis/apiProductList.asp';
+            $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            }). 
+            success (function(data){
+                data = JSON.stringify(data)
+                localStorage.setItem('productList', data)
+                //this.saveLocally()
+            })
+        },   
         this.syncInfoRequest = function () {
             var data = localStorage.getItem('infoRequest')
             if(data == null) {
@@ -232,6 +246,7 @@ angular.module('starter.services')
             this.getSocialMediaInfo()
             this.syncInfoRequest()
             this.getPresentationList()
+            this.getProducts()
             setTimeout(function () {
                 saveSocialLocally()
             },210)  

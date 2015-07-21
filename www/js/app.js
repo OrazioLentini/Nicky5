@@ -17,6 +17,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    //setTimeout(function () {
+      //     SyncService.sync()
+        //   },150);
   });
 })
 
@@ -37,6 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('app.sync', {
     url: "/sync",
     abstract: true,
+    cache: false,
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
@@ -48,14 +52,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'MenuCtrl'
   })
 
-  .state('app.search', {
-    url: "/search",
+  .state('app.showcase', {
+    url: "/showcase",
     views: {
       'menuContent': {
-        templateUrl: "templates/search.html"
+        templateUrl: "templates/showcase.html",
+        controller: 'ShowcaseCtrl'
       }
     }
   })
+
+  .state('app.showdetails', {
+      url: "/showdetails/:RecID",
+      views: {
+        'menuContent': {
+        templateUrl: "templates/showdetails.html",
+        controller: 'ShowDetailCtrl'
+      }
+    }
+  })
+
+
     .state('app.menu', {
       url: "/",
       views: {
