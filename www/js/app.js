@@ -25,7 +25,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(0)
   $stateProvider
   
    .state('app.schedule', {
@@ -140,7 +141,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
+   .state('app.feedback', {
+      url: "/feedback/:ID",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/feedback.html",
+          controller: 'FeedbackCtrl'
+          }
+      }
+    })
 
   .state('app.polling', {
       url: "/polling/:SpeakerID/:ID/:PresentationID",
@@ -168,16 +177,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'menuContent': {
           templateUrl: "templates/social.html",
           controller: 'SocialCtrl'
-          }
-      }
-    })
-
-   .state('app.feedback', {
-      url: "/feedback/:ID",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/feedback.html",
-          controller: 'FeedbackCtrl'
           }
       }
     })

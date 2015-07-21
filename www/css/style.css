@@ -70,11 +70,34 @@ body {
 }
 
 .buttonPickerActive {
-  background-color:  #bfbfbf !important;
+  background-color:  #444444 !important;
   color: #f1f1f1  !important;
   border-top: 1px solid  !important;
   border-bottom: 1px solid  !important;
   border-color:#31AAD8 !important;
+}
+
+.signInOverlay {
+  font-size: 20px;
+  color: #33B5E5;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 100;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.signInButton {
+  margin-top: 15px;
+  font-size: 25px;
+  padding-top: 15px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  padding-left: 25px;
 }
 
 @media only screen and (max-width: 755px) {

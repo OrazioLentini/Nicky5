@@ -4,19 +4,18 @@
 
 
 		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
-		   <li class="item item-divider" style="background:#bfbfbf; color:#F2F2F2">{{ScheduledDate}}</li>
+		   <li class="item item-divider" style="background:#444444; /*background:#444444;*/ color:#F2F2F2">{{ScheduledDate}}</li>
 
 		   <div ng-repeat="x in sch">
- 			<li ng-if="x.Speaker" class="item item-thumbnail-left item-icon-right" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})">
- 				<img style="height: 80px" src="{{x.ThumbImage}}"/>
-
-
- 				<p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
- 				<p style="font-size:12px;">{{x.Title}}</p>
-
- 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
-
- 				<i class="icon ion-ios-star' + icon + '" ' + onClick + '></i>
+ 			<li ng-if="x.Speaker" class="item item-icon-right" style="padding: 0; padding-right: 54px">
+				<a class="item item-thumbnail-left" style="margin-left: 0; border: none" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})">
+					<img style="height: 80px" src="{{x.ThumbImage}}"/>
+					
+					<p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
+					<p style="font-size:12px;">{{x.Title}}</p>
+					
+					<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
+				</a>
  				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:32px; float: right"></i></a>
        			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
            </li>

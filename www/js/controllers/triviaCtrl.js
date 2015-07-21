@@ -6,10 +6,12 @@ angular.module('starter.controllers')
 
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
-			$scope.show = true
+			$(".signInOverlay").css("display", "block")
+			$(".signIn").css("display", "block")
 		}
 		else {
-			$scope.show = false
+			$(".signInOverlay").css("display", "none")
+			$(".signIn").css("display", "none")
 		}
 
 		TriviaService.serverTimeDifference(). success(function(data){
