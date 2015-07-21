@@ -27,18 +27,18 @@
            <a style="text-decoration:none;"><i class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}</a>
           </ion-item>
 
-          <ion-item  ng-click="login()" ng-show="loginButton">
+          <ion-item  ng-click="login(); toggleLeftSideMenu()" ng-show="loginButton">
               <i class="icon ion-log-in" ></i> Login
           </ion-item>
-          <ion-item  ng-click="profile()" ng-show="profileButton">
+          <ion-item  ng-click="profile(); toggleLeftSideMenu()" ng-show="profileButton">
               <i class="icon ion-person" ></i> Profile
           </ion-item>
-          <ion-item  ng-click="logout()" ng-show="logoutButton">
+          <ion-item  ng-click="logout(); toggleLeftSideMenu()" ng-show="logoutButton">
               <i class="icon ion-log-out" ></i> Logout
           </ion-item>
-          <ion-item  ng-click="runSync()">
-      <i class="icon ion-refresh" ></i> Sync
-      </ion-item>
+          <ion-item  ng-click="runSync(); toggleLeftSideMenu()">
+            <i class="icon ion-refresh" ></i> Sync
+          </ion-item>
    </ion-list>
 
     </ion-content>

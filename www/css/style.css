@@ -70,7 +70,7 @@ body {
 }
 
 .buttonPickerActive {
-  background-color:  #bfbfbf !important;
+  background-color:  #444444 !important;
   color: #f1f1f1  !important;
   border-top: 1px solid  !important;
   border-bottom: 1px solid  !important;
