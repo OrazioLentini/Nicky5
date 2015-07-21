@@ -5,12 +5,12 @@ angular.module('starter.services')
     var products = ""
     return {
         getProducts: function(){
-            var temp = localStorage.getItem('productList')
+            var temp = localStorage.getItem('tProductList')
             products = JSON.parse(temp)
             return products
         },  
        getDetails: function(id){
-            var temp = localStorage.getItem('productList')
+            var temp = localStorage.getItem('tProductList')
             products = JSON.parse(temp)
             for(i=0;i<products.length;i++){
                 //console.log("test")

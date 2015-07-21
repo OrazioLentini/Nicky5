@@ -1,10 +1,11 @@
 angular.module('starter.controllers')
 
     .controller('ShowDetailCtrl', function ($scope, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService) {
+		
 		$scope.filled = false
 		$scope.unfilled = false
-		$scope.details = ShowcaseService.getDetails($stateParams.RecID);    
-		$scope.checkFavorite = FavoritesService.checkIfFavoriteCompany($stateParams.RecID);
+		$scope.details = ShowcaseService.getDetails($stateParams.RecID);
+		$scope.checkFavorite = FavoritesService.checkIfFavoriteShowcase($stateParams.RecID);
 		if ($scope.checkFavorite == true) {
 			$scope.filled = true;
 		}
@@ -12,22 +13,22 @@ angular.module('starter.controllers')
 			$scope.unfilled = true
 		}
 		
-		/*$scope.deleteFavorite = function() {
+		$scope.deleteFavorite = function() {
 			var confirmPopup = $ionicPopup.confirm({
 			 title: 'Delete Favorite',
 			 template: 'Are you sure you would like to delete this favorite?'
 		   });
 		   confirmPopup.then(function(res) {
 			 if(res) {
-				$scope.deleted = FavoritesService.deleteFavorite($stateParams.RecID, 'company');
+				$scope.deleted = FavoritesService.deleteFavorite($stateParams.RecID, 'showcase');
 				$scope.changeStar()
 			 }
 		   });
 			
 		}
 		
-		$scope.saveFavoriteCompany = function () {
-			$scope.fav = FavoritesService.saveFavoriteCompany($scope.details)
+		$scope.saveFavoriteShowcase = function () {
+			$scope.fav = FavoritesService.saveFavoriteShowcase($scope.details)
 			$scope.filled = true
 			$scope.unfilled = false
 			$ionicLoading.show({template: 'Added to Favorites', noBackdrop: true, duration: 1500});
@@ -41,7 +42,7 @@ angular.module('starter.controllers')
 		}
 		
 
-	  $scope.showInfo = DirectoryService.showButton($stateParams.RecID)
+	  $scope.showInfo = RequestInfoService.showButton($stateParams.RecID, 'showcase')
 
 	  $ionicModal.fromTemplateUrl('templates/login.html', {
 			scope: $scope
@@ -122,12 +123,12 @@ angular.module('starter.controllers')
 				}
 				else {
 					//requestMoreInfo($stateParams.RecID, 'company', userID, 1)
-					$scope.result = RequestInfoService.requestMoreInfo($stateParams.RecID, 'company', userID, 1)
+					$scope.result = RequestInfoService.requestMoreInfo($stateParams.RecID, 'showcase', userID, 1)
 						$ionicLoading.show({template: 'Additional Information Requested', noBackdrop: false, duration: 1500});
 						$scope.showInfo = false
 
 				}
 			}
-		}*/
+		}
 
-});
+}); 

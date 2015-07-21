@@ -41,7 +41,7 @@ angular.module('starter.controllers')
 		}
 		
 
-	  $scope.showInfo = DirectoryService.showButton($stateParams.RecID)
+	  $scope.showInfo = RequestInfoService.showButton($stateParams.RecID, 'company')
 
 	  $ionicModal.fromTemplateUrl('templates/login.html', {
 			scope: $scope

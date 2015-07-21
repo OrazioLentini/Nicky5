@@ -94,7 +94,7 @@ angular.module('starter.services')
             }). 
             success (function(data){
                 data = JSON.stringify(data)
-                localStorage.setItem('productList', data)
+                localStorage.setItem('tProductList', data)
                 //this.saveLocally()
             })
         },   
