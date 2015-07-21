@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService, FeedbackService) {
+    .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService) {
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.isLoggedIn = localStorage.getItem("login")
@@ -56,7 +56,7 @@ angular.module('starter.controllers')
 		$scope.submit = function () {
 			//submitFeedback()
 			var feedback = $("#Feedback").val();
-			FeedbackService.provideFeedback(feedback). success(function(data){
+			LoginService.provideFeedback(feedback). success(function(data){
 				    $ionicLoading.show({template: 'Thank you for your feedback', noBackdrop: false, duration: 1500});
 					$("#Feedback").val("");
 			})
