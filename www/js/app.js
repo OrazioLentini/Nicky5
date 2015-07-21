@@ -54,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('app.showcase', {
-    url: "/showcase",
+    url: "/showcase/:ID",
     views: {
       'menuContent': {
         templateUrl: "templates/showcase.html",
