@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('MenuCtrl', function($rootScope, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService) {
+.controller('MenuCtrl', function($rootScope, $state, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService, $ionicHistory) {
   	
   	MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
@@ -12,7 +12,6 @@ angular.module('starter.controllers')
 		    //alert(isLoggedIn);
 		    //$scope.name = isLoggedIn; //now we've registered!
 		    if(isLoggedIn > ""){
-		    	alert("you logged in!")
 		    	$scope.logoutButton = true
 			    $scope.profileButton = true
 			    $scope.loginButton = false
@@ -43,7 +42,12 @@ angular.module('starter.controllers')
 			scan2()
 		}
 	}
-  
+  $scope.goHome = function() {
+	$ionicHistory.nextViewOptions({
+	 disableBack: true
+	});	  
+	$state.go('app.menu')
+  }
   /*$scope.menu = [
 		{ title: 'Directory', id: 1, icon: 'briefcase', url:'directory' },
 		{ title: 'Schedule', id: 2, icon: 'calendar', url:'schedule' },
@@ -100,7 +104,6 @@ angular.module('starter.controllers')
 		});
 		confirmPopup.then(function(res) {
 			if(res) {
-				console.log($scope)
 				localStorage.removeItem("login");
 				localStorage.removeItem("infoRequest");
 				$("#Username").val("");

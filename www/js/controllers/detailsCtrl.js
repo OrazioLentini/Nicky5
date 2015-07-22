@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', '$ionicModal', '$timeout', 'LoginService', 'SyncService', 'RequestInfoService', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService) {
+    .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', '$ionicModal', '$timeout', 'LoginService', 'SyncService', 'RequestInfoService', '$rootScope', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope) {
 		$scope.filled = false
 		$scope.unfilled = false
 		$scope.details = DirectoryService.getDetails($stateParams.RecID);   
@@ -62,6 +62,7 @@ angular.module('starter.controllers')
 				$scope.logoutButton = true
 				$scope.profileButton = true
 				$scope.loginButton = false
+				$rootScope.$broadcast('login', LoginUsername)
 				$scope.runSync()
 				$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();

@@ -31,7 +31,7 @@
 	<div style="height: 20px;"></div>
 	<div id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px; z-index: 99">
 
-    <div style="" class="swiper-container">
+    <div class="swiper-container" ng-show="hasSlides">
       <div class="swiper-wrapper" >
           <div class="box swiper-slide" ng-repeat="x in slides">
                 <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >

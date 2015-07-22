@@ -26,11 +26,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-  $ionicConfigProvider.views.maxCache(0)
+ // $ionicConfigProvider.views.maxCache(0)
   $stateProvider
   
    .state('app.schedule', {
       url: "/schedule/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/schedule.html",
@@ -49,12 +50,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('app', {
     url: "/app",
     abstract: true,
+    cache: false,
     templateUrl: "templates/menu.html",
     controller: 'MenuCtrl'
   })
 
   .state('app.showcase', {
     url: "/showcase/:ID",
+    cache: true,
     views: {
       'menuContent': {
         templateUrl: "templates/showcase.html",
@@ -65,6 +68,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('app.showdetails', {
       url: "/showdetails/:RecID",
+      cache: false,
       views: {
         'menuContent': {
         templateUrl: "templates/showdetails.html",
@@ -76,6 +80,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     .state('app.menu', {
       url: "/",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/home.html",
@@ -85,6 +90,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 	  .state('app.directory', {
       url: "/directory/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/directory.html",
@@ -95,6 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	
 	.state('app.details', {
       url: "/details/:RecID",
+      cache: false,
   	  views: {
         'menuContent': {
         templateUrl: "templates/detail.html",
@@ -105,6 +112,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	
   .state('app.trivia', {
       url: "/trivia/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/trivia.html",
@@ -115,6 +123,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
      .state('app.learning', {
       url: "/learning/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/learning.html",
@@ -124,6 +133,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
   .state('app.favorites', {
       url: "/favorites/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/favorites.html",
@@ -134,6 +144,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('app.presentations', {
       url: "/presentations/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/presentationLists.html",
@@ -143,6 +154,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
    .state('app.feedback', {
       url: "/feedback/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/feedback.html",
@@ -153,6 +165,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('app.polling', {
       url: "/polling/:SpeakerID/:ID/:PresentationID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/presentation.html",
@@ -163,6 +176,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   
 	 .state('app.maps', {
       url: "/maps/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/maps.html",
@@ -173,6 +187,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	
    .state('app.social', {
       url: "/social/:ID",
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: "templates/social.html",

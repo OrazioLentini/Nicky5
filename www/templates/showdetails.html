@@ -6,7 +6,7 @@
   </ion-nav-buttons>-->
 	<ion-content>
     
-        <div style="" class="swiper-container">
+    <div style="" class="swiper-container" ng-show="hasImages">
       <div class="swiper-wrapper" >
           <div class="box swiper-slide" ng-repeat="x in images">
                 <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
@@ -27,7 +27,7 @@
     </div>
     
         <div style="padding:0px 20px">
-           <div style="margin:0px; padding:0px; font-size: 18px; padding-bottom:5px;"><span style="font-weight: 500">{{details.Title}}</span>
+           <div style="margin-top:15px; padding:0px; font-size: 18px; padding-bottom:5px;"><span style="font-weight: 500">{{details.Title}}</span>
                 <a ng-show="unfilled" ng-click="saveFavoriteShowcase('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
                 <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px; float:right"></i></a>
            </div>

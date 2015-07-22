@@ -1,9 +1,15 @@
 angular.module('starter.controllers')
 
-    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService' ,'MenuLinksService', 'ScheduleService', '$ionicPopup', '$ionicSlideBoxDelegate',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService, MenuLinksService, ScheduleService, $ionicPopup, $ionicSlideBoxDelegate) {
+    .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService' ,'MenuLinksService', 'ScheduleService', '$ionicPopup', '$ionicSlideBoxDelegate','$rootScope',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService, MenuLinksService, ScheduleService, $ionicPopup, $ionicSlideBoxDelegate, $rootScope) {
 		$scope.$on('$ionicView.enter', function(){
 			PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
 				$scope.slides = data
+				if($scope.slides.length == 0){
+					$scope.hasSlides = false
+				}
+				else {
+					$scope.hasSlides = true
+				}
 			})
 		    setTimeout(function () {
 		        var mySwiper = new Swiper('.swiper-container', {
@@ -160,6 +166,7 @@ angular.module('starter.controllers')
 				$scope.profileButton = true
 				$scope.loginButton = false
 				$scope.show = false
+				$rootScope.$broadcast('login', LoginUsername)
 				//$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();
