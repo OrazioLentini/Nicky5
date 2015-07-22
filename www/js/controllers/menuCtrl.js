@@ -1,12 +1,23 @@
 angular.module('starter.controllers')
 
-.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService) {
+.controller('MenuCtrl', function($rootScope, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService) {
   	
   	MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
   		data = JSON.stringify(data)
         localStorage.setItem('menu', data)
   	})		
+        
+        $scope.$on('login', function(events, isLoggedIn){
+		    //alert(isLoggedIn);
+		    //$scope.name = isLoggedIn; //now we've registered!
+		    if(isLoggedIn > ""){
+		    	alert("you logged in!")
+		    	$scope.logoutButton = true
+			    $scope.profileButton = true
+			    $scope.loginButton = false
+		    }
+		})
 
   		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
@@ -65,7 +76,7 @@ angular.module('starter.controllers')
 	$scope.doLogin = function() {
     	var LoginUsername = $("#Username").val();
     	var LoginBadgeID = $("#BadgeID").val();
-
+        $rootScope.$broadcast('BOOM!', $scope.LoginUsername)
     	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
 		if(data != 'failed') {
 			localStorage.setItem("login", JSON.stringify(data))
@@ -94,6 +105,8 @@ angular.module('starter.controllers')
 				localStorage.removeItem("infoRequest");
 				$("#Username").val("");
 				$("#BadgeID").val("");
+				$(".signInOverlay").css("display", "block")
+				$(".signIn").css("display", "block")
 				$scope.logoutButton = false
 				$scope.profileButton = false
 				$scope.loginButton = true

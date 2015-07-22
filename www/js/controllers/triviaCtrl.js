@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('TriviaCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', 'TriviaService', '$stateParams','MenuLinksService', function ($scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, TriviaService,  $stateParams, MenuLinksService) {
+    .controller('TriviaCtrl', ['$rootScope', '$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', 'TriviaService', '$stateParams','MenuLinksService', function ($rootScope, $scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, TriviaService,  $stateParams, MenuLinksService) {
 		//$scope.requests = DirectoryService.getDirectory();
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
@@ -74,11 +74,14 @@ angular.module('starter.controllers')
 	    	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
 			if(data != 'failed') {
 				localStorage.setItem("login", JSON.stringify(data))
-				$("#signInOverlay").css("display", "none")
-				$("#signIn").css("display", "none")
+				$(".signInOverlay").css("display", "none")
+				$(".signIn").css("display", "none")
 				$scope.logoutButton = true
 				$scope.profileButton = true
 				$scope.loginButton = false
+				//alert('right spot')
+				$rootScope.$broadcast('login', LoginUsername)
+				//$state.current, {}, {reload: true});
 				//$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();

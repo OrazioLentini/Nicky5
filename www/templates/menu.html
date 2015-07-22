@@ -24,7 +24,7 @@
       <ion-list>
 
           <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.Page}}({ID: {{menu.ID}}})" ng-click="toggleLeftSideMenu()">
-           <a style="text-decoration:none;"><i class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}</a>
+           <a style="text-decoration:none;"><i style="color:#F87D3F; padding-right:5px;" class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}</a>
           </ion-item>
 
           <ion-item  ng-click="login(); toggleLeftSideMenu()" ng-show="loginButton">

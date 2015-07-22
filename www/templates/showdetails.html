@@ -27,15 +27,23 @@
     </div>
     
         <div style="padding:0px 20px">
-           <div style="margin:0px; padding:0px; font-size: 18px"><span style="font-weight: 500">{{details.Company}}</span>
+           <div style="margin:0px; padding:0px; font-size: 18px; padding-bottom:5px;"><span style="font-weight: 500">{{details.Title}}</span>
                 <a ng-show="unfilled" ng-click="saveFavoriteShowcase('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
                 <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px; float:right"></i></a>
            </div>
-           {{details.Location}}<br>
-           <span style=" font-weight: 500">Booth: {{details.BoothNum}}</span>
-
-           <div style="margin-top: 5px; margin-bottom: 20px">{{details.Description}}</div>
+           <p style="font-size:.8em; border-bottom:1px #F1F1F1 solid; padding-bottom:5px;">
+           Company: {{details.Company}}<br>
+           Location: {{details.City}}, {{details.State}}
+           </p>
+           <p>
+              {{details.ShortDesc}}
+           </p>
            
+
+           
+          <span style=" font-weight: 700; color:#F87D3F">Booth: {{details.Booth}}</span>
+           <br><span style="font-size:.7em; color:#489CD4; ">Categorized in: {{details.Category}}</span>
+
            <button ng-show="showInfo" class="button button-full button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
            <div class="row" style="height: 60px">
             <div class="col">
