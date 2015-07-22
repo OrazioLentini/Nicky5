@@ -4,9 +4,9 @@ angular.module('starter.controllers')
 		//$scope.s = SyncService.sync()
 			$ionicHistory.clearHistory()	
 	  $ionicPlatform.ready( function() {
-           //alert("ready");
+           alert("ready");
        $timeout(function() {
-          // alert("grab featured")
+           alert("grab featured")
 		   $scope.feature = SyncService.getFeaturedScheduleList() 
            $timeout(function() {
 	        var mySwiper = new Swiper('.swiper-container', {
@@ -17,12 +17,12 @@ angular.module('starter.controllers')
 		    //$ionicHistory.clearHistory()
 			},150);	
 
-	        if(ionic.Platform.isIOS == true){
+
            $timeout(function() {
 	         navigator.splashscreen.hide();
-	         //alert('done')
+	         alert('done')
 			},600);
-            }
+            
 	    //SyncService.sync()
 	      },200);
 	

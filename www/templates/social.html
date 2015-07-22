@@ -9,35 +9,63 @@
       <a class="button button-stable icon-left ion-social-youtube-outline youtube" onclick="showSocial('#youtube')">YouTube</a>
     </div>
   </div>-->
-<div class="row bar bar-subheader bar-light">
-  <div class="col">      <a class="button button-stable icon-left ion-social-twitter-outline button-calm twitter" onclick="showSocial('#twitter')"></a></div>
-  <div class="col">      <a class="button button-stable icon-left ion-social-instagram-outline button-instagram instagram" onclick="showSocial('#instagram')"></a></div>
-  <div class="col">      <a class="button button-stable icon-left ion-social-youtube-outline button-youtube youtube" onclick="showSocial('#youtube')"></a></div>
+<!--<div class="row bar bar-subheader bar-light">
+  <div class="col"><a class="button button-stable icon-left ion-social-twitter-outline button-calm twitter" onclick="showSocial('#twitter')"></a></div>
+  <div class="col"><a class="button button-stable icon-left ion-social-instagram-outline button-instagram instagram" onclick="showSocial('#instagram')"></a></div>
+  <div class="col"><a class="button button-stable icon-left ion-social-youtube-outline button-youtube youtube" onclick="showSocial('#youtube')"></a></div>
   <div class="col"></div>
   <div class="col"></div>
   <div class="col"></div>
   <div class="col"></div>
   <div class="col"></div>
-</div>
+</div>-->
+
+   <div class="bar bar-subheader bar-light">
+	    <div class="button-bar social">
+			<a class="button buttonPickerActive ion-social-twitter-outline twitter " style="font-size: 24px" ng-click="toggle('twitter')"></a>
+			<a class="button buttonPicker ion-social-instagram-outline instagram" style="font-size: 24px" ng-click="toggle('instagram')"></a>
+      <a class="button buttonPicker ion-social-youtube-outline youtube"  style="font-size: 24px" ng-click="toggle('youtube')"></a>
+			<a class="button buttonPicker ion-social-facebook-outline facebook"  style="font-size: 24px" ng-click="toggle('facebook')"></a>
+	    </div>
+	  </div>
  
-  <ion-nav-buttons side="right">
-    <button class="button button-clear button-calm bold" onclick="showSocial('#all')" ng-click="scrollTop()">View All</button>
-  </ion-nav-buttons>
-  <ion-content class="has-subheader" class="ng-view" autoscroll="true" style="padding:5pt">
+
+  <ion-content class="has-subheader" class="ng-view" autoscroll="true" style="padding:5pt; margin-top: 10px">
                 
          <div id="all" style="background:#FFF; display: none; margin-top:5px; ">
         </div>
         
-        <div id="youtube" style="display: none; background:#FFF; margin-top:5px;">
+        <div id="youtube" ng-show="yt" style="background:#FFF; margin-top:5px;">
         </div>
                 
-         <div id="twitter" style="display: block; background:#FFF; margin-top:5px;">
-         twitter
+         <div id="twitter" ng-show="tw" style="background:#FFF; margin-top:5px;">
+            <ul > 
+              <li ng-repeat="x in twitter" class="item item-avatar item-text-wrap">
+                <img style="height: 80px" src="{{x.AuthorAvatar}}"/>
+                
+                <div style="font-size: 1em"><strong>{{x.AuthorName}}</strong> @{{x.AuthorScreenName}}
+                <p>{{x.Post}}</p>
+                </div>
+              </li>
+            </ul> 
+
         </div>
-         <div id="instagram" style="display: none; background:#FFF; margin-top:5px;">
-         instagram
+        
+         <div id="instagram" ng-show="ig" style="background:#FFF; margin-top:5px;">
+           <div ng-repeat="x in instagram" style="">
+             <div style="font-size: 1em;  margin-top: 15px;" class="item item-avatar"><img style="height: 80px" src="{{x.AuthorAvatar}}"/>{{x.AuthorScreenName}}</div>
+             <img style="width: 100%" src="{{x.PostImageURL}}">
+             <div style="color: black;">
+                <p style="padding: 0 20px">{{x.Post}}</p>
+             </div>
+           </div>
+        </div>
+        
+        <div id="facebook" ng-show="fb" style="background:#FFF; margin-top:5px;">
+          facebook
         </div>
 
 
   </ion-content>
 </ion-view>
+  

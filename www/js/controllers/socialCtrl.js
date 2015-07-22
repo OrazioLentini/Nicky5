@@ -1,10 +1,54 @@
 angular.module('starter.controllers')
 
-    .controller('SocialCtrl', ['$scope', '$state', '$ionicScrollDelegate', '$stateParams', 'MenuLinksService',  function ($scope, $state, $ionicScrollDelegate, $stateParams, MenuLinksService) {
-        $scope.title = MenuLinksService.getHeader($stateParams.ID)
+    .controller('SocialCtrl', function ($scope, $state, $ionicScrollDelegate, $stateParams, MenuLinksService, SocialService) {
+    
+    $scope.title = MenuLinksService.getHeader($stateParams.ID)
 
-		//$scope.home = ScheduleService.getFeaturedScheduledItem();
-		//console.log($scope.schedule)
+    SocialService.getTwitter().success(function (data){
+        $scope.twitter = data
+    })
+    
+    SocialService.getInstagram(). success(function(data){
+        $scope.instagram = data    
+    })
+    
+    $scope.tw = true
+    $scope.toggle = function (type) {
+    	if (type == 'twitter') {
+    		$scope.tw = true
+    		$scope.ig = false 
+    		$scope.yt = false
+    		$scope.fb = false
+    		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+    		$('.twitter').addClass('buttonPickerActive');
+    	}
+    	if (type == 'instagram') {
+    		$scope.tw = false
+    		$scope.ig = true 
+    		$scope.yt = false
+    		$scope.fb = false
+    		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+    		$('.instagram').addClass('buttonPickerActive');
+    	}
+    	if (type == 'youtube') {
+    		$scope.tw = false
+    		$scope.ig = false 
+    		$scope.yt = true
+    		$scope.fb = false
+    		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+    		$('.youtube').addClass('buttonPickerActive');
+    	}
+    	if (type == 'facebook') {
+    		$scope.tw = false
+    		$scope.ig = false 
+    		$scope.yt = false
+    		$scope.fb = true
+    		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+    		$('.facebook').addClass('buttonPickerActive');
+    	}
+    }
+        
+
 
   $scope.scrollTop = function() {
     $ionicScrollDelegate.scrollTop();
@@ -110,5 +154,4 @@ setTimeout(function () {
         displayYouTube()
 		showAll()
 		
-    }]);
-//
+    });
