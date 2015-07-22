@@ -354,7 +354,7 @@ function getPlaylistVideos(pID){
     })
 }
 //sync()
-var checkSyncTime = setInterval(checkSync, 900000)
+//var checkSyncTime = setInterval(checkSync, 900000)
 
 
 
