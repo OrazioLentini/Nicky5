@@ -3,7 +3,7 @@ angular.module('starter.controllers')
     .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', '$ionicModal', '$timeout', 'LoginService', 'SyncService', 'RequestInfoService', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService) {
 		$scope.filled = false
 		$scope.unfilled = false
-		$scope.details = DirectoryService.getDetails($stateParams.RecID);    
+		$scope.details = DirectoryService.getDetails($stateParams.RecID);   
 		$scope.checkFavorite = FavoritesService.checkIfFavoriteCompany($stateParams.RecID);
 		if ($scope.checkFavorite == true) {
 			$scope.filled = true;

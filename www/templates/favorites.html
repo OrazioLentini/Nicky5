@@ -37,6 +37,7 @@
 	    <div class="button-bar favorites">
 			<a class="button buttonPickerActive schedule " ng-click="toggle('schedule')">Schedule</a>
 			<a class="button buttonPicker directory" ng-click="toggle('directory')">Directory</a>
+      <a class="button buttonPicker showcase"  ng-click="toggle('showcase')">Showcase</a>
 			<a class="button buttonPicker maps"  ng-click="toggle('maps')">Maps</a>
 	    </div>
 	  </div>
@@ -46,7 +47,7 @@
 		<div style="text-align: center">{{noSchedule}}</div>
 
 		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
-		   <li class="item item-divider" style="background:#bfbfbf; color:#F2F2F2">{{ScheduledDate}}</li>
+		   <li class="item item-divider" style="background:#444444;; color:#F2F2F2">{{ScheduledDate}}</li>
 
 		   <div ng-repeat="x in sch">
            
@@ -64,11 +65,11 @@
            
 
            <li ng-if="x.Speaker == ''" class="item item-thumbnail-left item-icon-right">
- 				<img style="height: 80px" src="{{x.ThumbImage}}"/>
-
- 				<p style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
-
- 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
+     				<img style="height: 80px" src="{{x.ThumbImage}}"/>
+    
+     				<p style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
+    
+     				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
 
        			<a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
            </li>
@@ -89,6 +90,24 @@
 		</ion-list>
 
 	</div>
+  
+	<div ng-show="showShowcase">
+    	<div style="text-align: center">{{noShowcase}}</div>
+        
+      <ul ng-repeat="x in showcaseFav">           
+           <li class="item item-icon-right item-text-wrap" style="padding: 0; padding-right: 54px">
+            <a class="item item-thumbnail-left" style="margin-left: 0; border: none" ui-sref="app.showdetails({RecID: x.ID})">
+       				<img style="height: 80px" src="{{x.Image}}"/>
+      
+       				<p style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
+      
+       				<p>{{x.ShortDesc}}</p>
+            </a>
+       			<a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','showcase')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+          </li>
+	    </ul>   
+
+	</div>  
 
 	<div ng-show="showMaps">
 		<script id="image-modal.html" type="text/ng-template">
@@ -109,7 +128,7 @@
 	            <a ng-show="{{map.NoFav}}" ng-click="saveFavoriteMap('{{map.RecID}}')">
 	            <i class="icon ion-ios-star-outline" style="font-size:42px; margin-top:-20px; float: right"></i>
 	            </a>
-	   		<a ng-show="true" ng-click="deleteFavorite('{{map.ID}}', 'maps')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+	   		<a ng-show="true" ng-click="deleteFavorite('{{map.ID}}', 'maps')"><i class="icon ion-ios-star" style="font-size:32px; float: right; margin-top:-20px;"></i></a>
 
 	       </div>
 	       </li>

@@ -34,11 +34,14 @@ angular.module('starter.services')
 			}
 		},
 		getDetails: function(id){
-			for(i=0;i<requests.length;i++){
+			var temp = localStorage.getItem('tCompany')
+			company = JSON.parse(temp)
+				
+			for(i=0;i<company.length;i++){
 				//console.log("test")
-				if(requests[i].RecID == id){
+				if(company[i].RecID == id){
 					//console.log(requests[i])
-					return requests[i];
+					return company[i];
 				}
 			}
 		},  
