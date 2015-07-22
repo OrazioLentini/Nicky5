@@ -8,6 +8,7 @@ angular.module('starter.controllers')
 	   	    var directory = localStorage.getItem('companyFavorites')
 	 	    var schedule = localStorage.getItem('scheduleFavorites')
 	    	var maps = localStorage.getItem('mapsFavorites')
+			var showcase = localStorage.getItem('showcaseFavorites')
 
 	    	if(directory != null) {
 	    		$scope.directoryFav = JSON.parse(directory)
@@ -25,15 +26,19 @@ angular.module('starter.controllers')
 	    		$scope.noSchedule = "You have no favorites for schedule."
 	    		$scope.schedule = ""
 	    	}
-
-
 	    	if(maps != null) {
 	    		$scope.mapsFav = JSON.parse(maps)
-	    		console.log($scope.mapsFav)
 	    	}
 	    	else {
 	    		$scope.noMaps = "You have no favorites for maps."
 	    		$scope.mapsFav = ""
+	    	}
+			if(showcase != null) {
+	    		$scope.showcaseFav = JSON.parse(showcase)
+	    	}
+	    	else {
+	    		$scope.noShowcase = "You have no favorites for showcase."
+	    		$scope.showcaseFav = ""
 	    	}
 	    }
 
@@ -47,6 +52,7 @@ angular.module('starter.controllers')
 				$scope.showSch = true
 				$scope.showDir = false 
 				$scope.showMaps = false
+				$scope.showShowcase = false
 				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
         		$('.schedule').addClass('buttonPickerActive');
 			}
@@ -54,6 +60,7 @@ angular.module('starter.controllers')
 				$scope.showSch = false
 				$scope.showDir = true 
 				$scope.showMaps = false
+				$scope.showShowcase = false
 				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
         		$('.directory').addClass('buttonPickerActive');
 			}
@@ -61,12 +68,19 @@ angular.module('starter.controllers')
 				$scope.showSch = false
 				$scope.showDir = false 
 				$scope.showMaps = true
+				$scope.showShowcase = false
 				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
         		$('.maps').addClass('buttonPickerActive');
 			}
+			if (type == 'showcase') {
+				$scope.showSch = false
+				$scope.showDir = false 
+				$scope.showMaps = false
+				$scope.showShowcase = true
+				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+        		$('.showcase').addClass('buttonPickerActive');
+			}
 		}
-
-
 
 		$scope.deleteFavorite = function(id, type) {
 			var confirmPopup = $ionicPopup.confirm({
@@ -111,7 +125,7 @@ angular.module('starter.controllers')
       // Execute action
     });
     $scope.$on('modal.shown', function() {
-      console.log('Modal is shown!');
+      //console.log('Modal is shown!');
     });
 
     //$scope.imageSrc = 'http://ionicframework.com/img/ionic-logo-blog.png';
