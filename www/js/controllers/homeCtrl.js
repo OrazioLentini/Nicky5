@@ -2,15 +2,13 @@ angular.module('starter.controllers')
 
     .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout) {
 		//$scope.s = SyncService.sync()
-				
+			$ionicHistory.clearHistory()	
 	  $ionicPlatform.ready( function() {
            //alert("ready");
        $timeout(function() {
           // alert("grab featured")
 		   $scope.feature = SyncService.getFeaturedScheduleList() 
            $timeout(function() {
-             //alert("start slides")
-          // $scope.feature = SyncService.getFeaturedScheduleList()
 	        var mySwiper = new Swiper('.swiper-container', {
 			    autoplay: 8000,
 			    effect: 'slide',

@@ -12,7 +12,6 @@ angular.module('starter.controllers')
 		    //alert(isLoggedIn);
 		    //$scope.name = isLoggedIn; //now we've registered!
 		    if(isLoggedIn > ""){
-		    	alert("you logged in!")
 		    	$scope.logoutButton = true
 			    $scope.profileButton = true
 			    $scope.loginButton = false
@@ -100,7 +99,6 @@ angular.module('starter.controllers')
 		});
 		confirmPopup.then(function(res) {
 			if(res) {
-				console.log($scope)
 				localStorage.removeItem("login");
 				localStorage.removeItem("infoRequest");
 				$("#Username").val("");
