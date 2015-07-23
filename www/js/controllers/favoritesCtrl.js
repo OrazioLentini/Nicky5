@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('FavoritesCtrl', ['$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading','MenuLinksService','$stateParams', '$ionicModal', function ($scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading,MenuLinksService, $stateParams, $ionicModal) {
+    .controller('FavoritesCtrl', ['$rootScope', '$scope', 'MapsService','$ionicPopup', '$filter', 'FavoritesService','$ionicLoading','MenuLinksService','$stateParams', '$ionicModal', function ($rootScope, $scope,  MapsService, $ionicPopup, $filter, FavoritesService, $ionicLoading,MenuLinksService, $stateParams, $ionicModal) {
 
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
@@ -47,6 +47,8 @@ angular.module('starter.controllers')
 		$scope.showSch = true
 		$scope.showDir = false
 		$scope.showMaps = false
+
+
 		$scope.toggle = function (type) {
 			if (type == 'schedule') {
 				$scope.showSch = true
@@ -55,6 +57,8 @@ angular.module('starter.controllers')
 				$scope.showShowcase = false
 				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
         		$('.schedule').addClass('buttonPickerActive');
+        		$rootScope.cache = "schedule"
+
 			}
 			if (type == 'directory') {
 				$scope.showSch = false
@@ -63,6 +67,8 @@ angular.module('starter.controllers')
 				$scope.showShowcase = false
 				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
         		$('.directory').addClass('buttonPickerActive');
+        		$rootScope.cache = "directory"
+
 			}
 			if (type == 'maps') {
 				$scope.showSch = false
@@ -71,6 +77,7 @@ angular.module('starter.controllers')
 				$scope.showShowcase = false
 				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
         		$('.maps').addClass('buttonPickerActive');
+        		$rootScope.cache = "maps"
 			}
 			if (type == 'showcase') {
 				$scope.showSch = false
@@ -79,8 +86,16 @@ angular.module('starter.controllers')
 				$scope.showShowcase = true
 				$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
         		$('.showcase').addClass('buttonPickerActive');
+        		$rootScope.cache = "showcase"
 			}
 		}
+		if($rootScope.cache > ""){
+        			var tab = $rootScope.cache
+
+        			$('.favorites .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+        			$('.'+tab).addClass('buttonPickerActive');
+        			$scope.toggle(tab)
+        	  }
 
 		$scope.deleteFavorite = function(id, type) {
 			var confirmPopup = $ionicPopup.confirm({

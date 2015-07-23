@@ -18,9 +18,20 @@ angular.module('starter.controllers')
 				$scope.images = data
 				if($scope.images.length == 0){
 					$scope.hasImages = false
+					$( ".content" ).fadeIn('fast');
+					$("#thumb").css("display", "block");
+					$(".top-container").css("display", "block");
+					$(".top-container").css("height", "100%");
+
 				}
 				else {
 					$scope.hasImages = true
+					$( ".content" ).fadeIn('fast');
+					$( "#slides" ).fadeIn('slow');
+	                $("#slide").css("display", "block");
+	                $(".top-container").css("display", "block");
+					$(".top-container").css("height", "100%");
+
 				}
 			})
 		    setTimeout(function () {
@@ -29,7 +40,7 @@ angular.module('starter.controllers')
 					paginationClickable: true,
 					nextButton: '.right',
 					prevButton: '.left',
-	
+
 				});   
 			},200);	
   		})	
