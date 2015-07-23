@@ -51,11 +51,11 @@
         
         <div id="youtube" style="background:#FFF; margin-top:5px; display: none">
           <div ng-repeat="x in youtube">
-              <div ng-click="openYoutube('{{xsnippet.resourceId.videoId}}')" style="position: relative"> 
+              <div ng-click="openYoutube('{{x.snippet.resourceId.videoId}}')" style="position: relative"> 
                 <img src="{{x.snippet.thumbnails.high.url}}" style="width:100%">
                 <div style="padding:0 10px; font-size: 1em; color: white; position: absolute; bottom: 20px; z-index: 99">{{x.snippet.title}}</div>
-                <img src="../images/YouTubePlay.png" style="width:18%; position: absolute; top: 41%; left: 41%; z-index: 99 ">
-                <img src="../images/grad-dark3.png" style="width: 100%; position: absolute; top: 0">
+                <img src="images/YouTubePlay.png" style="width:18%; position: absolute; top: 41%; left: 41%; z-index: 99 ">
+                <img src="images/grad-dark3.png" style="width: 100%; position: absolute; top: 0">
               </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
                   <img style="height: 80px" src="{{x.AuthorAvatar}}" />
                   <div style="margin-left: 50px; margin-top: 8px;">{{x.AuthorScreenName}}</div>
                 </div>
-                <img src="../images/grad-dark3.png" style="width: 100%; position: absolute; bottom: 5px">
+                <img src="images/grad-dark3.png" style="width: 100%; position: absolute; bottom: 5px">
                <div style="color: #fff; position: absolute; bottom:70px">
                   <p style="padding: 0 15px" class="fadeIG">{{x.Post}}</p>
                </div>
