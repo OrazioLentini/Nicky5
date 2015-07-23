@@ -1,75 +1,80 @@
 
-<ion-view title="{{details.Company}}" >
+<ion-view title="{{details.Company}}" ng-cloak >
  <!--<ion-nav-buttons side="right">
     <a ng-show="unfilled" ng-click="saveFavoriteCompany('')"><i class="icon ion-ios-star-outline" style="font-size:32px;"></i></a>
     <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px;"></i></a>
   </ion-nav-buttons>-->
 	<ion-content>
-    
-    <div style="" class="swiper-container" ng-show="hasImages">
-      <div class="swiper-wrapper" >
-          <div class="box swiper-slide" ng-repeat="x in images">
-                <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
-                  <img src="{{x.Link}}" style="width:100%">
+    <div class="content" style="display:none; ">
+      <div class="top-container" style="background:#F1F1F1; vertical-align:top !important; margin:0px; padding:0px; line-height:0">
+        <div class="swiper-container" ng-show="hasImages" >
+          <div id="slides" class="swiper-wrapper" style="display:none;">
+              <div class="box swiper-slide" ng-repeat="x in images">
+                    <div class=" featured" style="overflow:hidden; position:relative;" >
+                      <img src="{{x.Link}}" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div style="text-align: center; clear:both; margin-top:10px; ">
+                <div class="button button-clear left" style="float: left; z-index:999; display: inline">
+                    <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
+                </div>
+                <div style="display: inline">Click or swipe to view images</div>
+                <div class="button button-clear right"style="float: right; z-index:999; display: inline" >
+                    <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
                 </div>
             </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div style="text-align: center; clear:both; ">
-            <div class="button button-clear left" style="float: left; z-index:999; display: inline">
-                <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
-            </div>
-            <div style="display: inline">Click or swipe to view images</div>
-            <div class="button button-clear right"style="float: right; z-index:999; display: inline" >
-                <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
-            </div>
+        <div id="thumb" ng-show="!hasImages" ng-cloak style="display:none">
+           <img src="{{details.Image}}" style="width:100%" ng-cloak>
         </div>
-    </div>
-    
-        <div style="padding:0px 20px">
-           <div style="margin-top:15px; padding:0px; font-size: 18px; padding-bottom:5px;"><span style="font-weight: 500">{{details.Title}}</span>
-                <a ng-show="unfilled" ng-click="saveFavoriteShowcase('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
-                <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px; float:right"></i></a>
-           </div>
-           <p style="font-size:.8em; border-bottom:1px #F1F1F1 solid; padding-bottom:5px;">
-           Company: {{details.Company}}<br>
-           Location: {{details.City}}, {{details.State}}
-           </p>
-           <p>
-              {{details.ShortDesc}}
-           </p>
-           
+      </div>
+      
+          <div style="padding:0px 20px">
+             <div style="margin-top:15px; padding:0px; font-size: 18px; padding-bottom:5px;"><span style="font-weight: 500">{{details.Title}}</span>
+                  <a ng-show="unfilled" ng-click="saveFavoriteShowcase('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
+                  <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px; float:right"></i></a>
+             </div>
+             <p style="font-size:.8em; border-bottom:1px #F1F1F1 solid; padding-bottom:5px;">
+             Company: {{details.Company}}<br>
+             Location: {{details.City}}, {{details.State}}
+             </p>
+             <p>
+                {{details.ShortDesc}}
+             </p>
+             
 
-           
-          <span style=" font-weight: 700; color:#F87D3F">Booth: {{details.Booth}}</span>
-           <br><span style="font-size:.7em; color:#489CD4; ">Categorized in: {{details.Category}}</span>
+             
+            <span style=" font-weight: 700; color:#F87D3F">Booth: {{details.Booth}}</span>
+             <br><span style="font-size:.7em; color:#489CD4; ">Categorized in: {{details.Category}}</span>
 
-           <button ng-show="showInfo" class="button button-full button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
-           <div class="row" style="height: 60px">
-            <div class="col">
-              <button class="button icon-left ion-social-facebook-outline button-full" style="background: #3B5998;  color: white">
-                Like
-              </button>
+             <button ng-show="showInfo" class="button button-full button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
+             <div class="row" style="height: 60px">
+              <div class="col">
+                <button class="button icon-left ion-social-facebook-outline button-full" style="background: #3B5998;  color: white">
+                  Like
+                </button>
+              </div>
+              <div class="col">
+                  <button class="button icon-left ion-social-twitter-outline button-full button-calm">
+                    Tweet
+                  </button> 
+              </div>
             </div>
-            <div class="col">
-                <button class="button icon-left ion-social-twitter-outline button-full button-calm">
-                  Tweet
-                </button> 
+            <div class="row" style="margin-top: 0">
+              <div class="col">
+                <button class="button icon-left ion-social-googleplus-outline button-full button-assertive">
+                  Share
+                </button>
+              </div>
+              <div class="col">
+                  <button class="button icon-left ion-social-pinterest-outline button-full" style="background: #BD1D23; color: white">
+                    Pin
+                  </button> 
+              </div>
             </div>
           </div>
-          <div class="row" style="margin-top: 0">
-            <div class="col">
-              <button class="button icon-left ion-social-googleplus-outline button-full button-assertive">
-                Share
-              </button>
-            </div>
-            <div class="col">
-                <button class="button icon-left ion-social-pinterest-outline button-full" style="background: #BD1D23; color: white">
-                  Pin
-                </button> 
-            </div>
-          </div>
-        </div>
-            
+      </div>
 	</ion-content>
 </ion-view>
