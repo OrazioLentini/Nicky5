@@ -137,6 +137,11 @@ angular.module('starter.controllers')
 		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 	}
 
+	$scope.sync = function () {
+		SyncService.sync()
+			$state.go('app.menu')
+		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+	}
 	//SCANNER
 	$ionicModal.fromTemplateUrl('templates/checkIn.html', {
 		scope: $scope

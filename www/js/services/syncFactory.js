@@ -238,22 +238,118 @@ angular.module('starter.services')
                 }
             }
         },
+        this.getYoutube = function() {
+            
+            var url = 'http://patty5.com/AppApis/apiSocial.asp';
+            $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            }). 
+            success (function(data){
+                tempData = JSON.stringify(data)
+                localStorage.setItem('tSocial', tempData)
+
+                socialData = data
+                
+                youtubeApiKey = socialData[1].apiKey
+                username = socialData[1].userName
+                maxYTVideos = socialData[1].Total
+                playlistName = socialData[1].PlaylistName 
+                
+                var url = 'https://www.googleapis.com/youtube/v3/channels?';
+                $http.get(url, {
+                    params: {
+                        forUsername: username,
+                        key: youtubeApiKey,
+                        part: "contentDetails"
+                    }
+                }). 
+                success (function(data){
+                    channelID = data.items[0].id
+                    //console.log("channelID: " + data.items[0].id)
+                    
+                    if (playlistName  == 'favorites' || playlistName  == 'likes' ||playlistName  == 'uploads' ) {
+                        var url = "https://www.googleapis.com/youtube/v3/channels?";
+                        $http.get(url, {
+                            params: {
+                                id: channelID,
+                                key: youtubeApiKey,
+                                part: "contentDetails"
+                            }
+                        }). 
+                        success (function(data) {          
+                            if(playlistName == "uploads") {
+                                playlistID = data.items[0].contentDetails.relatedPlaylists.uploads
+                            }
+                            else if (playlistName == "likes") {
+                                playlistID = data.items[0].contentDetails.relatedPlaylists.likes
+                            }
+                            else {
+                                playlistID = data.items[0].contentDetails.relatedPlaylists.favorites
+                            }
+                            var url = 'https://www.googleapis.com/youtube/v3/playlistItems?';
+                            $http.get(url, {
+                                params: {
+                                    playlistId: playlistID,
+                                    key: youtubeApiKey,
+                                    part: "snippet",
+                                    maxResults: maxYTVideos 
+                                }
+                            }).
+                            success (function (data){
+                                localStorage.setItem("Youtube", JSON.stringify(data))
+                            })
+                        })
+                    }
+                    else {
+                        var url = 'https://www.googleapis.com/youtube/v3/playlists?';
+                        $http.get(url, {
+                            params: {
+                                channelId: channelID,
+                                key: youtubeApiKey,
+                                part: "snippet"
+                            }
+                        }). 
+                        success (function(data){
+                            var length = data.items.length
+                            for (i = 0; i < length; i++) {
+                                if (data.items[i].snippet.title == playlistName) {                  
+                                    //console.log("Custom PlaylistID: " + data.items[0].id)
+                                    playlistID = data.items[i].id
+                                    //getPlaylistVideos(playlistID)
+                                    break;
+                                }
+                            }
+                            var url = 'https://www.googleapis.com/youtube/v3/playlistItems?';
+                            $http.get(url, {
+                                params: {
+                                    playlistId: playlistID,
+                                    key: youtubeApiKey,
+                                    part: "snippet",
+                                    maxResults: maxYTVideos 
+                                }
+                            }).
+                            success (function (data){
+                                localStorage.setItem("Youtube", JSON.stringify(data))
+                            })
+                        })
+                    }
+                })
+            })
+        },
         this.sync = function(){
             this.getSchedule()
             this.getDirectory()
             this.getMaps()
             this.getSpeaker()
-            this.getSocialMediaInfo()
+            //this.getSocialMediaInfo()
             this.syncInfoRequest()
             this.getPresentationList()
             this.getProducts()
-            setTimeout(function () {
-                saveSocialLocally()
-            },210)  
-
+            this.getYoutube()
             success = 'complete'
             return success
-
         }
-    
 });
