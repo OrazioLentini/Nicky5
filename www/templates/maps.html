@@ -1,61 +1,26 @@
-<style>
-.transparent {
-  background: transparent !important;
-}
-.image-modal {
-  width: 100% !important;
-  height: 100%;
-  top: 0 !important;
-  left: 0 !important;
-}
-.fullscreen-image {
-  max-width: 100%;
-  max-height: 100%;
-  top: 50px;
-  left: 0;
-  margin: auto;
-  overflow: auto;
-  position: fixed;
-  right: 0;
-}
 
-/* Fix modal backdrop for smaller devices */
-@media (max-width: 679px) {
-  .active .modal-backdrop-bg {
-    opacity: .5;
-  }
-  .modal-backdrop-bg {
-    -webkit-transition: opacity 300ms ease-in-out;
-    transition: opacity 300ms ease-in-out;
-    background-color: #000;
-    opacity: 0;
-  }
-}
-</style>
-<script id="image-modal.html" type="text/ng-template">
-
-              <div class="modal image-modal transparent" ng-click="closeModal()">
-               <div class="button button-clear" style="float:right;" ng-click="modal.hide()"><span style="color:#FFF;" class="icon icon-right ion-close"></span></div>
-                  <ion-pane class="transparent">
-                     <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
-                  </ion-pane>
-              </div>
-          </script>
 <ion-view title="{{title}}">
 	<ion-content>
 	    <div class="content">
-	        <ul ng-repeat="map in maps" class="table-view" id="map">
-	           <li class="item" style="margin:10px 5px 10px 5px; padding:10px;"><div style="height: 250px;">
+	        <ul ng-repeat="map in maps"  id="map" ui-sref="app.viewmap({RecID: {{map.RecID}} })">
+	           <li class="item" style="margin:10px; padding:0px;">
 
-	           <div style="width:100%; text-align:center; background:#FFF;"><img ng-click="showImage('{{map.Image}}')" style="max-width: 100%; max-height: 200px; border:0px;" src="{{map.Image}}"/></div>
-	           <p style="padding:5px 0px 0px 0px;"><b>{{map.Name}}</b><br>{{map.Description}}
+	           <div class="thumb" style="width:100%; height:200px; text-align:center; background:#FFF;"><img src="{{map.Image}}"/></div>
+	           <div style="width:100%">
+                <div style="display:inline-block; width:85%">
+               <p style="padding:10px; display:inline-block;; white-space:normal !important; text-overflow:clip !important;"><b>{{map.Name}}</b><br>{{map.Description}}</p> 
+                </div>
+                <div style="display:inline-block; width:15%; padding-top:20px; padding-right:20px; text-align:right; vertical-align:top;">
 		            <a ng-show="{{map.NoFav}}" ng-click="saveFavoriteMap('{{map.RecID}}')">
-		            <i class="icon ion-ios-star-outline" style="font-size:32px; margin-top:-20px; float: right"></i>
+		            <i class="icon ion-ios-star-outline" style="font-size:32px;;"></i>
 		            </a>
 	           		<a ng-show="{{map.Fav}}" ng-click="deleteFavorite('{{map.RecID}}')">
-	           		<i class="icon ion-ios-star" style="font-size:32px; float: right; margin-top:-20px;"></i></p>
-	           		</a>
-	           </div>
+	           		<i class="icon ion-ios-star" style="font-size:32px;  "></i>
+                </a>
+                </div>
+              </div>
+	           		
+	           
 	           </li>
 	        </ul>
 	    </div>

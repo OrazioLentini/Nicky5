@@ -170,6 +170,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
+  .state('app.viewmap', {
+      url: "/viewmap/:RecID",
+      views: {
+        'menuContent': {
+        templateUrl: "templates/viewmap.html",
+        controller: 'ViewMapsCtrl'
+      }
+    }
+  })
 	
    .state('app.social', {
       url: "/social/:ID",

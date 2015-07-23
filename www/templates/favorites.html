@@ -35,10 +35,10 @@
 <ion-view view-title="{{title}}"> 
       <div class="bar bar-subheader bar-light">
 	    <div class="button-bar favorites">
-			<a class="button buttonPickerActive schedule " ng-click="toggle('schedule')">Schedule</a>
-			<a class="button buttonPicker directory" ng-click="toggle('directory')">Directory</a>
-      <a class="button buttonPicker showcase"  ng-click="toggle('showcase')">Showcase</a>
-			<a class="button buttonPicker maps"  ng-click="toggle('maps')">Maps</a>
+			<a class="button buttonPickerActive schedule " style="text-overflow:clip !important" ng-click="toggle('schedule')">Schedule</a>
+			<a class="button buttonPicker directory" style="text-overflow:clip !important" ng-click="toggle('directory')">Directory</a>
+      <a class="button buttonPicker showcase" style="text-overflow:clip !important"  ng-click="toggle('showcase')">Showcase</a>
+			<a class="button buttonPicker maps" style="text-overflow:clip !important" ng-click="toggle('maps')">Maps</a>
 	    </div>
 	  </div>
   <ion-content style="margin-top: 50px">
@@ -93,46 +93,47 @@
   
 	<div ng-show="showShowcase">
     	<div style="text-align: center">{{noShowcase}}</div>
-        
-      <ul ng-repeat="x in showcaseFav">           
-           <li class="item item-icon-right item-text-wrap" style="padding: 0; padding-right: 54px">
-            <a class="item item-thumbnail-left" style="margin-left: 0; border: none" ui-sref="app.showdetails({RecID: x.ID})">
-       				<img style="height: 80px" src="{{x.Image}}"/>
-      
-       				<p style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
-      
-       				<p>{{x.ShortDesc}}</p>
-            </a>
-       			<a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','showcase')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
-          </li>
-	    </ul>   
+      <ion-list>
+      <ion-item ng-repeat="x in showcaseFav" class="item item-icon-right item-text-wrap"  ui-sref="app.showdetails({RecID: x.ID})">           
+          
+            <img style="height: 80px; float:left; padding-right: 15px;" src="{{x.Image}}" />
+    
+            <p style="font-size:14px; font-weight:bold; text-overflow:clip !important; overflow:none !important;">{{x.Title}}</p>
+    
+            <p class="fade">{{x.ShortDesc}}</p>
+
+            <a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','showcase')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+	    </ion-item>   
+      </ion-list>
+
 
 	</div>  
 
 	<div ng-show="showMaps">
-		<script id="image-modal.html" type="text/ng-template">
 
-              <div class="modal image-modal transparent" ng-click="closeModal()">
-               <div class="button button-clear" style="float:right;" ng-click="modal.hide()"><span style="color:#FFF;" class="icon icon-right ion-close"></span></div>
-                  <ion-pane class="transparent">
-                     <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
-                  </ion-pane>
-              </div>
-          </script>
 		<div style="text-align: center">{{noMaps}}</div>
-	 	<ul ng-repeat="map in mapsFav" class="table-view" id="map">
-	       <li class="item" style="margin:10px 5px 10px 5px; padding:10px;"><div style="height: 250px;">
 
-	       <div style="width:100%; text-align:center; background:#FFF;"><img ng-click="showImage('{{map.Image}}')" style="max-width: 100%; max-height: 200px; border:0px;" src="{{map.Image}}"/></div>
-	       <p style="padding:5px 0px 0px 0px;"><b>{{map.MapName}}</b><br>{{map.MapDesc}}
-	            <a ng-show="{{map.NoFav}}" ng-click="saveFavoriteMap('{{map.RecID}}')">
-	            <i class="icon ion-ios-star-outline" style="font-size:42px; margin-top:-20px; float: right"></i>
-	            </a>
-	   		<a ng-show="true" ng-click="deleteFavorite('{{map.ID}}', 'maps')"><i class="icon ion-ios-star" style="font-size:32px; float: right; margin-top:-20px;"></i></a>
 
-	       </div>
-	       </li>
-	    </ul>
+    <ul ng-repeat="map in mapsFav"  id="map" ui-sref="app.viewmap({RecID: {{map.ID}} })">
+             <li class="item" style="margin:10px; padding:0px;">
+
+             <div class="thumb" style="width:100%; height:200px; text-align:center; background:#FFF;"><img src="{{map.Image}}"/></div>
+             <div style="width:100%">
+                <div style="display:inline-block; width:85%">
+               <p style="padding:10px; display:inline-block;; white-space:normal !important; text-overflow:clip !important;"><b>{{map.MapName}}</b><br>{{map.MapDesc}}</p> 
+                </div>
+                <div style="display:inline-block; width:15%; padding-top:20px; padding-right:20px; text-align:right; vertical-align:top;">
+                
+                <a ng-show="true" ng-click="deleteFavorite('{{map.ID}}', 'maps')">
+                <i class="icon ion-ios-star" style="font-size:32px;  "></i>
+                </a>
+                </div>
+              </div>
+                
+             
+             </li>
+          </ul>
+
 	</div>
   </ion-content>
 </ion-view>

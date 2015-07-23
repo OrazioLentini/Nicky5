@@ -31,6 +31,18 @@ angular.module('starter.services')
 			maps = data
 		
 		return maps
-		}
+		},
+		getMap: function(id){
+			var temp = localStorage.getItem('tMaps')
+			map = JSON.parse(temp)
+				
+			for(i=0;i<map.length;i++){
+				//console.log("test")
+				if(map[i].RecID == id){
+					//console.log(requests[i])
+					return map[i];
+				}
+			}
+		},  
 	}
 });

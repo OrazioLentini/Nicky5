@@ -1,7 +1,23 @@
 body {
   cursor: url("http://ionicframework.com/img/finger.png"), auto;
 }
-
+.fade {
+  position: relative;
+  line-height:1.2em;
+  height: 4.8em; /* exactly three lines */
+  overflow:hidden !important;
+  white-space:nowrap;
+}
+.fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
 
 /*dark is class added to ion-content, since ion-conte*/
 /*is made up of multiple pieces and is a pain to style each*/
@@ -41,6 +57,24 @@ body {
 .dark a {
   color: #F0F1F1;
 }
+/**
+ * CSS image crop. Forces image to 4:3 aspect ratio cropping at the middle.
+ * http://dabblet.com/gist/4711695
+ */
+.thumb
+     {
+     height:150px; 
+     display:block; 
+     position:relative;
+     overflow:hidden;
+     }
+.thumb img 
+    {
+     position:absolute;
+     top:0%;
+     left:0%; 
+     width:100%;
+     }
 
   .button.button-youtube {
     border-color: #b31217;
