@@ -29,7 +29,7 @@ angular.module('starter.services', [])
             })
         }
 
-	/*	this.profileUpdate = function(Username, BadgeID, Firstname, Lastname, Email) {
+		/*this.profileUpdate = function(Username, BadgeID, Firstname, Lastname, Email) {
 		    var user = localStorage.getItem("login")
 			data = JSON.parse(user)
 			var UserID = data[0].UserID

@@ -2,15 +2,13 @@ angular.module('starter.controllers')
 
     .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout) {
 		//$scope.s = SyncService.sync()
-				
+			$ionicHistory.clearHistory()	
 	  $ionicPlatform.ready( function() {
-           //alert("ready");
+           alert("ready");
        $timeout(function() {
-          // alert("grab featured")
+           alert("grab featured")
 		   $scope.feature = SyncService.getFeaturedScheduleList() 
            $timeout(function() {
-             //alert("start slides")
-          // $scope.feature = SyncService.getFeaturedScheduleList()
 	        var mySwiper = new Swiper('.swiper-container', {
 			    autoplay: 8000,
 			    effect: 'slide',
@@ -19,12 +17,12 @@ angular.module('starter.controllers')
 		    //$ionicHistory.clearHistory()
 			},150);	
 
-	        if(ionic.Platform.isIOS == true){
+
            $timeout(function() {
 	         navigator.splashscreen.hide();
-	         //alert('done')
+	         alert('done')
 			},600);
-            }
+            
 	    //SyncService.sync()
 	      },200);
 	

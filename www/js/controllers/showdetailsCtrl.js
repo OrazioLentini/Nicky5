@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('ShowDetailCtrl', function ($scope, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService) {
+    .controller('ShowDetailCtrl', function ($scope, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope) {
 		
 		$scope.filled = false
 		$scope.unfilled = false
@@ -16,7 +16,12 @@ angular.module('starter.controllers')
 		$scope.$on('$ionicView.enter', function(){
 			ShowcaseService.getShowcaseImages($stateParams.RecID). success( function (data) {
 				$scope.images = data
-				console.log($scope.images)
+				if($scope.images.length == 0){
+					$scope.hasImages = false
+				}
+				else {
+					$scope.hasImages = true
+				}
 			})
 		    setTimeout(function () {
 		        var mySwiper = new Swiper('.swiper-container', {
@@ -80,6 +85,7 @@ angular.module('starter.controllers')
 				$scope.profileButton = true
 				$scope.loginButton = false
 				$scope.runSync()
+				$rootScope.$broadcast('login', LoginUsername)
 				$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();
 			}
