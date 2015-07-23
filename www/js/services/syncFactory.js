@@ -252,7 +252,6 @@ angular.module('starter.services')
                 localStorage.setItem('tSocial', tempData)
 
                 socialData = data
-                
                 youtubeApiKey = socialData[1].apiKey
                 username = socialData[1].userName
                 maxYTVideos = socialData[1].Total

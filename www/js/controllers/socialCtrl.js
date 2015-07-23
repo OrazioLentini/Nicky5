@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('SocialCtrl', function ($scope, $state, $ionicScrollDelegate, $stateParams, MenuLinksService, SocialService) {
+    .controller('SocialCtrl', function ($scope, $state, $ionicScrollDelegate, $stateParams, MenuLinksService, SocialService, $ionicModal, $filter) {
     
     $scope.title = MenuLinksService.getHeader($stateParams.ID)
 
@@ -9,13 +9,12 @@ angular.module('starter.controllers')
     })
     
     SocialService.getInstagram(). success(function(data){
-        $scope.instagram = data    
+        $scope.instagram = data 
     })
     
     $scope.youtube = SocialService.getYoutube()
-    console.log($scope.youtube)
     
-    $scope.yt = true
+    $scope.tw = true
     $scope.toggle = function (type) {
     	if (type == 'twitter') {
     		$scope.tw = true
@@ -52,17 +51,58 @@ angular.module('starter.controllers')
     }
         
     $scope.openYoutube = function(video){
-        //var now = new Date().valueOf();
-       // setTimeout(function () {
-       //     if (new Date().valueOf() - now > 200) return;
-       //     window.location = "https://www.youtube.com/watch?v="+video;
-       // }, 10);
+        var now = new Date().valueOf();
+        setTimeout(function () {
+            if (new Date().valueOf() - now > 200) return;
+            window.location = "https://www.youtube.com/watch?v="+video;
+        }, 10);
         //window.open = "vnd.youtube://" + videoID
     }
 
     $scope.scrollTop = function() {
-    $ionicScrollDelegate.scrollTop();
-  };
+        $ionicScrollDelegate.scrollTop();
+    };
+    
+    $ionicModal.fromTemplateUrl('image-modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+        }).then(function(modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hide', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+    $scope.$on('modal.shown', function() {
+      //console.log('Modal is shown!');
+    });
+
+    $scope.showImage = function(t) {
+
+        var x = $filter('filter')($scope.instagram, {RecID: t})
+        $scope.imageSrc  = x[0].PostImageURL
+        $scope.avatar = x[0].AuthorAvatar
+        $scope.name = x[0].AuthorScreenName
+        $scope.desc = x[0].Post
+        $scope.openModal();
+    }
 
 //youtube---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
