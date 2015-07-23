@@ -21,6 +21,14 @@ angular.module('starter.services')
                     format:'json'
                 }
             })      
+        },
+        getYoutube: function() {   
+            var temp = localStorage.getItem('Youtube')
+            data = JSON.parse(temp)      
+            
+            return data.items
         }
     }
 });
+
+

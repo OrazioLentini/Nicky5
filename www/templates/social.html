@@ -36,19 +36,23 @@
         </div>
         
         <div id="youtube" ng-show="yt" style="background:#FFF; margin-top:5px;">
+          <div ng-repeat="x in youtube">
+              <div ng-click="openYoutube('{{xsnippet.resourceId.videoId}}')" style="position: relative"> 
+                <img src="{{x.snippet.thumbnails.high.url}}" style="width:100%">
+                <div style="padding:5px 3px; text-align:center; font-size: 14px; color: white; position: absolute; bottom: 0">{{x.snippet.title}}</div>
+              </div>
+          </div>
         </div>
                 
          <div id="twitter" ng-show="tw" style="background:#FFF; margin-top:5px;">
             <ul > 
               <li ng-repeat="x in twitter" class="item item-avatar item-text-wrap">
-                <img style="height: 80px" src="{{x.AuthorAvatar}}"/>
-                
+                <img style="height: 80px" src="{{x.AuthorAvatar}}"/>  
                 <div style="font-size: 1em"><strong>{{x.AuthorName}}</strong> @{{x.AuthorScreenName}}
                 <p>{{x.Post}}</p>
                 </div>
               </li>
             </ul> 
-
         </div>
         
          <div id="instagram" ng-show="ig" style="background:#FFF; margin-top:5px;">
@@ -68,4 +72,8 @@
 
   </ion-content>
 </ion-view>
-  
+
+
+
+
+

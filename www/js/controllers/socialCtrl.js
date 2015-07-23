@@ -12,7 +12,10 @@ angular.module('starter.controllers')
         $scope.instagram = data    
     })
     
-    $scope.tw = true
+    $scope.youtube = SocialService.getYoutube()
+    console.log($scope.youtube)
+    
+    $scope.yt = true
     $scope.toggle = function (type) {
     	if (type == 'twitter') {
     		$scope.tw = true
@@ -48,9 +51,16 @@ angular.module('starter.controllers')
     	}
     }
         
+    $scope.openYoutube = function(video){
+        //var now = new Date().valueOf();
+       // setTimeout(function () {
+       //     if (new Date().valueOf() - now > 200) return;
+       //     window.location = "https://www.youtube.com/watch?v="+video;
+       // }, 10);
+        //window.open = "vnd.youtube://" + videoID
+    }
 
-
-  $scope.scrollTop = function() {
+    $scope.scrollTop = function() {
     $ionicScrollDelegate.scrollTop();
   };
 
@@ -151,7 +161,7 @@ setTimeout(function () {
 //window.open = "vnd.youtube://" + videoID
 }
 
-        displayYouTube()
-		showAll()
+      //  displayYouTube()
+		//showAll()
 		
     });
