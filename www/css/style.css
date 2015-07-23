@@ -134,6 +134,55 @@ body {
   padding-left: 25px;
 }
 
+/*INSTAGRAM*/
+.itemIG {
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  padding: 16px;
+}
+
+.fadeIG {
+  position: relative;
+  line-height:1.2em;
+  height: 2.4em; /* exactly three lines */
+  overflow:hidden !important;
+  white-space:wrap;
+}
+
+.whiteBar {
+  height: 1px; 
+  width: 95%; 
+  position: absolute; 
+  bottom: 70px; 
+  background: #fff; 
+  margin-left: 2.5%
+}
+.transparent {
+  background: rgba(0,0,0,0.8) !important;
+}
+.image-modal {
+  width: 100% !important;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+}
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  top: 50px;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  z-index: -1;
+}
+/*END INSTAGRAM*/
+
+
 @media only screen and (max-width: 755px) {
 /* Styles */
   body {
