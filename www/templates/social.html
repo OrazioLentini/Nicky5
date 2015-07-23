@@ -49,7 +49,7 @@
          <div id="all" style="background:#FFF; display: none; margin-top:5px; ">
         </div>
         
-        <div id="youtube" ng-show="yt" style="background:#FFF; margin-top:5px;">
+        <div id="youtube" style="background:#FFF; margin-top:5px; display: none">
           <div ng-repeat="x in youtube">
               <div ng-click="openYoutube('{{xsnippet.resourceId.videoId}}')" style="position: relative"> 
                 <img src="{{x.snippet.thumbnails.high.url}}" style="width:100%">
@@ -60,7 +60,7 @@
           </div>
         </div>
                 
-         <div id="twitter" ng-show="tw" style="background:#FFF; margin-top:5px;">
+         <div id="twitter"  style="background:#FFF; margin-top:5px; display: block">
             <ul > 
               <li ng-repeat="x in twitter" class="item item-avatar item-text-wrap">
                 <img style="height: 80px" src="{{x.AuthorAvatar}}"/>  
@@ -71,7 +71,7 @@
             </ul> 
         </div>
         
-         <div id="instagram" ng-show="ig" style="background:#FFF; margin-top:5px;">
+         <div id="instagram" style="background:#FFF; margin-top:5px; display: none">
            <div ng-repeat="x in instagram">
              <div style="position: relative" ng-click="showImage('{{x.RecID}}')">
                <img style="width: 100%" src="{{x.PostImageURL}}">
@@ -88,7 +88,7 @@
            </div>
         </div>
         
-        <div id="facebook" ng-show="fb" style="background:#FFF; margin-top:5px;">
+        <div id="facebook" style="background:#FFF; margin-top:5px; display: none">
           facebook
         </div>
 

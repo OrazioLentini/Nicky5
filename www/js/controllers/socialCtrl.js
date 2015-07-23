@@ -17,34 +17,50 @@ angular.module('starter.controllers')
     $scope.tw = true
     $scope.toggle = function (type) {
     	if (type == 'twitter') {
-    		$scope.tw = true
-    		$scope.ig = false 
-    		$scope.yt = false
-    		$scope.fb = false
+            $("#twitter").css("display", "block")
+            $("#instagram").css("display", "none")
+            $("#youtube").css("display", "none")
+            $("#facebook").css("display", "none")
+    		//$scope.tw = true
+    		//$scope.ig = false 
+    		//$scope.yt = false
+    		//$scope.fb = false
     		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
     		$('.twitter').addClass('buttonPickerActive');
     	}
     	if (type == 'instagram') {
-    		$scope.tw = false
-    		$scope.ig = true 
-    		$scope.yt = false
-    		$scope.fb = false
+            $("#twitter").css("display", "none")
+            $("#instagram").css("display", "block")
+            $("#youtube").css("display", "none")
+            $("#facebook").css("display", "none")
+    		//$scope.tw = false
+    		//$scope.ig = true 
+    		//$scope.yt = false
+    		//$scope.fb = false
     		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
     		$('.instagram').addClass('buttonPickerActive');
     	}
     	if (type == 'youtube') {
-    		$scope.tw = false
-    		$scope.ig = false 
-    		$scope.yt = true
-    		$scope.fb = false
+            $("#twitter").css("display", "none")
+            $("#instagram").css("display", "none")
+            $("#youtube").css("display", "block")
+            $("#facebook").css("display", "none")
+    		//$scope.tw = false
+    		//$scope.ig = false 
+    		//$scope.yt = true
+    		//$scope.fb = false
     		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
     		$('.youtube').addClass('buttonPickerActive');
     	}
     	if (type == 'facebook') {
-    		$scope.tw = false
-    		$scope.ig = false 
-    		$scope.yt = false
-    		$scope.fb = true
+            $("#twitter").css("display", "none")
+            $("#instagram").css("display", "none")
+            $("#youtube").css("display", "none")
+            $("#facebook").css("display", "block")
+    		//$scope.tw = false
+    		//$scope.ig = false 
+    		//$scope.yt = false
+    		//$scope.fb = true
     		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
     		$('.facebook').addClass('buttonPickerActive');
     	}
