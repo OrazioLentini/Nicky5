@@ -11,8 +11,8 @@ Developmental event management and attendee interaction application.    </descri
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
-  <preference name="AutoHideSplashScreen" value="false"/>
-  <preference name="auto-hide-splash-screen" value="false"/>
+  <preference name="AutoHideSplashScreen" value="true"/>
+  <preference name="auto-hide-splash-screen" value="true"/>
   <preference name="ios-statusbarstyle" value="black-opaque"/>
   <preference name="SplashScreen" value="splash"/>
   <preference name="SplashScreenDelay" value="5000"/>

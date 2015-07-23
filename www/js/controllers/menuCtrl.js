@@ -138,9 +138,17 @@ angular.module('starter.controllers')
 	}
 
 	$scope.sync = function () {
-		SyncService.sync()
-			$state.go('app.menu')
-		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+		var confirmPopup = $ionicPopup.confirm({
+			title: 'Do you want to continue?',
+			template: 'Syncing will return to home. Are you sure?'
+		});
+		confirmPopup.then(function(res) {
+			if(res) {
+				SyncService.sync()
+				$state.go('app.menu')
+				$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+			}
+		});
 	}
 	//SCANNER
 	$ionicModal.fromTemplateUrl('templates/checkIn.html', {
