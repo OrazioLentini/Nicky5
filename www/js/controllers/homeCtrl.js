@@ -14,9 +14,13 @@ angular.module('starter.controllers')
 			    effect: 'slide',
 			    speed: 500
 			});   
+            $( "#thumb" ).fadeOut('slow');
+            $( ".swiper-wrapper" ).fadeIn('slow');
+            
 		    //$ionicHistory.clearHistory()
-			},150);	
-
+			},2500);	
+            
+            
 
            /*$timeout(function() {
 	         navigator.splashscreen.hide();
@@ -34,7 +38,44 @@ angular.module('starter.controllers')
   		data = JSON.stringify(data)
         localStorage.setItem('menu', data)
   	});
-  	
+    id = [0]
+    plus = 2
+    countx = "no"
+    first = "no"
+  	for(i = 0; i < 25 ; i++){
+  		
+  		if(plus == 2){
+  		id.push(id[i]+2)
+  	    plus = 3
+  	    countx = "again"
+  	    } else {
+  	    	if(plus == 3){
+  	    		if(countx == "again" && first == "yes"){
+  	    			id.push(id[i]+2)
+  	    			plus = 3
+  	    			countx = "no"
+  	    			// not on the first time
+  	    			
+  	    		} else {
+  	    		id.push(id[i]+3)
+  	    		plus = 2
+  	    		first = "yes"
+  	    	    }
+  	    	}
+  	    }
+    
+    }
+
+
+  	$scope.selectedArray = [id];
+     $scope.isRowSelected = function(id) {
+	    if($scope.selectedArray.indexOf(id) > -1){
+           return true
+        } else {
+        	return false
+        }
+	}
+
 	//$scope.feature = SyncService.getFeaturedScheduleList()
 	//console.log($scope.feature)
 

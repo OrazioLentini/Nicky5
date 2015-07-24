@@ -1,14 +1,16 @@
 <style>
 body{font-family: 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;}
 
-.case-image {position:relative; display:block; margin:2px 0px; background:#FFF; margin:1px 1px 1px 1px; border:1px solid #F1F1F1; }
+.case-image {position:relative; display:block; background:#FFF; }
 .odd {
-  margin-left:4px;
-  margin-right:2px;
+  margin-left:0px;
+  margin-right:1px;
+  margin-bottom:2px;
 }
 .even {
-  margin-left:2px;
-  margin-right:4px;
+  margin-left:1px;
+  margin-bottom:2px;
+  margin-right:0px;
 }
 .case-image img {width:100%; vertical-align: top;}
 .case-image:after{ 
@@ -42,10 +44,10 @@ background:url("images/grad-dark-case.png");
 <ion-view view-title="{{title}}">
   <ion-content>
 
-	<div class="full">
+	<div class="full" style="margin:0px; padding:0px">
        <div ng-repeat="x in products"  style="width:50%; float:left; position:relative;" ui-sref="app.showdetails({RecID: {{x.RecID}}})">
                  <!-- Please submit Images at 512 x 384 ratio (1024 x 768) -->
-                  <div class="case-image">
+                  <div class="case-image" ng-class-odd="'odd'" ng-class-even="'even'">
                     <img src="{{x.Image}}" style="width:10)%">
                   </div>
                    <div class="inner-small">
