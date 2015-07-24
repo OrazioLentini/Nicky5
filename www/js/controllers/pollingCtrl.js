@@ -174,7 +174,7 @@ angular.module('starter.controllers')
 				$scope.loginButton = false
 				$scope.show = false
 				$rootScope.$broadcast('login', LoginUsername)
-				//$scope.runSync()
+				$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();
 			}

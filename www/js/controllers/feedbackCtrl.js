@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService, $rootScope) {
+    .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService, $rootScope, SyncService) {
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.isLoggedIn = localStorage.getItem("login")
@@ -44,7 +44,7 @@ angular.module('starter.controllers')
 				$scope.profileButton = true
 				$scope.loginButton = false
 				$rootScope.$broadcast('login', LoginUsername)
-				//$scope.runSync()
+				$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();
 			}
@@ -53,6 +53,10 @@ angular.module('starter.controllers')
 			}
 	    	})
 		}; 
+		$scope.runSync = function () {
+			SyncService.sync()
+			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+		}
 
 		$scope.submit = function () {
 			//submitFeedback()

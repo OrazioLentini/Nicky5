@@ -134,8 +134,8 @@ angular.module('starter.controllers')
     };
 
     $scope.closeVideoModal = function() {
-     $("#video").html('')
-      $("#video").css("display", "none")
+     $("#watchYT").html('')
+      $("#watchYT").css("display", "none")
       $scope.modalVideo.hide();
     };
 
@@ -143,9 +143,9 @@ angular.module('starter.controllers')
         url = 'http://www.youtube.com/embed/' + video
 
        $scope.modalVideo.show();
-       $("#video").html('<iframe id="ytplayer"  width="100%" height="390"  src="' + url + '"  frameborder="0"/>')
+       $("#watchYT").html('<iframe id="ytplayer"  width="100%" height="390"  src="' + url + '"  frameborder="0"/>')
        setTimeout( function (){
-       $( "#video" ).fadeIn('slow');
+       $( "#watchYT" ).fadeIn('slow');
        }, 500)
     }
     });
