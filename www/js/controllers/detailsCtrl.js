@@ -1,6 +1,13 @@
 angular.module('starter.controllers')
 
     .controller('DetailCtrl', ['$scope', '$stateParams', '$ionicPopup', 'DirectoryService', 'FavoritesService','$ionicLoading', '$ionicModal', '$timeout', 'LoginService', 'SyncService', 'RequestInfoService', '$rootScope', function ($scope, $stateParams, $ionicPopup, DirectoryService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope) {
+
+						
+		$scope.$on('$ionicView.enter', function(){
+			$( ".content" ).fadeIn('fast');
+			$( ".companyImage").fadeIn('slow')
+		},200);	
+		
 		$scope.filled = false
 		$scope.unfilled = false
 		$scope.details = DirectoryService.getDetails($stateParams.RecID);   
