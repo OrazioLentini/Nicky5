@@ -29,47 +29,48 @@
 
 	<!--<div style="font-size: 14px; text-align: center; margin-top: 45px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>-->
 	<div style="height: 20px;"></div>
-	<div id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px; z-index: 99">
-
-    <div class="swiper-container" ng-show="hasSlides">
-      <div class="swiper-wrapper" >
-          <div class="box swiper-slide" ng-repeat="x in slides">
-                <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
-                  <img src="{{x.Link}}" style="width:100%">
+    <div class="content" style="display: none">
+    	<div class="top-container" id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px; z-index: 99">
+    
+        <div class="swiper-container" ng-show="hasSlides">
+          <div id="slides" class="swiper-wrapper" >
+              <div class="box swiper-slide" ng-repeat="x in slides">
+                    <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
+                      <img src="{{x.Link}}" style="width:100%">
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div style="height: 20px; text-align: center; ">
+                <div class="button button-clear left" style="float: left; z-index:999; display: inline">
+                    <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
+                </div>
+                <div style="display: inline">Click or swipe to view slides</div>
+                <div class="button button-clear right"style="float: right; z-index:999; display: inline" >
+                    <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
                 </div>
             </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div style="height: 20px; text-align: center; ">
-            <div class="button button-clear left" style="float: left; z-index:999; display: inline">
-                <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
-            </div>
-            <div style="display: inline">Click or swipe to view slides</div>
-            <div class="button button-clear right"style="float: right; z-index:999; display: inline" >
-                <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
-            </div>
-        </div>
+    
+    		<div class="list" style="margin-top: 0px" ng-click="openSpeaker()">
+    			<div class="item item-thumbnail-left-sch">
+    				<img class="img-list" src="{{speakerInfo.ThumbImage}}">
+                    
+                    <div style="position: absolute; margin-top: 7px;">
+        				<h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
+        				<!--<i class="icon ion-information-circled" style="font-size:32px; float: right"></i>-->
+        				{{speakerInfo.Title}}
+        				<div style="font-size: 10px;">Click to learn more about the speaker</div>
+                    </div>
+    			</div>
+    		</div>
+    		<div>
+    			<span style="font-weight: 800"> Summary</span><br>
+    			{{desc.ShortDesc}}
+    		</div>
+    		<div style="height: 70px"></div>
+    	</div>
     </div>
-
-		<div class="list" style="margin-top: 0px" ng-click="openSpeaker()">
-			<div class="item item-thumbnail-left-sch">
-				<img class="img-list" src="{{speakerInfo.ThumbImage}}">
-                
-                <div style="position: absolute; margin-top: 7px;">
-    				<h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
-    				<!--<i class="icon ion-information-circled" style="font-size:32px; float: right"></i>-->
-    				{{speakerInfo.Title}}
-    				<div style="font-size: 10px;">Click to learn more about the speaker</div>
-                </div>
-			</div>
-		</div>
-		<div>
-			<span style="font-weight: 800"> Summary</span><br>
-			{{desc.ShortDesc}}
-		</div>
-		<div style="height: 70px"></div>
-	</div>
-
 	<div id="pollingAnswers" ng-show="answer" style="height: 100%">
 
         <div class="signInOverlay" style="display: none">

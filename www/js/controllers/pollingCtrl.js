@@ -6,9 +6,16 @@ angular.module('starter.controllers')
 				$scope.slides = data
 				if($scope.slides.length == 0){
 					$scope.hasSlides = false
+					$( ".content" ).fadeIn('fast');
+					$(".top-container").css("display", "block");
+					$(".top-container").css("height", "100%");
 				}
 				else {
 					$scope.hasSlides = true
+					$( ".content" ).fadeIn('fast');
+					$( "#slides" ).fadeIn('slow');
+	                $(".top-container").css("display", "block");
+					$(".top-container").css("height", "100%");
 				}
 			})
 		    setTimeout(function () {
