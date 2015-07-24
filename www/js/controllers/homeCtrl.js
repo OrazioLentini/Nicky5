@@ -65,14 +65,18 @@ angular.module('starter.controllers')
   	    }
     
     }
+    
 
-
-  	$scope.selectedArray = [id];
-     $scope.isRowSelected = function(id) {
-	    if($scope.selectedArray.indexOf(id) > -1){
+  	
+  	console.log(id)
+     $scope.isRowSelected = function(x) {
+	    if(id.indexOf(x) > -1){
+            
            return true
+          
         } else {
         	return false
+        	
         }
 	}
 
