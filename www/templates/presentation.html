@@ -52,12 +52,15 @@
     </div>
 
 		<div class="list" style="margin-top: 0px" ng-click="openSpeaker()">
-			<div class="item item-thumbnail-left">
-				<img src="{{speakerInfo.ThumbImage}}">
-				<h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
-				<!--<i class="icon ion-information-circled" style="font-size:32px; float: right"></i>-->
-				{{speakerInfo.Title}}
-				<div style="font-size: 10px;">Click to learn more about the speaker</div>
+			<div class="item item-thumbnail-left-sch">
+				<img class="img-list" src="{{speakerInfo.ThumbImage}}">
+                
+                <div style="position: absolute; margin-top: 7px;">
+    				<h2 style="font-weight: 800">{{speakerInfo.Name}}</h2>
+    				<!--<i class="icon ion-information-circled" style="font-size:32px; float: right"></i>-->
+    				{{speakerInfo.Title}}
+    				<div style="font-size: 10px;">Click to learn more about the speaker</div>
+                </div>
 			</div>
 		</div>
 		<div>

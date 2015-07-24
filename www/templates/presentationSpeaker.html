@@ -7,7 +7,7 @@
     <button class="button button-icon ion-ios-arrow-back button-clear" style="font-size: 16px; color: #444" ng-click="closePreview()"></button>
 
   </ion-header-bar>
-  <ion-content style="padding:0px 20px; margin-top: 20px">
+  <ion-content>
 
  <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)">
     <ion-slide ng-repeat="x in slides">
@@ -32,12 +32,15 @@
     <p>{{desc.ShortDesc}}</p>
   </div>-->
 <div class="media" style="width: 100%; " >
-<img style="width:100%;" class="media-object" src="{{speakerInfo.Image}}"/>
-<div class="media-body" style="font-size:120%; margin-top:12px;">{{speakerInfo.Name}}<br>
-<span style="font-size:12px">{{speakerInfo.Title}}</span>
-<div style="height: 1px; background: black; width: 100%"></div>
-</div>
-<div style="margin-top: 5px">{{speakerInfo.About}}</div>
+  <img style="width:100%;" class="media-object" src="{{speakerInfo.Image}}"/>
+  
+  <div style="padding:0px 20px; margin-top: 15px">
+    <div class="media-body" style="font-size:120%; margin-top:12px;">{{speakerInfo.Name}}<br>
+      <span style="font-size:12px">{{speakerInfo.Title}}</span>
+      <div style="height: 1px; background: black; width: 100%"></div>
+    </div>
+    <div style="margin-top: 5px">{{speakerInfo.About}}</div>
+  </div>
 </div>
   </ion-content>
 </ion-modal-view>

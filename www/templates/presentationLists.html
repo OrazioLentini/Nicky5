@@ -10,15 +10,17 @@
   <ion-content style="margin-top: 45px" >
 	<ul class="table-view" id="schedule">
 	<div ng-repeat="x in list">
-		<li class="item item-thumbnail-left item-icon-right" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})">
-			<img style="height: 80px" src="{{x.ThumbImage}}"/>
+		<li class="item item-thumbnail-left-sch item-icon-right" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})">
+			<img class="img-list" src="{{x.ThumbImage}}"/>
 
+			<div style="position: absolute; margin-top: 7px;">
+				<p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
+				<p style="font-size:12px;">{{x.Title}}</p>
 
-			<p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
-			<p style="font-size:12px;">{{x.Title}}</p>
+				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.ScheduledDate}} {{x.displayTime | date: 'shortTime'}} </strong></p>
+			</div>			
 			<i class="icon ion-chevron-right" style="font-size:14px"></i>
-
-			<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.ScheduledDate}} {{x.displayTime | date: 'shortTime'}} </strong></p>
+			
 		</li>
 	</div>
 </ul>
