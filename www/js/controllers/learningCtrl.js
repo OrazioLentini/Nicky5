@@ -35,6 +35,7 @@ angular.module('starter.controllers')
 
 	// Triggered in the login modal to close it
 	$scope.closeVideo = function() {
+		$("#video").html('')
 		$scope.modal.hide();
 	};
 

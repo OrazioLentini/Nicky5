@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <script id="image-modal.html" type="text/ng-template">
   <div class="modal image-modal transparent" ng-click="closeModal()">
-        <div class="button button-clear" style="float:right; z-index: 99" ng-click="modal.hide()"><span style="color:#FFF;" class="icon icon-right ion-close"></span></div>
+        <div class="button button-clear" style="float:left; z-index: 99; margin-top: 5px" ng-click="modal.hide()"><span style="color:#FFF; font-size: 16px;" class="icon icon-right ion-ios-arrow-back"></span></div>
         <ion-pane class="transparent">
         <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
         <div style="color: #fff; bottom: 110px ; z-index: 999; position: absolute; padding: 0 15px"> {{desc}} </div>
@@ -16,7 +16,7 @@
 
 <script id="video-modal.html" type="text/ng-template">
   <div class="modal image-modal transparent" ng-click="closeVideoModal()">
-          <div class="button button-clear" style="float:right; z-index: 99" ng-click="modal.hide()"><span style="color:#FFF;" class="icon icon-right ion-close"></span></div>
+          <div class="button button-clear" style="float:left; margin-top: 5px; z-index: 99" ng-click="modal.hide()"><span style="color:#FFF; font-size: 16px;" class="icon icon-right ion-ios-arrow-back"></span></div>
         <ion-pane class="transparent">
         <div id="watchYT" style="margin-top: 100px; display: none"></div>
       </ion-pane>
