@@ -52,25 +52,28 @@
 		   <div ng-repeat="x in sch">
            
           <li ng-if="x.Speaker" class="item item-icon-right" style="padding: 0; padding-right: 54px">
-            <a class="item item-thumbnail-left" style="margin-left: 0; border: none" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.ID})">
-              <img style="height: 80px" src="{{x.ThumbImage}}"/>
+            <a class="item item-thumbnail-left-sch" style="margin-left: 0; border: none" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.ID})">
+              <img class="img-list" style="height: 80px" src="{{x.ThumbImage}}"/>
               
-              <p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
-              <p style="font-size:12px;">{{x.Title}}</p>
-              
-              <p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
+              <div style="position: absolute; margin-top: 7px;">
+                <p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
+                <p style="font-size:12px;">{{x.Title}}</p>
+                
+                <p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
+              </div>
             </a>
             <a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
           </li>
            
 
-           <li ng-if="x.Speaker == ''" class="item item-thumbnail-left item-icon-right">
-     				<img style="height: 80px" src="{{x.ThumbImage}}"/>
+           <li ng-if="x.Speaker == ''" class="item item-thumbnail-left-sch item-icon-right">
+     				<img class="img-list" style="height: 80px" src="{{x.ThumbImage}}"/>
     
-     				<p style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
-    
-     				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
-
+            <div style="position: absolute; margin-top: 7px;">
+       				<p style="font-size:14px; font-weight:bold;">{{x.Title}}</p>
+      
+       				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
+            </div>
        			<a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
            </li>
            </div>

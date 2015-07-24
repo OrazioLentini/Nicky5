@@ -5,8 +5,8 @@
     <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px;"></i></a>
   </ion-nav-buttons>-->
 	<ion-content>
-		<div style="margin:0px auto; width:100%; text-align:center;"><img src="{{details.Image}}" style="padding:10px 25px; width:100%; "></div>
-        <div style="padding:0px 20px">
+		<div style="margin:0px auto; width:100%; text-align:center;"><img src="{{details.Image}}" style="width:100%; "></div>
+        <div style="padding:0px 20px; margin-top: 15px">
            <div style="margin:0px; padding:0px; font-size: 18px"><span style="font-weight: 500">{{details.Company}}</span>
                 <a ng-show="unfilled" ng-click="saveFavoriteCompany('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
                 <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px; float:right"></i></a>
