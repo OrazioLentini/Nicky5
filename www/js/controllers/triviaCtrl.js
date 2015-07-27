@@ -82,7 +82,7 @@ angular.module('starter.controllers')
 				//alert('right spot')
 				$rootScope.$broadcast('login', LoginUsername)
 				//$state.current, {}, {reload: true});
-				//$scope.runSync()
+				$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLogin();
 			}

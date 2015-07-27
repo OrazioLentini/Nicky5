@@ -88,6 +88,20 @@ angular.module('starter.controllers')
 			$scope.profileButton = true
 			$scope.loginButton = false
 			$scope.runSync()
+			
+			$scope.badgeID = data[0].BadgeID
+			$scope.userName = data[0].Username
+			$scope.email = data[0].Email
+			$scope.firstName = data[0].FirstName
+			$scope.lastName = data[0].LastName
+			
+			console.log($scope)
+			//$("#unProfile").val($scope.userName);
+		   // $("#idProfile").val();
+		    $("#fnProfile").val($scope.firstName);
+		    $("#lnProfile").val($scope.lastName);
+		    $("#emProfile").val($scope.email);
+	
 			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 			$scope.closeLogin();
 		}
@@ -108,6 +122,10 @@ angular.module('starter.controllers')
 				localStorage.removeItem("infoRequest");
 				$("#Username").val("");
 				$("#BadgeID").val("");
+				$("#fnProfile").val("");
+				$("#lnProfile").val("");
+				$("#emProfile").val("");
+			
 				$(".signInOverlay").css("display", "block")
 				$(".signIn").css("display", "block")
 				$scope.logoutButton = false
