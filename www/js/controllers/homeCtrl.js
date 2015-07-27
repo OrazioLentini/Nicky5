@@ -1,37 +1,46 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', function ($scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout) {
-		//$scope.s = SyncService.sync()
-			$ionicHistory.clearHistory()	
-	  $ionicPlatform.ready( function() {
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'MyService', function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, MyService) {
+       
+		ionic.Platform.ready(function(){
            //alert("ready");
-       $timeout(function() {
-           //alert("grab featured")
-		   $scope.feature = SyncService.getFeaturedScheduleList() 
-           $timeout(function() {
-	        var mySwiper = new Swiper('.swiper-container', {
-			    autoplay: 8000,
-			    effect: 'slide',
-			    speed: 500
-			});   
-            $( "#thumb" ).fadeOut('slow');
-            $( ".swiper-wrapper" ).fadeIn('slow');
-            
-		    //$ionicHistory.clearHistory()
-			},2500);	
-            
-            
+			    
+               /*$scope.feature = MyService.feature
+			       $timeout(function() {
+			           //alert("grab featured")
+					   //scope.feature = SyncService.getFeaturedScheduleList() 
+			           $timeout(function() {
+				        var mySwiper = new Swiper('.swiper-container', {
+						    autoplay: 8000,
+						    effect: 'slide',
+						    speed: 500
+						});   
+			            $( "#thumb" ).fadeOut('slow');
+			           $( ".swiper-wrapper" ).fadeIn('slow');
+			            
+						},250);	
 
-           /*$timeout(function() {
-	         navigator.splashscreen.hide();
-	         alert('done')
-			},600);*/
-            
-	    //SyncService.sync()
-	      },200);
-	
-		
-	  });
+			           /*$timeout(function() {
+				         navigator.splashscreen.hide();
+				         alert('done')
+						},600);*/
+			            
+
+				    //SyncService.sync()
+				     // },1000);
+ 
+        $timeout(function() {
+	        var mySwiper = new Swiper('.swiper-container', {
+							    autoplay: 8000,
+							    effect: 'slide',
+							    speed: 500
+							});   
+			
+		},250);
+		$ionicHistory.clearHistory()	
+		});	
+				  
+
 
     MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
