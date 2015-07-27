@@ -238,6 +238,98 @@ angular.module('starter.services')
                 }
             }
         },
+        
+        
+        //GET FEATURED SCHEDULE STRAIGHT FROM DATABASE
+        this.getFeaturedScheduleListOnline = function() {
+            
+            var url = 'http://patty5.com/AppApis/apiSchedule.asp';
+            $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            }). 
+            success (function(data){
+
+                var currentDate = new Date()
+                var hours = currentDate.getHours()
+                var suffix = hours >= 12 ? "PM" : "AM"
+                hours = ((hours  + 11) % 12 + 1)
+                minutes = currentDate.getMinutes()
+                if (minutes < 10) {
+                    minutes = '0' + minutes
+                }
+    
+                var currentTime = hours + ":" + minutes + " " + suffix
+                var today = currentDate.getMonth() + 1 + "/" + currentDate.getDate() + "/" + currentDate.getFullYear()
+    
+                //console.log("Hours: " + hours + " currentTime: " + currentTime + " today: " + today)
+    
+                for (i = 0; i < data.length; i++) {
+    
+    
+                    var s = Date.parse(data[i].StartTime)
+                    startTime = $filter('date')(s, 'hh:mm a')
+    
+                    var e = Date.parse(data[i].EndTime)
+                    endTime = $filter('date')(e, 'hh:mm a')
+    
+                    //console.log("start: " + startTime + " end: " + endTime)
+    
+                    //console.log("hours: " + endTimeHours + " minutes: " + endTimeMinutes + " suffix: " + endTimeSuffix)
+    
+                    var scheduledDate = data[i].ScheduledDate
+    
+                    //console.log("current time: " + currentTime + " start time: " + startTime + " end time: " + endTime)
+    
+                    var ctt = new Date("November 13, 2013 " + currentTime)
+                    ctt = ctt.getTime()
+    
+                    var stt = new Date("November 13, 2013 " + startTime)
+                    stt = stt.getTime()
+    
+                    var endt = new Date("November 13, 2013 " + endTime)
+                    endt = endt.getTime()
+    
+                    //console.log("ctt: " + ctt + " stt: " + stt + " endt: " + endt)
+    
+                    //LIVE
+                    if(ctt >= stt && ctt <= endt && today == scheduledDate) {
+                        if(data[i].EventType == "trivia"){
+                            data[i].live = {"liveTrivia": true, "livePresentation" : false, "link": "#/app/trivia"}
+                        }
+                        if(data[i].EventType == "presentation"){
+                            data[i].live = {"liveTrivia": false, "livePresentation" : true, "link": "#/app/polling/" + data[i].SpeakerID}
+                        }       
+                        data[i].StartTime = startTime
+                        return data[i]
+                    }
+                    //NEXT SCHEDULED
+                    if(ctt <= stt && today == scheduledDate) {
+                        if(data[i].EventType == "trivia"){
+                            data[i].live = {"liveTrivia": false, "livePresentation" : false, "link": "#/app/trivia"}
+                        }
+                        if(data[i].EventType == "presentation"){
+                            data[i].live = {"liveTrivia": false, "livePresentation" : false, "link": "#/app/polling/"}
+                        }       
+                        data[i].StartTime = startTime
+                        return data[i]
+                    }
+                    if (data[i].featured == 1 && today != scheduledDate) {
+                        if(data[i].EventType == "trivia"){
+                            data[i].live = {"liveTrivia": false, "livePresentation" : false, "link": "#/app/trivia"}
+                        }
+                        if(data[i].EventType == "presentation"){
+                            data[i].live = {"liveTrivia": false, "livePresentation" : false, "link": "#/app/polling/"}
+                        }       
+                        data[i].StartTime = startTime
+                        return data[i]
+                    }
+                }
+            })
+        },
+        
         this.getYoutube = function() {
             
             var url = 'http://patty5.com/AppApis/apiSocial.asp';
