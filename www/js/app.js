@@ -80,7 +80,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     .state('app.menu', {
       url: "/",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/home.html",
@@ -123,7 +123,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
      .state('app.learning', {
       url: "/learning/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/learning.html",

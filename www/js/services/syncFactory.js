@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-    .service('SyncService', function ($http, $filter) {
+    .service('SyncService',  function ($http, $filter) {
 
     var success = ""
 
@@ -242,7 +242,7 @@ angular.module('starter.services')
         
         //GET FEATURED SCHEDULE STRAIGHT FROM DATABASE
         this.getFeaturedScheduleListOnline = function() {
-            
+            console.log("in")
             var url = 'http://patty5.com/AppApis/apiSchedule.asp';
             $http.jsonp(url, {
                 params: {
@@ -251,7 +251,7 @@ angular.module('starter.services')
                 }
             }). 
             success (function(data){
-
+               
                 var currentDate = new Date()
                 var hours = currentDate.getHours()
                 var suffix = hours >= 12 ? "PM" : "AM"
@@ -303,7 +303,8 @@ angular.module('starter.services')
                             data[i].live = {"liveTrivia": false, "livePresentation" : true, "link": "#/app/polling/" + data[i].SpeakerID}
                         }       
                         data[i].StartTime = startTime
-                        return data[i]
+                        //console.log(data[i])
+                        localStorage.setItem("Featured", JSON.stringify(data[i]))
                     }
                     //NEXT SCHEDULED
                     if(ctt <= stt && today == scheduledDate) {
@@ -314,6 +315,7 @@ angular.module('starter.services')
                             data[i].live = {"liveTrivia": false, "livePresentation" : false, "link": "#/app/polling/"}
                         }       
                         data[i].StartTime = startTime
+        
                         return data[i]
                     }
                     if (data[i].featured == 1 && today != scheduledDate) {
@@ -324,8 +326,10 @@ angular.module('starter.services')
                             data[i].live = {"liveTrivia": false, "livePresentation" : false, "link": "#/app/polling/"}
                         }       
                         data[i].StartTime = startTime
+                        
                         return data[i]
                     }
+
                 }
             })
         },
@@ -432,14 +436,17 @@ angular.module('starter.services')
         },
         this.sync = function(){
             this.getSchedule()
+            this.getFeaturedScheduleListOnline()
             this.getDirectory()
             this.getMaps()
             this.getSpeaker()
+
             //this.getSocialMediaInfo()
             this.syncInfoRequest()
             this.getPresentationList()
             this.getProducts()
             this.getYoutube()
+            
             success = 'complete'
             return success
         }

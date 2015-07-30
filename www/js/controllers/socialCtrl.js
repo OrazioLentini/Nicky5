@@ -64,6 +64,7 @@ angular.module('starter.controllers')
     		$('.social .button').removeClass('buttonPickerActive').addClass('buttonPicker');
     		$('.facebook').addClass('buttonPickerActive');
     	}
+        $ionicScrollDelegate.scrollTop();
     }
         
     $scope.openYoutube = function(video){

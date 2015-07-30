@@ -1,6 +1,5 @@
-
 <style>
-body{font-family: 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;}
+/* HOME */
 .inner-content {
   /*background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 83%, rgba(0,0,0,1) 84%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(83%,rgba(0,0,0,0.99)), color-stop(84%,rgba(0,0,0,1)));
@@ -75,21 +74,6 @@ background:url("images/grad-dark2.png");
   height:100%;
   width:100%;
 }
-
-
-
-#home-menu a {
-  text-decoration:none;
-  color:#666;
-}
-.inner-small {
-  bottom:0px; position:absolute; z-index:200
-}
-
-.full {
-  background:#FFF;
-  margin:2px;
-}
 </style>
 <ion-view view-title="Nicky5">
     <ion-content class="has-header">
@@ -113,7 +97,7 @@ background:url("images/grad-dark2.png");
 
           </ion-slide-box>-->
           <div class="swiper-wrapper">
-                 <!-- <div class="box swiper-slide">
+                 <!--<div class="box swiper-slide">
                       <a href="{{feature.live.link}}">
                         <div class="thumb featured"  style="height:220px; overflow:hidden; position:relative;" >
                           <img src="{{feature.Image}}" style="width:100%">
@@ -125,18 +109,22 @@ background:url("images/grad-dark2.png");
                         </div>
                       </a>
                 </div>-->
-               <div class="box swiper-slide">
+
+               <div ng-if="featureItem.Image" class="box swiper-slide">
                       <a href="#" style="height:220px; overflow:hidden; position:relative;" >
                         <div style="height:220px; overflow:hidden; position:relative;"  >
-                          <img src="images/favorites.jpg" style="width:100%">
+                          <img src="{{featureItem.Image}}" style="width:100%">
                           <div class="inner-content"  style="text-align:center;">
-                            <span style="margin:0px; color:#FFF; font-size:14px; font-weight:600">Check your Favorites</span>
+                            <span style="margin:0px; color:#FFF; font-size:14px; font-weight:600">{{featureItem.Title}}</span>
                             <br>
-                            <span style="font-size:12px; color:#FFF;">Right here, Right now.</span>
+                            <span style="font-size:12px; color:#FFF;">Start Time: {{featureItem.StartTime}}</span>
                           </div>
                         </div>
                       </a>
                 </div>
+                <div class="box swiper-slide" ng-if="!featureItem.Image"style="height:220px;">
+                 <img src="images/welcome.jpg" style="width:100%;" ng-cloak>
+              </div>
                  <div class="box swiper-slide">
                       <a href="#" style="height:220px; overflow:hidden; position:relative;" >
                         <div style="height:220px; overflow:hidden; position:relative;"  >
@@ -150,9 +138,7 @@ background:url("images/grad-dark2.png");
                       </a>
                 </div>
             </div>
-           <!-- <div id="thumb featured" style="height:220px;">
-             <img src="images/welcome.jpg" style="width:100%;" ng-cloak>
-          </div>-->
+           
       </div>
      <div style="clear:both; height:2px;"></div>
      <div class="full" style="margin:0px; padding:0px;">
@@ -185,7 +171,7 @@ background:url("images/grad-dark2.png");
                     <img src="{{x.Image}}" style="width:100%;">
                   </div>
 
-                   <div class="inner-small">
+                   <div class="inner-small" style="font-family: 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;">
                         <div style="padding:10px; width:100%; color:#FFF">
                         <span style="font-size:1.2em; font-weight:800;">{{x.Name}}</span>
                         <p style="padding:0px; font-size:.8em">{{x.Description}}</p>

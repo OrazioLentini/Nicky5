@@ -1,6 +1,8 @@
 body {
   cursor: url("http://ionicframework.com/img/finger.png"), auto;
+  font-family: 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;
 }
+
 .fade {
   position: relative;
   line-height:1.2em;
@@ -256,4 +258,21 @@ body {
         width:120px !important;
     }
 
+}
+
+
+
+
+
+#home-menu a {
+  text-decoration:none;
+  color:#666;
+}
+.inner-small {
+  bottom:0px; position:absolute; z-index:200
+}
+
+.full {
+  background:#FFF;
+  margin:2px;
 }

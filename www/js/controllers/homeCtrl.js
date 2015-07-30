@@ -4,7 +4,10 @@ angular.module('starter.controllers')
        
 		ionic.Platform.ready(function(){
            //alert("ready");
-			    
+			//var featureItem = localStorage.getItem('Featured')
+			//$scope.featureItem = JSON.parse(featureItem)
+			//console.log($scope.featureItem.Title)
+
                /*$scope.feature = MyService.feature
 			       $timeout(function() {
 			           //alert("grab featured")
@@ -28,15 +31,15 @@ angular.module('starter.controllers')
 
 				    //SyncService.sync()
 				     // },1000);
- 
-        $timeout(function() {
+       // $scope.feature = MyService.feature
+        /*$timeout(function() {
 	        var mySwiper = new Swiper('.swiper-container', {
 							    autoplay: 8000,
 							    effect: 'slide',
 							    speed: 500
 							});   
 			
-		},250);
+		},250);*/
 		$ionicHistory.clearHistory()	
 		});	
 				  
@@ -46,6 +49,15 @@ angular.module('starter.controllers')
   		$scope.menu = data
   		data = JSON.stringify(data)
         localStorage.setItem('menu', data)
+        var featureItem = localStorage.getItem('Featured')
+		$scope.featureItem = JSON.parse(featureItem)
+		$timeout(function() {
+		var mySwiper = new Swiper('.swiper-container', {
+           autoplay: 8000,
+           effect: 'slide',
+           speed: 500
+        });   
+        },250);
   	});
     id = [0]
     plus = 2
