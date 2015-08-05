@@ -128,8 +128,8 @@ angular.module('starter.controllers')
 			var temp = localStorage.getItem('login')
 			if (temp == null){ 
 				var confirmPopup = $ionicPopup.confirm({
-				 title: 'Additional Information',
-				 template: 'You must login to request additional info. Do you want to login?'
+				 title: 'Login Confirmation',
+				 template: 'You must log in to request additional information. Do you want to log in?'
 			   });
 			   confirmPopup.then(function(res) {
 				 if(res) {
@@ -146,7 +146,7 @@ angular.module('starter.controllers')
 				if (userEmail == '') {
 					var confirmPopup = $ionicPopup.confirm({
 						 title: 'Email Required',
-				 		template: 'You must update your email in order to request more info.'
+				 		template: 'You must update your email in order to request more information.'
 			   		});
 			   		confirmPopup.then(function(res) {
 				 	if(res) {

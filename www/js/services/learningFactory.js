@@ -13,7 +13,7 @@ angular.module('starter.services')
 		},
 		getMultipleChoice: function(id){
 				  multipleChoice = [
-						{ question: 'Why the world isn\'t using more solar energy?', id: 1, A: 'Because Sun doesn\'t shine at night', B: 'Because solar energy is still too expensive energy option for many people', C: 'Because oil is much better energy choice ', D: 'Because there\'s not enough solar panels ', correct: 'D'  },
+						{ question: 'Why isn\'t the world using more solar energy?', id: 1, A: 'Because Sun doesn\'t shine at night', B: 'Because solar energy is still too expensive energy option for many people', C: 'Because oil is much better energy choice ', D: 'Because there\'s not enough solar panels ', correct: 'D'  },
 						{ question: 'Solar Energy is _______', id: 2, A: 'Non-renewable', B: 'An unlimited energy source', C: 'Not Efficient', D: 'The best energy source in the world', correct: 'B'  }				
 				  ];
 				  return multipleChoice

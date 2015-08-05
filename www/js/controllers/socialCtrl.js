@@ -135,7 +135,7 @@ angular.module('starter.controllers')
     };
 
     $scope.closeVideoModal = function() {
-     $("#watchYT").html('')
+      $("#watchYT").html('')
       $("#watchYT").css("display", "none")
       $scope.modalVideo.hide();
     };

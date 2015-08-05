@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('TriviaCtrl', ['$rootScope', '$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', 'TriviaService', '$stateParams','MenuLinksService', function ($rootScope, $scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, TriviaService,  $stateParams, MenuLinksService) {
+    .controller('TriviaCtrl', ['$rootScope', '$scope', '$http', '$state', '$ionicModal', '$timeout', 'SyncService', 'LoginService', '$ionicLoading', 'TriviaService', '$stateParams','MenuLinksService', '$ionicPopup', function ($rootScope, $scope, $http, $state, $ionicModal, $timeout, SyncService, LoginService, $ionicLoading, TriviaService,  $stateParams, MenuLinksService, $ionicPopup) {
 		//$scope.requests = DirectoryService.getDirectory();
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
@@ -8,6 +8,20 @@ angular.module('starter.controllers')
 		if ($scope.isLoggedIn == null) {
 			$(".signInOverlay").css("display", "block")
 			$(".signIn").css("display", "block")
+			
+			var confirmPopup = $ionicPopup.confirm({
+				 title: 'Login Required',
+				 template: 'You must log in to participate in trivia. Do you want to log in?'
+			   });
+			   confirmPopup.then(function(res) {
+				 if(res) {
+					$scope.modal.show();
+				 }
+				 else {
+					 $state.go('app.menu')
+				 }
+			   });
+			   
 		}
 		else {
 			$(".signInOverlay").css("display", "none")

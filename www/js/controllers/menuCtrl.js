@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('MenuCtrl', function($rootScope, $state, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService, $ionicHistory) {
+.controller('MenuCtrl', function($rootScope, $state, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService, $ionicHistory) {
   	
   	MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
@@ -184,7 +184,16 @@ angular.module('starter.controllers')
 	$scope.openCheckIn = function() {
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
-			$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+			//$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+			var confirmPopup = $ionicPopup.confirm({
+				 title: 'Login Required',
+				 template: 'You must log in to access your QR Code. Do you want to log in?'
+			   });
+			   confirmPopup.then(function(res) {
+				 if(res) {
+					$scope.modal.show();
+				 }
+			   });
 		}
 		else {
 		    $scope.loginCred = JSON.parse($scope.isLoggedIn)

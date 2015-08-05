@@ -1,12 +1,24 @@
 angular.module('starter.controllers')
 
-    .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService, $rootScope, SyncService) {
+    .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService, $rootScope, SyncService, $ionicPopup, $state) {
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
 			$(".signInOverlay").css("display", "block")
 			$(".signIn").css("display", "block")
+			var confirmPopup = $ionicPopup.confirm({
+				 title: 'Login Required',
+				 template: 'You must log in to provide feedback. Do you want to log in?'
+			   });
+			   confirmPopup.then(function(res) {
+				 if(res) {
+					$scope.modal.show();
+				 }
+				 else {
+					 $state.go('app.menu')
+				 }
+			   });		
 		}
 		else {
 			$(".signInOverlay").css("display", "none")

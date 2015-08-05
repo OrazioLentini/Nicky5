@@ -70,6 +70,23 @@ angular.module('starter.controllers')
 				if ($scope.isLoggedIn == null) {
 					$(".signInOverlay").css("display", "block")
 					$(".signIn").css("display", "block")
+					
+					var confirmPopup = $ionicPopup.confirm({
+						 title: 'Login Required',
+						 template: 'You must log in to ask a question. Do you want to log in?'
+					   });
+					   confirmPopup.then(function(res) {
+						 if(res) {
+							$scope.modal.show();
+						 }
+						 else {
+							$scope.question = false
+							$scope.answer = false 
+							$scope.speaker = true
+							$('.presentation .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+							$('.speaker').addClass('buttonPickerActive');
+						 }
+					   });					
 				}
 				else {
 					$(".signInOverlay").css("display", "none")
@@ -82,9 +99,26 @@ angular.module('starter.controllers')
         		$('.question').addClass('buttonPickerActive');
 			}
 			if (type == 'polling') {
+				$(".answerKey").css("display", "block")
 				if ($scope.isLoggedIn == null) {
 					$(".signInOverlay").css("display", "block")
 					$(".signIn").css("display", "block")
+				  var confirmPopup = $ionicPopup.confirm({
+					 title: 'Login Required',
+					 template: 'You must log in to participate. Do you want to log in?'
+				   });
+				   confirmPopup.then(function(res) {
+					 if(res) {
+						$scope.modal.show();
+					 }
+					 else {
+							$scope.question = false
+							$scope.answer = false 
+							$scope.speaker = true
+							$('.presentation .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+							$('.speaker').addClass('buttonPickerActive');
+						 }
+				   });
 				}
 				else {
 					$(".signInOverlay").css("display", "none")
@@ -152,6 +186,11 @@ angular.module('starter.controllers')
 		// Triggered in the login modal to close it
 		$scope.closeLogin = function() {
 			$scope.modal.hide();
+			$scope.question = false
+			$scope.answer = false 
+			$scope.speaker = true
+			$('.presentation .button').removeClass('buttonPickerActive').addClass('buttonPicker');
+			$('.speaker').addClass('buttonPickerActive');
 		};
 
 		// Open the login modal

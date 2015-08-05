@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'MyService', function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, MyService) {
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout',  function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout) {
        
 		ionic.Platform.ready(function(){
            //alert("ready");
@@ -89,10 +89,9 @@ angular.module('starter.controllers')
     
 
   	
-  	console.log(id)
+  	//console.log(id)
      $scope.isRowSelected = function(x) {
 	    if(id.indexOf(x) > -1){
-            
            return true
           
         } else {
