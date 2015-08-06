@@ -192,6 +192,10 @@ angular.module('starter.controllers')
 			$('.presentation .button').removeClass('buttonPickerActive').addClass('buttonPicker');
 			$('.speaker').addClass('buttonPickerActive');
 		};
+		
+		$scope.closeLoginAuto = function() {
+			$scope.modal.hide();
+		};
 
 		// Open the login modal
 		$scope.login = function() {
@@ -199,9 +203,12 @@ angular.module('starter.controllers')
 		};
 
 		// Perform the login action when the user submits the login form
-		$scope.doLogin = function() {
-	    	var LoginUsername = $("#Username").val();
-	    	var LoginBadgeID = $("#BadgeID").val();
+		$scope.doLogin = function(user, bID) {
+	    	var LoginUsername = user
+	    	var LoginBadgeID = bID
+			
+			//var LoginUsername = $("#Username").val();
+	    	//var LoginBadgeID = $("#BadgeID").val();
 
 	    	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
 			if(data != 'failed') {
@@ -215,7 +222,7 @@ angular.module('starter.controllers')
 				$rootScope.$broadcast('login', LoginUsername)
 				$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
-				$scope.closeLogin();
+				$scope.closeLoginAuto();
 			}
 			else {
 				$ionicLoading.show({template: 'BadgeID does not match the Username on Record. Please Try Again.', noBackdrop: false, duration:2000});
@@ -223,8 +230,20 @@ angular.module('starter.controllers')
 	    	})
 		};
 		$scope.runSync = function () {
-			SyncService.sync()
-			$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+			SyncService.checkSync(). success(function (x){
+				 if(x == 'Database Connected') {
+					 SyncService.sync()
+					 $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+				 }
+				 else {
+					$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
+				 }
+			 }). error(function (){
+				 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+			 })
+			 
+			//SyncService.sync()
+			//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 		}
 
 

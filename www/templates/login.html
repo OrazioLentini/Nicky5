@@ -7,15 +7,15 @@
     <button class="button button-icon ion-ios-arrow-back button-clear" style="font-size: 16px; color: #444" ng-click="closeLogin()"> </button>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()" id="loginForm">
+    <form ng-submit="doLogin(Username, BadgeID)" id="loginForm">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Username:</span>
-          <input type="text" name="Username" id="Username" required>
+          <input type="text" name="Username" id="Username" ng-model="Username"  required>
         </label>
         <label class="item item-input">
           <span class="input-label">BadgeID:</span>
-          <input type="number" name="BadgeID" id="BadgeID" required >
+          <input type="number" name="BadgeID" id="BadgeID" ng-model="BadgeID" required >
         </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Log in</button>

@@ -42,7 +42,7 @@
            {{question.D}}
         </li>
       <div style=" margin-top: 25px; text-align: center">
-        <button ng-show="submit" class="button button-energized">Check Answer</button>
+        <button ng-show="submit" class="button button-positive">Check Answer</button>
       </div>
     </form>
     <div style="text-align: center">
@@ -51,8 +51,9 @@
     </div>
   </div>
   <div ng-show="notFinished" style="font-size: 18px; text-align: center">
-    <span >Results {{totalCorrect}} / {{questionNum}}</span><br>
-    <button class="button icon-right ion-close button-positive" ng-click="closeMC()">Close</button>
+    <span >Result {{totalCorrect}} / {{questionNum}}</span>
+    <div style="height: 20px"></div>
+    <button class="button icon-right ion-close button-positive" ng-click="closeMC()">Close </button>
   </div>
   </ion-content>
 </ion-modal-view>

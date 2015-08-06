@@ -1,7 +1,6 @@
 angular.module('starter.controllers')
 
     .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout',  function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout) {
-       
 		ionic.Platform.ready(function(){
            //alert("ready");
 			//var featureItem = localStorage.getItem('Featured')

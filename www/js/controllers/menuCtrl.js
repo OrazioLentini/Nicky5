@@ -9,9 +9,24 @@ angular.module('starter.controllers')
   	})		
         
         $scope.$on('login', function(events, isLoggedIn){
-		    //alert(isLoggedIn);
+			console.log(isLoggedIn)
 		    //$scope.name = isLoggedIn; //now we've registered!
 		    if(isLoggedIn > ""){
+				var temp = localStorage.getItem('login')
+				data = JSON.parse(temp)
+			
+				$scope.badgeID = data[0].BadgeID
+				$scope.userName = data[0].Username
+				$scope.email = data[0].Email
+				$scope.firstName = data[0].FirstName
+				$scope.lastName = data[0].LastName
+				
+				//$("#unProfile").val($scope.userName);
+				// $("#idProfile").val();
+				$("#fnProfile").val($scope.firstName);
+				$("#lnProfile").val($scope.lastName);
+				$("#emProfile").val($scope.email);
+			
 		    	$scope.logoutButton = true
 			    $scope.profileButton = true
 			    $scope.loginButton = false
@@ -77,10 +92,13 @@ angular.module('starter.controllers')
 	};
 
 	// Perform the login action when the user submits the login form
-	$scope.doLogin = function() {
-    	var LoginUsername = $("#Username").val();
-    	var LoginBadgeID = $("#BadgeID").val();
-        $rootScope.$broadcast('BOOM!', $scope.LoginUsername)
+	$scope.doLogin = function(user, bID) {
+    	var LoginUsername = user
+    	var LoginBadgeID = bID
+		
+		//var LoginUsername = $("#Username").val();
+    	//var LoginBadgeID = $("#BadgeID").val();
+        //$rootScope.$broadcast('BOOM!', $scope.LoginUsername)
     	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
 		if(data != 'failed') {
 			localStorage.setItem("login", JSON.stringify(data))
@@ -95,7 +113,6 @@ angular.module('starter.controllers')
 			$scope.firstName = data[0].FirstName
 			$scope.lastName = data[0].LastName
 			
-			console.log($scope)
 			//$("#unProfile").val($scope.userName);
 		   // $("#idProfile").val();
 		    $("#fnProfile").val($scope.firstName);
@@ -132,6 +149,7 @@ angular.module('starter.controllers')
 				$scope.profileButton = false
 				$scope.loginButton = true
 				$scope.show = true
+				$scope.goHome()
 			}
 		});
 	}
@@ -151,8 +169,19 @@ angular.module('starter.controllers')
 	};
 
 	$scope.runSync = function () {
-		SyncService.sync()
-		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+		SyncService.checkSync(). success(function (x){
+			 if(x == 'Database Connected') {
+				 SyncService.sync()
+				 $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+			 }
+			 else {
+				$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
+			 }
+		 }). error(function (){
+			 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+		 })
+		//SyncService.sync()
+		//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 	}
 
 	$scope.sync = function () {
@@ -163,7 +192,7 @@ angular.module('starter.controllers')
 		confirmPopup.then(function(res) {
 			if(res) {
 				SyncService.sync()
-				$state.go('app.menu')
+				$scope.goHome()
 				$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 			}
 		});

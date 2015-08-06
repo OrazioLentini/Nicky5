@@ -242,7 +242,7 @@ angular.module('starter.services')
         
         //GET FEATURED SCHEDULE STRAIGHT FROM DATABASE
         this.getFeaturedScheduleListOnline = function() {
-            console.log("in")
+            //console.log("in")
             var url = 'http://patty5.com/AppApis/apiSchedule.asp';
             $http.jsonp(url, {
                 params: {
@@ -433,6 +433,16 @@ angular.module('starter.services')
                     }
                 })
             })
+        },
+        
+        this.checkSync = function() {
+            var url = 'http://patty5.com/AppApis/apiCheckConnection.asp';
+            return $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            })                     
         },
         this.sync = function(){
             this.getSchedule()
