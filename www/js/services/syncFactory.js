@@ -445,6 +445,9 @@ angular.module('starter.services')
             })                     
         },
         this.sync = function(){
+            var curTime = new Date()
+            localStorage.setItem('lastSync', curTime)
+            
             this.getSchedule()
             this.getFeaturedScheduleListOnline()
             this.getDirectory()

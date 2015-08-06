@@ -28,15 +28,15 @@
   <ion-content style="height: 100%">
 
 	<!--<div style="font-size: 14px; text-align: center; margin-top: 45px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>-->
-	<div style="height: 20px;"></div>
+	<div style="height: 25px;"></div>
     <div class="content" style="display: none">
     	<div class="top-container" id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px; z-index: 99">
     
         <div class="swiper-container" ng-show="hasSlides">
           <div id="slides" class="swiper-wrapper" >
               <div class="box swiper-slide" ng-repeat="x in slides">
-                    <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
-                      <img src="{{x.Link}}" style="width:100%">
+                    <div class=" featured" style="overflow:hidden; position:relative;" >
+                      <img src="{{x.Link}}"  style="width: 100%">
                     </div>
                 </div>
             </div>

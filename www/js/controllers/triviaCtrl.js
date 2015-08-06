@@ -105,9 +105,9 @@ angular.module('starter.controllers')
 				$(".signInOverlay").css("display", "none")
 				$(".signIn").css("display", "none")
 				//alert('right spot')
+				$scope.runSync()
 				$rootScope.$broadcast('login', LoginUsername)
 				//$state.current, {}, {reload: true});
-				$scope.runSync()
 				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 				$scope.closeLoginAuto();
 			}

@@ -5,7 +5,7 @@ angular.module('starter.controllers')
 		  $scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		  $scope.list = PollingService.getPresentationList()
-		  //console.log($scope.list)
+		  console.log($scope.list)
 		  $scope.tempList = $scope.list
 
 			$scope.toggle = function (type) {
