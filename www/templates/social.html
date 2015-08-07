@@ -2,16 +2,21 @@
 <script id="image-modal.html" type="text/ng-template">
   <div class="modal image-modal transparent" ng-click="closeModal()">
         <div class="button button-clear" style="float:left; z-index: 99; margin-top: 5px" ng-click="modal.hide()"><span style="color:#FFF; font-size: 16px;" class="icon icon-right ion-ios-arrow-back"></span></div>
-        <ion-content class="transparent" style="height: 100%">
-          <div style="height: 50px;"></div>
-          <div class="featured">
-            <img ng-src="{{imageSrc}}" style="width: 100%"/>
-          </div>
-          <div style="color: #fff; bottom: 0px ; z-index: 999; padding: 0 15px"> {{desc}} </div>
-        </ion-content>
+        <ion-pane class="transparent">
+         <div style="height: 50px; background: black; "></div>
+          <ion-scroll direction="y" style="height: 100%">
+          
+            <div class="featured">
+              <img ng-src="{{imageSrc}}" style="width: 100%"/>
+            </div> 
+  
+            <div style="color: #fff; bottom: 0px ; z-index: 999; padding: 5px 20px;"> {{desc}} </div>
 
-      <div style="font-size: 1em; position: absolute; left: 1px; bottom: 6px; width: 100%" class="itemIG item-avatar">
-        <img style="height: 80px" src="{{avatar}}" />
+          </ion-scroll>
+        </ion-pane>
+        
+      <div style="font-size: 1em; background:black; position: absolute; left: 1px; bottom: 0px; width: 100%" class="itemIG item-avatar">
+        <img style="height: 80px" src="{{avatar}}" onerror="this.src='images/igNoIcon.jpg'" />
         <div style="margin-left: 50px; margin-top: 8px;">{{name}}</div>
       </div>
         <div class="whiteBar"></div>
