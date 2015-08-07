@@ -17,6 +17,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   width:100%;
   letter-spacing: 0px;
   font-family: 'Futura', Arial;
+
 }
 
 .inner-content h1, h2, p {
@@ -66,12 +67,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
  margin-bottom:3px;
 }
 .featured-box .pg-image:after {
-  background:url("images/grad-dark3.png");
+  background:url("images/grad-light2.png");
   vertical-align: top;
   top:0;
   background:cover;
   height:100%;
   width:100%;
+
 }
 </style>
 <ion-view view-title="Nicky5">
@@ -108,7 +110,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                         </div>
                       </a>
                 </div>-->
-               <div class="box swiper-slide" ng-if="featureItem.Image" ng-repeat="x in list">
+               <div class="box swiper-slide" ng-if="featureItem" ng-repeat="x in list">
                       <a ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})" style="height:220px; overflow:hidden; position:relative;" >
                         <div style="height:220px; overflow:hidden; position:relative;"  >
                           <img src="{{x.Image}}" style="width:100%">
@@ -133,7 +135,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                         </div>
                       </a>
                 </div>-->
-                <div class="box swiper-slide" ng-if="!featureItem.Image"style="height:220px;">
+                <div class="box swiper-slide" ng-if="!featureItem"style="height:220px;">
                  <img src="images/welcome.jpg" style="width:100%;" ng-cloak>
               </div>
                 <!-- <div class="box swiper-slide">
@@ -163,10 +165,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                   <div class="pg-image" ng-class="{'odd': isRowSelected($index), 'even': !isRowSelected($index)}">
                     <img src="{{x.Image}}">
                   </div>
-                   <div class="inner-small">
-                        <div style="padding:0 0 0 10px; width:100%; color:#FFF">
-                              <span style="font-size:1.2em; font-weight:800;">{{x.Name}}</span>
-                              <p style="padding:0px; font-size:.8em">{{x.Description}}</p>
+                   <div class="inner-small" style="width:90%">
+                        <div style="padding:0 0 12px 10px; width:100%; color:#FFF; line-height:20px;">
+                              <div style=" font-family:'arial'; font-size:1.25em; font-weight:600;">{{x.Name}}</div>
+                              <div ng-if="!x.Description" style="height:10px"></div>
+                              <div ng-if="x.Description" style="margin:0 0 0 0;padding:0px; font-size:1em">{{x.Description}}</div>
                         </div>
                    </div>
         </div>
@@ -182,10 +185,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                     <img src="{{x.Image}}" style="width:100%;">
                   </div>
 
-                   <div class="inner-small" style="font-family: 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;">
-                        <div style="padding:10px; width:100%; color:#FFF">
-                        <span style="font-size:1.2em; font-weight:800;">{{x.Name}}</span>
-                        <p style="padding:0px; font-size:.8em">{{x.Description}}</p>
+                   <div class="inner-small" style="width:90%">
+                        <div style="padding:0 0 12px 10px; width:100%; color:#FFF; line-height:20px;">
+                              <div style=" font-family:'arial'; font-size:1.25em; font-weight:600;">{{x.Name}}</div>
+                              <div ng-if="!x.Description" style="height:10px"></div>
+                              <div ng-if="x.Description" style="margin:0 0 0 0;padding:0px; font-size:1em">{{x.Description}}</div>
                         </div>
                    </div>
                    </a>
@@ -313,7 +317,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                    </div>
         </div>-->
     
-        <div style="clear:both; height:2px;"></div>
+        <div style="clear:both; height:0px;"></div>
     </div>   
    
 

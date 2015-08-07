@@ -48,13 +48,17 @@ angular.module('starter.controllers')
   		$scope.menu = data
   		data = JSON.stringify(data)
         localStorage.setItem('menu', data)
-        var featureItem = localStorage.getItem('Featured')
-		$scope.featureItem = JSON.parse(featureItem)
+        //var featureItem = localStorage.getItem('Featured')
+		//$scope.featureItem = JSON.parse(featureItem)
+		
 		
 		$scope.list = PollingService.getPresentationList()
 		console.log($scope.list)
 		$scope.tempList = $scope.list
-		  
+		if ($scope.list.length > 0)
+		{
+			$scope.featureItem = true;
+		}
 		$timeout(function() {
 		var mySwiper = new Swiper('.swiper-container', {
            autoplay: 8000,
