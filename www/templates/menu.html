@@ -1,3 +1,13 @@
+<style>
+#menu1 {margin-top:0px;}
+#menu1 .item-complex .item-content {
+
+  padding: 10px 49px 10px 16px;
+
+ }
+
+</style>
+
 <body ng-controller="MenuCtrl">
 <ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
@@ -20,28 +30,39 @@
     <ion-header-bar class="bar-stable dark">
       <h1 class="title" style="color:#FFF">Navigation</h1>
     </ion-header-bar>
-    <ion-content class="dark">
-      <ion-list>
-          <ion-item  ng-click="toggleLeftSideMenu(); goHome()">
-           <a style="text-decoration:none;"><i style="color:#F87D3F; padding-right:5px;" class="icon ion-home" ></i> Home</a>
-          </ion-item>
+    <ion-content class="dark" id="menu1">
+    
+   
+          <ion-item  ng-click="toggleLeftSideMenu(); goHome()" class="item item-complex">
+          <a class="item-content ng-binding">
+          <i style="color:#F87D3F; padding-right:5px ;width:19px; display:inline-block" class="icon ion-home"></i> Home
+          </a></ion-item>
+   
           
           <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.Page}}({ID: {{menu.ID}}})" ng-click="toggleLeftSideMenu()">
-           <a style="text-decoration:none;"><i style="color:#F87D3F; padding-right:5px;" class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}</a>
+          <i style="color:#F87D3F; padding-right:5px; width:19px; display:inline-block" class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}
           </ion-item>
+  
+          <ion-item  ng-click="login(); toggleLeftSideMenu()"  ng-show="loginButton" class="item item-complex" style="background: #4B749C">
+          <a class="item-content ng-binding">
+          <i style="color:#F87D3F; padding-right:5px; width:19px; display:inline-block" class="icon ion-log-in"></i> Login
+          </a></ion-item>  
+ 
+           <ion-item  ng-click="profile(); toggleLeftSideMenu()"  ng-show="profileButton" class="item item-complex" style="background: #4B749C">
+          <a class="item-content ng-binding">
+          <i style="color:#F87D3F; padding-right:5px; width:19px; display:inline-block" class="icon ion-person"></i> Profile
+          </a></ion-item>   
+
+           <ion-item  ng-click="logout(); toggleLeftSideMenu()"  ng-show="logoutButton" class="item item-complex" style="background: #4B749C">
+          <a class="item-content ng-binding">
+          <i style="color:#F87D3F; padding-right:5px; width:19px; display:inline-block" class="icon ion-log-out"></i> Logout
+          </a></ion-item> 
           
-          <ion-item  ng-click="login(); toggleLeftSideMenu()" ng-show="loginButton">
-              <i class="icon ion-log-in" ></i> Login
-          </ion-item>
-          <ion-item  ng-click="profile(); toggleLeftSideMenu()" ng-show="profileButton">
-              <i class="icon ion-person" ></i> Profile
-          </ion-item>
-          <ion-item  ng-click="logout(); toggleLeftSideMenu()" ng-show="logoutButton">
-              <i class="icon ion-log-out" ></i> Logout
-          </ion-item>
-          <ion-item  ng-click="sync(); toggleLeftSideMenu()">
-            <i class="icon ion-refresh" ></i> Last Sync: {{lastSync}}
-          </ion-item>
+            <ion-item  ng-click="sync(); toggleLeftSideMenu()" class="item item-complex" style="background: #4B749C">
+          <a class="item-content ng-binding">
+          <i style="color:#F87D3F; padding-right:5px; width:19px; display:inline-block" class="icon ion-refresh"></i> Last Sync:&nbsp; &nbsp;<span style="font-size:13px">{{lastSync}}</span>
+          </a></ion-item> 
+                
    </ion-list>
 
     </ion-content>
