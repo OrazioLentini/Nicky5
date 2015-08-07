@@ -34,12 +34,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .pg-image {position:relative; display:block; background:#FFF; vertical-align: top;}
 .odd {
   margin-left:0px;
-  margin-right:2px;
-  margin-bottom:4px;
+  margin-right:2px; /* white line seperators */
+  margin-bottom:4px; /* white line seperators */
 }
 .even {
-  margin-left:2px;
-  margin-bottom:4px;
+  margin-left:2px; /* white line seperators */
+  margin-bottom:4px; /* white line seperators */
   margin-right:0px;
 }
 .pg-image img {width:100%; vertical-align: top;}
@@ -53,7 +53,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   z-index:100;
   display: block;
   transition:all .3s ease;
-  background:url("images/grad-dark2.png");
+  background:url("images/grad-light1.png");
   background-size:100%;
   /*background-position: bottom;*/
   overflow: hidden;
@@ -164,9 +164,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                     <img src="{{x.Image}}">
                   </div>
                    <div class="inner-small">
-                        <div style="padding:10px; width:100%; color:#FFF">
-                        <span style="font-size:1.2em; font-weight:800;">{{x.Name}}</span>
-                        <p style="padding:0px; font-size:.8em">{{x.Description}}</p>
+                        <div style="padding:0 0 0 10px; width:100%; color:#FFF">
+                              <span style="font-size:1.2em; font-weight:800;">{{x.Name}}</span>
+                              <p style="padding:0px; font-size:.8em">{{x.Description}}</p>
                         </div>
                    </div>
         </div>
