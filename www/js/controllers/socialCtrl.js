@@ -10,6 +10,8 @@ angular.module('starter.controllers')
     
     SocialService.getInstagram(). success(function(data){
         $scope.instagram = data 
+        console.log($scope.instagram)
+        console.log(decodeURIComponent($scope.instagram[22].Post))
     })
     
     $scope.youtube = SocialService.getYoutube()
