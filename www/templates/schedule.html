@@ -2,7 +2,7 @@
 <ion-view view-title="{{title}}">
   <ion-content>
 
-
+	  	<div ng-show="noSch" style="text-align: center; margin-top: 20px">There is currently nothing scheduled</div>
 		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
 		   <li class="item item-divider" style="background:#444444; /*background:#444444;*/ color:#F2F2F2">{{ScheduledDate}}</li>
 
@@ -18,8 +18,8 @@
 						<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
 					</div>
 				</a>
- 				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:32px; float: right"></i></a>
-       			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+ 				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="color:#F87D3F; font-size:32px; float: right"></i></a>
+       			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="color:#F87D3F; font-size:32px; float: right"></i></a>
            </li>
 
            <li ng-if="x.Speaker == ''" class="item item-thumbnail-left-sch item-icon-right">
@@ -31,8 +31,8 @@
 	 				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
 				 </div>
  				<i class="icon ion-ios-star' + icon + '" ' + onClick + '></i>
- 				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="font-size:32px; float: right"></i></a>
-       			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+ 				<a ng-show="{{x.NoFav}}" ng-click="saveFavoriteSchedule('{{x.RecID}}')"><i class="icon ion-ios-star-outline" style="color:#F87D3F; font-size:32px; float: right"></i></a>
+       			<a ng-show="{{x.Fav}}" ng-click="deleteFavorite('{{x.RecID}}')"><i class="icon ion-ios-star" style="color:#F87D3F; font-size:32px; float: right"></i></a>
            </li>
 
 			<!--<div ng-if="x.Speaker" class="button-bar">

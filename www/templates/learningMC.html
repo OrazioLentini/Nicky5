@@ -11,35 +11,38 @@
     
     <div style=" margin-top: 25px;"></div>
     <div ng-repeat="question in learningMC | filter: id = questionNum" ng-hide="notFinished">
+       
+      <li class="item dark" style="white-space: normal; margin-top: 25px;">
         <span style="text-align: center; font-size: 16px; font-weight: 500;">{{question.question}}</span>
-        
+        </li>
+         
       <form ng-submit="checkAnswer()" id="loginForm">
-         <li class="item item-checkbox dark" style="white-space: normal; margin-top: 25px;">
+         <li class="item item-checkbox " style="white-space: normal; margin-top: 25px;">
            <label class="checkbox">
              <input type="radio" value="A" name='test'>
            </label>
            {{question.A}}
         </li>
-        <li class="item item-checkbox dark" style="margin-top: 10px; white-space: normal">
+        <li class="item item-checkbox " style="margin-top: 5px; white-space: normal">
            <label class="checkbox">
              <input type="radio" value="B" name='test'>
            </label>
            {{question.B}}
         </li>
-        <li class="item item-checkbox dark" style="margin-top: 10px; white-space: normal">
+        <li class="item item-checkbox " style="margin-top: 5px; white-space: normal">
            <label class="checkbox">
              <input type="radio" value="C" name='test'>
            </label>
            {{question.C}}
         </li>
-        <li class="item item-checkbox dark" style="margin-top: 10px; white-space: normal">
+        <li class="item item-checkbox " style="margin-top: 5px; white-space: normal">
            <label class="checkbox">
              <input type="radio" value="D" name='test'>
            </label>
            {{question.D}}
         </li>
       <div style=" margin-top: 25px; text-align: center">
-        <button ng-show="submit" class="button button-energized">Check Answer</button>
+        <button ng-show="submit" class="button button-positive">Check Answer</button>
       </div>
     </form>
     <div style="text-align: center">
@@ -48,8 +51,9 @@
     </div>
   </div>
   <div ng-show="notFinished" style="font-size: 18px; text-align: center">
-    <span >Results {{totalCorrect}} / {{questionNum}}</span><br>
-    <button class="button icon-right ion-close button-positive" ng-click="closeMC()">Close</button>
+    <span >Result {{totalCorrect}} / {{questionNum}}</span>
+    <div style="height: 20px"></div>
+    <button class="button icon-right ion-close button-positive" ng-click="closeMC()">Close </button>
   </div>
   </ion-content>
 </ion-modal-view>

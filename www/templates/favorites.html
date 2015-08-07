@@ -62,7 +62,7 @@
                 <p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
               </div>
             </a>
-            <a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+            <a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="color:#F87D3F; font-size:32px; float: right"></i></a>
           </li>
            
 
@@ -74,7 +74,7 @@
       
        				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
             </div>
-       			<a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+       			<a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','schedule')"><i class="icon ion-ios-star" style="color:#F87D3F; font-size:32px; float: right"></i></a>
            </li>
            </div>
 	    </ul>    
@@ -88,7 +88,7 @@
 				<h2>{{requests.Company}}</h2>
 				<p>Booth: {{requests.BoothNum}}<p/>
 				<p>{{requests.PreviewDesc}}</p>
-				<a ng-show="true" ng-click="deleteFavorite('{{requests.ID}}','company')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+				<a ng-show="true" ng-click="deleteFavorite('{{requests.ID}}','company')"><i class="icon ion-ios-star" style=" color:#F87D3F; font-size:32px; float: right"></i></a>
 			</ion-item>
 		</ion-list>
 
@@ -105,7 +105,7 @@
     
             <p class="fade">{{x.ShortDesc}}</p>
 
-            <a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','showcase')"><i class="icon ion-ios-star" style="font-size:32px; float: right"></i></a>
+            <a ng-show="true" ng-click="deleteFavorite('{{x.ID}}','showcase')"><i class="icon ion-ios-star" style="color:#F87D3F; font-size:32px; float: right"></i></a>
 	    </ion-item>   
       </ion-list>
 
@@ -128,7 +128,7 @@
                 <div style="display:inline-block; width:15%; padding-top:20px; padding-right:20px; text-align:right; vertical-align:top;">
                 
                 <a ng-show="true" ng-click="deleteFavorite('{{map.ID}}', 'maps')">
-                <i class="icon ion-ios-star" style="font-size:32px;  "></i>
+                <i class="icon ion-ios-star" style="color:#F87D3F; font-size:32px;  "></i>
                 </a>
                 </div>
               </div>

@@ -1,31 +1,58 @@
 angular.module('starter.controllers')
 
-.controller('MenuCtrl', function($rootScope, $state, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $timeout, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService, $ionicHistory) {
-  	
+.controller('MenuCtrl', function($rootScope, $state, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService, $ionicHistory, $filter) {
+
   	MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
   		data = JSON.stringify(data)
         localStorage.setItem('menu', data)
   	})		
-        
-        $scope.$on('login', function(events, isLoggedIn){
-		    //alert(isLoggedIn);
-		    //$scope.name = isLoggedIn; //now we've registered!
-		    if(isLoggedIn > ""){
-		    	$scope.logoutButton = true
-			    $scope.profileButton = true
-			    $scope.loginButton = false
-		    }
-		})
+	  
+	$scope.getLastSyncTime = function() {
+		$timeout(function() {
+			curTime =  Date.parse(localStorage.getItem('lastSync'))
+			$scope.lastSync = $filter('date')(curTime, 'M/d/yyyy h:mm a')
+			
+			//console.log($scope.lastSync)
+		}, 100); 
+	}
+	
+	$scope.getLastSyncTime()
+    $scope.$on('login', function(events, isLoggedIn){
+		//console.log(isLoggedIn)
+	    //$scope.name = isLoggedIn; //now we've registered!
+	    if(isLoggedIn > ""){
+			var temp = localStorage.getItem('login')
+			data = JSON.parse(temp)
+		
+			$scope.badgeID = data[0].BadgeID
+			$scope.userName = data[0].Username
+			$scope.email = data[0].Email
+			$scope.firstName = data[0].FirstName
+			$scope.lastName = data[0].LastName
+			
+			//$("#unProfile").val($scope.userName);
+			// $("#idProfile").val();
+			$("#fnProfile").val($scope.firstName);
+			$("#lnProfile").val($scope.lastName);
+			$("#emProfile").val($scope.email);
+			
+			$scope.getLastSyncTime()	
+			
+	    	$scope.logoutButton = true
+		    $scope.profileButton = true
+		    $scope.loginButton = false
+	    }
+	})
 
-  		$scope.isLoggedIn = localStorage.getItem("login")
-		if ($scope.isLoggedIn == null) {
-			$scope.loginButton = true
-		}
-		else {
-			$scope.logoutButton = true
-			$scope.profileButton = true
-		}
+	$scope.isLoggedIn = localStorage.getItem("login")
+	if ($scope.isLoggedIn == null) {
+		$scope.loginButton = true
+	}
+	else {
+		$scope.logoutButton = true
+		$scope.profileButton = true
+	}
 
   $scope.toggleLeftSideMenu = function() {
   	$timeout(function() {
@@ -77,10 +104,13 @@ angular.module('starter.controllers')
 	};
 
 	// Perform the login action when the user submits the login form
-	$scope.doLogin = function() {
-    	var LoginUsername = $("#Username").val();
-    	var LoginBadgeID = $("#BadgeID").val();
-        $rootScope.$broadcast('BOOM!', $scope.LoginUsername)
+	$scope.doLogin = function(user, bID) {
+    	var LoginUsername = user
+    	var LoginBadgeID = bID
+		
+		//var LoginUsername = $("#Username").val();
+    	//var LoginBadgeID = $("#BadgeID").val();
+        //$rootScope.$broadcast('BOOM!', $scope.LoginUsername)
     	LoginService.login(LoginUsername, LoginBadgeID). success(function (data) {
 		if(data != 'failed') {
 			localStorage.setItem("login", JSON.stringify(data))
@@ -95,7 +125,6 @@ angular.module('starter.controllers')
 			$scope.firstName = data[0].FirstName
 			$scope.lastName = data[0].LastName
 			
-			console.log($scope)
 			//$("#unProfile").val($scope.userName);
 		   // $("#idProfile").val();
 		    $("#fnProfile").val($scope.firstName);
@@ -132,6 +161,7 @@ angular.module('starter.controllers')
 				$scope.profileButton = false
 				$scope.loginButton = true
 				$scope.show = true
+				$scope.goHome()
 			}
 		});
 	}
@@ -151,20 +181,45 @@ angular.module('starter.controllers')
 	};
 
 	$scope.runSync = function () {
-		SyncService.sync()
-		$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+		SyncService.checkSync(). success(function (x){
+			 if(x == 'Database Connected') {
+				 SyncService.sync()
+				 $scope.getLastSyncTime()
+				 $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+			 }
+			 else {
+				$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
+			 }
+		 }). error(function (){
+			 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+		 })
+		//SyncService.sync()
+		//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 	}
 
 	$scope.sync = function () {
+		console.log($ionicHistory)
 		var confirmPopup = $ionicPopup.confirm({
 			title: 'Do you want to continue?',
 			template: 'Syncing will return to home. Are you sure?'
 		});
 		confirmPopup.then(function(res) {
 			if(res) {
-				SyncService.sync()
-				$state.go('app.menu')
-				$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+				SyncService.checkSync(). success(function (x){
+					 if(x == 'Database Connected') {
+						 SyncService.sync()
+						 $scope.getLastSyncTime()
+						 $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+					 }
+					 else {
+						$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
+					 }
+				 }). error(function (){
+					 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+				 })
+				$scope.goHome()
+				//SyncService.sync()
+				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 			}
 		});
 	}
@@ -184,7 +239,16 @@ angular.module('starter.controllers')
 	$scope.openCheckIn = function() {
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
-			$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+			//$ionicLoading.show({template: 'You must be logged in to access the QR Code', noBackdrop: false, duration:1500});
+			var confirmPopup = $ionicPopup.confirm({
+				 title: 'Login Required',
+				 template: 'You must log in to access your QR Code. Do you want to log in?'
+			   });
+			   confirmPopup.then(function(res) {
+				 if(res) {
+					$scope.modal.show();
+				 }
+			   });
 		}
 		else {
 		    $scope.loginCred = JSON.parse($scope.isLoggedIn)

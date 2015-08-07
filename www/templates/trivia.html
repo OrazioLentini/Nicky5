@@ -18,23 +18,40 @@
     </style>
     
         <div class="signInOverlay" style="display: none">
-	      <div class="signIn"  style="text-align: center; z-index: 2;">
+	      <!--<div class="signIn"  style="text-align: center; z-index: 2;">
 	        <div style="height: 20px;"></div>
 	        <div class="navigate-right">
 	            <span class="media-object icon ion-person"></span>
 	            <div class="media-body">
-	                <strong>Sign In to Participate</strong>
+	                <strong>Log In to Participate</strong>
 	            </div>
-	            <button class="button button-calm signInButton" ng-click="login()" >Sign In</button>
 	        </div>
-	      </div> 
+	      </div>--> 
       </div>
         
   <ion-content>
         <div style="width:100%; margin-top: 20px;">
             <div style="text-align:center; max-width:960px; margin:0px auto;">
                 <h1><span id="title">Trivia Answer Key</span></h1>
+                
                 <div class="opt-row">
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="saveTriviaAnswer('A')" style="height: 125px; width: 125px; font-size: 60px">A</button>
+                    </div>
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="saveTriviaAnswer('B')" style="height: 125px; width: 125px; font-size: 60px">B</button>
+                    </div>
+                </div>
+               <div class="opt-row">
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="saveTriviaAnswer('C')" style="height: 125px; width: 125px; font-size: 60px">C</button>
+                    </div>
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="saveTriviaAnswer('D')" style="height: 125px; width: 125px; font-size: 60px">D</button>
+                    </div>
+                </div>
+                
+                <!--<div class="opt-row">
                     <div class="opt">
                        <div style="padding:5px;">
                           <a data-toggle="modal"><img style="width:100%" ng-click="saveTriviaAnswer('A')" src="images/A.png"></a>
@@ -57,7 +74,7 @@
                             <a data-toggle="modal"><img style="width:100%" ng-click="saveTriviaAnswer('D')"  src="images/D.png"></a>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
                         
            <div style="font-size:20px; padding-top:20px; text-align:center;">

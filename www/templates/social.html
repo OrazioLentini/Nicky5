@@ -2,15 +2,19 @@
 <script id="image-modal.html" type="text/ng-template">
   <div class="modal image-modal transparent" ng-click="closeModal()">
         <div class="button button-clear" style="float:left; z-index: 99; margin-top: 5px" ng-click="modal.hide()"><span style="color:#FFF; font-size: 16px;" class="icon icon-right ion-ios-arrow-back"></span></div>
-        <ion-pane class="transparent">
-        <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
-        <div style="color: #fff; bottom: 110px ; z-index: 999; position: absolute; padding: 0 15px"> {{desc}} </div>
-        <div style="font-size: 1em; position: absolute; left: 1px; bottom: 6px; width: 100%" class="itemIG item-avatar">
-          <img style="height: 80px" src="{{avatar}}" />
-          <div style="margin-left: 50px; margin-top: 8px;">{{name}}</div>
+        <ion-content class="transparent" style="height: 100%">
+          <div style="height: 50px;"></div>
+          <div class="featured">
+            <img ng-src="{{imageSrc}}" style="width: 100%"/>
           </div>
+          <div style="color: #fff; bottom: 0px ; z-index: 999; padding: 0 15px"> {{desc}} </div>
+        </ion-content>
+
+      <div style="font-size: 1em; position: absolute; left: 1px; bottom: 6px; width: 100%" class="itemIG item-avatar">
+        <img style="height: 80px" src="{{avatar}}" />
+        <div style="margin-left: 50px; margin-top: 8px;">{{name}}</div>
+      </div>
         <div class="whiteBar"></div>
-      </ion-pane>
       </div>
 </script>
 
@@ -53,7 +57,7 @@
 	  </div>
  
 
-  <ion-content class="has-subheader" class="ng-view" autoscroll="true" style="padding:5pt; margin-top: 10px">
+  <ion-content class="has-subheader" class="ng-view" autoscroll="true" style=" margin-top: 10px">
                 
          <div id="all" style="background:#FFF; display: none; margin-top:5px; ">
         </div>
@@ -64,7 +68,9 @@
                 <img src="{{x.snippet.thumbnails.high.url}}" style="width:100%">
                 <div style="padding:0 10px; font-size: 1em; color: white; position: absolute; bottom: 20px; z-index: 99">{{x.snippet.title}}</div>
                 <img src="images/YouTubePlay.png" style="width:18%; position: absolute; top: 41%; left: 41%; z-index: 99 ">
-                <img src="images/grad-dark3.png" style="width: 100%; position: absolute; top: 0">
+                <div style="position: absolute; bottom: 0px; width:100%;">
+                  <img src="images/grad-dark3.png" style="width: 100%;">
+                </div>
               </div>
           </div>
         </div>
@@ -72,7 +78,7 @@
          <div id="twitter"  style="background:#FFF; margin-top:5px; display: block">
             <ul > 
               <li ng-repeat="x in twitter" class="item item-avatar item-text-wrap">
-                <img style="height: 80px" src="{{x.AuthorAvatar}}"/>  
+                <img style="height: 80px" src="{{x.AuthorAvatar}}" onerror="this.src='images/twitterNoIcon.png'"/>  
                 <div style="font-size: 1em"><strong>{{x.AuthorName}}</strong> @{{x.AuthorScreenName}}
                 <p>{{x.Post}}</p>
                 </div>
@@ -80,16 +86,16 @@
             </ul> 
         </div>
         
-         <div id="instagram" style="background:#FFF; margin-top:5px; display: none">
+         <div id="instagram" style="background:#FFF; margin-top:0px; display: none">
            <div ng-repeat="x in instagram">
              <div style="position: relative" ng-click="showImage('{{x.RecID}}')">
                <img style="width: 100%" src="{{x.PostImageURL}}">
                 <div style="font-size: 1em; position: absolute; left: 1px; bottom: 6px; width: 100%" class="itemIG item-avatar">
-                  <img style="height: 80px" src="{{x.AuthorAvatar}}" />
+                  <img style="height: 80px" src="{{x.AuthorAvatar}}" onerror="this.src='images/igNoIcon.jpg'" />
                   <div style="margin-left: 50px; margin-top: 8px;">{{x.AuthorScreenName}}</div>
                 </div>
                 <div style="position: absolute; bottom: 0px; width:100%;">
-                <img src="images/grad-dark3.png" style="width: 100%;">
+                  <img src="images/grad-dark3.png" style="width: 100%;">
                 </div>
                <div style="color: #fff; position: absolute; bottom:70px">
                   <p style="padding: 0 15px" class="fadeIG">{{x.Post}}</p>

@@ -1,7 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'MyService', function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, MyService) {
-       
+    .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'PollingService',  function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, PollingService) {
 		ionic.Platform.ready(function(){
            //alert("ready");
 			//var featureItem = localStorage.getItem('Featured')
@@ -51,6 +50,11 @@ angular.module('starter.controllers')
         localStorage.setItem('menu', data)
         var featureItem = localStorage.getItem('Featured')
 		$scope.featureItem = JSON.parse(featureItem)
+		
+		$scope.list = PollingService.getPresentationList()
+		console.log($scope.list)
+		$scope.tempList = $scope.list
+		  
 		$timeout(function() {
 		var mySwiper = new Swiper('.swiper-container', {
            autoplay: 8000,
@@ -89,10 +93,9 @@ angular.module('starter.controllers')
     
 
   	
-  	console.log(id)
+  	//console.log(id)
      $scope.isRowSelected = function(x) {
 	    if(id.indexOf(x) > -1){
-            
            return true
           
         } else {

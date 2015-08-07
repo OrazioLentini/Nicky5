@@ -28,15 +28,15 @@
   <ion-content style="height: 100%">
 
 	<!--<div style="font-size: 14px; text-align: center; margin-top: 45px;">Do you want to learn about the Speaker, <br>Ask a Question or Answer Polling? <br> Click one of the tabs above.<hr></div>-->
-	<div style="height: 20px;"></div>
+	<div style="height: 25px;"></div>
     <div class="content" style="display: none">
     	<div class="top-container" id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px; z-index: 99">
     
         <div class="swiper-container" ng-show="hasSlides">
           <div id="slides" class="swiper-wrapper" >
               <div class="box swiper-slide" ng-repeat="x in slides">
-                    <div class="thumb featured" style="height:220px; overflow:hidden; position:relative;" >
-                      <img src="{{x.Link}}" style="width:100%">
+                    <div class=" featured" style="overflow:hidden; position:relative;" >
+                      <img src="{{x.Link}}"  style="width: 100%">
                     </div>
                 </div>
             </div>
@@ -74,21 +74,38 @@
 	<div id="pollingAnswers" ng-show="answer" style="height: 100%">
 
         <div class="signInOverlay" style="display: none">
-	      <div class="signIn"  style="text-align: center;">
+	      <!--<div class="signIn"  style="text-align: center;">
 	        <div style="height: 15px;"></div>
 	        <div class="navigate-right">
 	            <span class="media-object icon ion-person"></span>
 	            <div class="media-body">
-	                <strong>Sign In to Participate</strong>
+	                <strong>Log In to Participate</strong>
 	            </div>
-	            <button class="button button-calm signInButton" ng-click="login()" >Sign In</button>
+	            <button class="button button-calm signInButton" ng-click="login()" >Log In</button>
 	        </div>
-	      </div> 
+	      </div> -->
       </div>
 
-	    <div style="width:100%; height: 100%">
+	    <div class="answerKey" style="width:100%; height: 100%; display: none" >
 	        <div style="text-align:center; max-width:960px; margin-top:30px ;">
-	            <div class="opt-row">
+                <h1><span id="title">Answer Polling</span></h1>
+                <div class="opt-row">
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="savePollingAnswer('A')"" style="height: 125px; width: 125px; font-size: 60px">A</button>
+                    </div>
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="savePollingAnswer('B')" style="height: 125px; width: 125px; font-size: 60px">B</button>
+                    </div>
+                </div>
+               <div class="opt-row">
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="savePollingAnswer('C')" style="height: 125px; width: 125px; font-size: 60px">C</button>
+                    </div>
+                    <div class="opt"> 
+                        <button class="button button-block button-positive" ng-click="savePollingAnswer('D')" style="height: 125px; width: 125px; font-size: 60px">D</button>
+                    </div>
+                </div>
+	            <!--<div class="opt-row">
 	                <div class="opt">
 	                   <div style="padding:5px;">
 	                      <a data-toggle="modal"><img style="width:100%" ng-click="savePollingAnswer('A')" src="images/A.png"></a>
@@ -111,7 +128,7 @@
 	                        <a data-toggle="modal"><img style="width:100%" ng-click="savePollingAnswer('D')"  src="images/D.png"></a>
 	                    </div>
 	                </div>
-	            </div>
+	            </div>-->
 	        </div>
 	    </div>
     </div>
@@ -119,7 +136,7 @@
     <div id="pollingFeedback" style="width: 90%; text-align: center; margin-left: 5%;" ng-show="question">
     	
         <div class="signInOverlay" style="display: none">
-	      <div class="signIn"  style="text-align: center;">
+	      <!--<div class="signIn"  style="text-align: center;">
 	        <div style="height: 15px;"></div>
 	        <div class="navigate-right">
 	            <span class="media-object icon ion-person"></span>
@@ -128,16 +145,19 @@
 	            </div>
 	            <button class="button button-calm signInButton" ng-click="login()" >Sign In</button>
 	        </div>
-	      </div> 
+	      </div>--> 
       </div>
-      
+        <div style="text-align:center; margin-top:30px ;">
+            <h1><span id="title">Ask Question</span></h1>
+        </div>
         <form id="formQuestionPolling"ng-submit="submit()">
-            <div style="height: 30px"></div>
+
+
               <label class="item item-input">
 			    <textarea id="userQuestion" style="height: 100px" placeholder="What is on your mind?"></textarea> 
 			  </label>
 			  <div style="height: 15px"></div>
-            <button class="button button-energized" value="Submit Question" type="submit" name="submit">Submit</button>
+            <button  class="button button-block button-positive" value="Submit Question" type="submit" name="submit">Submit</button>
         </form>
     </div>
   </ion-content>

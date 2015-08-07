@@ -33,43 +33,45 @@
       
           <div style="padding:0px 20px">
              <div style="margin-top:15px; padding:0px; font-size: 18px; padding-bottom:5px;"><span style="font-weight: 500">{{details.Title}}</span>
-                  <a ng-show="unfilled" ng-click="saveFavoriteShowcase('')"><i class="icon ion-ios-star-outline" style="font-size:32px; float:right"></i></a>
-                  <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="font-size:32px; float:right"></i></a>
+                  <a ng-show="unfilled" ng-click="saveFavoriteShowcase('')"><i class="icon ion-ios-star-outline" style="color:#F87D3F; font-size:32px; float:right"></i></a>
+                  <a ng-show="filled" ng-click="deleteFavorite('')"><i class="icon ion-ios-star" style="color:#F87D3F; font-size:32px; float:right"></i></a>
              </div>
-             <p style="font-size:.8em; border-bottom:1px #F1F1F1 solid; padding-bottom:5px;">
+             <div style="font-size:.8em; border-bottom:1px #F1F1F1 solid; padding-bottom:5px;">
              Company: {{details.Company}}<br>
              Location: {{details.City}}, {{details.State}}
-             </p>
-             <p>
+             </div>
+             <div>
                 {{details.ShortDesc}}
-             </p>
+             </div>
              
 
              
             <span style=" font-weight: 700; color:#F87D3F">Booth: {{details.Booth}}</span>
              <br><span style="font-size:.7em; color:#489CD4; ">Categorized in: {{details.Category}}</span>
 
-             <button ng-show="showInfo" class="button button-full button-positive" ng-click="requestInfo()" type="submit">Request More Info</button>
+             <button ng-show="showInfo" class="button button-block button-positive" ng-click="requestInfo()" type="submit">Request More Information</button>
+             <button ng-show="showInfo == false" class="button button-block button-positive" type="submit" ng-disabled="true">Information has been Requested</button>
+            
              <div class="row" style="height: 60px">
               <div class="col">
-                <button class="button icon-left ion-social-facebook-outline button-full" style="background: #3B5998;  color: white">
+                <button class="button icon-left ion-social-facebook-outline button-block" style="background: #3B5998;  color: white">
                   Like
                 </button>
               </div>
               <div class="col">
-                  <button class="button icon-left ion-social-twitter-outline button-full button-calm">
+                  <button class="button icon-left ion-social-twitter-outline button-block button-calm">
                     Tweet
                   </button> 
               </div>
             </div>
             <div class="row" style="margin-top: 0">
               <div class="col">
-                <button class="button icon-left ion-social-googleplus-outline button-full button-assertive">
+                <button class="button icon-left ion-social-googleplus-outline button-block button-assertive">
                   Share
                 </button>
               </div>
               <div class="col">
-                  <button class="button icon-left ion-social-pinterest-outline button-full" style="background: #BD1D23; color: white">
+                  <button class="button icon-left ion-social-pinterest-outline button-block" style="background: #BD1D23; color: white">
                     Pin
                   </button> 
               </div>

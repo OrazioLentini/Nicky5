@@ -22,14 +22,14 @@
     </ion-header-bar>
     <ion-content class="dark">
       <ion-list>
-
+          <ion-item  ng-click="toggleLeftSideMenu(); goHome()">
+           <a style="text-decoration:none;"><i style="color:#F87D3F; padding-right:5px;" class="icon ion-home" ></i> Home</a>
+          </ion-item>
+          
           <ion-item ng-repeat="menu in menu" ui-sref="app.{{menu.Page}}({ID: {{menu.ID}}})" ng-click="toggleLeftSideMenu()">
            <a style="text-decoration:none;"><i style="color:#F87D3F; padding-right:5px;" class="icon ion-{{menu.Icon}}" ></i> {{menu.Name}}</a>
           </ion-item>
           
-          <ion-item  ng-click="toggleLeftSideMenu(); goHome()">
-           <a style="text-decoration:none;"><i style="color:#F87D3F; padding-right:5px;" class="icon ion-home" ></i> Home</a>
-          </ion-item>
           <ion-item  ng-click="login(); toggleLeftSideMenu()" ng-show="loginButton">
               <i class="icon ion-log-in" ></i> Login
           </ion-item>
@@ -40,7 +40,7 @@
               <i class="icon ion-log-out" ></i> Logout
           </ion-item>
           <ion-item  ng-click="sync(); toggleLeftSideMenu()">
-            <i class="icon ion-refresh" ></i> Sync
+            <i class="icon ion-refresh" ></i> Last Sync: {{lastSync}}
           </ion-item>
    </ion-list>
 

@@ -42,6 +42,8 @@ angular.module('starter.controllers')
 	// Open the login modal
 	$scope.video = function() {
 		$scope.modal.show();
+
+		$( "#videoMain" ).fadeIn('fast');
 		$("#videoMain").html('');
 		//$("#videoMain").html('<iframe id="ytplayer"  width="100%" height="390"  src="https://www.youtube.com/embed/dHVZ6jEf8To?autoplay=true"  frameborder="0"/>')
 	    $scope.playVideo('https://www.youtube.com/embed/dHVZ6jEf8To?autoplay=true','1')
@@ -52,11 +54,11 @@ angular.module('starter.controllers')
 	// Perform the login action when the user submits the login form
 	$scope.playVideo = function(x, id) {
         $("#videoMain").html('');
-        console.log(id);
-		$('.li').removeClass('dark');
-        $('.' + id).addClass('dark');
+        
+		$('.li').removeClass('buttonPickerActive').addClass('buttonPicker');
+		$('.' + id).addClass('buttonPickerActive');
      
-		$("#videoMain").html('<iframe id="ytplayer"  width="100%" height="390"  src="' + x + '"  frameborder="0"/>')
+		$("#videoMain").html('<iframe id="ytplayer"  width="100%" height="235"  src="' + x + '"  frameborder="0"/>')
 	};
 
     $scope.learningMC = LearningService.getMultipleChoice()
