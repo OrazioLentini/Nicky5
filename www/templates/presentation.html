@@ -32,15 +32,15 @@
     <div class="content" style="display: none">
     	<div class="top-container" id="pollingSpeaker" ng-show="speaker" style="padding: 0 20px; margin-top: 20px; margin-bottom: 100px; z-index: 99">
     
-        <div class="swiper-container" ng-show="hasSlides">
-          <div id="slides" class="swiper-wrapper" >
-              <div class="box swiper-slide" ng-repeat="x in slides">
+        <div class="swiper-container s2" ng-show="hasSlides">
+            <div id="slides" class="swiper-wrapper" >
+                <div class="box swiper-slide" ng-repeat="x in slides">
                     <div class=" featured" style="overflow:hidden; position:relative;" >
                       <img src="{{x.Link}}"  style="width: 100%">
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination p2"></div>
             <div style="height: 20px; text-align: center; ">
                 <div class="button button-clear left" style="float: left; z-index:999; display: inline">
                     <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
@@ -150,7 +150,7 @@
         <div style="text-align:center; margin-top:30px ;">
             <h1><span id="title">Ask Question</span></h1>
         </div>
-        <form id="formQuestionPolling"ng-submit="submit()">
+        <form id="formQuestionPolling" ng-submit="submit()">
 
 
               <label class="item item-input">

@@ -1,8 +1,14 @@
 angular.module('starter.controllers')
 
+
+
+
     .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'PollingService',  function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, PollingService) {
+
+
+
 		ionic.Platform.ready(function(){
-           //alert("ready");
+          // alert("ready");
 			//var featureItem = localStorage.getItem('Featured')
 			//$scope.featureItem = JSON.parse(featureItem)
 			//console.log($scope.featureItem.Title)
@@ -41,8 +47,52 @@ angular.module('starter.controllers')
 		},250);*/
 		$ionicHistory.clearHistory()	
 		});	
-				  
 
+			  
+$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+
+		console.log("State changed: url = ", toState.url);
+		if (toState.url == "/")
+		{
+			mySwiperX.update();  // this is here to force the slider into autoplay again
+			if(mySwiperX.isEnd)
+			   mySwiperX.slidePrev();
+			else
+			   mySwiperX.slideNext();
+			
+		}
+
+});
+var mySwiperX
+
+$timeout(function() {
+ var mySwiper = new Swiper('.s1', {
+   autoplay: 5000,
+   effect: 'slide',
+   speed: 500,
+   observer: true,
+   autoplayDisableOnInteraction: false,
+   onInit: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html())},
+   onSlideChangeStart: function(swiper){$('#test').fadeOut()},
+   onSlideChangeEnd: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()},
+  // loop: true,
+   pagination: '.p1',
+			paginationClickable: true,
+			nextButton: '.right',
+			prevButton: '.left'
+});
+mySwiperX = mySwiper;
+},250);
+
+/*
+
+function InitSwipper()
+{
+	        
+
+		
+}
+*/
 
     MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
@@ -59,14 +109,10 @@ angular.module('starter.controllers')
 		{
 			$scope.featureItem = true;
 		}
-		$timeout(function() {
-		var mySwiper = new Swiper('.swiper-container', {
-           autoplay: 8000,
-           effect: 'slide',
-           speed: 500
-        });   
-        },250);
+
   	});
+	
+	
     id = [0]
     plus = 2
     countx = "no"
@@ -95,7 +141,6 @@ angular.module('starter.controllers')
     
     }
     
-
   	
   	//console.log(id)
      $scope.isRowSelected = function(x) {
@@ -121,6 +166,9 @@ angular.module('starter.controllers')
 		}
 	}
 	    
+
+
  
 				
 }]);
+
