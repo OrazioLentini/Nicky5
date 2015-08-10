@@ -4,7 +4,7 @@ function loginSubmit () {
     var BadgeID = $("#BadgeID").val();
     console.log(Username)
     $.ajax({
-        url: "http://patty5.com/AppApis/apiLogin.asp",
+        url: "http://app.nicky3.com/AppApis/apiLogin.asp",
         type: "POST",
         data: { "Username": Username, "BadgeID": BadgeID },
         crossDomain: true,
@@ -28,7 +28,7 @@ function profileSubmit () {
     var UserID = data[0].UserID
 
     $.ajax({
-        url: "http://patty5.com/AppApis/apiProfile.asp",
+        url: "http://app.nicky3.com/AppApis/apiProfile.asp",
         type: "POST",
         data: { "Username": Username, "BadgeID": BadgeID, "Firstname": Firstname, "Lastname": Lastname, "Email": Email, "UserID": UserID },
         crossDomain: true,

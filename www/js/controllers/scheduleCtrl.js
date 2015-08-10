@@ -57,7 +57,7 @@ angular.module('starter.controllers')
 
 			$scope.schedule = _.groupBy($scope.schedule, 'ScheduledDate') 
 			if ($scope.tempSch == '') {
-				$scope.noSch = false
+				$scope.noSch = true
 			}
 		}
 		$scope.checkFav()

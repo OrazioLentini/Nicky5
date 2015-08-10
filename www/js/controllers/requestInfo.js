@@ -24,7 +24,7 @@
 		}
 		else {
 			$.ajax( {
-				url : "http://patty5.com/AppApis/apiRequestInfo.asp?TypeID=" + ID + "&Type=" + Type + "&UserID="+userID + "&Function=1" ,
+				url : "http://app.nicky3.com/AppApis/apiRequestInfo.asp?TypeID=" + ID + "&Type=" + Type + "&UserID="+userID + "&Function=1" ,
 				type: "POST",
 				crossDomain: true,
 				dataType: "jsonp",

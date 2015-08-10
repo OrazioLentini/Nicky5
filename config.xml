@@ -18,6 +18,7 @@ Developmental event management and attendee interaction application.    </descri
   <preference name="SplashScreenDelay" value="5000"/>
   <preference name="FadeSplashScreen" value="true"/>
   <preference name="FadeSplashScreenDuration" value="2.0"/>
+  <preference name="orientation" value="portrait" />
   <icon src="icon.png"/>
   <gap:splash src="splash.png"/>
   <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0"/>

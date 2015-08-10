@@ -1,4 +1,5 @@
 <ion-view view-title="{{title}}"> 
+  <div ng-show="noDir" style="text-align: center; margin-top: 50px;">There is currently nothing in the directory</div>
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="requests in requests" class="item  item-icon-right item-text-wrap" ui-sref="app.details({RecID: {{requests.RecID}}})">

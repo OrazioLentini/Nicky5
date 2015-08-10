@@ -5,7 +5,7 @@ function askQuestion (){
 	
 	  var username = data[0].Username
 
-	 formURL = "http://patty5.com/AppApis/apiAskQuestion.asp" + "?Username=" + username + "&question=" + question
+	 formURL = "http://app.nicky3.com/AppApis/apiAskQuestion.asp" + "?Username=" + username + "&question=" + question
 	   $.ajax( {
 			url : formURL,
 			type: "POST",
@@ -36,7 +36,7 @@ function savePollingAnswer (answer) {
 	var user = data[0].BadgeID
 	
 	$.ajax( {
-		url : "http://patty5.com/AppApis/apiPolling.asp?user=" + user + "&answer=" + answer + "&c="+c,
+		url : "http://app.nicky3.com/AppApis/apiPolling.asp?user=" + user + "&answer=" + answer + "&c="+c,
 		type: "POST",
 		crossDomain: true,
 		dataType: "jsonp",

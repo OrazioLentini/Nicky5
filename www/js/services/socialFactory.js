@@ -5,7 +5,7 @@ angular.module('starter.services')
     
     return {
         getInstagram: function() {   
-            var url = "http://patty5.com/AppApis/apiInstagram.asp";
+            var url = "http://app.nicky3.com/AppApis/apiInstagram.asp";
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -14,7 +14,7 @@ angular.module('starter.services')
             })      
         },
         getTwitter: function() {   
-            var url = "http://patty5.com/AppApis/apiTwitter.asp";
+            var url = "http://app.nicky3.com/AppApis/apiTwitter.asp";
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

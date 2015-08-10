@@ -10,7 +10,7 @@ angular.module('starter.services')
             return products
         },  
         getShowcaseImages: function(id) {   
-            var url = "http://patty5.com/AppApis/apiShowcaseImages.asp?ID=" + id;
+            var url = "http://app.nicky3.com/AppApis/apiShowcaseImages.asp?ID=" + id;
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

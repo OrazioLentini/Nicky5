@@ -8,6 +8,7 @@
 	    </div>
 	  </div>
   <ion-content style="margin-top: 45px" >
+	<div ng-show="showMessage"  style="text-align: center; ">{{nothingToDisplay}}</div>
 	<ul class="table-view" id="schedule">
 	<div ng-repeat="x in list">
 		<li class="item item-thumbnail-left-sch item-icon-right" ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})">

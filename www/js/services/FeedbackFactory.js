@@ -8,7 +8,7 @@ angular.module('starter.services')
 
             var username = data[0].Username
 
-            var url = 'http://patty5.com/AppApis/apiFeedback.asp?Username=' + username + '&Feedback=' + feedback;
+            var url = 'http://app.nicky3.com/AppApis/apiFeedback.asp?Username=' + username + '&Feedback=' + feedback;
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

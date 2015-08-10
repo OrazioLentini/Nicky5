@@ -1,25 +1,72 @@
 <ion-view view-title="{{title}}">
   <ion-content>
-	  <img src="images/solarenergy2.jpg" style="width: 100%">
-	  <div style="padding:0px 20px;">
-	<ion-list>
-		<ion-item class="item  item-icon-right" ng-click="questions()">
-			Solar Energy Q&A
-			<i class="icon ion-chevron-right" style="font-size:14px"></i>
-		</ion-item>
-	</ion-list>
-	<ion-list>
-		<ion-item class="item  item-icon-right" ng-click="video()">
-			Solar Energy Video Lesson
-			<i class="icon ion-chevron-right" style="font-size:14px"></i>
-		</ion-item>
-	</ion-list>
-	<ion-list>
-		<ion-item class="item  item-icon-right" ng-click="multipleChoice()">
-			Solar Energy Quiz
-			<i class="icon ion-chevron-right" style="font-size:14px"></i>
-		</ion-item>
-	</ion-list>
+	  <div style="position: relative;" ng-click="toggleCourse('solar')">
+		<img src="images/solarenergy4.jpg" style="width: 100%">
+		<div style="position: absolute; bottom: 0px; width:100%;">
+			<img src="images/grad-light2.png" style="width: 100%;">
+		</div>
+		<div class="inner-content" style="text-align:center; position: absolute; bottom: 5px; width: 100%">
+			<div style="margin:0px; color:#FFF; font-size:1.25em; font-weight:600;">Solar Energy</div>
+			<div style="font-size:1em; color:#FFF;">August 2015</div>
+		</div>
 	  </div>
+	  <div id="solar" style="display: block; margin-bottom: 10px">
+	  <div style="padding: 8px 20px"><b>This course provides a basic overview of solar energy:</b> defining what solar energy is and an overview of the history of solar energy. You will be able to: view video lessons, take quizzes, and study questions.</div>
+		<ion-list >
+			<ion-item class="item  item-icon-left" ng-click="questions('solar energy', 'Solar Energy Q&A')">
+				Solar Energy Q&A
+				<i class="icon ion-help" style="font-size:16px"></i>
+			</ion-item>
+		</ion-list>
+		<div style="height: 5px"></div>
+		<ion-list>
+			<ion-item class="item  item-icon-left" ng-click="video('solar energy', 'Solar Energy Video Lesson')">
+				Solar Energy Video Lesson
+				<i class="icon ion-monitor" style="font-size:16px"></i>
+			</ion-item>
+		</ion-list>
+		<div style="height: 5px"></div>
+		<ion-list>
+			<ion-item class="item  item-icon-left" ng-click="multipleChoice('solar energy', 'Solar Energy Quiz')">
+				Solar Energy Quiz
+				<i class="icon ion-clipboard" style="font-size:16px"></i>
+			</ion-item>
+		</ion-list>
+	  </div>
+
+	  <div style="position: relative;" ng-click="toggleCourse('nuclear')">
+		<img src="images/nuclear2.jpg" style="width: 100%">
+		<div style="position: absolute; bottom: 0px; width:100%;">
+			<img src="images/grad-light2.png" style="width: 100%;">
+		</div>
+		<div class="inner-content" style="text-align:center; position: absolute; bottom: 5px; width: 100%">
+			<div style="margin:0px; color:#FFF; font-size:1.25em; font-weight:600;">Nuclear Reactors</div>
+			<div style="font-size:1em; color:#FFF;">July 2015</div>
+		</div>
+	  </div>
+	  <div id="nuclear" style="display: block">
+	  <div style="padding: 8px 20px"><b>This course provides a basic overview of nuclear reactors:</b> defining what are nuclear reactors and an overview of the history of nuclear reactors. You will be able to: view video lessons, take quizzes, and study questions.</div>
+		<ion-list >
+			<ion-item class="item  item-icon-left" ng-click="questions('nuclear reactors', 'Nuclear Reactor Q&A' )">
+				Nuclear Reactor Q&A
+				<i class="icon ion-help" style="font-size:16px"></i>
+			</ion-item>
+		</ion-list>
+		<div style="height: 5px"></div>
+		<ion-list>
+			<ion-item class="item  item-icon-left" ng-click="video('nuclear reactors', 'Nuclear Reactor Video Lesson')">
+				Nuclear Reactor Video Lesson
+				<i class="icon ion-monitor" style="font-size:16px"></i>
+			</ion-item>
+		</ion-list>
+		<div style="height: 5px"></div>
+		<ion-list>
+			<ion-item class="item  item-icon-left" ng-click="multipleChoice('nuclear reactors', 'Nuclear Reactor Quiz')">
+				Nuclear Reactor Quiz
+				<i class="icon ion-clipboard" style="font-size:16px"></i>
+			</ion-item>
+		</ion-list>
+	  </div>
+	  <div style="height: 100px"></div>
   </ion-content>
 </ion-view>

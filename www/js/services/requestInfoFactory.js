@@ -27,7 +27,7 @@ angular.module('starter.services')
 		},
 		this.requestMoreInfo = function(ID, Type, userID, FID){ 
 			console.log(ID + " " + Type + " " + userID + " " + FID)
-			var url = "http://patty5.com/AppApis/apiRequestInfo.asp?TypeID=" + ID + "&Type=" + Type + "&UserID="+userID + "&Function=" + FID;
+			var url = "http://app.nicky3.com/AppApis/apiRequestInfo.asp?TypeID=" + ID + "&Type=" + Type + "&UserID="+userID + "&Function=" + FID;
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

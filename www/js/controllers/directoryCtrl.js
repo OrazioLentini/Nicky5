@@ -4,5 +4,9 @@ angular.module('starter.controllers')
 
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 		$scope.requests = DirectoryService.getDirectory();
+		
+		if($scope.requests.length == 0) {
+			$scope.noDir = true;
+		}
 		//console.log($scope.requests)
     }]);

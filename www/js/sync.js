@@ -26,7 +26,7 @@ function syncCallback(table, data) {
 
 function syncDate() {
      $.ajax({
-        url : "http://patty5.com/AppApis/apiSyncDate.asp",
+        url : "http://app.nicky3.com/AppApis/apiSyncDate.asp",
         type: "POST",
         crossDomain: true,
         dataType: "jsonp",
@@ -65,7 +65,7 @@ function checkSync () {
 
 function getDirectory() {
     $.ajax({
-        url: "http://patty5.com/AppApis/apiDirectory.asp",
+        url: "http://app.nicky3.com/AppApis/apiDirectory.asp",
         type: "POST",
         crossDomain: true,
         dataType: "jsonp",
@@ -80,7 +80,7 @@ function getDirectory() {
 
 function getMaps() {
     $.ajax({
-        url: "http://patty5.com/AppApis/apiMaps.asp",
+        url: "http://app.nicky3.com/AppApis/apiMaps.asp",
         type: "POST",
         crossDomain: true,
         dataType: "jsonp",
@@ -95,7 +95,7 @@ function getMaps() {
 
 function getSchedule() {
     $.ajax({
-        url: "http://patty5.com/AppApis/apiSchedule.asp",
+        url: "http://app.nicky3.com/AppApis/apiSchedule.asp",
         type: "POST",
         crossDomain: true,
         dataType: "jsonp",
@@ -110,7 +110,7 @@ function getSchedule() {
 
 function getSocialMediaInfo() {
     $.ajax({
-        url: "http://patty5.com/AppApis/apiSocial.asp",
+        url: "http://app.nicky3.com/AppApis/apiSocial.asp",
         type: "POST",
         crossDomain: true,
         dataType: "jsonp",
@@ -136,7 +136,7 @@ function syncInfoRequested() {
         var userID = dataUser[0].UserID
 
         $.ajax({
-            url: "http://patty5.com/AppApis/apiRequestInfo.asp?data=" + data + "&UserID=" + userID + "&Function=2&Length=" + length,
+            url: "http://app.nicky3.com/AppApis/apiRequestInfo.asp?data=" + data + "&UserID=" + userID + "&Function=2&Length=" + length,
             type: "POST",
             crossDomain: true,
             dataType: "jsonp",
@@ -149,7 +149,7 @@ function syncInfoRequested() {
 
 function getSpeaker() {
     $.ajax({
-        url: "http://patty5.com/AppApis/apiSpeaker.asp",
+        url: "http://app.nicky3.com/AppApis/apiSpeaker.asp",
         type: "POST",
         crossDomain: true,
         dataType: "jsonp",
