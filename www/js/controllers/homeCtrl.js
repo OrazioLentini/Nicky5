@@ -5,47 +5,10 @@ angular.module('starter.controllers')
 
     .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'PollingService',  function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, PollingService) {
 
-
-
 		ionic.Platform.ready(function(){
-          // alert("ready");
-			//var featureItem = localStorage.getItem('Featured')
-			//$scope.featureItem = JSON.parse(featureItem)
-			//console.log($scope.featureItem.Title)
-
-               /*$scope.feature = MyService.feature
-			       $timeout(function() {
-			           //alert("grab featured")
-					   //scope.feature = SyncService.getFeaturedScheduleList() 
-			           $timeout(function() {
-				        var mySwiper = new Swiper('.swiper-container', {
-						    autoplay: 8000,
-						    effect: 'slide',
-						    speed: 500
-						});   
-			            $( "#thumb" ).fadeOut('slow');
-			           $( ".swiper-wrapper" ).fadeIn('slow');
-			            
-						},250);	
-
-			           /*$timeout(function() {
-				         navigator.splashscreen.hide();
-				         alert('done')
-						},600);*/
-			            
-
-				    //SyncService.sync()
-				     // },1000);
-       // $scope.feature = MyService.feature
-        /*$timeout(function() {
-	        var mySwiper = new Swiper('.swiper-container', {
-							    autoplay: 8000,
-							    effect: 'slide',
-							    speed: 500
-							});   
-			
-		},250);*/
+ 
 		$ionicHistory.clearHistory()	
+		$('#test').html($('#time-0').html());
 		});	
 
 			  
@@ -59,10 +22,11 @@ $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, 
 			   mySwiperX.slidePrev();
 			else
 			   mySwiperX.slideNext();
-			
+			//$('#test').html($('#time-0').html());
 		}
 
 });
+
 var mySwiperX
 
 $timeout(function() {
@@ -72,7 +36,7 @@ $timeout(function() {
    speed: 500,
    observer: true,
    autoplayDisableOnInteraction: false,
-   onInit: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html())},
+   //onInit: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html())},
    onSlideChangeStart: function(swiper){$('#test').fadeOut()},
    onSlideChangeEnd: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()},
   // loop: true,
@@ -82,17 +46,10 @@ $timeout(function() {
 			prevButton: '.left'
 });
 mySwiperX = mySwiper;
+//$('#test').html($('#time-0').html())
 },250);
 
-/*
 
-function InitSwipper()
-{
-	        
-
-		
-}
-*/
 
     MenuLinksService.getMenuLinks(). success(function (data){
   		$scope.menu = data
