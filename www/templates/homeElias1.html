@@ -1,0 +1,304 @@
+<style>
+/* HOME */
+.inner-content {
+  /*background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.99) 83%, rgba(0,0,0,1) 84%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(83%,rgba(0,0,0,0.99)), color-stop(84%,rgba(0,0,0,1)));
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.99) 83%,rgba(0,0,0,1) 84%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+*/
+  background:#000;
+  background:rgba(0,0,0,0.8);
+  position:absolute;
+  bottom:0;
+  padding:5px 0px;
+  width:100%;
+  letter-spacing: 0px;
+  font-family: 'Futura', Arial;
+
+}
+
+.inner-content h1, h2, p {
+   padding:0px 10px;
+}
+.inner-content p {
+ color:#31AAD8;
+ font-size:12pt
+}
+
+.gradient-purp {
+   background:url("images/purplegrad.png") repeat-x;
+   background-size:cover;
+}
+.pg-image {position:relative; display:block; background:#FFF; vertical-align: top;}
+.odd {
+  margin-left:0px;
+  margin-right:2px; /* white line seperators */
+  margin-bottom:4px; /* white line seperators */
+}
+.even {
+  margin-left:2px; /* white line seperators */
+  margin-bottom:4px; /* white line seperators */
+  margin-right:0px;
+}
+.pg-image img {width:100%; vertical-align: top;}
+.pg-image:after{ 
+  width: 100%;
+  height:100%;
+  position: absolute;
+  content: "";
+  top: 1px;
+  left: 0px;
+  z-index:100;
+  display: block;
+  transition:all .3s ease;
+  background:url("images/grad-light1.png");
+  background-size:100%;
+  /*background-position: bottom;*/
+  overflow: hidden;
+  vertical-align: top;
+  line-height:0;
+}
+.featured-box {
+ max-height: 220px;
+ overflow: hidden;
+ margin-bottom:3px;
+}
+.featured-box .pg-image:after {
+  background:url("images/grad-light2.png");
+  vertical-align: top;
+  top:0;
+  background:cover;
+  height:100%;
+  width:100%;
+
+}
+
+/* Elias */
+.swiper-container-horizontal > .swiper-pagination {
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+}
+/* Elias */
+
+</style>
+<ion-view view-title="Nicky5">
+    <ion-content class="has-header">
+      
+        <div id="featured" class="swiper-container " style="margin:0px; padding:0px; max-height:220px; overflow:hidden; background:#000 ">
+
+          <div class="swiper-wrapper">
+                           
+               <div class="box swiper-slide" ng-if="featureItem" ng-repeat="x in list">
+                      <a ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})" style="height:180px; overflow:hidden; position:relative;" >
+                        <div style="height:180px; overflow:hidden; position:relative;"  >
+                          <img src="{{x.Image}}" style="width:100%">
+                          <div class="inner-content" style="text-align:center; background: rgba(0,0,0,0.9);">
+                            <span style="margin:0px; color:#FFF; font-size:14px; font-weight:600">{{x.Title}}</span>
+                            <br>
+                            <span ng-if="x.StartTime" style="font-size:12px; color:#FFF;">Start Time: {{x.ScheduledDate}} {{x.displayTime | date: 'shortTime'}} </span>
+                          </div>
+                        </div>
+                      </a>      
+
+               </div>   
+
+                <div class="box swiper-slide" ng-if="!featureItem" style="height:220px;">
+                 <img src="images/welcome.jpg" style="width:100%;" ng-cloak>
+                </div>
+
+            </div>
+
+
+            <!-- Elias added to control slider -->  
+                   
+            <div class="swiper-pagination" style="padding-top:5px"></div>
+            <div style="height: 40px; text-align: center; background:#fff;  padding-top:4px">
+            
+                <div class="button button-clear left" style="float: left; z-index:999; display: inline">
+                    <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
+                </div>
+                <div style="display: inline;">Click or swipe to view slides</div>
+                <div class="button button-clear right"style="float: right; z-index:999; display: inline" >
+                    <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
+                </div>
+            
+            </div>
+           
+            <!-- Elias added to control slider -->  
+
+           
+      </div>
+     <div style="clear:both; height:4px;"></div>
+     <div class="full" style="margin:0px; padding:0px;">
+      <div ng-repeat="x in menu|filter:{TileOrder: '!null'}|orderBy : 'TileOrder'">
+       <div  style="width:50%; float:left; position:relative;" ng-if="x.TileOrder != 5 && x.TileOrder != 10 && x.TileOrder != 15 " ui-sref="app.{{x.Page}}({ID: {{x.ID}}})">
+                  <!--<div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-{{x.Icon}}" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>-->
+                  <div class="pg-image" ng-class="{'odd': isRowSelected($index), 'even': !isRowSelected($index)}">
+                    <img src="{{x.Image}}">
+                  </div>
+                   <div class="inner-small" style="width:90%">
+                        <div style="padding:0 0 12px 10px; width:100%; color:#FFF; line-height:20px;">
+                              <div style=" font-family:'arial'; font-size:1.25em; font-weight:600;">{{x.Name}}</div>
+                              <div ng-if="!x.Description" style="height:10px"></div>
+                              <div ng-if="x.Description" style="margin:0 0 0 0;padding:0px; font-size:1em">{{x.Description}}</div>
+                        </div>
+                   </div>
+        </div>
+
+        <div class="featured-box" style="float:left; position:relative;" ng-if="x.TileOrder == '5'|| x.TileOrder == '10'|| x.TileOrder == '15'" ui-sref="app.{{x.Page}}({ID: {{x.ID}}})">
+                  <a style="text-decoration:none">
+                  <!--div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-{{x.Icon}}" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>-->
+                  <div class="pg-image" style="height: 180px; max-height:180px">
+                    <img src="{{x.Image}}" style="width:100%;">
+                  </div>
+
+                   <div class="inner-small" style="width:90%">
+                        <div style="padding:0 0 12px 10px; width:100%; color:#FFF; line-height:20px;">
+                              <div style=" font-family:'arial'; font-size:1.25em; font-weight:600;">{{x.Name}}</div>
+                              <div ng-if="!x.Description" style="height:10px"></div>
+                              <div ng-if="x.Description" style="margin:0 0 0 0;padding:0px; font-size:1em">{{x.Description}}</div>
+                        </div>
+                   </div>
+                   </a>
+        </div>
+      </div>
+
+
+
+      <!--  <div style="width:50%; float:left; position:relative;" >
+                  <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-briefcase" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="images/directory-new.jpg">
+                  </div>
+
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">Directory</span>
+                        <p style="padding:0px; font-size:.8em">Navigate full list of attendees</p>
+                        </div>
+                   </div>
+        </div>
+         
+         <div style="width:50%; float:left; position:relative;">
+                  <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-calendar" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="images/schedule-new.jpg" style="width:100%;">
+                  </div>
+                 
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">Schedule</span>
+                        <p style="padding:0px; font-size:.8em">View full list of events</p>
+                        </div>
+                   </div>
+        </div>
+       <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-map" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="images/maps-new.jpg" style="width:100%;">
+                  </div>
+                  <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">Maps</span>
+                        <p style="padding:0px; font-size:.8em">Get there faster</p>
+                        </div>
+                   </div>
+        </div>
+       <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-speakerphone" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="images/presentations-new.jpg" style="width:100%;">
+                  </div>
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">Presentations</span>
+                        <p style="padding:0px; font-size:.8em">Get there faster</p>
+                        </div>
+                   </div>
+        </div>
+
+         <div class="featured-box" style="float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-radio-waves" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="images/social-new.jpg">
+                  </div>
+                 <div class="inner-small featured">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">Social Media</span>
+                        <p style="padding:0px; font-size:.8em">What people are talking about</p>
+                        </div>
+                   </div>
+        </div>
+
+        <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-lightbulb" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="images/e-learning.jpg">
+                  </div>
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">Learning</span>
+                        <p style="padding:0px; font-size:.8em">Navigate full list of attendees</p>
+                        </div>
+                   </div>
+        </div>
+
+        <div style="width:50%; float:left; position:relative;">
+                   <div style="position:relative; width:100%; z-index:999;">
+                    <div style="position:absolute; top:10px; right:10px;">
+                       <i class="icon ion-star" style="color:#F87D3F; font-size:1.4em"></i>
+                    </div>
+                  </div>
+                  <div class="pg-image">
+                    <img src="images/favorites.jpg">
+                  </div>
+                   <div class="inner-small">
+                        <div style="padding:10px; width:100%; color:#FFF">
+                        <span style="font-size:1.2em; font-weight:800;">Favorites</span>
+                        <p style="padding:0px; font-size:.8em">Navigate full list of attendees</p>
+                        </div>
+                   </div>
+        </div>-->
+    
+        <div style="clear:both; height:0px;"></div>
+    </div>   
+   
+
+   </ion-content>
+</ion-view>

@@ -1,47 +1,54 @@
 angular.module('starter.controllers')
 
+
+
+
     .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'PollingService',  function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, PollingService) {
+
 		ionic.Platform.ready(function(){
-           //alert("ready");
-			//var featureItem = localStorage.getItem('Featured')
-			//$scope.featureItem = JSON.parse(featureItem)
-			//console.log($scope.featureItem.Title)
-
-               /*$scope.feature = MyService.feature
-			       $timeout(function() {
-			           //alert("grab featured")
-					   //scope.feature = SyncService.getFeaturedScheduleList() 
-			           $timeout(function() {
-				        var mySwiper = new Swiper('.swiper-container', {
-						    autoplay: 8000,
-						    effect: 'slide',
-						    speed: 500
-						});   
-			            $( "#thumb" ).fadeOut('slow');
-			           $( ".swiper-wrapper" ).fadeIn('slow');
-			            
-						},250);	
-
-			           /*$timeout(function() {
-				         navigator.splashscreen.hide();
-				         alert('done')
-						},600);*/
-			            
-
-				    //SyncService.sync()
-				     // },1000);
-       // $scope.feature = MyService.feature
-        /*$timeout(function() {
-	        var mySwiper = new Swiper('.swiper-container', {
-							    autoplay: 8000,
-							    effect: 'slide',
-							    speed: 500
-							});   
-			
-		},250);*/
+ 
 		$ionicHistory.clearHistory()	
+		$('#test').html($('#time-0').html());
 		});	
-				  
+
+			  
+$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+
+		console.log("State changed: url = ", toState.url);
+		if (toState.url == "/")
+		{
+			mySwiperX.update();  // this is here to force the slider into autoplay again
+			if(mySwiperX.isEnd)
+			   mySwiperX.slidePrev();
+			else
+			   mySwiperX.slideNext();
+			//$('#test').html($('#time-0').html());
+		}
+
+});
+
+var mySwiperX
+
+$timeout(function() {
+ var mySwiper = new Swiper('.s1', {
+   autoplay: 5000,
+   effect: 'slide',
+   speed: 500,
+   observer: true,
+   autoplayDisableOnInteraction: false,
+   //onInit: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html())},
+   onSlideChangeStart: function(swiper){$('#test').fadeOut()},
+   onSlideChangeEnd: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()},
+  // loop: true,
+   pagination: '.p1',
+			paginationClickable: true,
+			nextButton: '.right',
+			prevButton: '.left'
+});
+mySwiperX = mySwiper;
+//$('#test').html($('#time-0').html())
+},250);
+
 
 
     MenuLinksService.getMenuLinks(). success(function (data){
@@ -59,14 +66,10 @@ angular.module('starter.controllers')
 		{
 			$scope.featureItem = true;
 		}
-		$timeout(function() {
-		var mySwiper = new Swiper('.swiper-container', {
-           autoplay: 8000,
-           effect: 'slide',
-           speed: 500
-        });   
-        },250);
+
   	});
+	
+	
     id = [0]
     plus = 2
     countx = "no"
@@ -95,7 +98,6 @@ angular.module('starter.controllers')
     
     }
     
-
   	
   	//console.log(id)
      $scope.isRowSelected = function(x) {
@@ -121,6 +123,9 @@ angular.module('starter.controllers')
 		}
 	}
 	    
+
+
  
 				
 }]);
+
