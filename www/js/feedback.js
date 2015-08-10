@@ -13,7 +13,7 @@ function submitFeedback() {
 
 	var username = data[0].Username
 
- formURL = 'http://patty5.com/AppApis/apiFeedback.asp?Username=' + username + '&Feedback=' + feedback
+ formURL = 'http://app.nicky3.com/AppApis/apiFeedback.asp?Username=' + username + '&Feedback=' + feedback
    $.ajax( {
 		url : formURL,
 		type: "POST",

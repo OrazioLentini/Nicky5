@@ -5,7 +5,7 @@ angular.module('starter.services')
 	var requests = ""
 		this.getMenuLinks = function(){ 
             
-            var url = 'http://patty5.com/AppApis/apiMenuLinks.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiMenuLinks.asp';
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

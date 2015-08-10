@@ -5,7 +5,7 @@ angular.module('starter.services')
     var success = ""
 
         this.getDirectory =  function () {
-            var url = 'http://patty5.com/AppApis/apiDirectory.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiDirectory.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -18,7 +18,7 @@ angular.module('starter.services')
             })
         },
         this.getMaps = function () {
-            var url = 'http://patty5.com/AppApis/apiMaps.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiMaps.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -31,7 +31,7 @@ angular.module('starter.services')
             })
         },
         this.getSchedule = function () {
-            var url = 'http://patty5.com/AppApis/apiSchedule.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiSchedule.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -44,7 +44,7 @@ angular.module('starter.services')
             })
         },
         this.getSpeaker = function () {
-            var url = 'http://patty5.com/AppApis/apiSpeaker.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiSpeaker.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -57,7 +57,7 @@ angular.module('starter.services')
             })
         },     
         this.getSocialMediaInfo = function () {
-            var url = 'http://patty5.com/AppApis/apiSocial.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiSocial.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -71,7 +71,7 @@ angular.module('starter.services')
             })
         },     
         this.getPresentationList = function () {
-            var url = 'http://patty5.com/AppApis/apiPresentationList.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiPresentationList.asp';
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -85,7 +85,7 @@ angular.module('starter.services')
             })
         },   
          this.getProducts = function () {
-            var url = 'http://patty5.com/AppApis/apiProductList.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiProductList.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -116,7 +116,7 @@ angular.module('starter.services')
                 var userID = dataUser[0].UserID
 
 
-                var url = "http://patty5.com/AppApis/apiRequestInfo.asp?data=" + data + "&UserID=" + userID + "&Function=2&Length=" + length;
+                var url = "http://app.nicky3.com/AppApis/apiRequestInfo.asp?data=" + data + "&UserID=" + userID + "&Function=2&Length=" + length;
                 $http.jsonp(url, {
                     params: {
                         callback: 'JSON_CALLBACK',
@@ -132,7 +132,7 @@ angular.module('starter.services')
             }
         },  
         this.syncDate = function() {
-            var url = 'http://patty5.com/AppApis/apiSyncDate.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiSyncDate.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -243,7 +243,7 @@ angular.module('starter.services')
         //GET FEATURED SCHEDULE STRAIGHT FROM DATABASE
         this.getFeaturedScheduleListOnline = function() {
             //console.log("in")
-            var url = 'http://patty5.com/AppApis/apiSchedule.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiSchedule.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -336,7 +336,7 @@ angular.module('starter.services')
         
         this.getYoutube = function() {
             
-            var url = 'http://patty5.com/AppApis/apiSocial.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiSocial.asp';
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -436,7 +436,7 @@ angular.module('starter.services')
         },
         
         this.checkSync = function() {
-            var url = 'http://patty5.com/AppApis/apiCheckConnection.asp';
+            var url = 'http://app.nicky3.com/AppApis/apiCheckConnection.asp';
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

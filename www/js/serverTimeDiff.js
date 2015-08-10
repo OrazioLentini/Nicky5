@@ -1,6 +1,6 @@
 function serverTimeDifference () {
 	 $.ajax( {
-			url : "http://patty5.com/AppApis/apiServerTime.asp",
+			url : "http://app.nicky3.com/AppApis/apiServerTime.asp",
 			type: "POST",
 			crossDomain: true,
 			dataType: "jsonp",

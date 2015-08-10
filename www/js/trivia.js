@@ -13,7 +13,7 @@
 			var user = data[0].BadgeID
 			
 			$.ajax( {
-				url : "http://patty5.com/AppApis/apiTrivia.asp?user=" + user + "&answer=" + answer + "&c="+c+"&timestamp="+AdjustedTimeStamp,
+				url : "http://app.nicky3.com/AppApis/apiTrivia.asp?user=" + user + "&answer=" + answer + "&c="+c+"&timestamp="+AdjustedTimeStamp,
 				type: "POST",
 				crossDomain: true,
 				dataType: "jsonp",

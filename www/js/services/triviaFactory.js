@@ -16,7 +16,7 @@ angular.module('starter.services')
             
             var user = data[0].BadgeID
 
-            var url = "http://patty5.com/AppApis/apiTrivia.asp?user=" + user + "&answer=" + answer + "&c="+c+"&timestamp="+AdjustedTimeStamp;
+            var url = "http://app.nicky3.com/AppApis/apiTrivia.asp?user=" + user + "&answer=" + answer + "&c="+c+"&timestamp="+AdjustedTimeStamp;
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -26,7 +26,7 @@ angular.module('starter.services')
 		},
 
 		this.serverTimeDifference = function() {
-            var url = "http://patty5.com/AppApis/apiServerTime.asp";
+            var url = "http://app.nicky3.com/AppApis/apiServerTime.asp";
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

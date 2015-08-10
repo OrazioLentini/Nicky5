@@ -5,7 +5,7 @@ angular.module('starter.services')
 	var requests = ""
 		this.askAQuestion = function(username, question){ 
             
-            var url = "http://patty5.com/AppApis/apiAskQuestion.asp" + "?Username=" + username + "&question=" + question;
+            var url = "http://app.nicky3.com/AppApis/apiAskQuestion.asp" + "?Username=" + username + "&question=" + question;
             $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -28,7 +28,7 @@ angular.module('starter.services')
 			
 			var user = data[0].BadgeID		
 			
-            var url = "http://patty5.com/AppApis/apiPolling.asp?user=" + user + "&answer=" + answer + "&c="+c;
+            var url = "http://app.nicky3.com/AppApis/apiPolling.asp?user=" + user + "&answer=" + answer + "&c="+c;
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -38,7 +38,7 @@ angular.module('starter.services')
 		},
         this.getPresentationSlides = function(id) {   
             
-            var url = "http://patty5.com/AppApis/apiPresentationSlides.asp?ID=" + id;
+            var url = "http://app.nicky3.com/AppApis/apiPresentationSlides.asp?ID=" + id;
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',

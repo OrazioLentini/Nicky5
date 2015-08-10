@@ -4,7 +4,7 @@ angular.module('starter.services', [])
 
 		this.login = function(Username, BadgeID) { 
 
-			var url = 'http://patty5.com/AppApis/apiLogin.asp';
+			var url = 'http://app.nicky3.com/AppApis/apiLogin.asp';
 			return $http.jsonp(url, {
 			    params: {
 			        callback: 'JSON_CALLBACK',
@@ -20,7 +20,7 @@ angular.module('starter.services', [])
 
             var username = data[0].Username
 
-            var url = 'http://patty5.com/AppApis/apiFeedback.asp?Username=' + username + '&Feedback=' + feedback;
+            var url = 'http://app.nicky3.com/AppApis/apiFeedback.asp?Username=' + username + '&Feedback=' + feedback;
             return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
@@ -34,7 +34,7 @@ angular.module('starter.services', [])
 			data = JSON.parse(user)
 			var UserID = data[0].UserID
 
-			var url = 'http://patty5.com/AppApis/apiProfile.asp';
+			var url = 'http://app.nicky3.com/AppApis/apiProfile.asp';
 			return $http.jsonp(url, {
 			    params: {
 			        callback: 'JSON_CALLBACK',
