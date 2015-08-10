@@ -1,6 +1,7 @@
 angular.module('starter.controllers')
 
-    .controller('ShowDetailCtrl', function ($scope, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope) {
+    .controller('ShowDetailCtrl', function ($scope, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope, $ionicConfig) {
+		$ionicConfig.backButton.text("Back");
 		
 		$scope.filled = false
 		$scope.unfilled = false

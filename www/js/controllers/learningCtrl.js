@@ -1,7 +1,10 @@
 angular.module('starter.controllers')
 
-.controller('LearningCtrl' , function($scope, $ionicModal, $timeout, $ionicPopup, $ionicLoading, LearningService, $stateParams, MenuLinksService) {
+.controller('LearningCtrl' , function($scope, $ionicModal, $timeout, $ionicPopup, $ionicLoading, LearningService, $stateParams, MenuLinksService, $filter) {
    
+   $scope.toggleCourse = function(course) {
+	   $( "#" + course ).slideToggle('fast');
+   }
     /*var isIOS = ionic.Platform.isIOS();
 	var isAndroid = ionic.Platform.isAndroid();
 	
@@ -25,7 +28,7 @@ angular.module('starter.controllers')
 
    }
 
-   $scope.learningvideos = LearningService.getVideos()
+   $scope.videos = LearningService.getVideos()
 
    $ionicModal.fromTemplateUrl('templates/learningVideo.html', {
 		scope: $scope
@@ -40,13 +43,15 @@ angular.module('starter.controllers')
 	};
 
 	// Open the login modal
-	$scope.video = function() {
+	$scope.video = function(course, title) {
 		$scope.modal.show();
+		$scope.learningTitle = title
+		$scope.learningvideos = $filter('filter')($scope.videos, {course: course })
 
 		$( "#videoMain" ).fadeIn('fast');
 		$("#videoMain").html('');
 		//$("#videoMain").html('<iframe id="ytplayer"  width="100%" height="390"  src="https://www.youtube.com/embed/dHVZ6jEf8To?autoplay=true"  frameborder="0"/>')
-	    $scope.playVideo('https://www.youtube.com/embed/dHVZ6jEf8To?autoplay=true','1')
+	    $scope.playVideo($scope.learningvideos[0].url,'1')
 	    $('.li').removeClass('dark')
         $('.' + 1).addClass('dark');
 	};
@@ -61,7 +66,7 @@ angular.module('starter.controllers')
 		$("#videoMain").html('<iframe id="ytplayer"  width="100%" height="235"  src="' + x + '"  frameborder="0"/>')
 	};
 
-    $scope.learningMC = LearningService.getMultipleChoice()
+    $scope.mc = LearningService.getMultipleChoice()
     $scope.questionNum = 1
     $scope.submit = true
     $scope.totalCorrect = 0;
@@ -84,8 +89,11 @@ angular.module('starter.controllers')
 	};
 
 	// Open the login modal
-	$scope.multipleChoice = function() {
+	$scope.multipleChoice = function(course, title) {
+
 		$scope.modalMC.show();
+		$scope.learningTitle = title
+		$scope.learningMC = $filter('filter')($scope.mc, {course: course })
 	};
 
 	// Perform the login action when the user submits the login form
@@ -118,8 +126,8 @@ angular.module('starter.controllers')
 		}
 	}
 
-   $scope.learningquestions = LearningService.getQuestions()
-   //console.log($scope.learningquestions)
+   $scope.questionAnswer = LearningService.getQuestions()
+   //console.log($scope.questions)
    $ionicModal.fromTemplateUrl('templates/learningQuestions.html', {
 		scope: $scope
 	}).then(function(modal) {
@@ -132,10 +140,12 @@ angular.module('starter.controllers')
 	};
 
 	// Open the login modal
-	$scope.questions = function() {
+	$scope.questions = function(course, title) {
 		$scope.modalQuestions.show();
-	};
-
+		$scope.learningTitle = title
+		$scope.learningquestions = $filter('filter')($scope.questionAnswer, {course: course })
+	};	
+	
 	$scope.toggleAnswer = function (x){
 		$( ".question" + x ).toggle( "fast", function() {
 		//$('.' + x).removeClass('ion-chevron-down').addClass('ion-chevron-up');
