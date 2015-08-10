@@ -35,8 +35,8 @@ angular.module('starter.controllers')
 				}
 			})
 		    setTimeout(function () {
-		        var mySwiper = new Swiper('.swiper-container', {
-					pagination: '.swiper-pagination',
+		        var mySwiper = new Swiper('.s3', {
+					pagination: '.p3',
 					paginationClickable: true,
 					nextButton: '.right',
 					prevButton: '.left',
