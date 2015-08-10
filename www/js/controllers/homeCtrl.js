@@ -1,8 +1,4 @@
 angular.module('starter.controllers')
-
-
-
-
     .controller('HomeCtrl', ['$rootScope', '$scope', '$http', '$state', 'SyncService', '$ionicLoading', '$ionicHistory', '$ionicPlatform', 'MenuLinksService', '$timeout', 'PollingService',  function ($rootScope, $scope, $http, $state, SyncService, $ionicLoading, $ionicHistory, $ionicPlatform, MenuLinksService, $timeout, PollingService) {
 
 		ionic.Platform.ready(function(){
@@ -58,15 +54,22 @@ mySwiperX = mySwiper;
         //var featureItem = localStorage.getItem('Featured')
 		//$scope.featureItem = JSON.parse(featureItem)
 		
-		
-		$scope.list = PollingService.getPresentationList()
-		console.log($scope.list)
-		$scope.tempList = $scope.list
-		if ($scope.list.length > 0)
-		{
-			$scope.featureItem = true;
+		if(localStorage.getItem('presentationList') == null) {
+			SyncService.getPresentationList().success(function (data){
+				$scope.list = data
+				if ($scope.list.length > 0)
+				{
+					$scope.featureItem = true;
+				}	
+			})
 		}
-
+		else {
+			$scope.list = PollingService.getPresentationList()
+			if ($scope.list.length > 0)
+			{
+				$scope.featureItem = true;
+			}		
+		}
   	});
 	
 	

@@ -72,7 +72,7 @@ angular.module('starter.services')
         },     
         this.getPresentationList = function () {
             var url = 'http://patty5.com/AppApis/apiPresentationList.asp';
-            $http.jsonp(url, {
+            return $http.jsonp(url, {
                 params: {
                     callback: 'JSON_CALLBACK',
                     format:'json'

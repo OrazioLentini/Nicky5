@@ -6,15 +6,31 @@ angular.module('starter.controllers')
 
     SocialService.getTwitter().success(function (data){
         $scope.twitter = data
+        if($scope.twitter.length == 0) {
+            $scope.showMTW = true
+            $scope.messageTW = 'There are no tweets to display'
+        }
     })
     
     SocialService.getInstagram(). success(function(data){
         $scope.instagram = data 
-        console.log($scope.instagram)
-        console.log(decodeURIComponent($scope.instagram[22].Post))
+        if($scope.instagram.length == 0) {
+            $scope.showMIG = true
+            $scope.messageIG = 'There are no images to display'
+        }
     })
     
     $scope.youtube = SocialService.getYoutube()
+    if($scope.youtube.length == 0) {
+        $scope.showMYT = true
+        $scope.messageYT = 'There are no videos to display'
+    }
+    
+
+        $scope.showMFB = true
+        $scope.messageFB = 'There are no posts to display'
+
+      
       
     $scope.tw = true
     $scope.toggle = function (type) {

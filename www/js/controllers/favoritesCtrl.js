@@ -14,7 +14,7 @@ angular.module('starter.controllers')
 	    		$scope.directoryFav = JSON.parse(directory)
 	    	}
 	    	else {
-	    		$scope.noDirectory = "You have no favorites for directory."
+	    		$scope.noDirectory = "You have no favorites for directory"
 	    		$scope.directoryFav = ""
 	    	}
 
@@ -23,21 +23,21 @@ angular.module('starter.controllers')
 	    		$scope.schedule = _.groupBy($scope.scheduleFav, 'ScheduledDate') 
 	    	}
 	    	else {
-	    		$scope.noSchedule = "You have no favorites for schedule."
+	    		$scope.noSchedule = "You have no favorites for schedule"
 	    		$scope.schedule = ""
 	    	}
 	    	if(maps != null) {
 	    		$scope.mapsFav = JSON.parse(maps)
 	    	}
 	    	else {
-	    		$scope.noMaps = "You have no favorites for maps."
+	    		$scope.noMaps = "You have no favorites for maps"
 	    		$scope.mapsFav = ""
 	    	}
 			if(showcase != null) {
 	    		$scope.showcaseFav = JSON.parse(showcase)
 	    	}
 	    	else {
-	    		$scope.noShowcase = "You have no favorites for showcase."
+	    		$scope.noShowcase = "You have no favorites for showcase"
 	    		$scope.showcaseFav = ""
 	    	}
 	    }

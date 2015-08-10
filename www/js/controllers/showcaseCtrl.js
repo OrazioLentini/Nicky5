@@ -5,6 +5,8 @@ angular.module('starter.controllers')
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 				
     	$scope.products = ShowcaseService.getProducts()
-
+		if($scope.products.length == 0) {
+			$scope.noProducts = true
+		}
 		
     }]);

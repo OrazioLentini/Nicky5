@@ -43,7 +43,7 @@ background:url("images/grad-dark-case.png");
 </style>
 <ion-view view-title="{{title}}">
   <ion-content>
-
+  <div ng-show="noProducts" style="text-align: center; ">There are no products to display</div>
 	<div class="full" style="margin:0px; padding:0px">
        <div ng-repeat="x in products"  style="width:50%; float:left; position:relative;" ui-sref="app.showdetails({RecID: {{x.RecID}}})">
                  <!-- Please submit Images at 512 x 384 ratio (1024 x 768) -->
