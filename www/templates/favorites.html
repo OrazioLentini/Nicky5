@@ -46,8 +46,8 @@
 	<div ng-show="showSch">
 		<div style="text-align: center">{{noSchedule}}</div>
 
-		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
-		   <li class="item item-divider" style="background:#444444;; color:#F2F2F2">{{ScheduledDate}}</li>
+		<ul ng-repeat="(displayDate, sch) in schedule" class="table-view" id="schedule">
+		   <li class="item item-divider" style="background:#444444;; color:#F2F2F2">{{displayDate | date: 'longDate'}}</li>
 
 		   <div ng-repeat="x in sch">
            
@@ -57,7 +57,7 @@
               
               <div style="position: absolute; margin-top: 7px;">
                 <p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
-                <p style="font-size:12px;">{{x.Title}}</p>
+                <p ng-if="x.Title != '' && x.Title != 'null' && x.Title != 'NULL'" style="font-size:12px;">{{x.Title}}</p>
                 
                 <p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayTime | date: 'shortTime'}} </strong></p>
               </div>

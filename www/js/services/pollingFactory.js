@@ -121,7 +121,10 @@ angular.module('starter.services')
                 }
 
                 tempTime = list[i].StartTime
-                list[i].displayTime = Date.parse(tempTime)      
+                list[i].displayTime = Date.parse(tempTime)
+                
+                tempDate = list[i].ScheduledDate
+                list[i].displayDate = Date.parse(tempDate)      
             }
 
             return list

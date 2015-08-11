@@ -10,50 +10,50 @@
   <ion-content style="padding:0px 20px">
     
     <div style=" margin-top: 25px;"></div>
-    <div ng-repeat="question in learningMC | filter: id = questionNum" ng-hide="notFinished">
+    <div ng-hide="notFinished">
        
       <li class="item dark" style="white-space: normal; margin-top: 25px;">
-        <span style="text-align: center; font-size: 16px; font-weight: 500;">{{question.question}}</span>
+        <span style="text-align: center; font-size: 16px; font-weight: 500;">{{learningMC[questionNum - 1].question}}</span>
         </li>
          
-      <form ng-submit="checkAnswer()" id="loginForm">
+      <form ng-submit="checkAnswer()" name="mcForm">
          <li class="item item-checkbox " style="white-space: normal; margin-top: 25px;">
            <label class="checkbox">
              <input type="radio" value="A" name='test'>
            </label>
-           {{question.A}}
+           {{learningMC[questionNum - 1].A}}
         </li>
         <li class="item item-checkbox " style="margin-top: 5px; white-space: normal">
            <label class="checkbox">
              <input type="radio" value="B" name='test'>
            </label>
-           {{question.B}}
+           {{learningMC[questionNum - 1].B}}
         </li>
         <li class="item item-checkbox " style="margin-top: 5px; white-space: normal">
            <label class="checkbox">
              <input type="radio" value="C" name='test'>
            </label>
-           {{question.C}}
+           {{learningMC[questionNum - 1].C}}
         </li>
         <li class="item item-checkbox " style="margin-top: 5px; white-space: normal">
            <label class="checkbox">
              <input type="radio" value="D" name='test'>
            </label>
-           {{question.D}}
+           {{learningMC[questionNum - 1].D}}
         </li>
       <div style=" margin-top: 25px; text-align: center">
-        <button ng-show="submit" class="button button-positive">Check Answer</button>
+        <button ng-show="submit" class="button button-block button-positive">Check Answer</button>
       </div>
     </form>
     <div style="text-align: center">
-          <button ng-show="nextQuestionCorrect" class="button icon-right ion-checkmark button-balanced" ng-click="nextButton()">Click to Proceed</button>
-          <button ng-show="nextQuestionIncorrect" class="button icon-right ion-close button-assertive" ng-click="nextButton()">Click to Proceed</button>
+          <button ng-show="nextQuestionCorrect" class="button button-block button-balanced" ng-click="nextButton()">Click to Proceed</button>
+          <button ng-show="nextQuestionIncorrect" class="button button-block  button-assertive" ng-click="nextButton()">Click to Proceed</button>
     </div>
   </div>
   <div ng-show="notFinished" style="font-size: 18px; text-align: center">
-    <span >Result {{totalCorrect}} / {{questionNum}}</span>
+    <span >Your Score: {{totalCorrect}} / {{questionNum}}</span>
     <div style="height: 20px"></div>
-    <button class="button icon-right ion-close button-positive" ng-click="closeMC()">Close </button>
+    <button class="button button-block button-positive" ng-click="closeMC()">Close </button>
   </div>
   </ion-content>
 </ion-modal-view>

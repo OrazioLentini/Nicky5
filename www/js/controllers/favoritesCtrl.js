@@ -20,7 +20,7 @@ angular.module('starter.controllers')
 
 	    	if(schedule != null) {
 	    		$scope.scheduleFav = JSON.parse(schedule)
-	    		$scope.schedule = _.groupBy($scope.scheduleFav, 'ScheduledDate') 
+	    		$scope.schedule = _.groupBy($scope.scheduleFav, 'displayDate') 
 	    	}
 	    	else {
 	    		$scope.noSchedule = "You have no favorites for schedule"
