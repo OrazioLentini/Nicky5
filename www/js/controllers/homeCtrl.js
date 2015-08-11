@@ -10,7 +10,7 @@ angular.module('starter.controllers')
 			  
 $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
-		console.log("State changed: url = ", toState.url);
+		//console.log("State changed: url = ", toState.url);
 		if (toState.url == "/")
 		{
 			mySwiperX.update();  // this is here to force the slider into autoplay again

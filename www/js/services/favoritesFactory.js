@@ -54,7 +54,7 @@ angular.module('starter.services')
 			}
 		},
 		saveFavoriteSchedule: function(details){
-			var favorite = '{"ID": \"' + details.RecID + '\","Speaker": \"' + details.Speaker + '\", "SpeakerID": \"' + details.SpeakerID + '\", "Title": \"' + details.Title + '\", "Image": \"' + details.Image + '\","ThumbImage": \"' + details.ThumbImage + '\", "StartTime": \"' + details.StartTime + '\", "ScheduledDate": \"' + details.ScheduledDate + '\","displayTime": \"' + details.displayTime + '\" , "type": \"schedule\"}'
+			var favorite = '{"ID": \"' + details.RecID + '\","Speaker": \"' + details.Speaker + '\", "SpeakerID": \"' + details.SpeakerID + '\", "Title": \"' + details.Title + '\", "Image": \"' + details.Image + '\","ThumbImage": \"' + details.ThumbImage + '\", "StartTime": \"' + details.StartTime + '\", "ScheduledDate": \"' + details.ScheduledDate + '\","displayTime": \"' + details.displayTime + '\", "displayDate": \"' + details.displayDate + '\" , "type": \"schedule\"}'
 
 			var newFav = ''
 		    var temp = localStorage.getItem('scheduleFavorites')

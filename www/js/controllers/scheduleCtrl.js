@@ -11,6 +11,7 @@ angular.module('starter.controllers')
 
     	$scope.checkFav = function () {
 			$scope.schedule = ScheduleService.getSchedule();
+			console.log($scope.schedule)
 			$scope.att = ScheduleService.getAttending()
 			$scope.tempSch = $scope.schedule
 			$scope.fav = FavoritesService.checkIfFavoriteSchedule()
@@ -55,7 +56,7 @@ angular.module('starter.controllers')
 				}
 			}
 
-			$scope.schedule = _.groupBy($scope.schedule, 'ScheduledDate') 
+			$scope.schedule = _.groupBy($scope.schedule, 'displayDate') 
 			if ($scope.tempSch == '') {
 				$scope.noSch = true
 			}

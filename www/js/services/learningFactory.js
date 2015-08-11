@@ -18,9 +18,9 @@ angular.module('starter.services')
 				  multipleChoice = [
 						{ question: 'Why isn\'t the world using more solar energy?', id: 1, A: 'Because Sun doesn\'t shine at night', B: 'Because solar energy is still too expensive energy option for many people', C: 'Because oil is much better energy choice ', D: 'Because there\'s not enough solar panels ', correct: 'D', course: 'solar energy'  },
 						{ question: 'Solar Energy is _______', id: 2, A: 'Non-renewable', B: 'An unlimited energy source', C: 'Not Efficient', D: 'The best energy source in the world', correct: 'B', course: 'solar energy'  }	,
-						{ question: 'Which of the following may not need a control rod?', id: 3, A: 'Liquid metal cooled reactor', B: 'Fast breeder reactor', C: 'None of these', D: 'Candu reactor', correct: 'C', course: 'nuclear reactors'  },
-						{ question: 'Thorium-232 is converted into uranium-233 in a/an __________ nuclear reactor.', id: 4, A: 'heavy water moderated', B: 'thermal', C: 'fast breeder', D: 'enriched uranium', correct: 'C', course: 'nuclear reactors'  },
-						{ question: 'An electron has a mass that is approximately __________ that of the proton.', id: 5, A: '1/1836 (approximately)', B: '∞', C: '1836 (approximately)', D: '1', correct: 'A', course: 'nuclear reactors'  }				
+						{ question: 'Which of the following may not need a control rod?', id: 1, A: 'Liquid metal cooled reactor', B: 'Fast breeder reactor', C: 'None of these', D: 'Candu reactor', correct: 'C', course: 'nuclear reactors'  },
+						{ question: 'Thorium-232 is converted into uranium-233 in a/an _______ nuclear reactor.', id: 2, A: 'heavy water moderated', B: 'thermal', C: 'fast breeder', D: 'enriched uranium', correct: 'C', course: 'nuclear reactors'  },
+						{ question: 'An electron has a mass that is approximately _______ that of the proton.', id: 3, A: '1/1836 (approximately)', B: '∞', C: '1836 (approximately)', D: '1', correct: 'A', course: 'nuclear reactors'  }				
 				  ];
 				  return multipleChoice
 		},

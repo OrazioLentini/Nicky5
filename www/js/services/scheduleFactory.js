@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-    .factory('ScheduleService', function () {
+    .factory('ScheduleService', function ($filter) {
 
 	var requests = ""
 	return {
@@ -8,17 +8,54 @@ angular.module('starter.services')
 				var temp = localStorage.getItem('tSchedule')
 				requests = JSON.parse(temp)
 
+				var currentDate = new Date()
+	            var hours = currentDate.getHours()
+	            var suffix = hours >= 12 ? "PM" : "AM"
+	            hours = ((hours  + 11) % 12 + 1)
+	            minutes = currentDate.getMinutes()
+	            if (minutes < 10) {
+	                minutes = '0' + minutes
+	            }
+	
+	            var currentTime = hours + ":" + minutes + " " + suffix
+	            var today = currentDate.getMonth() + 1 + "/" + currentDate.getDate() + "/" + currentDate.getFullYear()
+			
 				for (i = 0; i < requests.length; i++){
-					tempTime = requests[i].StartTime
-					requests[i].displayTime = Date.parse(tempTime)
+					var s = Date.parse(requests[i].StartTime)
+					startTime = $filter('date')(s, 'hh:mm a')		
+					var e = Date.parse(requests[i].EndTime)
+					endTime = $filter('date')(e, 'hh:mm a')
+					
+					tempSchedule = requests[i].ScheduledDate
+					var scheduledDate = tempSchedule.split(" ")
+					scheduledDate = scheduledDate[0]
 
+					var ctt = new Date("November 13, 2013 " + currentTime)
+					ctt = ctt.getTime()
+					var stt = new Date("November 13, 2013 " + startTime)
+					stt = stt.getTime()
+					var endt = new Date("November 13, 2013 " + endTime)
+					endt = endt.getTime()
+
+	                //LIVE
+	                if(ctt >= stt && ctt <= endt && today == scheduledDate) {
+	                        requests[i].status = 'live'   
+	                }
+					//NEXT SCHEDULED
+					else if(((stt - ctt) < 900000 && (stt - ctt) > 0)  && today == scheduledDate) {
+	                    requests[i].status = 'upcoming'   
+					}
+					else {
+						requests[i].status = ''
+					}
+				
 					requests[i].Fav = false
 					requests[i].NoFav = true	
 					
 					requests[i].Attending = false
 					requests[i].NotAttending = true			
 				}
-				
+
 				return requests;
 		},
 		getDetails: function(id){

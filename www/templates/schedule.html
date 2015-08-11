@@ -3,8 +3,8 @@
   <ion-content>
 
 	  	<div ng-show="noSch" style="text-align: center; ">There is currently nothing scheduled</div>
-		<ul ng-repeat="(ScheduledDate, sch) in schedule" class="table-view" id="schedule">
-		   <li class="item item-divider" style="background:#444444; /*background:#444444;*/ color:#F2F2F2">{{ScheduledDate}}</li>
+		<ul ng-repeat="(displayDate, sch) in schedule" class="table-view" id="schedule">
+		   <li class="item item-divider" style="background:#444444; /*background:#444444;*/ color:#F2F2F2; padding-left: 10px; ">{{displayDate | date: 'longDate'}}</li>
 
 		   <div ng-repeat="x in sch">
  			<li ng-if="x.Speaker" class="item item-thumbnail-left-sch item-icon-right" style="padding: 0; padding-right: 54px;">

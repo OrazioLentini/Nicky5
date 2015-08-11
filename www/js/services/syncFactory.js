@@ -39,6 +39,16 @@ angular.module('starter.services')
                 }
             }). 
             success (function(data){
+                for (i = 0; i < data.length; i++) {
+                    data[i].ScheduledDate = data[i].ScheduledDate + " 12:00:00 AM"
+                    
+                    tempTime = data[i].StartTime
+                    data[i].displayTime = Date.parse(tempTime)
+                    
+                    tempDate = data[i].ScheduledDate
+                    data[i].displayDate = Date.parse(tempDate)   
+                }
+                
                 data = JSON.stringify(data)
                 localStorage.setItem('tSchedule', data)
             })
@@ -79,6 +89,16 @@ angular.module('starter.services')
                 }
             }). 
             success (function(data){
+                for (i = 0; i < data.length; i++) {
+                    data[i].ScheduledDate = data[i].ScheduledDate + " 12:00:00 AM"
+                    
+                    tempTime = data[i].StartTime
+                    data[i].displayTime = Date.parse(tempTime)
+                    
+                    tempDate = data[i].ScheduledDate
+                    data[i].displayDate = Date.parse(tempDate)   
+                }
+                
                 data = JSON.stringify(data)
                 localStorage.setItem('presentationList', data)
                 //this.saveLocally()

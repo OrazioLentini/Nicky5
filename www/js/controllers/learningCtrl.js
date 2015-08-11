@@ -28,6 +28,7 @@ angular.module('starter.controllers')
 
    }
 
+// VIDEOS-------------------------------------------------------------------------------------------------------
    $scope.videos = LearningService.getVideos()
 
    $ionicModal.fromTemplateUrl('templates/learningVideo.html', {
@@ -66,11 +67,15 @@ angular.module('starter.controllers')
 		$("#videoMain").html('<iframe id="ytplayer"  width="100%" height="235"  src="' + x + '"  frameborder="0"/>')
 	};
 
+
+// MULTIPLE CHOICE-------------------------------------------------------------------------------------------------------
     $scope.mc = LearningService.getMultipleChoice()
+	
     $scope.questionNum = 1
     $scope.submit = true
     $scope.totalCorrect = 0;
     $scope.notFinished = false;
+	
     $ionicModal.fromTemplateUrl('templates/learningMC.html', {
 		scope: $scope
 	}).then(function(modal) {
@@ -114,6 +119,7 @@ angular.module('starter.controllers')
 	};
 
 	$scope.nextButton = function() {
+		$('input[name="test"]').attr('checked', false);
 		$scope.nextQuestionCorrect = false;
 		$scope.nextQuestionIncorrect = false;
 		$scope.submit = true;
@@ -126,6 +132,8 @@ angular.module('starter.controllers')
 		}
 	}
 
+
+// QUESTION AND ANSWER---------------------------------------------------------------------------------------------------------
    $scope.questionAnswer = LearningService.getQuestions()
    //console.log($scope.questions)
    $ionicModal.fromTemplateUrl('templates/learningQuestions.html', {
