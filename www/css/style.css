@@ -149,7 +149,7 @@ body {
 .fadeIG {
   position: relative;
   line-height:1.2em;
-  height: 2.4em; /* exactly three lines */
+  height: 2.5em; /* exactly three lines */
   overflow:hidden !important;
   white-space:wrap;
 }

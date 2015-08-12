@@ -117,8 +117,8 @@
 		<div style="text-align: center">{{noMaps}}</div>
 
 
-    <ul ng-repeat="map in mapsFav"  id="map" ui-sref="app.viewmap({RecID: {{map.ID}} })">
-             <li class="item" style="margin:10px; padding:0px;">
+    <ul ng-repeat="map in mapsFav"  id="map" ">
+             <li class="item" style="margin:10px; padding:0px;" ng-click="showImage('{{map.Image}}', '{{map.MapName}}' )">
 
              <div class="thumb" style="width:100%; height:200px; text-align:center; background:#FFF;"><img src="{{map.Image}}"/></div>
              <div style="width:100%">

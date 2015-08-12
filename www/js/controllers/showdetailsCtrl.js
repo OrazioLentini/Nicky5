@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 
     .controller('ShowDetailCtrl', function ($scope, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope, $ionicConfig) {
-		$ionicConfig.backButton.text("Back");
+		//$ionicConfig.backButton.text("Back");
 		
 		$scope.filled = false
 		$scope.unfilled = false
@@ -36,8 +36,8 @@ angular.module('starter.controllers')
 				}
 			})
 		    setTimeout(function () {
-		        var mySwiper = new Swiper('.swiper-container', {
-					pagination: '.swiper-pagination',
+		        var mySwiper = new Swiper('.s3', {
+					pagination: '.p3',
 					paginationClickable: true,
 					nextButton: '.right',
 					prevButton: '.left',

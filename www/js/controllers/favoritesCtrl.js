@@ -112,44 +112,23 @@ angular.module('starter.controllers')
 		   });
 		}
 
-	$ionicModal.fromTemplateUrl('image-modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    	}).then(function(modal) {
-     	 $scope.modal = modal;
-    	});
+$ionicModal.fromTemplateUrl('templates/viewmap.html', {
+		scope: $scope
+	}).then(function(modal) {
+		$scope.modalMap = modal;
+	});
 
-    $scope.openModal = function() {
-      $scope.modal.show();
-    };
+	// Triggered in the login modal to close it
+	$scope.closeMap = function() {
+		$scope.modalMap.hide();
+	};
 
-    $scope.closeModal = function() {
-      $scope.modal.hide();
-    };
+	// Open the login modal
+	$scope.showImage = function(image, name) {
+		
+		$scope.showImageUrl = image
+		$scope.showImageName = name
+		$scope.modalMap.show();
+	};
 
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-      $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hide', function() {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-      // Execute action
-    });
-    $scope.$on('modal.shown', function() {
-      //console.log('Modal is shown!');
-    });
-
-    //$scope.imageSrc = 'http://ionicframework.com/img/ionic-logo-blog.png';
-
-    $scope.showImage = function(index) {
-    	//alert(index)
-      
-          $scope.imageSrc  = index;
-
-      $scope.openModal();
-    }
 }]);
