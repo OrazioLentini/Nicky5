@@ -27,6 +27,15 @@ angular.module('starter.services')
             data = JSON.parse(temp)      
             
             return data.items
+        },
+        getFacebook: function() {   
+            var url = "http://app.nicky3.com/AppApis/apiFacebook.asp";
+            return $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            })      
         }
     }
 });
