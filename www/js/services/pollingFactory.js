@@ -75,8 +75,6 @@ angular.module('starter.services')
 
             var currentTime = hours + ":" + minutes + " " + suffix
             var today = currentDate.getMonth() + 1 + "/" + currentDate.getDate() + "/" + currentDate.getFullYear()
-            today = new Date(today + " 12:00:00 AM")
-            today = today.getTime()
 
             for (i = 0; i < list.length; i++){
 
@@ -86,11 +84,9 @@ angular.module('starter.services')
                 var e = Date.parse(list[i].EndTime)
                 endTime = $filter('date')(e, 'hh:mm a')
 
-                var scheduledDate = data[i].ScheduledDate
-
-                var scheduledDate = list[i].ScheduledDate
-                scheduledDate = new Date(scheduledDate + " 12:00:00 AM")
-                scheduledDate = scheduledDate.getTime()
+                tempSchedule = list[i].ScheduledDate
+                var scheduledDate = tempSchedule.split(" ")
+                scheduledDate = scheduledDate[0]
 
                 var ctt = new Date("November 13, 2013 " + currentTime)
                 ctt = ctt.getTime()
