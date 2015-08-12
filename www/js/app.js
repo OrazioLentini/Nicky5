@@ -27,6 +27,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
  // $ionicConfigProvider.views.maxCache(0)
+$ionicConfigProvider.backButton.previousTitleText(false);
+
+
   $stateProvider
   
    .state('app.schedule', {

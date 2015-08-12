@@ -88,33 +88,45 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
            
                 <div  class="box swiper-slide" style="width:100%;  float:left; position:relative;background:#F00" ng-if="featureItem" ng-repeat="x in list">
                   <div ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})" style="overflow:hidden; position:relative;" >
-                  <div class="pg-image" style="margin-left: 0px; margin-right: 0px; margin-bottom: 0px;">
-                    <img src="{{x.Image}}">
-                  </div>
-                          <div class="inner-content" style="text-align:center; background: rgba(0,0,0,0.9); display:none">
-                               <div ng-if="x.Title" style="margin:0px; color:#FFF; font-size:14px; font-weight:600;">{{x.Title}}</div>
-                               <div id="time-{{ $index }}" ng-if="x.StartTime" style="font-size:12px; color:#FFF;">Start Time: {{x.displayDate | date: 'longDate'}} {{x.displayTime | date: 'shortTime'}}</div>
-                          </div>
+                        <div class="pg-image" style="margin-left: 0px; margin-right: 0px; margin-bottom: 0px;">
+                          <img src="{{x.Image}}">
+                        </div>
+                        
+                        <div class="inner-content" ng-if="x.Title" style="text-align:center; background: rgba(51,51,51,0.9);">
+                             <div ng-if="x.Title" style="margin:0px; color:#FFF; font-size:12px; font-weight:normal; font-family: Verdana, Geneva, sans-serif">{{x.Title}}</div>
+                        </div>
+                        <div>
+
+                             <div id="time-{{ $index }}" ng-if="x.StartTime" style="font-size:12px; color:#FFF; display: none">Start Time: {{x.displayDate | date: 'longDate'}} {{x.displayTime | date: 'shortTime'}}</div>
+                        </div>
                    </div>
                 </div>              
                  
 
-                <div class="box swiper-slide" ng-if="!featureItem" style="height:200px;">
+                <div class="box swiper-slide" ng-if="!featureItem">
                  <img src="images/welcome.jpg" style="width:100%;" ng-cloak>
                 </div>
 
             </div>
  
+ 
+ <div style="height:30px; background: #333; color:#fff; text-align:center; padding-top:5px; font-size:13px; margin-top:-2px">
+          <div id="test">---</div>
+      </div>
+ 
+ 
              <!-- Elias added to control slider -->  
                    
-            <div class="swiper-pagination p1" style="padding-top:5px"></div>
-            <div style="height: 45px; text-align: center; background:#fff;  padding-top:4px">
+            <div class="swiper-pagination p1" style="padding-top:0px"></div>
+            <div style="height: 47px; text-align: center; background:#fff;  padding-top:7px">
             
-                <div class="button button-clear left" style="float: left; z-index:999; display: inline">
+                <div class="button button-clear left" style="float: left; z-index:999; display: inline; margin-top:-5px">
                     <i class="icon ion-chevron-left" style="color: #F87D3F"></i>
                 </div>
+                
                 <div style="display: inline;">Click or swipe to view slides</div>
-                <div class="button button-clear right" style="float: right; z-index:999; display: inline" >
+                
+                <div class="button button-clear right" style="float: right; z-index:999; margin-top:-5px" >
                     <i class="icon ion-chevron-right" style="color: #F87D3F"></i>
                 </div>
             
@@ -124,9 +136,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
  
            
       </div>
-      <div style="height:30px; background: #F0F0F0; text-align:center; padding-top:5px; font-size:13px;">
-          <div id="test">---</div>
-      </div>
+      
       
       
       

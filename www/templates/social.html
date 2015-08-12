@@ -4,7 +4,7 @@
         <div class="button button-clear" style="float:left; z-index: 99; margin-top: 5px" ng-click="modal.hide()"><span style="color:#FFF; font-size: 16px;" class="icon icon-right ion-ios-arrow-back"></span></div>
         <ion-pane class="transparent">
          <div style="height: 50px; background: black; "></div>
-          <ion-scroll direction="y" style="height: 100%">
+          <ion-scroll direction="y" style="height: 100%" has-bouncing="true">
           
             <div class="featured">
               <img ng-src="{{imageSrc}}" style="width: 100%"/>
@@ -86,8 +86,8 @@
             <ul > 
               <li ng-repeat="x in twitter" class="item item-avatar item-text-wrap">
                 <img style="height: 80px" src="{{x.AuthorAvatar}}" onerror="this.src='images/twitterNoIcon.png'"/>  
-                <div style="font-size: 15px"><strong>{{x.AuthorName}}</strong> @{{x.AuthorScreenName}}
-                <p>{{x.Post}}</p>
+                <div style="font-size: 15px"><span style="font-size: 15px"><strong>{{x.AuthorName}}</strong></span><span style="font-size: 15px"> @{{x.AuthorScreenName}}</div></span>
+                <div>{{x.Post}}</div>
                 </div>
               </li>
             </ul> 
