@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.controller('LearningCtrl' , function($scope, $ionicModal, $timeout, $ionicPopup, $ionicLoading, LearningService, $stateParams, MenuLinksService, $filter) {
+.controller('LearningCtrl' , function($scope, $ionicModal, $timeout, $ionicPopup, $ionicLoading, LearningService, $stateParams, MenuLinksService, $filter, $ionicScrollDelegate) {
    
    $scope.toggleCourse = function(course) {
 	   $( "#" + course ).slideToggle('fast');
@@ -155,8 +155,12 @@ angular.module('starter.controllers')
 	};	
 	
 	$scope.toggleAnswer = function (x){
+		var p = $( "#question" + x  );
+		var position = p.position();
+		//console.log(position)
+
 		$( ".question" + x ).toggle( "fast", function() {
-		//$('.' + x).removeClass('ion-chevron-down').addClass('ion-chevron-up');
+			$ionicScrollDelegate.scrollTo(0, position.top, true);
 		});
 	}
 

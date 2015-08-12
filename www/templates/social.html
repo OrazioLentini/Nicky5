@@ -86,7 +86,7 @@
             <ul > 
               <li ng-repeat="x in twitter" class="item item-avatar item-text-wrap">
                 <img style="height: 80px" src="{{x.AuthorAvatar}}" onerror="this.src='images/twitterNoIcon.png'"/>  
-                <div style="font-size: 1em"><strong>{{x.AuthorName}}</strong> @{{x.AuthorScreenName}}
+                <div style="font-size: 15px"><strong>{{x.AuthorName}}</strong> @{{x.AuthorScreenName}}
                 <p>{{x.Post}}</p>
                 </div>
               </li>
@@ -100,7 +100,7 @@
                <img style="width: 100%" src="{{x.PostImageURL}}">
                 <div style="font-size: 1em; position: absolute; left: 1px; bottom: 6px; width: 100%" class="itemIG item-avatar">
                   <img style="height: 80px" src="{{x.AuthorAvatar}}" onerror="this.src='images/igNoIcon.jpg'" />
-                  <div style="margin-left: 50px; margin-top: 8px;">{{x.AuthorScreenName}}</div>
+                  <div style="margin-left: 50px; margin-top: 8px;"><strong>{{x.AuthorScreenName}}</strong></div>
                 </div>
                 <div style="position: absolute; bottom: 0px; width:100%;">
                   <img src="images/grad-dark3.png" style="width: 100%;">
@@ -115,6 +115,24 @@
         
         <div id="facebook" style="background:#FFF; margin-top:5px; display: none">
           <div ng-show="showMFB" style="text-align: center; ">{{messageFB}}</div>
+            <div ng-repeat="x in facebook" style="margin-bottom: 0px;">
+             <div style="position: relative">
+                <div style="font-size: 1em; left: 1px; top: 6px; width: 100%" class="itemIG item-avatar">
+                  <img style="height: 80px" src="{{x.AuthorAvatar}}" onerror="this.src='images/igNoIcon.jpg'" />
+                  <div style="margin-left: 50px; margin-top: 8px; color: black"><strong>{{x.AuthorScreenName}}</strong></div>
+                </div>
+                <div style="padding: 0 15px;">
+                  {{x.Message}}
+                </div>
+                <div ng-if="x.PostImageURL != ''">
+                <img style="width: 100%;; margin-top: 10px" src="{{x.PostImageURL}}">
+                <!--<div style="position: absolute; bottom: 0px; width:100%;">
+                  <img src="images/grad-dark3.png" style="width: 100%;">
+                </div>-->
+                </div>
+             </div>
+             <div style="height: 1px; background: #ddd; margin-top: 20px"></div>
+           </div>
         </div>
 
 

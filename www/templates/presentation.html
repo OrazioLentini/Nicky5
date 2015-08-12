@@ -161,8 +161,21 @@
         </form>
     </div>
   </ion-content>
-    <div class="bar bar-footer bar-balanced" ng-show="speaker" >
-        <div class="title" ng-click="register()" style="color: white">Register</div>
+  
+    <div class="tabs" style="bottom: 0; height:59px">
+        <button ng-show="register" class="button button-full button-balanced" ng-click="register()">
+            Register
+        </button>
+        <button ng-show="register == false" class="button button-full button-balanced" ng-disabled="true">
+            Registered
+        </button>
+        <button ng-show="claim" class="button button-full button-positive" ng-click="claimPoints()">
+            Claim Credit
+        </button>
+        <button ng-show="claim == false" class="button button-full button-positive" ng-disabled="true">
+           Credit Claimed
+        </button>  
     </div>
+
 </ion-view>
 

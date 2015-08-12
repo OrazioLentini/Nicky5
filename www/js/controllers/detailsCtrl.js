@@ -130,8 +130,8 @@ angular.module('starter.controllers')
 		
 				var userID = data[0].UserID
 				var userEmail = data[0].Email
-
-				if (userEmail == '') {
+				if (userEmail == '' || userEmail == null) {
+					alert('')
 					var confirmPopup = $ionicPopup.confirm({
 						 title: 'Email Required',
 				 		template: 'You must update your email in order to request more infomation.'

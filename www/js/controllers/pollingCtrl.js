@@ -247,6 +247,9 @@ angular.module('starter.controllers')
 		}
 
 
+		$scope.claim = true
+		$scope.register = true
+					
 		$scope.register = function() {
 			var confirmPopup = $ionicPopup.confirm({
 				title: 'Confirmation',
@@ -254,9 +257,45 @@ angular.module('starter.controllers')
 			});
 			confirmPopup.then(function(res) {
 				if(res) {
+					$scope.register = false
 					$ionicLoading.show({template: 'Registration Complete', noBackdrop: true, duration: 1000});
 				}
 			});
 		};
+		
+		$scope.claimPoints = function() {
+			var confirmPopup = $ionicPopup.confirm({
+				title: 'Confirmation',
+				template: 'I certify that I attended this activity.'
+			});
+			confirmPopup.then(function(res) {
+				if(res) {
+					$scope.openSurvey()
+					//$scope.claim = false
+					//$ionicLoading.show({template: 'Points Claimed', noBackdrop: true, duration: 1000});
+				}
+			});
+		};
+
+		$ionicModal.fromTemplateUrl('templates/survey.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.modalSurvey = modal;
+		});
+		
+		$scope.closeSurvey = function() {
+			$scope.modalSurvey.hide();
+		};
+		
+		$scope.closeSurveyFinished = function() {
+			$scope.modalSurvey.hide();
+			$scope.claim = false
+			$ionicLoading.show({template: 'Credit Claimed', noBackdrop: true, duration: 1000});
+		};
+		
+		$scope.openSurvey = function() {
+			$scope.modalSurvey.show();
+		};
+
 
     }]);

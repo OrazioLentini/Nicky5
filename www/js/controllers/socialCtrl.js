@@ -26,9 +26,13 @@ angular.module('starter.controllers')
         $scope.messageYT = 'There are no videos to display'
     }
     
-
-        $scope.showMFB = true
-        $scope.messageFB = 'There are no posts to display'
+    SocialService.getFacebook(). success(function(data){
+        $scope.facebook = data 
+        if($scope.facebook.length == 0) {
+            $scope.showMFB = true
+            $scope.messageFB = 'There are no images to display'
+        }
+    })
 
       
       

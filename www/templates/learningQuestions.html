@@ -9,16 +9,17 @@
   </ion-header-bar>
   <ion-content style="padding:0px 20px">
 
-    <div class="card" ng-repeat="question in learningquestions">
-
-      <a class="item item-icon-right item-text-wrap question dark" style="color: white;" ng-click="toggleAnswer('{{question.id}}')">
-        <i class="icon ion-chevron-down question{{question.id}}" style="display: block;margin-top: 20px;"></i>
-        <i class="icon ion-chevron-up question{{question.id}}" style="display: none; margin-top: 20px;"></i>
-        {{question.question}}
-      </a>
-      <div class="question{{question.id}}" style="display: none; padding: 10px 10px;">
-        {{question.answer}}
-        <img ng-if="question.image != ''" src="{{question.image}}" style="width: 100%; margin-top: 10px;">
+    <div id="cardDiv" class="card" ng-repeat="question in learningquestions">
+      <div id="question{{question.id}}">
+        <a class="item item-icon-right item-text-wrap question dark" style="color: white;" ng-click="toggleAnswer('{{question.id}}')">
+          <i class="icon ion-chevron-down question{{question.id}}" style="display: block;margin-top: 20px;"></i>
+          <i class="icon ion-chevron-up question{{question.id}}" style="display: none; margin-top: 20px;"></i>
+          {{question.question}}
+        </a>
+        <div class="question{{question.id}}" style="display: none; padding: 10px 10px;">
+          {{question.answer}}
+          <img ng-if="question.image != ''" src="{{question.image}}" style="width: 100%; margin-top: 10px;">
+        </div>
       </div>
     </div>
 

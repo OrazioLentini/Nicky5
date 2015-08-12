@@ -14,12 +14,12 @@ angular.module('starter.controllers')
 
   }
   $scope.update = function() {
-    var Username = $("#unProfile").val($scope.userName);
-    var BadgeID = $("#idProfile").val($scope.badgeID);
-    var Firstname = $("#fnProfile").val($scope.firstName);
-    var Lastname = $("#lnProfile").val($scope.lastName);
-    var Email = $("#emProfile").val($scope.email);
-
+    var Username = $scope.userName
+    var BadgeID = $scope.badgeID
+    var Firstname = $("#fnProfile").val();
+    var Lastname = $("#lnProfile").val();
+    var Email = $("#emProfile").val();
+    
     LoginService.profileUpdate(Username, BadgeID, Firstname, Lastname, Email). success(function(data){
         localStorage.setItem("login", JSON.stringify(data))
       $ionicLoading.show({template: 'Profile Updated', noBackdrop: false, duration: 1500});
