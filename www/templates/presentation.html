@@ -162,17 +162,17 @@
     </div>
   </ion-content>
   
-    <div class="tabs" style="bottom: 0; height:59px">
-        <button ng-show="register" class="button button-full button-balanced" ng-click="register()">
+    <div class="tabs" style="bottom: 0;">
+        <button style="display: block; margin-top: 0; margin-bottom: 0" class="button button-full button-balanced reg" ng-click="register()">
             Register
         </button>
-        <button ng-show="register == false" class="button button-full button-balanced" ng-disabled="true">
+        <button style="display: none; margin-top: 0; margin-bottom: 0" class="button button-full button-balanced regC" ng-disabled="true">
             Registered
         </button>
-        <button ng-show="claim" class="button button-full button-positive" ng-click="claimPoints()">
+        <button style="display: block; margin-top: 0; margin-bottom: 0" class="button button-full button-positive cp" ng-click="claimPoints()">
             Claim Credit
         </button>
-        <button ng-show="claim == false" class="button button-full button-positive" ng-disabled="true">
+        <button style="display: none; margin-top: 0; margin-bottom: 0" class="button button-full button-positive cpC" ng-disabled="true">
            Credit Claimed
         </button>  
     </div>
