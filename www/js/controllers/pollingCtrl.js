@@ -258,6 +258,8 @@ angular.module('starter.controllers')
 			confirmPopup.then(function(res) {
 				if(res) {
 					$scope.register = false
+					$('.regC').css('display', 'block')
+					$('.reg').css('display', 'none')
 					$ionicLoading.show({template: 'Registration Complete', noBackdrop: true, duration: 1000});
 				}
 			});
@@ -290,6 +292,8 @@ angular.module('starter.controllers')
 		$scope.closeSurveyFinished = function() {
 			$scope.modalSurvey.hide();
 			$scope.claim = false
+			$('.cpC').css('display', 'block')
+			$('.cp').css('display', 'none')
 			$ionicLoading.show({template: 'Credit Claimed', noBackdrop: true, duration: 1000});
 		};
 		
