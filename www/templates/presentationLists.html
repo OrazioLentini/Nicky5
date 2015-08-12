@@ -18,7 +18,7 @@
 				<p style="font-size:14px; font-weight: bold">Speaker: {{x.Speaker}}</p>
 				<p style="font-size:12px;">{{x.Title}}</p>
 
-				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.ScheduledDate}} {{x.displayTime | date: 'shortTime'}} </strong></p>
+				<p style="font-size:.6em; color:#3C9AC3;"><strong>Start Time: {{x.displayDate | date: 'longDate'}} {{x.displayTime | date: 'shortTime'}} </strong></p>
 			</div>			
 			<i class="icon ion-chevron-right" style="font-size:14px"></i>
 			
