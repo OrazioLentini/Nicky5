@@ -35,15 +35,15 @@
 <ion-view view-title="{{title}}"> 
       <div class="bar bar-subheader bar-light">
 	    <div class="button-bar favorites">
-			<a class="button buttonPickerActive schedule " style="text-overflow:clip !important" ng-click="toggle('schedule')">Schedule</a>
-			<a class="button buttonPicker directory" style="text-overflow:clip !important" ng-click="toggle('directory')">Directory</a>
-      <a class="button buttonPicker showcase" style="text-overflow:clip !important"  ng-click="toggle('showcase')">Showcase</a>
-			<a class="button buttonPicker maps" style="text-overflow:clip !important" ng-click="toggle('maps')">Maps</a>
+			<a class="button buttonPickerActive schedule " style="font-size: 12px" ng-click="toggle('schedule')">Schedule</a>
+			<a class="button buttonPicker directory" style="font-size: 12px" ng-click="toggle('directory')">Directory</a>
+      <a class="button buttonPicker showcase" style="font-size: 12px"  ng-click="toggle('showcase')">Showcase</a>
+			<a class="button buttonPicker maps" style="font-size: 12px" ng-click="toggle('maps')">Maps</a>
 	    </div>
 	  </div>
   <ion-content style="margin-top: 50px">
 
-	<div ng-show="showSch">
+	<div id="schDiv" style="display: block">
 		<div style="text-align: center">{{noSchedule}}</div>
 
 		<ul ng-repeat="(displayDate, sch) in schedule" class="table-view" id="schedule">
@@ -80,7 +80,7 @@
 	    </ul>    
 	</div>
 
-	<div ng-show="showDir">
+	<div id="dirDiv" style="display: none">
 		<div style="text-align: center">{{noDirectory}}</div>
 		<ion-list>
 			<ion-item ng-repeat="requests in directoryFav" class="item  item-icon-right item-text-wrap" ui-sref="app.details({RecID: {{requests.ID}}})">
@@ -94,7 +94,7 @@
 
 	</div>
   
-	<div ng-show="showShowcase">
+	<div id="showDiv" style="display: none">
     	<div style="text-align: center">{{noShowcase}}</div>
       <ion-list>
       <ion-item ng-repeat="x in showcaseFav" class="item item-icon-right item-text-wrap"  ui-sref="app.showdetails({RecID: x.ID})">           
@@ -112,7 +112,7 @@
 
 	</div>  
 
-	<div ng-show="showMaps">
+	<div id="mapsDiv" style="display: none">
 
 		<div style="text-align: center">{{noMaps}}</div>
 

@@ -162,17 +162,17 @@
     </div>
   </ion-content>
   
-    <div class="tabs" style="bottom: 0;">
-        <button style="display: block; margin-top: 0; margin-bottom: 0" class="button button-full button-balanced reg" ng-click="register()">
+    <div style="bottom: 0; position: absolute; width: 100%; background: white">
+        <button style="display: block; margin-top: 0; margin-bottom: 0; width: 50%; display: inline-block; float: left" class="button button-full button-balanced reg" ng-click="register()">
             Register
         </button>
-        <button style="display: none; margin-top: 0; margin-bottom: 0" class="button button-full button-balanced regC" ng-disabled="true">
+        <button ng-show="registered" style="display: none; margin-top: 0; margin-bottom: 0; width: 50%; display: inline-block; float: left" class="button button-full button-balanced regC" ng-disabled="true">
             Registered
         </button>
-        <button style="display: block; margin-top: 0; margin-bottom: 0" class="button button-full button-positive cp" ng-click="claimPoints()">
+        <button style="display: block; margin-top: 0; margin-bottom: 0; width: 50%; display: inline-block; float: right" class="button button-full button-positive cp" ng-click="claimPoints()">
             Claim Credit
         </button>
-        <button style="display: none; margin-top: 0; margin-bottom: 0" class="button button-full button-positive cpC" ng-disabled="true">
+        <button ng-show="claim" style="display: none; margin-top: 0; margin-bottom: 0; width: 50%; display: inline-block; float: right" class="button button-full button-positive cpC" ng-disabled="true">
            Credit Claimed
         </button>  
     </div>

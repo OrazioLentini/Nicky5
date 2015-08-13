@@ -51,6 +51,10 @@ angular.module('starter.controllers')
 
 		$scope.toggle = function (type) {
 			if (type == 'schedule') {
+				$('#schDiv').css('display', 'block')
+				$('#mapsDiv').css('display', 'none')
+				$('#dirDiv').css('display', 'none')
+				$('#showDiv').css('display', 'none')				
 				$scope.showSch = true
 				$scope.showDir = false 
 				$scope.showMaps = false
@@ -61,6 +65,10 @@ angular.module('starter.controllers')
 
 			}
 			if (type == 'directory') {
+				$('#schDiv').css('display', 'none')
+				$('#mapsDiv').css('display', 'none')
+				$('#dirDiv').css('display', 'block')
+				$('#showDiv').css('display', 'none')	
 				$scope.showSch = false
 				$scope.showDir = true 
 				$scope.showMaps = false
@@ -71,6 +79,10 @@ angular.module('starter.controllers')
 
 			}
 			if (type == 'maps') {
+				$('#schDiv').css('display', 'none')
+				$('#mapsDiv').css('display', 'block')
+				$('#dirDiv').css('display', 'none')
+				$('#showDiv').css('display', 'none')	
 				$scope.showSch = false
 				$scope.showDir = false 
 				$scope.showMaps = true
@@ -80,6 +92,10 @@ angular.module('starter.controllers')
         		$rootScope.cache = "maps"
 			}
 			if (type == 'showcase') {
+				$('#schDiv').css('display', 'none')
+				$('#mapsDiv').css('display', 'none')
+				$('#dirDiv').css('display', 'none')
+				$('#showDiv').css('display', 'block')	
 				$scope.showSch = false
 				$scope.showDir = false 
 				$scope.showMaps = false

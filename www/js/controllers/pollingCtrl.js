@@ -239,7 +239,13 @@ angular.module('starter.controllers')
 					$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
 				 }
 			 }). error(function (){
-				 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+					checkLastSync = localStorage.getItem('lastSync') 
+					if (checkLastSync == null) {
+						$ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+					}
+					else {
+						$ionicLoading.show({template: 'Sync Error: No Internet connection. The current information may not be up to date.', noBackdrop: false, duration:3000});
+					}
 			 })
 			 
 			//SyncService.sync()
@@ -247,8 +253,6 @@ angular.module('starter.controllers')
 		}
 
 
-		$scope.claim = true
-		$scope.register = true
 					
 		$scope.register = function() {
 			var confirmPopup = $ionicPopup.confirm({
@@ -257,7 +261,7 @@ angular.module('starter.controllers')
 			});
 			confirmPopup.then(function(res) {
 				if(res) {
-					$scope.register = false
+					$scope.registered = true
 					$('.regC').css('display', 'block')
 					$('.reg').css('display', 'none')
 					$ionicLoading.show({template: 'Registration Complete', noBackdrop: true, duration: 1000});
@@ -291,7 +295,7 @@ angular.module('starter.controllers')
 		
 		$scope.closeSurveyFinished = function() {
 			$scope.modalSurvey.hide();
-			$scope.claim = false
+			$scope.claim = true
 			$('.cpC').css('display', 'block')
 			$('.cp').css('display', 'none')
 			$ionicLoading.show({template: 'Credit Claimed', noBackdrop: true, duration: 1000});
