@@ -2,11 +2,18 @@ angular.module('starter.controllers')
 
 .controller('MenuCtrl', function($rootScope, $state, $scope, $ionicSideMenuDelegate, $timeout , $ionicModal, $ionicPopup, $ionicLoading, SyncService, LoginService, MenuLinksService, $ionicHistory, $filter) {
 
-  	MenuLinksService.getMenuLinks(). success(function (data){
-  		$scope.menu = data
-  		data = JSON.stringify(data)
-        localStorage.setItem('menu', data)
-  	})		
+		if(localStorage.getItem('menu') == null) {
+			MenuLinksService.getMenuLinks(). success(function (data){
+				$scope.menu = data
+				data = JSON.stringify(data)
+				localStorage.setItem('menu', data)
+			})	
+		}
+		else {
+				tempMenu = localStorage.getItem('menu')
+				$scope.menu = 	JSON.parse(tempMenu)
+		}
+	
 	  
 	$scope.getLastSyncTime = function() {
 		$timeout(function() {
@@ -191,7 +198,13 @@ angular.module('starter.controllers')
 				$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
 			 }
 		 }). error(function (){
-			 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+				checkLastSync = localStorage.getItem('lastSync') 
+				if (checkLastSync == null) {
+					$ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+				}
+				else {
+					$ionicLoading.show({template: 'Sync Error: No Internet connection. The current information may not be up to date.', noBackdrop: false, duration:3000});
+				}
 		 })
 		//SyncService.sync()
 		//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
@@ -215,7 +228,13 @@ angular.module('starter.controllers')
 						$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
 					 }
 				 }). error(function (){
-					 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+						checkLastSync = localStorage.getItem('lastSync') 
+						if (checkLastSync == null) {
+							$ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+						}
+						else {
+							$ionicLoading.show({template: 'Sync Error: No Internet connection. The current information may not be up to date.', noBackdrop: false, duration:3000});
+						}
 				 })
 				$scope.goHome()
 				//SyncService.sync()

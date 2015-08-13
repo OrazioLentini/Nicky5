@@ -208,7 +208,7 @@ body {
   left: 0 !important;
 }
 
-@media only screen and (max-width: 755px) {
+@media only screen and (min-width: 536px) and (max-width: 755px) {
 /* Styles */
   body {
   /* border-top:5px red solid;  */
@@ -236,7 +236,7 @@ body {
 
 }
 
-@media only screen  and (max-width: 479px) {
+@media only screen and (min-width: 321px) and (max-width: 479px) {
     body {
      /* border-top:5px green solid;  */
     }
@@ -262,8 +262,15 @@ body {
 }
 
 
-
-
+@media (min-width: 680px){
+  .modal{
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 15% !important;
+    right: 15% !important;
+    width: 70% !important;
+  }
+}
 
 #home-menu a {
   text-decoration:none;
@@ -276,4 +283,13 @@ body {
 .full {
   background:#FFF;
   margin:2px;
+}
+
+.claimButton {
+  display: none;
+  margin-top: 0; 
+  margin-bottom: 0; 
+  width: 50%; 
+  display: inline-block; 
+  float: right;
 }

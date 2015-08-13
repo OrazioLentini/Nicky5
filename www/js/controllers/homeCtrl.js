@@ -8,53 +8,44 @@ angular.module('starter.controllers')
 		});	
 
 			  
-$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+	$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+	
+			//console.log("State changed: url = ", toState.url);
+			if (toState.url == "/")
+			{
+				mySwiperX.update();  // this is here to force the slider into autoplay again
+				if(mySwiperX.isEnd)
+				mySwiperX.slidePrev();
+				else
+				mySwiperX.slideNext();
+				//$('#test').html($('#time-0').html());
+			}
+	
+	});
 
-		//console.log("State changed: url = ", toState.url);
-		if (toState.url == "/")
-		{
-			mySwiperX.update();  // this is here to force the slider into autoplay again
-			if(mySwiperX.isEnd)
-			   mySwiperX.slidePrev();
-			else
-			   mySwiperX.slideNext();
-			//$('#test').html($('#time-0').html());
-		}
-
-});
-
-var mySwiperX
-
-$timeout(function() {
- var mySwiper = new Swiper('.s1', {
-   autoplay: 5000,
-   effect: 'slide',
-   speed: 500,
-   observer: true,
-   autoplayDisableOnInteraction: false,
-   //onInit: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html())},
-   onSlideChangeStart: function(swiper){$('#test').fadeOut()},
-   onSlideChangeEnd: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()},
-  // loop: true,
-   pagination: '.p1',
-			paginationClickable: true,
-			nextButton: '.right',
-			prevButton: '.left'
-});
-mySwiperX = mySwiper;
-//$('#test').html($('#time-0').html())
-},250);
-
-
-
-    MenuLinksService.getMenuLinks(). success(function (data){
-  		$scope.menu = data
-  		data = JSON.stringify(data)
-        localStorage.setItem('menu', data)
-        //var featureItem = localStorage.getItem('Featured')
-		//$scope.featureItem = JSON.parse(featureItem)
-		
-		if(localStorage.getItem('presentationList') == null) {
+	var mySwiperX
+	
+	$timeout(function() {
+	var mySwiper = new Swiper('.s1', {
+	autoplay: 5000,
+	effect: 'slide',
+	speed: 500,
+	observer: true,
+	autoplayDisableOnInteraction: false,
+	//onInit: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html())},
+	onSlideChangeStart: function(swiper){$('#test').fadeOut()},
+	onSlideChangeEnd: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()},
+	// loop: true,
+	pagination: '.p1',
+				paginationClickable: true,
+				nextButton: '.right',
+				prevButton: '.left'
+	});
+	mySwiperX = mySwiper;
+	//$('#test').html($('#time-0').html())
+	},250);
+	
+	  if(localStorage.getItem('presentationList') == null) {
 			SyncService.getPresentationList().success(function (data){
 				$scope.list = data
 				if ($scope.list.length > 0)
@@ -70,8 +61,6 @@ mySwiperX = mySwiper;
 				$scope.featureItem = true;
 			}		
 		}
-  	});
-	
 	
     id = [0]
     plus = 2

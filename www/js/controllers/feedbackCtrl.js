@@ -3,6 +3,26 @@ angular.module('starter.controllers')
     .controller('FeedbackCtrl', function ($scope, $stateParams, MenuLinksService, $ionicModal, $ionicLoading, LoginService, $rootScope, SyncService, $ionicPopup, $state, $ionicHistory) {
 		$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
+			//CHECK FOR IF THERE IS NO INTERNET CONNECTION
+			/*SyncService.checkSync(). success(function (x){
+				if(x == 'Database Connected') {
+					// $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+				}
+			}). error(function (){
+					$(".signInOverlay").css("display", "block")
+					$(".signIn").css("display", "block")
+					var alertPopup = $ionicPopup.alert({
+						title: 'Internet Connection Required',
+						template: 'No internet connection found, please try again later.'
+					});
+						alertPopup.then(function(res) {
+							$ionicHistory.nextViewOptions({
+								disableBack: true
+							});	  
+							$state.go('app.menu')
+					});	
+			})*/
+	 
 		$scope.isLoggedIn = localStorage.getItem("login")
 		if ($scope.isLoggedIn == null) {
 			$(".signInOverlay").css("display", "block")
@@ -89,7 +109,13 @@ angular.module('starter.controllers')
 					$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
 				 }
 			 }). error(function (){
-				 $ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+					checkLastSync = localStorage.getItem('lastSync') 
+					if (checkLastSync == null) {
+						$ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+					}
+					else {
+						$ionicLoading.show({template: 'Sync Error: No Internet connection. The current information may not be up to date.', noBackdrop: false, duration:3000});
+					}
 			 })
 			//SyncService.sync()
 			//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
@@ -97,6 +123,7 @@ angular.module('starter.controllers')
 
 		$scope.submit = function () {
 			//submitFeedback()
+				 
 			var feedback = $("#Feedback").val();
 			LoginService.provideFeedback(feedback). success(function(data){
 				    $ionicLoading.show({template: 'Thank you for your feedback', noBackdrop: false, duration: 1500});
