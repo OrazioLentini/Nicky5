@@ -97,7 +97,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                         </div>
                         <div>
 
-                             <div id="time-{{ $index }}" style="font-size:12px; color:#FFF; display: none">Start Time: {{x.displayDate | date: 'longDate'}} {{x.displayTime | date: 'shortTime'}}</div>
+                             <div id="time-{{ $index }}" ng-if="x.StartTime" style="font-size:12px; color:#FFF; display: none">Start Time: {{x.displayDate | date: 'longDate'}} {{x.displayTime | date: 'shortTime'}}</div>
                         </div>
                    </div>
                 </div>              

@@ -24,7 +24,7 @@ angular.module('starter.controllers')
 	});
 
 	var mySwiperX
-	
+	//$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()}
 	$timeout(function() {
 	var mySwiper = new Swiper('.s1', {
 	autoplay: 5000,
@@ -42,7 +42,7 @@ angular.module('starter.controllers')
 				prevButton: '.left'
 	});
 	mySwiperX = mySwiper;
-	//$('#test').html($('#time-0').html())
+	$('#test').html($('#time-0').fadeIn())
 	},250);
 	
 	  if(localStorage.getItem('presentationList') == null) {
