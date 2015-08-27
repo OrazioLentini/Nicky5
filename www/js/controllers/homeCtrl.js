@@ -56,7 +56,6 @@ angular.module('starter.controllers')
 		}
 		else {
 			$scope.list = PollingService.getPresentationList()
-			console.log($scope.list)
 			if ($scope.list.length > 0)
 			{
 				$scope.featureItem = true;
