@@ -211,36 +211,40 @@ angular.module('starter.controllers')
 	}
 
 	$scope.sync = function () {
-		console.log($ionicHistory)
-		var confirmPopup = $ionicPopup.confirm({
-			title: 'Do you want to continue?',
-			template: 'Syncing will return to home. Are you sure?'
-		});
-		confirmPopup.then(function(res) {
-			if(res) {
-				SyncService.checkSync(). success(function (x){
-					 if(x == 'Database Connected') {
-						 SyncService.sync()
-						 $scope.getLastSyncTime()
-						 $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
-					 }
-					 else {
-						$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
-					 }
-				 }). error(function (){
-						checkLastSync = localStorage.getItem('lastSync') 
-						if (checkLastSync == null) {
-							$ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+		if ($state.current.name == 'app.menu') {
+			window.location.reload()
+		}
+		else {
+			var confirmPopup = $ionicPopup.confirm({
+				title: 'Do you want to continue?',
+				template: 'Syncing will return to home. Are you sure?'
+			});
+			confirmPopup.then(function(res) {
+				if(res) {
+					SyncService.checkSync(). success(function (x){
+						if(x == 'Database Connected') {
+							SyncService.sync()
+							$scope.getLastSyncTime()
+							$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 						}
 						else {
-							$ionicLoading.show({template: 'Sync Error: No Internet connection. The current information may not be up to date.', noBackdrop: false, duration:3000});
+							$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});
 						}
-				 })
-				$scope.goHome()
-				//SyncService.sync()
-				//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
-			}
-		});
+					}). error(function (){
+							checkLastSync = localStorage.getItem('lastSync') 
+							if (checkLastSync == null) {
+								$ionicLoading.show({template: 'No Internet Connection. Please connect to the internet.', noBackdrop: false});
+							}
+							else {
+								$ionicLoading.show({template: 'Sync Error: No Internet connection. The current information may not be up to date.', noBackdrop: false, duration:3000});
+							}
+					})
+					$scope.goHome()
+					//SyncService.sync()
+					//$ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+				}
+			});
+		}
 	}
 	//SCANNER
 	$ionicModal.fromTemplateUrl('templates/checkIn.html', {
@@ -277,5 +281,31 @@ angular.module('starter.controllers')
 			qrCode($scope.loginCred[0].FirstName, $scope.loginCred[0].LastName, $scope.loginCred[0].BadgeID)
 		}
 	};
+
+	SyncService.getSyncDate(). success (function (data){
+		localStorage.setItem('syncDate', data.LastSync)
+	})
+	
+	document.addEventListener("resume", onResume, false);
+
+		function onResume() {
+			$scope.runSync()
+		}
+
+	setInterval(function(){ 	
+		SyncService.getSyncDate(). success (function (data){
+			var syncDate = localStorage.getItem("syncDate")
+				var SD = Date.parse(syncDate)
+				var LS = Date.parse(data.LastSync)	
+				
+				//console.log("LastSync: " + LS)
+				//console.log("SyncDate: " + SD)
+				
+				if (SD != LS) {
+					$scope.sync()
+				}	
+				
+		})
+	}, 150000);
 
 })

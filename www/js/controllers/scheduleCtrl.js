@@ -11,7 +11,6 @@ angular.module('starter.controllers')
 
     	$scope.checkFav = function () {
 			$scope.schedule = ScheduleService.getSchedule();
-			console.log($scope.schedule)
 			$scope.att = ScheduleService.getAttending()
 			$scope.tempSch = $scope.schedule
 			$scope.fav = FavoritesService.checkIfFavoriteSchedule()

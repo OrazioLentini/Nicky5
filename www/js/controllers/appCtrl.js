@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
 	 SyncService.checkSync(). success(function (x){
 		 if(x == 'Database Connected') {
 			 SyncService.sync()
-			// $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
+			 $ionicLoading.show({template: 'Syncing...', noBackdrop: false, duration: 1500});
 		 }
 		 else {
 			$ionicLoading.show({template: 'Sync Error: The current information may not be up to date.', noBackdrop: false, duration:3000});

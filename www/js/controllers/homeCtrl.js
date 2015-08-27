@@ -42,7 +42,7 @@ angular.module('starter.controllers')
 				prevButton: '.left'
 	});
 	mySwiperX = mySwiper;
-	$('#test').html($('#time-0').fadeIn())
+	//$('#test').html($('#time-0').fadeIn())
 	},250);
 	
 	  if(localStorage.getItem('presentationList') == null) {
@@ -56,6 +56,7 @@ angular.module('starter.controllers')
 		}
 		else {
 			$scope.list = PollingService.getPresentationList()
+			console.log($scope.list)
 			if ($scope.list.length > 0)
 			{
 				$scope.featureItem = true;

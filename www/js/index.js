@@ -166,7 +166,7 @@ function notify(e, t, id)
         id: id,
         title: 'Upcoming Event',
         text: 'Starting Now: ' + title,
-        at:  _5_sec_from_now,
+        at:  _5_min_before,
         sound: sound
         //badge: 12
     }); 

@@ -3,7 +3,15 @@ angular.module('starter.services')
     .service('SyncService',  function ($http, $filter) {
 
     var success = ""
-
+        this.getSyncDate = function() {
+            var url = 'http://app.nicky3.com/AppApis/apiSyncDate.asp';
+            return $http.jsonp(url, {
+                params: {
+                    callback: 'JSON_CALLBACK',
+                    format:'json'
+                }
+            })                     
+        },        
         this.getDirectory =  function () {
             var url = 'http://app.nicky3.com/AppApis/apiDirectory.asp';
             $http.jsonp(url, {
@@ -89,6 +97,26 @@ angular.module('starter.services')
                 }
             }). 
             success (function(data){
+
+                
+                info = { Description: null,
+                        EndTime: "",
+                        EventType: "info",
+                        Image: "http://app.nicky3.com/App/info/demoApp3.jpg",
+                        RecID: null,
+                        ScheduledDate: "",
+                        ShortDesc: "",
+                        Slides: 0,
+                        Speaker: "",
+                        SpeakerID: null,
+                        StartTime: "",
+                        ThumbImage: "http://app.nicky3.com/App/Presentations/Images/jhthumb.png",
+                        Title: null,
+                        displayDate: null,
+                        displayTime: null,
+                        featured: 0 
+                }              
+
                 for (i = 0; i < data.length; i++) {
                     data[i].ScheduledDate = data[i].ScheduledDate + " 12:00:00 AM"
                     
@@ -99,6 +127,8 @@ angular.module('starter.services')
                     data[i].displayDate = Date.parse(tempDate)   
                 }
                 
+                //data.splice(0,0, info)
+                                
                 data = JSON.stringify(data)
                 localStorage.setItem('presentationList', data)
                 //this.saveLocally()
