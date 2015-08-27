@@ -17,6 +17,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   width:100%;
   letter-spacing: 0px;
   font-family: 'Futura', Arial;
+  text-align: center;
 
 }
 
@@ -84,19 +85,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
         <div id="featured" class="swiper-container s1" style="margin:0px; padding:0px; overflow:hidden; background:#000 ">
 
           <div class="swiper-wrapper">
+               
+                <div class="box swiper-slide" style="width:100%;  float:left; position:relative;background:#F00">
+                  <div style="overflow:hidden; position:relative;">
+                         <div class="pg-image" style="margin-left: 0px; margin-right: 0px; margin-bottom: 0px;">
+                            <img src="http://app.nicky3.com/App/info/demoApp5.jpg" style="widht:100%;">
+                        </div>
+                        
+                        <div id="time-0" style="font-size:12px; color:#FFF; display: none">Contact Us Now</div>
+                       
+                  </div>
+                </div>
                 
-           
                 <div  class="box swiper-slide" style="width:100%;  float:left; position:relative;background:#F00" ng-if="featureItem" ng-repeat="x in list">
                   <div ui-sref="app.polling({SpeakerID: x.SpeakerID, ID: 5, PresentationID: x.RecID})" style="overflow:hidden; position:relative;" >
                         <div class="pg-image" style="margin-left: 0px; margin-right: 0px; margin-bottom: 0px;">
                           <img src="{{x.Image}}">
                         </div>
                         
-                        <div class="inner-content" ng-if="x.Title" style="text-align:center; background: rgba(51,51,51,0.9);">
+                        <div class="inner-content" ng-if="x.Title">
                              <div ng-if="x.Title" style="margin:0px; color:#FFF; font-size:12px; font-weight:normal; font-family: Verdana, Geneva, sans-serif">{{x.Title}}</div>
                         </div>
                         <div>
-
                              <div id="time-{{ $index }}" ng-if="x.StartTime" style="font-size:12px; color:#FFF; display: none">Start Time: {{x.displayDate | date: 'longDate'}} {{x.displayTime | date: 'shortTime'}}</div>
                         </div>
                    </div>
@@ -104,7 +114,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                  
 
                 <div class="box swiper-slide" ng-if="!featureItem">
-                 <img src="images/welcome.jpg" style="width:100%;" ng-cloak>
+                 <img src="images/demoApp5.jpg" style="width:100%;" ng-cloak>
                 </div>
 
             </div>

@@ -42,7 +42,7 @@ angular.module('starter.controllers')
 				prevButton: '.left'
 	});
 	mySwiperX = mySwiper;
-	$('#test').html($('#time-0').fadeIn())
+	//$('#test').html($('#time-0').fadeIn())
 	},250);
 	
 	  if(localStorage.getItem('presentationList') == null) {
