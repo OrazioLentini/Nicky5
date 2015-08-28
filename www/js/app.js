@@ -34,7 +34,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
   
    .state('app.schedule', {
       url: "/schedule/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/schedule.html",
@@ -71,7 +71,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
 
   .state('app.showdetails', {
       url: "/showdetails/:RecID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
         templateUrl: "templates/showdetails.html",
@@ -93,7 +93,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
     })
 	  .state('app.directory', {
       url: "/directory/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/directory.html",
@@ -104,7 +104,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
 	
 	.state('app.details', {
       url: "/details/:RecID",
-      cache: false,
+      cache: true,
   	  views: {
         'menuContent': {
         templateUrl: "templates/detail.html",
@@ -115,7 +115,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
 	
   .state('app.trivia', {
       url: "/trivia/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/trivia.html",
@@ -147,7 +147,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
 
   .state('app.presentations', {
       url: "/presentations/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/presentationLists.html",
@@ -157,7 +157,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
     })
    .state('app.feedback', {
       url: "/feedback/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/feedback.html",
@@ -168,7 +168,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
 
   .state('app.polling', {
       url: "/polling/:SpeakerID/:ID/:PresentationID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/presentation.html",
@@ -179,7 +179,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
   
 	 .state('app.maps', {
       url: "/maps/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/maps.html",
@@ -200,7 +200,7 @@ $ionicConfigProvider.backButton.previousTitleText(false);
 	
    .state('app.social', {
       url: "/social/:ID",
-      cache: false,
+      cache: true,
       views: {
         'menuContent': {
           templateUrl: "templates/social.html",

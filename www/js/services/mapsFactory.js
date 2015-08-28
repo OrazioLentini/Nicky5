@@ -1,16 +1,35 @@
 angular.module('starter.services')
 
-    .factory('MapsService', function () {
+    .factory('MapsService', function ($q) {
 
 	var maps = ""
 	return {
 		getMaps: function(){ 
 				
-				var temp = localStorage.getItem('tMaps')
-    			data = JSON.parse(temp)
-				maps = data
+        		//var db = openDatabase("nicky3db", "01", "nicky3", 5 *1024*1024);
+				var db = window.sqlitePlugin.openDatabase({name: "my.db"});
+				var defer = $q.defer();
+				var res = '[';
+				db.transaction(function (tx) {
+					tx.executeSql("select * from tMaps;", [], function(tx, result) {
+						
+						for(var i = 0; i < result.rows.length; i++) {
+							res += '{\"RecID\":\"'+result.rows.item(i).RecID+'\",\"Name\":\"'+result.rows.item(i).Name+'\",\"Image\":\"'+result.rows.item(i).Image+'\",\"Name\":\"'+result.rows.item(i).Description+'\"}';
+							(i != result.rows.length-1) && (res +=',');
+						
+						};
+						res += ']'
+						console.log(res)
+						defer.resolve(res);
+					})
+				}) 
 				
-				return maps
+				//var temp = localStorage.getItem('tMaps')
+    			//data = JSON.parse(temp)
+				//maps = data
+				return defer.promise
+				
+				//return maps
 		},
 		checkMapsFav: function(){ 
 		

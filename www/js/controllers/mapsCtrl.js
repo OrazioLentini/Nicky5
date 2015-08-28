@@ -25,31 +25,35 @@ $ionicModal.fromTemplateUrl('templates/viewmap.html', {
 
   
 		$scope.checkFav = function () {
-			$scope.maps = MapsService.getMaps()
-			if($scope.maps.length == 0 ){
-				$scope.noMaps = true
-			}
-
-
-			$scope.fav = FavoritesService.checkIfFavoriteMap()
-			for (i = 0; i < $scope.maps.length; i++){
-				if ($scope.maps[i].fav == null) {
-					$scope.maps[i].Fav = false
-					$scope.maps[i].NoFav = true
+			$scope.maps = MapsService.getMaps().then (function (data) {
+				console.log(JSON.parse(data))
+				$scope.maps = JSON.parse(data)		
+	
+				if($scope.maps.length == 0 ){
+					$scope.noMaps = true
 				}
-			}
-			if ($scope.fav != 'all') {
-				for (j = 0; j < $scope.fav.length; j++){
-					var x = $scope.fav[j].ID
-
-					for (i = 0; i < $scope.maps.length; i++){
-						if ($scope.maps[i].RecID == x) {
-							$scope.maps[i].Fav = true
-							$scope.maps[i].NoFav = false
+	
+	
+				$scope.fav = FavoritesService.checkIfFavoriteMap()
+				for (i = 0; i < $scope.maps.length; i++){
+					if ($scope.maps[i].fav == null) {
+						$scope.maps[i].Fav = false
+						$scope.maps[i].NoFav = true
+					}
+				}
+				if ($scope.fav != 'all') {
+					for (j = 0; j < $scope.fav.length; j++){
+						var x = $scope.fav[j].ID
+	
+						for (i = 0; i < $scope.maps.length; i++){
+							if ($scope.maps[i].RecID == x) {
+								$scope.maps[i].Fav = true
+								$scope.maps[i].NoFav = false
+							}
 						}
 					}
 				}
-			}
+			})
 		}
 
 		$scope.saveFavoriteMap = function(id) {

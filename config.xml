@@ -21,10 +21,13 @@ Developmental event management and attendee interaction application.    </descri
   <preference name="orientation" value="portrait" />
   <icon src="icon.png"/>
   <gap:splash src="splash.png"/>
+  
   <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0"/>
   <gap:plugin name="nl.x-services.plugins.toast" version="2.0.2"/>
   <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1"/>
   <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4"/>
+  <gap:plugin name="com.brodysoft.sqliteplugin" version="1.0.6" />
+  
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
