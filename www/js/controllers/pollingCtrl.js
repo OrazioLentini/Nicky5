@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 
     .controller('PollingCtrl', ['$scope', '$http', '$state', '$ionicModal', '$timeout','$stateParams', 'SpeakerService', 'SyncService', 'LoginService', '$ionicLoading', 'PollingService' ,'MenuLinksService', 'ScheduleService', '$ionicPopup', '$ionicSlideBoxDelegate','$rootScope',  function ($scope, $http, $state, $ionicModal, $timeout, $stateParams, SpeakerService, SyncService, LoginService, $ionicLoading, PollingService, MenuLinksService, ScheduleService, $ionicPopup, $ionicSlideBoxDelegate, $rootScope) {
-		$scope.$on('$ionicView.enter', function(){
+		//$scope.$on('$ionicView.enter', function(){
 			PollingService.getPresentationSlides($stateParams.PresentationID). success( function (data) {
 				$scope.slides = data
 				if($scope.slides.length == 0){
@@ -27,7 +27,7 @@ angular.module('starter.controllers')
 	
 				});   
 			},200);	
-  		})	
+  		//})	
 		//$scope.title = MenuLinksService.getHeader($stateParams.ID)
 
 		$scope.desc = PollingService.getDetails($stateParams.PresentationID);

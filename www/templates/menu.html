@@ -58,10 +58,14 @@
           <i style="color:#F87D3F; padding-right:5px; width:19px; display:inline-block" class="icon ion-log-out"></i> Logout
           </a></ion-item> 
           
-            <ion-item  ng-click="sync(); toggleLeftSideMenu()" class="item item-complex" style="background: #4B749C;">
+          <ion-item  ng-click="sync(); toggleLeftSideMenu()" class="item item-complex" style="background: #4B749C;">
           <a class="item-content ng-binding">
           <i style="color:#F87D3F; padding-right:0px; width:19px; display:inline-block" class="icon ion-refresh"></i> Last Sync:&nbsp; <span style="font-size:12px">{{lastSync}}</span>
           </a></ion-item> 
+          
+          <ion-item  ng-click="toggleLeftSideMenu()" ui-sref="app.about" class="item item-complex" style="background: #4B749C;">
+          <i style="color:#F87D3F; padding-right:0px; width:19px; display:inline-block" class="icon ion-information-circled"></i> About Nicky3
+         </ion-item> 
                 
    </ion-list>
 
