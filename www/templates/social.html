@@ -69,7 +69,6 @@
         
         <div id="youtube" style="background:#FFF; margin-top:5px; display: none">
           <div ng-show="showMYT" style="text-align: center; ">{{messageYT}}</div>
-          <div style="text-align: center; ">Youtube Videos</div>
           <div ng-repeat="x in youtube">
               <div ng-click="showVideo('{{x.snippet.resourceId.videoId}}')" style="position: relative"> 
                 <img src="{{x.snippet.thumbnails.high.url}}" style="width:100%">
@@ -84,7 +83,6 @@
                 
          <div id="twitter"  style="background:#FFF; margin-top:5px; display: block">
            <div ng-show="showMTW" style="text-align: center; ">{{messageTW}}</div>
-           <div style="text-align: center; ">Twitter Timeline</div>
             <ul > 
               <li ng-repeat="x in twitter" class="item item-avatar item-text-wrap">
                 <img style="height: 80px" src="{{x.AuthorAvatar}}" onerror="this.src='images/twitterNoIcon.png'"/>  
@@ -97,7 +95,6 @@
         
          <div id="instagram" style="background:#FFF; margin-top:5px; display: none">
            <div ng-show="showMIG" style="text-align: center; ">{{messageIG}}</div>
-           <div style="text-align: center; ">Instagram Photos</div>
            <div ng-repeat="x in instagram">
              <div style="position: relative" ng-click="showImage('{{x.RecID}}')">
                <img style="width: 100%" src="{{x.PostImageURL}}">
@@ -118,7 +115,6 @@
         
         <div id="facebook" style="background:#FFF; margin-top:5px; display: none">
           <div ng-show="showMFB" style="text-align: center; ">{{messageFB}}</div>
-          <div style="text-align: center; ">Facebook Posts</div>
             <div ng-repeat="x in facebook" style="margin-bottom: 0px;">
              <div style="position: relative">
                 <div style="font-size: 1em; left: 1px; top: 6px; width: 100%" class="itemIG item-avatar">

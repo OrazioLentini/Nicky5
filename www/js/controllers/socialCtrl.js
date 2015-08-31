@@ -4,7 +4,7 @@ angular.module('starter.controllers')
     
     $scope.title = MenuLinksService.getHeader($stateParams.ID)
 
-    /*SocialService.getTwitter().success(function (data){
+    SocialService.getTwitter().success(function (data){
         $scope.twitter = data
         if($scope.twitter.length == 0) {
             $scope.showMTW = true
@@ -32,7 +32,7 @@ angular.module('starter.controllers')
             $scope.showMFB = true
             $scope.messageFB = 'There are no images to display'
         }
-    })*/
+    })
 
       
       
@@ -172,20 +172,4 @@ angular.module('starter.controllers')
        }, 500)
     }
     
-    var confirmSocial = $ionicPopup.confirm({
-        title: 'Action Unavailable',
-        template: 'This action is not available in this demo. Would you like to know how to get your own custom version of the app?'
-    });
-    confirmSocial.then(function(res) {
-        if(res) {
-            //$scope.modal.show();
-            $state.go('app.about')
-        }
-        else {
-        //    $ionicHistory.nextViewOptions({
-        //        disableBack: true
-        //});	  
-        //    $state.go('app.menu')
-        }
-        });
     });
