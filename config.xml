@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.nariel.nicky5" versionCode="2" version="0.0.3">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ionicframework.sidemenu192637" versionCode="4" version="3.0.1">
+<!--<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.nariel.nicky5" versionCode="3" version="3.0.1">-->
+  
   <name>Nicky 3</name>
   <description>
 Developmental event management and attendee interaction application.    </description>

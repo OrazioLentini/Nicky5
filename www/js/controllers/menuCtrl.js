@@ -21,7 +21,7 @@ angular.module('starter.controllers')
 			$scope.lastSync = $filter('date')(curTime, 'M/d/yyyy h:mm a')
 			
 			//console.log($scope.lastSync)
-		}, 150); 
+		}, 300); 
 	}
 	
 	$scope.getLastSyncTime()
