@@ -27,7 +27,7 @@ angular.module('starter.controllers')
 	//$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()}
 	$timeout(function() {
 	var mySwiper = new Swiper('.s1', {
-	autoplay: 5000,
+	autoplay: 6000,
 	effect: 'slide',
 	speed: 500,
 	observer: true,
@@ -37,7 +37,7 @@ angular.module('starter.controllers')
 	onSlideChangeEnd: function(swiper){$('#test').html($('#time-'+swiper.activeIndex).html()).fadeIn()},
 	// loop: true,
 	pagination: '.p1',
-				paginationClickable: true,
+				//paginationClickable: true,
 				nextButton: '.right',
 				prevButton: '.left'
 	});

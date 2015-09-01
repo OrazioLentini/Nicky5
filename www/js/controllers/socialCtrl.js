@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('SocialCtrl', function ($scope, $state, $ionicScrollDelegate, $stateParams, MenuLinksService, SocialService, $ionicModal, $filter) {
+    .controller('SocialCtrl', function ($scope, $state, $ionicScrollDelegate, $stateParams, MenuLinksService, SocialService, $ionicModal, $filter, $ionicPopup, $ionicHistory) {
     
     $scope.title = MenuLinksService.getHeader($stateParams.ID)
 
@@ -171,4 +171,5 @@ angular.module('starter.controllers')
        $( "#watchYT" ).fadeIn('slow');
        }, 500)
     }
+    
     });

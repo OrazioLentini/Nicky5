@@ -49,6 +49,15 @@ $ionicConfigProvider.backButton.previousTitleText(false);
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
+	.state('app.about', {
+      url: "/about",
+      cache: false,
+  	  views: {
+        'menuContent': {
+        templateUrl: "templates/about.html"
+  	  }
+	  }
+  })
    
   .state('app', {
     url: "/app",

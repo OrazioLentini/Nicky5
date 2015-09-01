@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-    .controller('ShowDetailCtrl', function ($scope, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope, $ionicConfig) {
+    .controller('ShowDetailCtrl', function ($scope,$state, $stateParams, $ionicPopup, ShowcaseService, FavoritesService, $ionicLoading, $ionicModal, $timeout, LoginService, SyncService, RequestInfoService, $rootScope, $ionicConfig) {
 		//$ionicConfig.backButton.text("Back");
 		
 		$scope.filled = false
@@ -165,4 +165,22 @@ angular.module('starter.controllers')
 			}
 		}
 
+		$scope.socialButtons = function () {   
+		    var confirmSocial = $ionicPopup.confirm({
+				title: 'Action Unavailable',
+				template: 'This action is unavailable in this demo. Would you like to know how to get your own custom version of the app?'
+			});
+			confirmSocial.then(function(res) {
+				if(res) {
+					//$scope.modal.show();
+					$state.go('app.about')
+				}
+				else {
+				//    $ionicHistory.nextViewOptions({
+				//        disableBack: true
+				//});	  
+				//    $state.go('app.menu')
+				}
+			});
+		}
 }); 

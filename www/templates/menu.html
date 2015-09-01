@@ -15,7 +15,7 @@
       <!--<ion-nav-back-button style="font-size: 16px;"></ion-nav-back-button>-->
       <ion-nav-back-button style="font-size: 16px;" class="button-clear"><i class="icon ion-ios-arrow-back"></i> </ion-nav-back-button>
       <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear" ng-click="openCheckIn()"><img src="img/qrcode.png" style="height: 25px; margin-top: 3px;"></button>
+        <button class="button button-icon button-clear" ng-click="openCheckIn()"><img src="images/qrcode.png" style="height: 25px; margin-top: 3px;"></button>
          <button class="button button-icon button-clear" ></button>
         <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
       </ion-nav-buttons>
@@ -58,10 +58,14 @@
           <i style="color:#F87D3F; padding-right:5px; width:19px; display:inline-block" class="icon ion-log-out"></i> Logout
           </a></ion-item> 
           
-            <ion-item  ng-click="sync(); toggleLeftSideMenu()" class="item item-complex" style="background: #4B749C;">
+          <ion-item  ng-click="sync(); toggleLeftSideMenu()" class="item item-complex" style="background: #4B749C;">
           <a class="item-content ng-binding">
           <i style="color:#F87D3F; padding-right:0px; width:19px; display:inline-block" class="icon ion-refresh"></i> Last Sync:&nbsp; <span style="font-size:12px">{{lastSync}}</span>
           </a></ion-item> 
+          
+          <ion-item  ng-click="toggleLeftSideMenu()" ui-sref="app.about" class="item item-complex" style="background: #4B749C;">
+          <i style="color:#F87D3F; padding-right:0px; width:19px; display:inline-block" class="icon ion-information-circled"></i> About
+         </ion-item> 
                 
    </ion-list>
 
