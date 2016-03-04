@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ionicframework.sidemenu192637" versionCode="4" version="3.0.1">-->
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.nariel.nicky5" versionCode="3" version="3.0.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ionicframework.sidemenu192637" versionCode="3" version="3.0.2">
+<!--<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.nariel.nicky5" versionCode="3" version="3.0.1">-->
   
   <name>Nicky 3</name>
   <description>
-Developmental event management and attendee interaction application.    </description>
+  Developmental event management and attendee interaction application.    </description>
   <author href="" email=""/>
   <content src="index.html"/>
   <access origin="*"/>
@@ -22,11 +22,14 @@ Developmental event management and attendee interaction application.    </descri
   <preference name="FadeSplashScreenDuration" value="2.0"/>
   <preference name="orientation" value="portrait" />
   <icon src="icon.png"/>
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
   <gap:splash src="splash.png"/>
   <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0"/>
   <gap:plugin name="nl.x-services.plugins.toast" version="2.0.2"/>
-  <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1"/>
-  <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4"/>
+  <!--<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1"/>-->
+  <gap:plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" version="0.8.2"/>
+  <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
+  
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
